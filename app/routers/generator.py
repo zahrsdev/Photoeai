@@ -8,12 +8,13 @@ from loguru import logger
 # Models to import (add the new ones)
 from app.schemas.models import (
     InitialUserRequest, WizardInput, BriefOutput, 
-    ImageGenerationRequest, ImageEnhancementRequest, ImageOutput
+    ImageGenerationRequest, ImageEnhancementRequest, ImageOutput,
+    TextGenerationRequest, TextOutput
 )
 from app.services.brief_orchestrator import BriefOrchestratorService
 # Import the new service
 from app.services.image_generator import ImageGenerationService
-from app.services.multi_provider_image_generator import MultiProviderImageService
+from app.services.unified_ai_service import UnifiedAIService
 
 # Create router instance and orchestrator (existing)
 router = APIRouter(prefix="/api/v1", tags=["generator"])
@@ -22,7 +23,7 @@ orchestrator = BriefOrchestratorService()
 # --- NEW ---
 # Initialize both image generation services
 image_service = ImageGenerationService()  # Keep for backward compatibility
-multi_provider_service = MultiProviderImageService()  # New multi-provider service
+unified_ai_service = UnifiedAIService()  # Unified service for both text and image generation
 # --- END NEW ---
 
 
@@ -171,7 +172,95 @@ async def health_check():
 
 # --- NEW ENDPOINTS ---
 
-@router.post("/generate-image", response_model=ImageOutput, tags=["Image Generation"])
+@router.post("/generate-text-advanced", response_model=TextOutput)
+async def generate_text_advanced(request: TextGenerationRequest) -> TextOutput:
+    """
+    Advanced text generation with full provider control.
+    Supports all the provider endpoints shown: Sumopod, OpenRouter, OpenAI, Gemini.
+    """
+    logger.info(f"🤖 Advanced text generation with provider: {request.provider}")
+    
+    try:
+        # Use unified AI service for text generation
+        generated_text = await unified_ai_service.generate_text(
+            prompt=request.prompt,
+            user_api_key=request.user_api_key,
+            provider_override=request.provider,
+            model=request.model
+        )
+        
+        # Return structured response
+        return TextOutput(
+            generated_text=generated_text,
+            provider_used=request.provider or "auto_detected",
+            model_used=request.model or "default",
+            generation_metadata={
+                "max_tokens": request.max_tokens,
+                "temperature": request.temperature,
+                "service": "unified_ai_service",
+                "timestamp": "2024-08-23T10:00:00Z"
+            }
+        )
+        
+    except Exception as e:
+        logger.error(f"💥 Advanced text generation failed: {e}")
+        raise HTTPException(status_code=500, detail=f"Text generation failed: {str(e)}")
+
+
+@router.post("/generate-text", response_model=BriefOutput)
+async def generate_text(request: InitialUserRequest) -> BriefOutput:
+    """
+    Generate text completions using the unified AI service.
+    This endpoint can be used for brief generation using various providers.
+    """
+    logger.info(f"📝 Text generation request: {request.product_name}")
+    
+    try:
+        # Validate user API key
+        if not request.user_api_key:
+            raise HTTPException(
+                status_code=400,
+                detail="❌ User API key is required for text generation"
+            )
+        
+        # Create a prompt for text generation
+        text_prompt = f"""Generate a detailed photography brief for {request.product_name}.
+        Product description: {request.product_description or "Not provided"}
+        Target audience: {request.target_audience or "General audience"}
+        
+        Please provide a comprehensive brief including:
+        1. Visual concept and composition
+        2. Lighting requirements
+        3. Background and props
+        4. Style and mood
+        5. Technical specifications
+        """
+        
+        # Use unified AI service for text generation
+        generated_text = await unified_ai_service.generate_text(
+            prompt=text_prompt,
+            user_api_key=request.user_api_key,
+            provider_override=getattr(request, 'provider', None),
+            model=getattr(request, 'model', None)
+        )
+        
+        # Return as BriefOutput
+        return BriefOutput(
+            brief_content=generated_text,
+            product_name=request.product_name,
+            generation_metadata={
+                "service": "unified_ai_text_generation",
+                "provider": "auto_detected",
+                "timestamp": "2024-08-23T10:00:00Z"
+            }
+        )
+        
+    except Exception as e:
+        logger.error(f"💥 Text generation failed: {e}")
+        raise HTTPException(status_code=500, detail=f"Text generation failed: {str(e)}")
+
+
+@router.post("/generate-image", response_model=ImageOutput)
 async def generate_image(request: ImageGenerationRequest) -> ImageOutput:
     """
     Takes a professionally crafted brief prompt and generates a photorealistic image.
@@ -187,7 +276,7 @@ async def generate_image(request: ImageGenerationRequest) -> ImageOutput:
             raise HTTPException(status_code=400, detail="User API key is required for image generation.")
         
         # Use multi-provider service for better compatibility
-        result = await multi_provider_service.generate_image(
+        result = await unified_ai_service.generate_image(
             brief_prompt=request.brief_prompt,
             user_api_key=request.user_api_key,
             negative_prompt=request.negative_prompt,
@@ -213,7 +302,7 @@ async def enhance_image(request: ImageEnhancementRequest) -> ImageOutput:
             raise HTTPException(status_code=400, detail="User API key is required for image enhancement.")
 
         # Use multi-provider service for better compatibility
-        result = await multi_provider_service.enhance_image(
+        result = await unified_ai_service.enhance_image(
             original_prompt=request.original_brief_prompt,
             instruction=request.enhancement_instruction,
             user_api_key=request.user_api_key,

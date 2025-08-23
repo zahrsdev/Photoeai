@@ -4,7 +4,7 @@ Defines the data structures for user input, wizard input, and brief output.
 """
 
 from pydantic import BaseModel, Field
-from typing import Optional
+from typing import Optional, Dict, Any
 
 
 class InitialUserRequest(BaseModel):
@@ -62,6 +62,53 @@ class BriefOutput(BaseModel):
 
 
 # --- NEW MODELS ---
+
+class TextGenerationRequest(BaseModel):
+    """
+    Request model for text generation using various AI providers.
+    Supports the different endpoints shown by the user.
+    """
+    prompt: str = Field(..., description="The text prompt for generation")
+    user_api_key: str = Field(..., description="User-provided API key for the AI service")
+    provider: Optional[str] = Field(None, description="Override provider (sumopod, openrouter, openai, gemini)")
+    model: Optional[str] = Field(None, description="Specific model to use (e.g., gpt-4o, gemini-2.5-flash)")
+    max_tokens: Optional[int] = Field(150, description="Maximum tokens to generate")
+    temperature: Optional[float] = Field(0.7, description="Sampling temperature (0.0 to 1.0)")
+    
+    class Config:
+        schema_extra = {
+            "example": {
+                "prompt": "Generate a detailed photography brief for luxury skincare products",
+                "user_api_key": "your-api-key-here",
+                "provider": "openrouter",
+                "model": "openai/gpt-4o",
+                "max_tokens": 200,
+                "temperature": 0.8
+            }
+        }
+
+
+class TextOutput(BaseModel):
+    """Output model for text generation responses."""
+    generated_text: str = Field(..., description="The generated text content")
+    provider_used: str = Field(..., description="Which provider was used for generation")
+    model_used: str = Field(..., description="Which model was used for generation")
+    generation_metadata: Dict[str, Any] = Field(default_factory=dict, description="Additional metadata")
+    
+    class Config:
+        schema_extra = {
+            "example": {
+                "generated_text": "A comprehensive photography brief for luxury skincare...",
+                "provider_used": "openrouter", 
+                "model_used": "openai/gpt-4o",
+                "generation_metadata": {
+                    "tokens_used": 156,
+                    "response_time": "2.3s",
+                    "timestamp": "2024-08-23T10:00:00Z"
+                }
+            }
+        }
+
 
 class ImageGenerationRequest(BaseModel):
     """Model for the initial image generation request."""
