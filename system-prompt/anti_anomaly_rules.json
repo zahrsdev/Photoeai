@@ -1,0 +1,27 @@
+{
+  "negative_prompt_library": {
+    "general_quality": [
+      "poor quality", "low resolution", "jpeg artifacts", "blurry", "out of focus",
+      "noisy", "grainy", "watermark", "signature", "text", "logo", "username"
+    ],
+    "human_anatomy": [
+      "disfigured", "deformed", "mutated", "extra limbs", "missing limbs",
+      "extra fingers", "missing fingers", "fused fingers", "bad hands",
+      "malformed hands", "ugly", "unrealistic eyes", "asymmetrical face"
+    ],
+    "photographic_errors": [
+      "bad lighting", "flat lighting", "overexposed", "underexposed", "harsh shadows",
+      "unnatural colors", "color bleed", "vignetting", "chromatic aberration",
+      "distorted perspective", "bad composition"
+    ],
+    "object_realism": [
+      "floating", "levitating", "unrealistic physics", "impossible angles",
+      "melted objects", "deformed product", "illogical scale", "cartoonish",
+      "3d render", "cgi", "unrealistic textures"
+    ],
+    "scene_and_environment": [
+      "cluttered background", "messy", "distracting elements", "ugly background",
+      "boring", "empty scene"
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "stopping_power_modifiers": {
+    "emotional_impact": [
+      "Evoke a sense of awe and wonder",
+      "Create a feeling of serene luxury",
+      "Radiate vibrant, infectious energy",
+      "A touch of mystery and intrigue"
+    ],
+    "dynamic_composition": [
+      "Dynamic angle, implying motion",
+      "Use leading lines to draw the eye directly to the product",
+      "Break the frame, with an element of the product extending off-screen",
+      "Create a sense of heroic scale by using a low angle"
+    ],
+    "dramatic_elements": [
+      "A single, dramatic splash of liquid interacting with the product",
+      "Wisps of smoke or vapor elegantly curling around the subject",
+      "Floating particles or magical motes of light in the air",
+      "Shattered elements or deconstructed components arranged artfully"
+    ],
+    "extreme_realism": [
+      "Hyper-detailed, focus-stacked for infinite sharpness",
+      "Emphasize micro-textures, showing every pore, fiber, or grain",
+      "Realistic condensation or water droplets on the surface",
+      "Flawless, microscopic-level detail"
+    ]
+  }
+}

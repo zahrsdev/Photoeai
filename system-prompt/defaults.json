@@ -1,0 +1,29 @@
+{
+  "defaults": {
+    "product_name": "Premium Product",
+    "product_description": "High-quality product with elegant design",
+    "key_features": "Premium materials and craftsmanship",
+    "product_state": "pristine",
+    "shot_type": "Eye-level",
+    "framing": "Close-Up",
+    "compositional_rule": "Rule of Thirds",
+    "negative_space": "Balanced",
+    "lighting_style": "Studio Softbox",
+    "key_light_setup": "Large softbox positioned at 45 degrees to the subject",
+    "fill_light_setup": "Smaller softbox or reflector to reduce shadows",
+    "rim_light_setup": "Subtle rim light from behind to separate subject from background",
+    "mood": "Clean and professional",
+    "environment": "Seamless studio backdrop",
+    "dominant_colors": "neutral whites and grays",
+    "accent_colors": "warm golden tones",
+    "props": "minimal geometric shapes",
+    "camera_type": "Canon EOS R5",
+    "lens_type": "100mm Macro",
+    "aperture_value": 8.0,
+    "shutter_speed_value": 125,
+    "iso_value": 100,
+    "visual_effect": "crystal clear focus with subtle depth of field",
+    "overall_style": "Commercial product photography",
+    "photographer_influences": "Annie Leibovitz and Peter Lindbergh"
+  }
+}

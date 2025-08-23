@@ -1,0 +1,46 @@
+{
+  "validation_rules": [
+    {
+      "rule_name": "Check for Contradictions",
+      "description": "Ensures logical consistency between photographic settings.",
+      "conditions": [
+        {
+          "if": { "shot_type": "Macro" },
+          "then": { "focal_length_mm": { "min": 50 } },
+          "error": "Macro shots require a focal length of at least 50mm."
+        },
+        {
+          "if": { "visual_effect": "shallow depth of field with creamy bokeh" },
+          "then": { "aperture_value": { "max": 4.0 } },
+          "error": "Shallow depth of field requires a wide aperture (low f-number, typically below f/4.0)."
+        },
+        {
+          "if": { "lighting_style": "Natural window light" },
+          "then": { "environment": { "not_in": ["outer space", "deep sea"] } },
+          "error": "Natural window light is inconsistent with the chosen environment."
+        }
+      ]
+    },
+    {
+      "rule_name": "Check for Completeness",
+      "description": "Ensures all critical fields are filled.",
+      "required_fields": [
+        "product_name",
+        "shot_type",
+        "framing",
+        "lighting_style",
+        "environment"
+      ],
+      "error": "One or more required fields are missing from the brief."
+    },
+    {
+      "rule_name": "Check for Vague Language",
+      "description": "Flags generic terms that should be more specific.",
+      "banned_words": {
+        "mood": ["nice", "good"],
+        "lighting_style": ["interesting"]
+      },
+      "error": "Avoid vague terms. Please be more descriptive."
+    }
+  ]
+}
