@@ -69,6 +69,7 @@ class ImageGenerationRequest(BaseModel):
     user_api_key: str = Field(..., description="User's API key for the image generation service.")
     negative_prompt: Optional[str] = Field(None, description="Optional concepts to exclude from the image.")
     style_preset: Optional[str] = Field("photorealistic", description="Artistic style for the image generation.")
+    provider: Optional[str] = Field(None, description="Optional provider override (stability_ai, openai_dalle, openrouter, sumopod, midjourney)")
 
 class ImageEnhancementRequest(BaseModel):
     """Model for iteratively enhancing a previously generated image."""
@@ -77,6 +78,7 @@ class ImageEnhancementRequest(BaseModel):
     enhancement_instruction: str = Field(..., description="User's instruction for what to change, e.g., 'Make it colder with more condensation.'")
     user_api_key: str = Field(..., description="User's API key for the image generation service.")
     seed: Optional[int] = Field(None, description="The seed of the original image to maintain consistency.")
+    provider: Optional[str] = Field(None, description="Optional provider override (stability_ai, openai_dalle, openrouter, sumopod, midjourney)")
 
 class ImageOutput(BaseModel):
     """Model for the response after a successful image generation."""

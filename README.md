@@ -85,8 +85,23 @@ Once running, access the interactive API documentation at:
 
 **For Image Generation:**
 - Users must provide their own image generation API key with each request
-- Supports Stability AI and other compatible text-to-image services
+- **Multi-Provider Support**: Stability AI, OpenAI DALL-E, OpenRouter, Sumopod, Midjourney
+- Automatic provider detection based on API URL
+- Manual provider override supported
 - No server-side API key storage required for image generation
+
+### 🎨 Supported Image Generation Providers
+
+| Provider | Auto-Detection | Models | Response Format |
+|----------|---------------|---------|----------------|
+| **Stability AI** | ✅ | stable-diffusion-xl-1024-v1-0 | Base64 |
+| **OpenAI DALL-E** | ✅ | dall-e-3, dall-e-2 | URL |
+| **OpenRouter** | ✅ | Various SD models | URL/Base64 |
+| **Sumopod** | ✅ | Stable Diffusion variants | URL/Base64 |
+| **Midjourney** | ✅ | midjourney | URL |
+| **Generic** | ✅ | Any compatible API | Varies |
+
+See [MULTI_PROVIDER_SUPPORT.md](MULTI_PROVIDER_SUPPORT.md) for detailed configuration.
 
 ## 📋 API Endpoints
 

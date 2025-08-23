@@ -13,14 +13,16 @@ from app.schemas.models import (
 from app.services.brief_orchestrator import BriefOrchestratorService
 # Import the new service
 from app.services.image_generator import ImageGenerationService
+from app.services.multi_provider_image_generator import MultiProviderImageService
 
 # Create router instance and orchestrator (existing)
 router = APIRouter(prefix="/api/v1", tags=["generator"])
 orchestrator = BriefOrchestratorService()
 
 # --- NEW ---
-# Initialize the new image generation service
-image_service = ImageGenerationService()
+# Initialize both image generation services
+image_service = ImageGenerationService()  # Keep for backward compatibility
+multi_provider_service = MultiProviderImageService()  # New multi-provider service
 # --- END NEW ---
 
 
@@ -175,6 +177,7 @@ async def generate_image(request: ImageGenerationRequest) -> ImageOutput:
     Takes a professionally crafted brief prompt and generates a photorealistic image.
     This is the final step of the PhotoeAI pipeline.
     Requires the user to provide their own API key for the image generation service.
+    Supports multiple providers: Stability AI, OpenAI DALL-E, OpenRouter, Sumopod, Midjourney.
     """
     try:
         if not request.brief_prompt or not request.brief_prompt.strip():
@@ -183,10 +186,12 @@ async def generate_image(request: ImageGenerationRequest) -> ImageOutput:
         if not request.user_api_key or not request.user_api_key.strip():
             raise HTTPException(status_code=400, detail="User API key is required for image generation.")
         
-        result = await image_service.generate_image(
+        # Use multi-provider service for better compatibility
+        result = await multi_provider_service.generate_image(
             brief_prompt=request.brief_prompt,
             user_api_key=request.user_api_key,
-            negative_prompt=request.negative_prompt
+            negative_prompt=request.negative_prompt,
+            provider_override=request.provider
         )
         return result
     except Exception as e:
@@ -198,6 +203,7 @@ async def enhance_image(request: ImageEnhancementRequest) -> ImageOutput:
     """
     Enhances or modifies a previously generated image based on user feedback.
     Requires the user to provide their own API key for the image generation service.
+    Supports multiple providers: Stability AI, OpenAI DALL-E, OpenRouter, Sumopod, Midjourney.
     """
     try:
         if not request.enhancement_instruction or not request.enhancement_instruction.strip():
@@ -206,11 +212,12 @@ async def enhance_image(request: ImageEnhancementRequest) -> ImageOutput:
         if not request.user_api_key or not request.user_api_key.strip():
             raise HTTPException(status_code=400, detail="User API key is required for image enhancement.")
 
-        result = await image_service.enhance_image(
+        # Use multi-provider service for better compatibility
+        result = await multi_provider_service.enhance_image(
             original_prompt=request.original_brief_prompt,
             instruction=request.enhancement_instruction,
             user_api_key=request.user_api_key,
-            seed=request.seed
+            seed=request.seed or 0
         )
         return result
     except Exception as e:

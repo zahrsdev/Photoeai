@@ -356,3 +356,11 @@
 2025-08-23 10:17:43 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
 2025-08-23 10:25:40 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
 2025-08-23 10:26:04 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 10:34:12 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 10:35:11 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 10:35:11 | INFO     | app.services.multi_provider_image_generator:generate_image:236 | 🎨 Sending request to stability_ai for: 'A professional product photo of a luxury watch...'
+2025-08-23 10:35:11 | INFO     | app.services.multi_provider_image_generator:generate_image:237 | 🔗 Endpoint: https://api.stability.ai/v1/generation/text-to-image
+2025-08-23 10:35:12 | ERROR    | app.services.multi_provider_image_generator:generate_image:249 | 💥 API request failed for stability_ai: 404 Client Error: Not Found for url: https://api.stability.ai/v1/generation/text-to-image
+2025-08-23 10:35:12 | ERROR    | app.services.multi_provider_image_generator:generate_image:251 | Response: {"id":"3fd8c7382e92d958a5fa2efcfccad49f","message":"Not Found","name":"not_found"}
+
+2025-08-23 10:35:12 | ERROR    | app.routers.generator:generate_image:198 | Error in /generate-image endpoint: Image generation request failed: 404 Client Error: Not Found for url: https://api.stability.ai/v1/generation/text-to-image

@@ -57,17 +57,26 @@ def test_image_generation_request_validation():
     """Test that ImageGenerationRequest validates correctly."""
     from app.schemas.models import ImageGenerationRequest
     
-    # Valid request
+    # Valid request with provider
     valid_request = ImageGenerationRequest(
         brief_prompt="A professional product photo",
         user_api_key="test-api-key",
         negative_prompt="blurry",
-        style_preset="photorealistic"
+        style_preset="photorealistic",
+        provider="stability_ai"
     )
     assert valid_request.brief_prompt == "A professional product photo"
     assert valid_request.user_api_key == "test-api-key"
     assert valid_request.negative_prompt == "blurry"
     assert valid_request.style_preset == "photorealistic"
+    assert valid_request.provider == "stability_ai"
+    
+    # Valid request without provider (should auto-detect)
+    auto_detect_request = ImageGenerationRequest(
+        brief_prompt="A professional product photo",
+        user_api_key="test-api-key"
+    )
+    assert auto_detect_request.provider is None  # Will auto-detect
     
     # Test that empty prompt is still allowed (validation happens at API level)
     try:
@@ -97,6 +106,54 @@ def test_image_enhancement_request_validation():
     assert valid_request.enhancement_instruction == "Make it brighter"
     assert valid_request.user_api_key == "test-api-key"
     assert valid_request.seed == 12345
+
+def test_multi_provider_detection():
+    """Test that the multi-provider service can detect providers correctly."""
+    from app.services.multi_provider_image_generator import MultiProviderImageService, ImageProvider
+    
+    service = MultiProviderImageService()
+    
+    # Test auto-detection
+    assert service.detect_provider("https://api.stability.ai/v1") == ImageProvider.STABILITY_AI
+    assert service.detect_provider("https://api.openai.com/v1") == ImageProvider.OPENAI_DALLE
+    assert service.detect_provider("https://openrouter.ai/api/v1") == ImageProvider.OPENROUTER
+    assert service.detect_provider("https://api.sumopod.com/v1") == ImageProvider.SUMOPOD
+    assert service.detect_provider("https://midjourney.ai/api") == ImageProvider.MIDJOURNEY
+    assert service.detect_provider("https://unknown-provider.com") == ImageProvider.GENERIC
+
+def test_provider_request_building():
+    """Test that requests are built correctly for different providers."""
+    from app.services.multi_provider_image_generator import MultiProviderImageService, ImageProvider
+    
+    service = MultiProviderImageService()
+    
+    # Test Stability AI payload
+    stability_payload = service.build_request_payload(
+        ImageProvider.STABILITY_AI, 
+        "test prompt",
+        "negative test"
+    )
+    assert "cfg_scale" in stability_payload
+    assert "steps" in stability_payload
+    assert stability_payload["prompt"] == "test prompt"
+    
+    # Test OpenAI DALL-E payload
+    dalle_payload = service.build_request_payload(
+        ImageProvider.OPENAI_DALLE,
+        "test prompt"
+    )
+    assert "size" in dalle_payload
+    assert "quality" in dalle_payload
+    assert dalle_payload["prompt"] == "test prompt"
+    
+    # Test OpenRouter payload
+    openrouter_payload = service.build_request_payload(
+        ImageProvider.OPENROUTER,
+        "test prompt",
+        "negative test"
+    )
+    assert "sampler" in openrouter_payload
+    assert openrouter_payload["negative_prompt"] == "negative test"
 
 def test_api_key_validation_endpoints():
     """Test that endpoints properly validate API key presence."""
