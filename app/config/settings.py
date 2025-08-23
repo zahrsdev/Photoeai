@@ -5,7 +5,7 @@ Loads environment variables and JSON configuration files with validation.
 
 import json
 from pathlib import Path
-from typing import Dict, Any
+from typing import Dict, Any, Optional
 from pydantic import BaseModel, Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -63,7 +63,7 @@ class Settings(BaseSettings):
 
     # --- NEW ---
     # Image Generation Service Configuration
-    IMAGE_API_KEY: str = Field(..., description="API Key for the Text-to-Image Service")
+    IMAGE_API_KEY: Optional[str] = Field(None, description="Optional default API Key for the Text-to-Image Service (users can provide their own)")
     IMAGE_API_BASE_URL: str = Field(..., description="Base URL for the Text-to-Image API endpoint")
     IMAGE_GENERATION_MODEL: str = Field(default="stable-diffusion-xl-1024-v1-0", description="Default model for image generation")
     # --- END NEW ---

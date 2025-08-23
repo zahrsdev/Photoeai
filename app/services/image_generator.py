@@ -13,18 +13,21 @@ class ImageGenerationService:
     Client for interacting with a Text-to-Image generation API.
     """
     def __init__(self):
-        self.api_key = settings.IMAGE_API_KEY
+        # Keep default configuration but allow user API keys to override
+        self.default_api_key = getattr(settings, 'IMAGE_API_KEY', None)
         self.api_base_url = settings.IMAGE_API_BASE_URL
         self.model = settings.IMAGE_GENERATION_MODEL
 
-    async def generate_image(self, brief_prompt: str, negative_prompt: Optional[str] = None) -> ImageOutput:
+    async def generate_image(self, brief_prompt: str, user_api_key: str, negative_prompt: Optional[str] = None) -> ImageOutput:
         """
         Generates an image by calling the external text-to-image API.
+        Uses the user-provided API key for authentication.
         """
         endpoint = f"{self.api_base_url}/text-to-image"
         
+        # Use user-provided API key
         headers = {
-            "Authorization": f"Bearer {self.api_key}",
+            "Authorization": f"Bearer {user_api_key}",
             "Content-Type": "application/json"
         }
         
@@ -65,9 +68,10 @@ class ImageGenerationService:
             logger.error(f"💥 Critical error in image generation: {e}")
             raise Exception(f"Image generation service failed: {str(e)}")
 
-    async def enhance_image(self, original_prompt: str, instruction: str, seed: int) -> ImageOutput:
+    async def enhance_image(self, original_prompt: str, instruction: str, user_api_key: str, seed: int) -> ImageOutput:
         """
         Enhances an existing image by modifying the prompt and reusing the seed.
+        Uses the user-provided API key for authentication.
         """
         # Smartly merge the original brief with the new instruction
         enhanced_prompt = f"{original_prompt}\n\n---\n**CRITICAL ENHANCEMENT:** {instruction}"
@@ -76,4 +80,4 @@ class ImageGenerationService:
 
         # Reuse the logic from generate_image, but with the modified prompt and original seed
         # This is a simplified example. A real implementation might use image-to-image.
-        return await self.generate_image(brief_prompt=enhanced_prompt) # Add seed to payload if API supports it
+        return await self.generate_image(brief_prompt=enhanced_prompt, user_api_key=user_api_key) # Add seed to payload if API supports it

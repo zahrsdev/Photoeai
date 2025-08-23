@@ -78,6 +78,16 @@ Once running, access the interactive API documentation at:
 - **Swagger UI**: http://localhost:8000/docs
 - **ReDoc**: http://localhost:8000/redoc
 
+### 🔑 API Key Requirements
+
+**For Brief Generation:**
+- Requires OpenAI API key (configured in `.env`)
+
+**For Image Generation:**
+- Users must provide their own image generation API key with each request
+- Supports Stability AI and other compatible text-to-image services
+- No server-side API key storage required for image generation
+
 ## 📋 API Endpoints
 
 ### Core Endpoints:
@@ -89,8 +99,8 @@ Once running, access the interactive API documentation at:
 
 ### Image Generation Endpoints:
 
-- **POST** `/api/v1/generate-image` - Generate an image from a final brief
-- **POST** `/api/v1/enhance-image` - Enhance a previously generated image
+- **POST** `/api/v1/generate-image` - Generate an image from a final brief (requires user API key)
+- **POST** `/api/v1/enhance-image` - Enhance a previously generated image (requires user API key)
 
 ### Example Usage:
 
@@ -104,6 +114,25 @@ request = {
 # 2. Generate final brief (use returned wizard data)
 wizard_data = {...}  # From step 1
 # POST /api/v1/generate-brief
+
+# 3. Generate image with user's API key
+image_request = {
+    "brief_prompt": "Final enhanced photography brief...",
+    "user_api_key": "your-stability-ai-api-key",
+    "negative_prompt": "blurry, low quality",
+    "style_preset": "photorealistic"
+}
+# POST /api/v1/generate-image
+
+# 4. Enhance existing image
+enhancement_request = {
+    "original_brief_prompt": "Final enhanced photography brief...",
+    "generation_id": "gen_12345",
+    "enhancement_instruction": "Make it warmer with golden lighting",
+    "user_api_key": "your-stability-ai-api-key",
+    "seed": 12345
+}
+# POST /api/v1/enhance-image
 ```
 
 ## 🧪 Testing

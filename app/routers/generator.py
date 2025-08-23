@@ -174,13 +174,18 @@ async def generate_image(request: ImageGenerationRequest) -> ImageOutput:
     """
     Takes a professionally crafted brief prompt and generates a photorealistic image.
     This is the final step of the PhotoeAI pipeline.
+    Requires the user to provide their own API key for the image generation service.
     """
     try:
         if not request.brief_prompt or not request.brief_prompt.strip():
             raise HTTPException(status_code=400, detail="Brief prompt cannot be empty.")
         
+        if not request.user_api_key or not request.user_api_key.strip():
+            raise HTTPException(status_code=400, detail="User API key is required for image generation.")
+        
         result = await image_service.generate_image(
             brief_prompt=request.brief_prompt,
+            user_api_key=request.user_api_key,
             negative_prompt=request.negative_prompt
         )
         return result
@@ -192,14 +197,19 @@ async def generate_image(request: ImageGenerationRequest) -> ImageOutput:
 async def enhance_image(request: ImageEnhancementRequest) -> ImageOutput:
     """
     Enhances or modifies a previously generated image based on user feedback.
+    Requires the user to provide their own API key for the image generation service.
     """
     try:
         if not request.enhancement_instruction or not request.enhancement_instruction.strip():
             raise HTTPException(status_code=400, detail="Enhancement instruction cannot be empty.")
 
+        if not request.user_api_key or not request.user_api_key.strip():
+            raise HTTPException(status_code=400, detail="User API key is required for image enhancement.")
+
         result = await image_service.enhance_image(
             original_prompt=request.original_brief_prompt,
             instruction=request.enhancement_instruction,
+            user_api_key=request.user_api_key,
             seed=request.seed
         )
         return result
