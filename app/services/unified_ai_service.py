@@ -292,6 +292,9 @@ class UnifiedAIService:
         
         # --- CRITICAL FIX: Prompt Enhancement Integration ---
         ai_client = AIClient()
+        # Import the smart compressor service
+        from app.services.prompt_compressor import prompt_compressor
+        
         try:
             logger.info("🎨 Attempting to enhance prompt with Creative Director LLM...")
             enhanced_brief = await ai_client.revise_prompt_for_generation(brief_prompt)
@@ -302,33 +305,20 @@ class UnifiedAIService:
             # Remove emojis and other problematic Unicode characters
             enhanced_brief = re.sub(r'[^\x00-\x7F]+', '', enhanced_brief)
             
-            # CRITICAL: Validate and truncate prompt length for external API limits
+            # NEW STEP: Smart Compression instead of crude truncation
             MAX_PROMPT_LENGTH = 4000  # DALL-E 3 limit
             if len(enhanced_brief) > MAX_PROMPT_LENGTH:
-                logger.warning(f"⚠️ Enhanced prompt too long ({len(enhanced_brief)} chars). Truncating to {MAX_PROMPT_LENGTH} chars.")
+                logger.info(f"📏 Enhanced brief ({len(enhanced_brief)} chars) exceeds API limit. Applying smart compression...")
                 
-                # Smart truncation: try to end at section breaks, then sentences, then words
-                truncated = enhanced_brief[:MAX_PROMPT_LENGTH]
+                # Use the smart compressor service
+                final_image_prompt = await prompt_compressor.compress_brief_for_generation(enhanced_brief, MAX_PROMPT_LENGTH)
                 
-                # Try to end at a section break (---) 
-                section_break = truncated.rfind('\n---\n')
-                if section_break > MAX_PROMPT_LENGTH * 0.7:  # Only if we don't lose too much content
-                    truncated = enhanced_brief[:section_break]
-                    logger.info(f"✂️ Truncated at section break to {len(truncated)} characters")
-                else:
-                    # Try to end at a complete sentence
-                    sentence_end = max(truncated.rfind('. '), truncated.rfind('.\n'))
-                    if sentence_end > MAX_PROMPT_LENGTH * 0.8:  # Only if we don't lose too much content
-                        truncated = enhanced_brief[:sentence_end + 1]
-                        logger.info(f"✂️ Truncated at sentence end to {len(truncated)} characters")
-                    else:
-                        # Fall back to word boundary
-                        truncated = enhanced_brief[:MAX_PROMPT_LENGTH].rsplit(' ', 1)[0]
-                        logger.info(f"✂️ Truncated at word boundary to {len(truncated)} characters")
+                logger.info(f"🎯 Smart compression complete: {len(enhanced_brief)} → {len(final_image_prompt)} chars")
+                brief_prompt = final_image_prompt
+            else:
+                logger.info(f"📏 Enhanced brief within limits ({len(enhanced_brief)} chars), using full version")
+                brief_prompt = enhanced_brief
                 
-                enhanced_brief = truncated
-            
-            brief_prompt = enhanced_brief  # CRITICAL: Overwrite the original prompt with the enhanced version
         except Exception as e:
             logger.warning(f"⚠️ Prompt enhancement failed: {e}. Falling back to original prompt.")
             # The original brief_prompt will be used automatically.

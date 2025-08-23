@@ -596,79 +596,28 @@ Result: "An exquisite luxury perfume bottle elegantly positioned against a prist
         })
         
         try:
-            enhancement_instruction = f"""
-You are an elite Creative Director and world-renowned product photographer. Your task is to transform a basic prompt into a COMPLETE, COMPREHENSIVE Enhanced Product Photography Brief with multiple detailed sections.
+            # This is the new, powerful instruction template.
+            enhancement_instruction_template = """
+You are an elite-level AI Creative Director and a world-renowned product photographer. Your task is to take the following foundational prompt, which was extracted from a simple user request, and expand it into a complete, narrative, and highly detailed Product Photography Brief in Markdown format.
 
-**ORIGINAL PROMPT:**
+**CRITICAL INSTRUCTIONS:**
+1.  **Full Creative Expansion**: Your primary task is to be creative. For every detail that is missing, incomplete, or too simple in the original prompt, you MUST use your expert knowledge of photography and art direction to dynamically infer, invent, and add the best possible professional choices. You must fill out every section of a professional brief.
+2.  **Mandatory Inferred Details**: Your final brief MUST include specific, professional choices for:
+    -   **Camera & Lens**: (e.g., "Shot on: Canon EOS R5", "Lens: 100mm Macro f/2.8"). Do not be generic.
+    -   **Precise Lighting Setup**: (e.g., "Key Light: A single, large softbox at a 45-degree angle...").
+    -   **Detailed Composition & Framing**: (e.g., "Compositional Rule: Rule of Thirds, with the product placed slightly off-center...").
+    -   **Creative Background & Props**.
+    -   **Professional Post-Processing & Color Grading notes**.
+3.  **Justify Your Choices**: You MUST include a "Creative Rationale" section at the end, explaining why you made the creative and technical choices you did.
+4.  **No Mock Data**: Do NOT use any external examples. Your entire response must be a unique, creative expansion based ONLY on the foundational prompt provided below and your own expertise.
+
+**Foundational Prompt:**
 {original_prompt}
 
-**CRITICAL REQUIREMENTS:**
-- Create a COMPLETE multi-section photography brief document
-- Each section must be substantial and richly detailed
-- Use narrative, descriptive language that paints the complete picture
-- Include ALL technical and creative specifications
-- Make it sound like an award-winning photographer's detailed creative brief
-
-**MANDATORY STRUCTURE - Generate ALL sections:**
-
-### Enhanced Product Photography Brief: [Product Name]
-
-#### **1. Main Subject: Hero Shot of the [Product]**
-- **Product Details**: Detailed description of the product, materials, textures, and key features
-- **Product State**: Condition and presentation approach
-- **Key Features to Highlight**: Specific elements that should stand out
-
-#### **2. Composition and Framing**
-- **Shot Type**: Specific camera angle with detailed rationale
-- **Framing**: Detailed framing approach with creative reasoning
-- **Compositional Rule**: Professional technique with implementation details
-- **Negative Space**: Strategic use of space to enhance the subject
-
-#### **3. Lighting and Atmosphere**
-- **Lighting Style**: Complete lighting setup with professional terminology
-- **Key Light**: Detailed key light positioning and equipment
-- **Fill Light**: Supporting light setup and rationale
-- **Rim Light**: Edge lighting for separation and drama
-- **Special Effects**: Additional lighting techniques or atmospheric elements
-- **Overall Mood**: Emotional tone and visual atmosphere
-
-#### **4. Background and Setting**
-- **Environment**: Detailed background description with materials and textures
-- **Color Palette**: Comprehensive color scheme with specific tones
-- **Supporting Props**: Carefully selected elements that enhance the narrative
-- **Supporting Dynamic Elements**: Atmospheric or environmental details
-
-#### **5. Camera and Lens Simulation**
-- **Shot on**: Specific professional camera with rationale
-- **Lens**: Detailed lens choice with focal length and aperture
-- **Camera Settings**: Complete technical specifications
-- **Visual Effect**: Depth of field and focus techniques
-
-#### **6. Stylistic Enhancements**
-- **Additional Stopping Power Elements**: Creative techniques for impact
-- **Emotional Impact**: How the image should make viewers feel
-- **Dynamic Composition**: Movement and visual flow elements
-- **Dramatic Elements**: Special visual techniques or effects
-- **Extreme Realism**: Hyper-detailed texture and material descriptions
-
-#### **7. Post-Processing and Color Grading**
-- **Color Grading**: Specific post-processing approach
-- **Retouching**: Detail enhancement techniques
-- **Visual Accents**: Final touches and refinements
-
-### **Creative Rationale**
-A comprehensive explanation of the creative vision, how all elements work together, and why this approach will create an award-winning image that evokes the desired emotional response.
-
-**EXECUTION NOTES:**
-- Write in rich, descriptive, narrative style
-- Each section should be substantial (3-5 sentences minimum)
-- Include specific professional photography terminology
-- Reference techniques used by renowned photographers
-- Create a cohesive story throughout all sections
-- Make it feel like a premium photography brief worth thousands of dollars
-
-**OUTPUT:** Provide the complete enhanced brief exactly as structured above, with ALL sections filled in detail.
+Now, generate the full, enhanced, and complete photography brief.
 """
+            # Dynamically format the final instruction
+            enhancement_instruction = enhancement_instruction_template.format(original_prompt=original_prompt)
 
             response = self.client.chat.completions.create(
                 model=self.model,
@@ -708,3 +657,59 @@ A comprehensive explanation of the creative vision, how all elements work togeth
             # Return original if enhancement fails
             logger.warning("⚠️ Enhanced brief creation failed, using original prompt")
             return original_prompt
+    
+    async def generate_text(self, prompt: str, temperature: float = 0.5, max_tokens: int = 2000) -> str:
+        """
+        Generate text completion using the AI client.
+        
+        This method provides a simple interface for text generation tasks like prompt compression.
+        
+        Args:
+            prompt: The input prompt for text generation
+            temperature: Creativity level (0.0 to 1.0)
+            max_tokens: Maximum tokens to generate
+            
+        Returns:
+            Generated text response
+        """
+        request_id = hash(prompt) % 10000
+        
+        logger.debug(f"📝 TEXT GENERATION: Starting request [ID: {request_id}]", extra={
+            "request_id": request_id,
+            "prompt_length": len(prompt),
+            "temperature": temperature,
+            "max_tokens": max_tokens,
+            "operation": "generate_text"
+        })
+        
+        try:
+            response = self.client.chat.completions.create(
+                model=self.model,
+                messages=[
+                    {"role": "user", "content": prompt}
+                ],
+                temperature=temperature,
+                max_tokens=max_tokens
+            )
+            
+            generated_text = response.choices[0].message.content.strip()
+            
+            logger.debug(f"✅ TEXT GENERATION: Completed successfully [ID: {request_id}]", extra={
+                "request_id": request_id,
+                "response_length": len(generated_text),
+                "tokens_used": response.usage.total_tokens if response.usage else None,
+                "operation": "generate_text",
+                "status": "success"
+            })
+            
+            return generated_text
+            
+        except Exception as e:
+            logger.error(f"💥 TEXT GENERATION ERROR [ID: {request_id}]", extra={
+                "request_id": request_id,
+                "exception": str(e),
+                "exception_type": type(e).__name__,
+                "operation": "generate_text",
+                "status": "error"
+            })
+            raise Exception(f"Text generation failed: {str(e)}")
