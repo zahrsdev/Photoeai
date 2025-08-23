@@ -364,3 +364,358 @@
 2025-08-23 10:35:12 | ERROR    | app.services.multi_provider_image_generator:generate_image:251 | Response: {"id":"3fd8c7382e92d958a5fa2efcfccad49f","message":"Not Found","name":"not_found"}
 
 2025-08-23 10:35:12 | ERROR    | app.routers.generator:generate_image:198 | Error in /generate-image endpoint: Image generation request failed: 404 Client Error: Not Found for url: https://api.stability.ai/v1/generation/text-to-image
+2025-08-23 10:42:12 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 10:43:07 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 10:43:09 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 10:46:55 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 10:48:20 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 10:53:58 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 10:54:29 | INFO     | app.routers.generator:generate_text_advanced:181 | 🤖 Advanced text generation with provider: openai
+2025-08-23 10:54:29 | INFO     | app.services.unified_ai_service:generate_text:148 | 🤖 Sending text completion request to openai
+2025-08-23 10:54:30 | ERROR    | app.services.unified_ai_service:generate_text:165 | 💥 Text completion failed for openai: 404 Client Error: Not Found for url: https://api.stability.ai/v1/generation/v1/chat/completions
+2025-08-23 10:54:30 | ERROR    | app.routers.generator:generate_text_advanced:206 | 💥 Advanced text generation failed: Text completion service failed: 404 Client Error: Not Found for url: https://api.stability.ai/v1/generation/v1/chat/completions
+2025-08-23 10:54:30 | INFO     | app.services.unified_ai_service:generate_image:267 | 🎨 Sending image generation request to openai
+2025-08-23 10:54:31 | ERROR    | app.services.unified_ai_service:generate_image:277 | 💥 Image generation failed for openai: 404 Client Error: Not Found for url: https://api.stability.ai/v1/generation/v1/images/generations
+2025-08-23 10:54:31 | ERROR    | app.routers.generator:generate_image:287 | Error in /generate-image endpoint: Image generation service failed: 404 Client Error: Not Found for url: https://api.stability.ai/v1/generation/v1/images/generations
+2025-08-23 10:55:02 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 10:56:56 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 10:57:09 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 10:57:19 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 10:57:37 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 10:57:57 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 10:58:05 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 10:58:12 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 10:58:19 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 10:59:59 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:01:52 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:03:47 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:04:42 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 2242881634240]
+2025-08-23 11:04:42 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 2242881634240]
+2025-08-23 11:04:42 | INFO     | app.services.ai_client:extract_wizard_data:39 | 🔍 Starting wizard data extraction [ID: 7365]
+2025-08-23 11:04:45 | WARNING  | app.services.ai_client:extract_wizard_data:134 | ⚠️ JSON parsing failed, attempting recovery [ID: 7365]
+2025-08-23 11:04:45 | INFO     | app.services.ai_client:extract_wizard_data:146 | ✅ Recovered JSON from malformed response [ID: 7365]
+2025-08-23 11:04:45 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 2242881634240]
+2025-08-23 11:04:45 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 2242881634240]
+2025-08-23 11:04:45 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 2242881458816]
+2025-08-23 11:04:45 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 2242881458816]
+2025-08-23 11:04:45 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 2242881634240]
+2025-08-23 11:04:45 | INFO     | app.routers.generator:generate_text_advanced:181 | 🤖 Advanced text generation with provider: openai
+2025-08-23 11:04:45 | INFO     | app.services.unified_ai_service:generate_text:157 | 🤖 Sending text completion request to openai
+2025-08-23 11:04:46 | ERROR    | app.services.unified_ai_service:generate_text:174 | 💥 Text completion failed for openai: 404 Client Error: Not Found for url: https://api.stability.ai/v1/v1/chat/completions
+2025-08-23 11:04:46 | ERROR    | app.routers.generator:generate_text_advanced:206 | 💥 Advanced text generation failed: Text completion service failed: 404 Client Error: Not Found for url: https://api.stability.ai/v1/v1/chat/completions
+2025-08-23 11:04:46 | INFO     | app.services.unified_ai_service:generate_image:277 | 🎨 Sending image generation request to openai
+2025-08-23 11:04:47 | ERROR    | app.services.unified_ai_service:generate_image:287 | 💥 Image generation failed for openai: 404 Client Error: Not Found for url: https://api.stability.ai/v1/v1/images/generations
+2025-08-23 11:04:47 | ERROR    | app.routers.generator:generate_image:287 | Error in /generate-image endpoint: Image generation service failed: 404 Client Error: Not Found for url: https://api.stability.ai/v1/v1/images/generations
+2025-08-23 11:05:47 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:06:05 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:06:23 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:06:34 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:06:52 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:07:15 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 2817332739792]
+2025-08-23 11:07:15 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 2817332739792]
+2025-08-23 11:07:15 | INFO     | app.services.ai_client:extract_wizard_data:39 | 🔍 Starting wizard data extraction [ID: 8096]
+2025-08-23 11:07:19 | WARNING  | app.services.ai_client:extract_wizard_data:134 | ⚠️ JSON parsing failed, attempting recovery [ID: 8096]
+2025-08-23 11:07:19 | INFO     | app.services.ai_client:extract_wizard_data:146 | ✅ Recovered JSON from malformed response [ID: 8096]
+2025-08-23 11:07:19 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 2817332739792]
+2025-08-23 11:07:19 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 2817332739792]
+2025-08-23 11:07:19 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 2817332550976]
+2025-08-23 11:07:19 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 2817332550976]
+2025-08-23 11:07:19 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 2817332739792]
+2025-08-23 11:07:19 | INFO     | app.routers.generator:generate_text_advanced:181 | 🤖 Advanced text generation with provider: openai
+2025-08-23 11:07:19 | INFO     | app.services.unified_ai_service:generate_text:157 | 🤖 Sending text completion request to openai
+2025-08-23 11:07:20 | ERROR    | app.services.unified_ai_service:generate_text:174 | 💥 Text completion failed for openai: 404 Client Error: Not Found for url: https://api.stability.ai/v1/chat/completions
+2025-08-23 11:07:20 | ERROR    | app.routers.generator:generate_text_advanced:206 | 💥 Advanced text generation failed: Text completion service failed: 404 Client Error: Not Found for url: https://api.stability.ai/v1/chat/completions
+2025-08-23 11:07:20 | INFO     | app.services.unified_ai_service:generate_image:274 | 🎨 Sending image generation request to openai
+2025-08-23 11:07:21 | ERROR    | app.services.unified_ai_service:generate_image:295 | 💥 Image generation failed for openai: 404 Client Error: Not Found for url: https://api.stability.ai/v1/images/generations
+2025-08-23 11:07:21 | ERROR    | app.routers.generator:generate_image:287 | Error in /generate-image endpoint: Image generation service failed: 404 Client Error: Not Found for url: https://api.stability.ai/v1/images/generations
+2025-08-23 11:08:16 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:08:35 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 2817291992224]
+2025-08-23 11:08:35 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 2817291992224]
+2025-08-23 11:08:35 | INFO     | app.services.ai_client:extract_wizard_data:39 | 🔍 Starting wizard data extraction [ID: 8096]
+2025-08-23 11:08:38 | WARNING  | app.services.ai_client:extract_wizard_data:134 | ⚠️ JSON parsing failed, attempting recovery [ID: 8096]
+2025-08-23 11:08:38 | INFO     | app.services.ai_client:extract_wizard_data:146 | ✅ Recovered JSON from malformed response [ID: 8096]
+2025-08-23 11:08:38 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 2817291992224]
+2025-08-23 11:08:38 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 2817291992224]
+2025-08-23 11:08:38 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 2817332888640]
+2025-08-23 11:08:38 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 2817332888640]
+2025-08-23 11:08:38 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 2817291992224]
+2025-08-23 11:08:38 | INFO     | app.routers.generator:generate_text_advanced:181 | 🤖 Advanced text generation with provider: openai
+2025-08-23 11:08:38 | INFO     | app.services.unified_ai_service:generate_text:157 | 🤖 Sending text completion request to openai
+2025-08-23 11:08:39 | ERROR    | app.services.unified_ai_service:generate_text:174 | 💥 Text completion failed for openai: 404 Client Error: Not Found for url: https://api.stability.ai/v1/chat/completions
+2025-08-23 11:08:39 | ERROR    | app.routers.generator:generate_text_advanced:206 | 💥 Advanced text generation failed: Text completion service failed: 404 Client Error: Not Found for url: https://api.stability.ai/v1/chat/completions
+2025-08-23 11:08:39 | INFO     | app.services.unified_ai_service:generate_image:274 | 🎨 Sending image generation request to openai
+2025-08-23 11:08:40 | ERROR    | app.services.unified_ai_service:generate_image:295 | 💥 Image generation failed for openai: 404 Client Error: Not Found for url: https://api.stability.ai/v1/images/generations
+2025-08-23 11:08:40 | ERROR    | app.routers.generator:generate_image:287 | Error in /generate-image endpoint: Image generation service failed: 404 Client Error: Not Found for url: https://api.stability.ai/v1/images/generations
+2025-08-23 11:10:20 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:10:21 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:10:26 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:11:38 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:11:46 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:11:59 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:12:09 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:12:22 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:12:36 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:12:52 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:13:04 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:13:22 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:13:33 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:13:46 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:13:59 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:14:13 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:14:28 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:14:41 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:14:51 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:15:01 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:15:30 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:16:55 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 2630773030848]
+2025-08-23 11:16:55 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 2630773030848]
+2025-08-23 11:16:55 | INFO     | app.services.ai_client:extract_wizard_data:39 | 🔍 Starting wizard data extraction [ID: 1361]
+2025-08-23 11:16:59 | WARNING  | app.services.ai_client:extract_wizard_data:134 | ⚠️ JSON parsing failed, attempting recovery [ID: 1361]
+2025-08-23 11:16:59 | INFO     | app.services.ai_client:extract_wizard_data:146 | ✅ Recovered JSON from malformed response [ID: 1361]
+2025-08-23 11:16:59 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 2630773030848]
+2025-08-23 11:16:59 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 2630773030848]
+2025-08-23 11:16:59 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 2630773269184]
+2025-08-23 11:16:59 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 2630773269184]
+2025-08-23 11:16:59 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 2630773030848]
+2025-08-23 11:16:59 | INFO     | app.routers.generator:generate_text_advanced:181 | 🤖 Advanced text generation with provider: openai
+2025-08-23 11:16:59 | INFO     | app.services.unified_ai_service:generate_text:150 | 🤖 Sending text completion request to openai
+2025-08-23 11:16:59 | ERROR    | app.services.unified_ai_service:generate_text:167 | 💥 Text completion failed for openai: 401 Client Error: Unauthorized for url: https://openrouter.ai/api/v1/chat/completions
+2025-08-23 11:16:59 | ERROR    | app.routers.generator:generate_text_advanced:206 | 💥 Advanced text generation failed: Text completion service failed: 401 Client Error: Unauthorized for url: https://openrouter.ai/api/v1/chat/completions
+2025-08-23 11:16:59 | INFO     | app.services.unified_ai_service:generate_image:256 | 🎨 Sending image generation request to openai
+2025-08-23 11:17:00 | ERROR    | app.services.unified_ai_service:generate_image:268 | 💥 Image generation failed for openai: 405 Client Error: Method Not Allowed for url: https://openrouter.ai/api/v1/images/generations
+2025-08-23 11:17:00 | ERROR    | app.routers.generator:generate_image:287 | Error in /generate-image endpoint: Image generation service failed: 405 Client Error: Method Not Allowed for url: https://openrouter.ai/api/v1/images/generations
+2025-08-23 11:17:33 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:19:08 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:19:17 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:19:25 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:19:35 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:19:51 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:20:15 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:20:16 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:20:26 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:20:35 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:20:52 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:20:54 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:22:25 | INFO     | app.services.unified_ai_service:generate_image:268 | 🎨 Sending image generation request to openai
+2025-08-23 11:22:26 | ERROR    | app.services.unified_ai_service:generate_image:280 | 💥 Image generation failed for openai: 405 Client Error: Method Not Allowed for url: https://openrouter.ai/api/v1/images/generations
+2025-08-23 11:22:26 | ERROR    | app.routers.generator:generate_image:287 | Error in /generate-image endpoint: Image generation service failed: 405 Client Error: Method Not Allowed for url: https://openrouter.ai/api/v1/images/generations
+2025-08-23 11:22:42 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:24:58 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 11:31:25 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 13:37:32 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 13:37:46 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 13:38:06 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 13:52:37 | INFO     | __main__:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 13:52:38 | INFO     | __mp_main__:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 13:52:38 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 13:54:08 | INFO     | __mp_main__:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 13:54:08 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 13:54:53 | INFO     | app.services.unified_ai_service:generate_image:268 | 🎨 Sending image generation request to sumopod
+2025-08-23 13:54:54 | ERROR    | app.services.unified_ai_service:generate_image:280 | 💥 Image generation failed for sumopod: 405 Client Error: Method Not Allowed for url: https://openrouter.ai/api/v1/images/generations
+2025-08-23 13:54:54 | ERROR    | app.routers.generator:generate_image:287 | Error in /generate-image endpoint: Image generation service failed: 405 Client Error: Method Not Allowed for url: https://openrouter.ai/api/v1/images/generations
+2025-08-23 13:55:20 | INFO     | app.services.unified_ai_service:generate_image:268 | 🎨 Sending image generation request to sumopod
+2025-08-23 13:55:20 | ERROR    | app.services.unified_ai_service:generate_image:280 | 💥 Image generation failed for sumopod: 405 Client Error: Method Not Allowed for url: https://openrouter.ai/api/v1/images/generations
+2025-08-23 13:55:20 | ERROR    | app.routers.generator:generate_image:287 | Error in /generate-image endpoint: Image generation service failed: 405 Client Error: Method Not Allowed for url: https://openrouter.ai/api/v1/images/generations
+2025-08-23 13:58:19 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 13:58:57 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 13:59:40 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 14:01:00 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 14:03:59 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 14:05:18 | INFO     | app.services.unified_ai_service:generate_image:268 | 🎨 Sending image generation request to sumopod
+2025-08-23 14:05:19 | ERROR    | app.services.unified_ai_service:generate_image:280 | 💥 Image generation failed for sumopod: 405 Client Error: Method Not Allowed for url: https://openrouter.ai/api/v1/images/generations
+2025-08-23 14:05:19 | ERROR    | app.routers.generator:generate_image:287 | Error in /generate-image endpoint: Image generation service failed: 405 Client Error: Method Not Allowed for url: https://openrouter.ai/api/v1/images/generations
+2025-08-23 14:10:04 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 14:10:41 | INFO     | app.services.unified_ai_service:generate_image:268 | 🎨 Sending image generation request to sumopod
+2025-08-23 14:10:42 | ERROR    | app.services.unified_ai_service:generate_image:280 | 💥 Image generation failed for sumopod: 405 Client Error: Method Not Allowed for url: https://openrouter.ai/api/v1/images/generations
+2025-08-23 14:10:42 | ERROR    | app.routers.generator:generate_image:287 | Error in /generate-image endpoint: Image generation service failed: 405 Client Error: Method Not Allowed for url: https://openrouter.ai/api/v1/images/generations
+2025-08-23 14:42:26 | INFO     | app.services.unified_ai_service:generate_image:268 | 🎨 Sending image generation request to sumopod
+2025-08-23 14:42:27 | ERROR    | app.services.unified_ai_service:generate_image:280 | 💥 Image generation failed for sumopod: 405 Client Error: Method Not Allowed for url: https://openrouter.ai/api/v1/images/generations
+2025-08-23 14:42:27 | ERROR    | app.routers.generator:generate_image:287 | Error in /generate-image endpoint: Image generation service failed: 405 Client Error: Method Not Allowed for url: https://openrouter.ai/api/v1/images/generations
+2025-08-23 14:54:48 | INFO     | app.services.unified_ai_service:generate_image:268 | 🎨 Sending image generation request to sumopod
+2025-08-23 14:54:48 | ERROR    | app.services.unified_ai_service:generate_image:280 | 💥 Image generation failed for sumopod: 405 Client Error: Method Not Allowed for url: https://openrouter.ai/api/v1/images/generations
+2025-08-23 14:54:48 | ERROR    | app.routers.generator:generate_image:287 | Error in /generate-image endpoint: Image generation service failed: 405 Client Error: Method Not Allowed for url: https://openrouter.ai/api/v1/images/generations
+2025-08-23 14:54:55 | INFO     | app.services.unified_ai_service:generate_image:268 | 🎨 Sending image generation request to sumopod
+2025-08-23 14:54:56 | ERROR    | app.services.unified_ai_service:generate_image:280 | 💥 Image generation failed for sumopod: 405 Client Error: Method Not Allowed for url: https://openrouter.ai/api/v1/images/generations
+2025-08-23 14:54:56 | ERROR    | app.routers.generator:generate_image:287 | Error in /generate-image endpoint: Image generation service failed: 405 Client Error: Method Not Allowed for url: https://openrouter.ai/api/v1/images/generations
+2025-08-23 14:54:58 | INFO     | app.services.unified_ai_service:generate_image:268 | 🎨 Sending image generation request to sumopod
+2025-08-23 14:54:59 | ERROR    | app.services.unified_ai_service:generate_image:280 | 💥 Image generation failed for sumopod: 405 Client Error: Method Not Allowed for url: https://openrouter.ai/api/v1/images/generations
+2025-08-23 14:54:59 | ERROR    | app.routers.generator:generate_image:287 | Error in /generate-image endpoint: Image generation service failed: 405 Client Error: Method Not Allowed for url: https://openrouter.ai/api/v1/images/generations
+2025-08-23 15:09:20 | INFO     | app.services.unified_ai_service:generate_image:268 | 🎨 Sending image generation request to gemini
+2025-08-23 15:09:21 | ERROR    | app.services.unified_ai_service:generate_image:280 | 💥 Image generation failed for gemini: Expecting value: line 1 column 1 (char 0)
+2025-08-23 15:09:21 | ERROR    | app.routers.generator:generate_image:287 | Error in /generate-image endpoint: Image generation service failed: Expecting value: line 1 column 1 (char 0)
+2025-08-23 15:11:48 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 15:12:10 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 15:12:17 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 15:12:27 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 15:12:34 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 15:12:49 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 15:13:00 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 15:13:32 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 15:13:59 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 15:15:32 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 15:19:43 | INFO     | app.services.unified_ai_service:generate_image:298 | 🎯 Image Provider override: 'openai_dalle' → 'openai'
+2025-08-23 15:19:43 | INFO     | app.services.unified_ai_service:generate_image:332 | 🎨 Sending image generation request to openai at https://api.openai.com/v1/images/generations
+2025-08-23 15:23:39 | INFO     | app.services.unified_ai_service:generate_image:298 | 🎯 Image Provider override: 'openai_dalle' → 'openai'
+2025-08-23 15:23:39 | INFO     | app.services.unified_ai_service:generate_image:332 | 🎨 Sending image generation request to openai at https://api.openai.com/v1/images/generations
+2025-08-23 15:25:39 | INFO     | app.services.unified_ai_service:generate_image:298 | 🎯 Image Provider override: 'openai_dalle' → 'openai'
+2025-08-23 15:25:39 | INFO     | app.services.unified_ai_service:generate_image:332 | 🎨 Sending image generation request to openai at https://api.openai.com/v1/images/generations
+2025-08-23 15:45:51 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 15:46:30 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 15:46:32 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 15:46:44 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 2213686089184]
+2025-08-23 15:46:44 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 2213686089184]
+2025-08-23 15:46:44 | INFO     | app.services.ai_client:extract_wizard_data:39 | 🔍 Starting wizard data extraction [ID: 5528]
+2025-08-23 15:46:48 | WARNING  | app.services.ai_client:extract_wizard_data:134 | ⚠️ JSON parsing failed, attempting recovery [ID: 5528]
+2025-08-23 15:46:48 | INFO     | app.services.ai_client:extract_wizard_data:146 | ✅ Recovered JSON from malformed response [ID: 5528]
+2025-08-23 15:46:48 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 2213686089184]
+2025-08-23 15:46:48 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 2213686089184]
+2025-08-23 15:46:48 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 2213693648320]
+2025-08-23 15:46:48 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 2213693648320]
+2025-08-23 15:46:48 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 2213686089184]
+2025-08-23 15:46:50 | INFO     | app.services.brief_orchestrator:generate_final_brief:168 | 🎨 Starting final brief generation workflow [ID: 2213653958560]
+2025-08-23 15:46:50 | INFO     | app.services.brief_orchestrator:generate_final_brief:177 | 📝 Composing initial brief from wizard input [ID: 2213653958560]
+2025-08-23 15:46:50 | INFO     | app.services.prompt_composer:compose_initial_brief:76 | 📝 Starting initial brief composition [ID: 2213653958560]
+2025-08-23 15:46:50 | INFO     | app.services.prompt_composer:compose_initial_brief:126 | ✅ Initial brief composition completed [ID: 2213653958560]
+2025-08-23 15:46:50 | INFO     | app.services.brief_orchestrator:generate_final_brief:187 | ✅ Validating composed brief [ID: 2213653958560]
+2025-08-23 15:46:50 | INFO     | app.services.brief_orchestrator:generate_final_brief:199 | ✅ Brief validation passed [ID: 2213653958560]
+2025-08-23 15:46:50 | INFO     | app.services.brief_orchestrator:generate_final_brief:206 | 🚀 Enhancing brief using AI Creative Director [ID: 2213653958560]
+2025-08-23 15:46:50 | INFO     | app.services.ai_client:enhance_brief:184 | 🎨 Starting brief enhancement [ID: 2758]
+2025-08-23 15:46:57 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 15:47:03 | INFO     | app.services.ai_client:enhance_brief:246 | ✅ Brief enhancement completed successfully [ID: 2758]
+2025-08-23 15:47:03 | INFO     | app.services.brief_orchestrator:generate_final_brief:216 | 🎉 Brief generation completed successfully [ID: 2213653958560]
+2025-08-23 15:48:25 | INFO     | app.services.unified_ai_service:generate_image:298 | 🎯 Image Provider override: 'openai_dalle' → 'openai'
+2025-08-23 15:48:25 | INFO     | app.services.unified_ai_service:generate_image:332 | 🎨 Sending image generation request to openai at https://api.openai.com/v1/images/generations
+2025-08-23 15:56:49 | INFO     | app.services.unified_ai_service:generate_image:298 | 🎯 Image Provider override: 'openai_dalle' → 'openai'
+2025-08-23 15:56:49 | INFO     | app.services.unified_ai_service:generate_image:332 | 🎨 Sending image generation request to openai at https://api.openai.com/v1/images/generations
+2025-08-23 15:58:50 | INFO     | app.services.unified_ai_service:generate_image:298 | 🎯 Image Provider override: 'openai_dalle' → 'openai'
+2025-08-23 15:58:50 | INFO     | app.services.unified_ai_service:generate_image:332 | 🎨 Sending image generation request to openai at https://api.openai.com/v1/images/generations
+2025-08-23 15:58:52 | ERROR    | app.services.unified_ai_service:generate_image:348 | 💥 Image generation API error (HTTP 400): Invalid 'prompt': string too long. Expected a string with maximum length 4000, but got a string with length 7451 instead.
+2025-08-23 15:58:52 | ERROR    | app.services.unified_ai_service:generate_image:366 | 💥 Image generation failed for openai: Image generation failed (HTTP 400): Invalid 'prompt': string too long. Expected a string with maximum length 4000, but got a string with length 7451 instead.
+2025-08-23 15:58:52 | ERROR    | app.routers.generator:generate_image:287 | Error in /generate-image endpoint: Image generation service failed: Image generation failed (HTTP 400): Invalid 'prompt': string too long. Expected a string with maximum length 4000, but got a string with length 7451 instead.
+2025-08-23 18:14:59 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 18:25:14 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 18:26:45 | INFO     | app.services.unified_ai_service:generate_image:298 | 🎯 Image Provider override: 'openai_dalle' → 'openai'
+2025-08-23 18:26:45 | INFO     | app.services.unified_ai_service:generate_image:333 | Sending final prompt to image generation service.
+2025-08-23 18:26:45 | INFO     | app.services.unified_ai_service:generate_image:336 | 🎨 Sending image generation request to openai at https://api.openai.com/v1/images/generations
+2025-08-23 18:26:45 | ERROR    | app.services.unified_ai_service:generate_image:370 | 💥 Image generation failed for openai: 'latin-1' codec can't encode character '\U0001f680' in position 7: ordinal not in range(256)
+2025-08-23 18:26:45 | ERROR    | app.routers.generator:generate_image:289 | Error in /generate-image endpoint: Image generation service failed: 'latin-1' codec can't encode character '\U0001f680' in position 7: ordinal not in range(256)
+2025-08-23 18:26:55 | INFO     | app.services.unified_ai_service:generate_image:298 | 🎯 Image Provider override: 'openai_dalle' → 'openai'
+2025-08-23 18:26:55 | INFO     | app.services.unified_ai_service:generate_image:333 | Sending final prompt to image generation service.
+2025-08-23 18:26:55 | INFO     | app.services.unified_ai_service:generate_image:336 | 🎨 Sending image generation request to openai at https://api.openai.com/v1/images/generations
+2025-08-23 18:26:55 | ERROR    | app.services.unified_ai_service:generate_image:370 | 💥 Image generation failed for openai: 'latin-1' codec can't encode character '\U0001f680' in position 7: ordinal not in range(256)
+2025-08-23 18:26:55 | ERROR    | app.routers.generator:generate_image:289 | Error in /generate-image endpoint: Image generation service failed: 'latin-1' codec can't encode character '\U0001f680' in position 7: ordinal not in range(256)
+2025-08-23 18:48:46 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 18:49:35 | INFO     | app.services.unified_ai_service:generate_image:298 | 🎯 Image Provider override: 'openai' → 'openai'
+2025-08-23 18:49:35 | INFO     | app.services.unified_ai_service:generate_image:333 | Sending final prompt to image generation service.
+2025-08-23 18:49:35 | INFO     | app.services.unified_ai_service:generate_image:336 | 🎨 Sending image generation request to openai at https://api.openai.com/v1/images/generations
+2025-08-23 18:50:37 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 18:52:16 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 18:53:25 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 18:53:58 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 18:54:09 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 18:54:16 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 18:54:30 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 19:01:20 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 19:02:25 | INFO     | app.services.unified_ai_service:generate_image:298 | 🎯 Image Provider override: 'openai' → 'openai'
+2025-08-23 19:02:25 | INFO     | app.services.unified_ai_service:generate_image:333 | Sending final prompt to image generation service.
+2025-08-23 19:02:25 | INFO     | app.services.unified_ai_service:generate_image:336 | 🎨 Sending image generation request to openai at https://api.openai.com/v1/images/generations
+2025-08-23 19:03:18 | INFO     | app.services.unified_ai_service:generate_image:298 | 🎯 Image Provider override: 'openai' → 'openai'
+2025-08-23 19:03:18 | INFO     | app.services.unified_ai_service:generate_image:333 | Sending final prompt to image generation service.
+2025-08-23 19:03:18 | INFO     | app.services.unified_ai_service:generate_image:336 | 🎨 Sending image generation request to openai at https://api.openai.com/v1/images/generations
+2025-08-23 19:04:08 | INFO     | app.services.unified_ai_service:generate_image:298 | 🎯 Image Provider override: 'openai' → 'openai'
+2025-08-23 19:04:08 | INFO     | app.services.unified_ai_service:generate_image:333 | Sending final prompt to image generation service.
+2025-08-23 19:04:08 | INFO     | app.services.unified_ai_service:generate_image:336 | 🎨 Sending image generation request to openai at https://api.openai.com/v1/images/generations
+2025-08-23 19:05:27 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 19:06:04 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 19:06:20 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 19:06:21 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 19:06:24 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 19:08:16 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 19:08:25 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 19:08:38 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 19:08:53 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 19:09:06 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 19:10:38 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 19:10:39 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 19:11:40 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 19:11:41 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 19:13:00 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 19:14:48 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 19:15:41 | INFO     | app.services.unified_ai_service:generate_image:298 | 🎯 Image Provider override: 'openai' → 'openai'
+2025-08-23 19:15:41 | INFO     | app.services.unified_ai_service:generate_image:333 | Sending final prompt to image generation service.
+2025-08-23 19:15:41 | INFO     | app.services.unified_ai_service:generate_image:336 | 🎨 Sending image generation request to openai at https://api.openai.com/v1/images/generations
+2025-08-23 19:34:03 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 19:34:58 | INFO     | app.services.unified_ai_service:generate_image:296 | 🎨 Attempting to enhance prompt with Creative Director LLM...
+2025-08-23 19:34:58 | INFO     | app.services.ai_client:revise_prompt_for_generation:592 | ✨ ENHANCEMENT: Creating complete enhanced brief [ID: 9545]
+2025-08-23 19:35:15 | INFO     | app.services.ai_client:revise_prompt_for_generation:688 | ✅ ENHANCEMENT: Complete enhanced brief created [ID: 9545]
+2025-08-23 19:35:15 | INFO     | app.services.unified_ai_service:generate_image:298 | ✨ Prompt successfully enhanced.
+2025-08-23 19:35:15 | INFO     | app.services.unified_ai_service:generate_image:312 | 🎯 Image Provider override: 'openai' → 'openai'
+2025-08-23 19:35:15 | INFO     | app.services.unified_ai_service:generate_image:347 | Sending final prompt to image generation service.
+2025-08-23 19:35:15 | INFO     | app.services.unified_ai_service:generate_image:350 | 🎨 Sending image generation request to openai at https://api.openai.com/v1/images/generations
+2025-08-23 19:35:17 | ERROR    | app.services.unified_ai_service:generate_image:366 | 💥 Image generation API error (HTTP 400): Invalid 'prompt': string too long. Expected a string with maximum length 4000, but got a string with length 8441 instead.
+2025-08-23 19:35:17 | ERROR    | app.services.unified_ai_service:generate_image:384 | 💥 Image generation failed for openai: Image generation failed (HTTP 400): Invalid 'prompt': string too long. Expected a string with maximum length 4000, but got a string with length 8441 instead.
+2025-08-23 19:35:17 | ERROR    | app.routers.generator:generate_image:289 | Error in /generate-image endpoint: Image generation service failed: Image generation failed (HTTP 400): Invalid 'prompt': string too long. Expected a string with maximum length 4000, but got a string with length 8441 instead.
+2025-08-23 19:40:34 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 19:41:07 | INFO     | app.services.unified_ai_service:generate_image:296 | 🎨 Attempting to enhance prompt with Creative Director LLM...
+2025-08-23 19:41:07 | INFO     | app.services.ai_client:revise_prompt_for_generation:592 | ✨ ENHANCEMENT: Creating complete enhanced brief [ID: 9553]
+2025-08-23 19:41:24 | INFO     | app.services.ai_client:revise_prompt_for_generation:688 | ✅ ENHANCEMENT: Complete enhanced brief created [ID: 9553]
+2025-08-23 19:41:24 | INFO     | app.services.unified_ai_service:generate_image:298 | ✨ Prompt successfully enhanced.
+2025-08-23 19:41:24 | INFO     | app.services.unified_ai_service:generate_image:312 | 🎯 Image Provider override: 'openai' → 'openai'
+2025-08-23 19:41:24 | INFO     | app.services.unified_ai_service:generate_image:347 | Sending final prompt to image generation service.
+2025-08-23 19:41:24 | INFO     | app.services.unified_ai_service:generate_image:350 | 🎨 Sending image generation request to openai at https://api.openai.com/v1/images/generations
+2025-08-23 19:41:26 | ERROR    | app.services.unified_ai_service:generate_image:366 | 💥 Image generation API error (HTTP 400): Invalid 'prompt': string too long. Expected a string with maximum length 4000, but got a string with length 8714 instead.
+2025-08-23 19:41:26 | ERROR    | app.services.unified_ai_service:generate_image:384 | 💥 Image generation failed for openai: Image generation failed (HTTP 400): Invalid 'prompt': string too long. Expected a string with maximum length 4000, but got a string with length 8714 instead.
+2025-08-23 19:41:26 | ERROR    | app.routers.generator:generate_image:289 | Error in /generate-image endpoint: Image generation service failed: Image generation failed (HTTP 400): Invalid 'prompt': string too long. Expected a string with maximum length 4000, but got a string with length 8714 instead.
+2025-08-23 19:45:31 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 19:46:40 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 19:46:59 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 19:47:40 | INFO     | app.services.unified_ai_service:generate_image:296 | 🎨 Attempting to enhance prompt with Creative Director LLM...
+2025-08-23 19:47:40 | INFO     | app.services.ai_client:revise_prompt_for_generation:592 | ✨ ENHANCEMENT: Creating complete enhanced brief [ID: 6948]
+2025-08-23 19:47:59 | INFO     | app.services.ai_client:revise_prompt_for_generation:688 | ✅ ENHANCEMENT: Complete enhanced brief created [ID: 6948]
+2025-08-23 19:47:59 | INFO     | app.services.unified_ai_service:generate_image:298 | ✨ Prompt successfully enhanced.
+2025-08-23 19:47:59 | WARNING  | app.services.unified_ai_service:generate_image:303 | ⚠️ Enhanced prompt too long (8361 chars). Truncating to 4000 chars.
+2025-08-23 19:47:59 | INFO     | app.services.unified_ai_service:generate_image:305 | ✂️ Prompt truncated to 3999 characters
+2025-08-23 19:47:59 | INFO     | app.services.unified_ai_service:generate_image:320 | 🎯 Image Provider override: 'openai' → 'openai'
+2025-08-23 19:47:59 | INFO     | app.services.unified_ai_service:generate_image:355 | Sending final prompt to image generation service.
+2025-08-23 19:47:59 | INFO     | app.services.unified_ai_service:generate_image:358 | 🎨 Sending image generation request to openai at https://api.openai.com/v1/images/generations
+2025-08-23 19:48:00 | ERROR    | app.services.unified_ai_service:generate_image:392 | 💥 Image generation failed for openai: 'latin-1' codec can't encode character '\U0001f389' in position 7776: ordinal not in range(256)
+2025-08-23 19:48:00 | ERROR    | app.routers.generator:generate_image:289 | Error in /generate-image endpoint: Image generation service failed: 'latin-1' codec can't encode character '\U0001f389' in position 7776: ordinal not in range(256)
+2025-08-23 19:49:02 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 19:50:03 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 19:50:58 | INFO     | app.services.unified_ai_service:generate_image:296 | 🎨 Attempting to enhance prompt with Creative Director LLM...
+2025-08-23 19:50:58 | INFO     | app.services.ai_client:revise_prompt_for_generation:592 | ✨ ENHANCEMENT: Creating complete enhanced brief [ID: 5549]
+2025-08-23 19:51:12 | INFO     | app.services.ai_client:revise_prompt_for_generation:688 | ✅ ENHANCEMENT: Complete enhanced brief created [ID: 5549]
+2025-08-23 19:51:12 | INFO     | app.services.unified_ai_service:generate_image:298 | ✨ Prompt successfully enhanced.
+2025-08-23 19:51:12 | WARNING  | app.services.unified_ai_service:generate_image:308 | ⚠️ Enhanced prompt too long (9082 chars). Truncating to 4000 chars.
+2025-08-23 19:51:12 | INFO     | app.services.unified_ai_service:generate_image:310 | ✂️ Prompt truncated to 3989 characters
+2025-08-23 19:51:12 | INFO     | app.services.unified_ai_service:generate_image:325 | 🎯 Image Provider override: 'openai' → 'openai'
+2025-08-23 19:51:12 | INFO     | app.services.unified_ai_service:generate_image:360 | Sending final prompt to image generation service.
+2025-08-23 19:51:12 | INFO     | app.services.unified_ai_service:generate_image:363 | 🎨 Sending image generation request to openai at https://api.openai.com/v1/images/generations
+2025-08-23 19:52:55 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 19:53:05 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 19:53:47 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 19:55:03 | INFO     | app.services.unified_ai_service:generate_image:296 | 🎨 Attempting to enhance prompt with Creative Director LLM...
+2025-08-23 19:55:03 | INFO     | app.services.ai_client:revise_prompt_for_generation:592 | ✨ ENHANCEMENT: Creating complete enhanced brief [ID: 5307]
+2025-08-23 19:55:19 | INFO     | app.services.ai_client:revise_prompt_for_generation:688 | ✅ ENHANCEMENT: Complete enhanced brief created [ID: 5307]
+2025-08-23 19:55:19 | INFO     | app.services.unified_ai_service:generate_image:298 | ✨ Prompt successfully enhanced.
+2025-08-23 19:55:19 | WARNING  | app.services.unified_ai_service:generate_image:308 | ⚠️ Enhanced prompt too long (7851 chars). Truncating to 4000 chars.
+2025-08-23 19:55:19 | INFO     | app.services.unified_ai_service:generate_image:310 | ✂️ Prompt truncated to 3998 characters
+2025-08-23 19:55:19 | INFO     | app.services.unified_ai_service:generate_image:325 | 🎯 Image Provider override: 'openai' → 'openai'
+2025-08-23 19:55:19 | INFO     | app.services.unified_ai_service:generate_image:360 | Sending final prompt to image generation service.
+2025-08-23 19:55:19 | INFO     | app.services.unified_ai_service:generate_image:363 | 🎨 Sending image generation request to openai at https://api.openai.com/v1/images/generations
+2025-08-23 19:58:53 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 19:59:34 | INFO     | app.services.unified_ai_service:generate_image:296 | 🎨 Attempting to enhance prompt with Creative Director LLM...
+2025-08-23 19:59:34 | INFO     | app.services.ai_client:revise_prompt_for_generation:592 | ✨ ENHANCEMENT: Creating complete enhanced brief [ID: 8929]
+2025-08-23 19:59:59 | INFO     | app.services.ai_client:revise_prompt_for_generation:688 | ✅ ENHANCEMENT: Complete enhanced brief created [ID: 8929]
+2025-08-23 19:59:59 | INFO     | app.services.unified_ai_service:generate_image:298 | ✨ Prompt successfully enhanced.
+2025-08-23 19:59:59 | WARNING  | app.services.unified_ai_service:generate_image:308 | ⚠️ Enhanced prompt too long (9288 chars). Truncating to 4000 chars.
+2025-08-23 19:59:59 | INFO     | app.services.unified_ai_service:generate_image:317 | ✂️ Truncated at section break to 2947 characters
+2025-08-23 19:59:59 | INFO     | app.services.unified_ai_service:generate_image:344 | 🎯 Image Provider override: 'openai' → 'openai'
+2025-08-23 19:59:59 | INFO     | app.services.unified_ai_service:generate_image:379 | Sending final prompt to image generation service.
+2025-08-23 19:59:59 | INFO     | app.services.unified_ai_service:generate_image:382 | 🎨 Sending image generation request to openai at https://api.openai.com/v1/images/generations
+2025-08-23 20:01:11 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:01:23 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:01:34 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:01:46 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:01:58 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:02:11 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized

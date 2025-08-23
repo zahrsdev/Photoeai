@@ -1,6 +1,6 @@
 """
 Enhanced Image Generator Service with multi-provider support.
-Supports OpenRouter, Sumopod, Stability AI, OpenAI DALL-E, and other providers.
+Supports Gemini, Sumopod, OpenAI DALL-E, Midjourney, and other providers.
 """
 import requests
 from typing import Optional, Dict, Any
@@ -11,12 +11,10 @@ from app.schemas.models import ImageOutput
 
 class ImageProvider(Enum):
     """Supported image generation providers."""
-    STABILITY_AI = "stability_ai"
     OPENAI_DALLE = "openai_dalle"
-    OPENROUTER = "openrouter"
+    GEMINI = "gemini"
     SUMOPOD = "sumopod"
     MIDJOURNEY = "midjourney"
-    GENERIC = "generic"
 
 class MultiProviderImageService:
     """
@@ -31,18 +29,16 @@ class MultiProviderImageService:
         """Auto-detect the provider based on the API URL."""
         url_lower = api_base_url.lower()
         
-        if "stability" in url_lower or "stabilityai" in url_lower:
-            return ImageProvider.STABILITY_AI
-        elif "openai" in url_lower or "api.openai.com" in url_lower:
+        if "openai" in url_lower or "api.openai.com" in url_lower:
             return ImageProvider.OPENAI_DALLE
-        elif "openrouter" in url_lower:
-            return ImageProvider.OPENROUTER
+        elif "gemini" in url_lower or "generativeai" in url_lower:
+            return ImageProvider.GEMINI
         elif "sumopod" in url_lower:
             return ImageProvider.SUMOPOD
         elif "midjourney" in url_lower:
             return ImageProvider.MIDJOURNEY
         else:
-            return ImageProvider.GENERIC
+            return ImageProvider.OPENAI_DALLE
     
     def build_request_payload(self, provider: ImageProvider, brief_prompt: str, 
                             negative_prompt: Optional[str] = None, 
@@ -51,19 +47,7 @@ class MultiProviderImageService:
         
         model = model or self.default_model
         
-        if provider == ImageProvider.STABILITY_AI:
-            return {
-                "model": model,
-                "prompt": brief_prompt,
-                "negative_prompt": negative_prompt,
-                "steps": 50,
-                "cfg_scale": 7,
-                "width": 1024,
-                "height": 1024,
-                "samples": 1
-            }
-        
-        elif provider == ImageProvider.OPENAI_DALLE:
+        if provider == ImageProvider.OPENAI_DALLE:
             return {
                 "model": model or "dall-e-3",
                 "prompt": brief_prompt,
@@ -73,16 +57,12 @@ class MultiProviderImageService:
                 "response_format": "url"
             }
         
-        elif provider == ImageProvider.OPENROUTER:
+        elif provider == ImageProvider.GEMINI:
             return {
-                "model": model or "stability-ai/stable-diffusion-xl",
+                "model": model or "imagen-3.0-generate-002",
                 "prompt": brief_prompt,
-                "negative_prompt": negative_prompt,
-                "steps": 50,
-                "cfg_scale": 7,
-                "width": 1024,
-                "height": 1024,
-                "sampler": "DPM++ 2M Karras"
+                "n": 1,
+                "size": "1024x1024"
             }
         
         elif provider == ImageProvider.SUMOPOD:
@@ -104,7 +84,7 @@ class MultiProviderImageService:
                 "quality": "high"
             }
         
-        else:  # GENERIC
+        else:  # Default fallback
             # Generic format that works with many providers
             return {
                 "prompt": brief_prompt,
@@ -118,12 +98,10 @@ class MultiProviderImageService:
         """Get the correct endpoint path for each provider."""
         
         endpoints = {
-            ImageProvider.STABILITY_AI: "/text-to-image",
             ImageProvider.OPENAI_DALLE: "/images/generations",
-            ImageProvider.OPENROUTER: "/api/v1/generate",
+            ImageProvider.GEMINI: "/models/generateImages",
             ImageProvider.SUMOPOD: "/v1/generate",
-            ImageProvider.MIDJOURNEY: "/generate",
-            ImageProvider.GENERIC: "/generate"
+            ImageProvider.MIDJOURNEY: "/generate"
         }
         
         return endpoints.get(provider, "/generate")
@@ -132,16 +110,7 @@ class MultiProviderImageService:
         """Parse API response based on provider format."""
         
         try:
-            if provider == ImageProvider.STABILITY_AI:
-                image_data = response_data["artifacts"][0]
-                return ImageOutput(
-                    image_url=f"data:image/png;base64,{image_data['base64']}",
-                    generation_id=f"gen_{image_data.get('seed', 'unknown')}",
-                    seed=image_data.get('seed', 0),
-                    revised_prompt=response_data.get('prompt', '')
-                )
-            
-            elif provider == ImageProvider.OPENAI_DALLE:
+            if provider == ImageProvider.OPENAI_DALLE:
                 image_data = response_data["data"][0]
                 return ImageOutput(
                     image_url=image_data["url"],
@@ -150,12 +119,18 @@ class MultiProviderImageService:
                     revised_prompt=image_data.get("revised_prompt", response_data.get("prompt", ""))
                 )
             
-            elif provider == ImageProvider.OPENROUTER:
-                image_data = response_data["data"][0]
+            elif provider == ImageProvider.GEMINI:
+                # Gemini/Imagen response format
+                if "candidates" in response_data:
+                    image_data = response_data["candidates"][0]
+                    image_url = image_data.get("image", {}).get("url", "")
+                else:
+                    image_url = response_data.get("image_url", "")
+                
                 return ImageOutput(
-                    image_url=image_data.get("url") or f"data:image/png;base64,{image_data.get('base64')}",
-                    generation_id=f"or_{response_data.get('id', 'unknown')}",
-                    seed=image_data.get('seed', 0),
+                    image_url=image_url,
+                    generation_id=f"gemini_{response_data.get('id', 'unknown')}",
+                    seed=0,  # Gemini doesn't use seeds
                     revised_prompt=response_data.get('prompt', '')
                 )
             
@@ -177,7 +152,7 @@ class MultiProviderImageService:
                     revised_prompt=response_data.get('prompt', '')
                 )
             
-            else:  # GENERIC
+            else:  # Default fallback
                 # Try to handle generic response formats
                 image_url = (response_data.get("image_url") or 
                            response_data.get("url") or 
@@ -214,7 +189,8 @@ class MultiProviderImageService:
             try:
                 provider = ImageProvider(provider_override.lower())
             except ValueError:
-                provider = ImageProvider.GENERIC
+                logger.warning(f"Unknown provider '{provider_override}', defaulting to OpenAI")
+                provider = ImageProvider.OPENAI_DALLE
         else:
             provider = self.detect_provider(self.api_base_url)
         
@@ -228,10 +204,8 @@ class MultiProviderImageService:
             "Content-Type": "application/json"
         }
         
-        # Some providers need special headers
-        if provider == ImageProvider.OPENROUTER:
-            headers["HTTP-Referer"] = "https://photoeai.app"  # Replace with your domain
-            headers["X-Title"] = "PhotoeAI"
+        # Add any provider-specific headers if needed
+        # (OpenRouter headers removed since it's no longer supported)
         
         logger.info(f"🎨 Sending request to {provider.value} for: '{brief_prompt[:50]}...'")
         logger.info(f"🔗 Endpoint: {endpoint}")

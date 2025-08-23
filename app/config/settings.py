@@ -9,6 +9,10 @@ from typing import Dict, Any, Optional
 from pydantic import BaseModel, Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
+# Get the directory where this settings file is located
+SETTINGS_DIR = Path(__file__).parent.parent.parent  # Go up to photoeai-backend root
+ENV_FILE_PATH = SETTINGS_DIR / ".env"
+
 
 class SystemPromptConfig(BaseModel):
     """
@@ -54,12 +58,16 @@ class Settings(BaseSettings):
     Application settings loaded from environment variables and JSON configuration files.
     Serves as the single source of truth for all configurations with validation.
     """
-    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
+    model_config = SettingsConfigDict(
+        env_file=str(ENV_FILE_PATH), 
+        env_file_encoding="utf-8",
+        extra="ignore"  # Ignore extra environment variables not defined in the model
+    )
     
     # OpenAI Configuration
-    openai_api_key: str = Field(..., description="OpenAI API key")
-    openai_model: str = Field(default="gpt-4o", description="OpenAI model to use")
-    sumopod_api_base_url: str = Field(..., description="Sumopod API base URL")
+    openai_api_key: str = Field(..., description="OpenAI API key", alias="OPENAI_API_KEY")
+    openai_model: str = Field(default="gpt-4o", description="OpenAI model to use", alias="OPENAI_MODEL")
+    sumopod_api_base_url: str = Field(..., description="Sumopod API base URL", alias="SUMOPOD_API_BASE_URL")
 
     # --- NEW ---
     # Image Generation Service Configuration
@@ -69,9 +77,9 @@ class Settings(BaseSettings):
     # --- END NEW ---
     
     # Server Configuration
-    host: str = Field(default="0.0.0.0", description="Server host address")
-    port: int = Field(default=8000, description="Server port")
-    debug: bool = Field(default=False, description="Debug mode flag")
+    host: str = Field(default="0.0.0.0", description="Server host address", alias="HOST")
+    port: int = Field(default=8000, description="Server port", alias="PORT")
+    debug: bool = Field(default=False, description="Debug mode flag", alias="DEBUG")
     
     # Centralized System Configuration (initialized after object creation)
     _prompt_config: SystemPromptConfig = None
@@ -87,7 +95,7 @@ class Settings(BaseSettings):
     
     def _load_and_validate_json_configs(self):
         """Load and validate all JSON configuration files."""
-        system_prompt_dir = Path("system-prompt")
+        system_prompt_dir = SETTINGS_DIR / "system-prompt"
         
         if not system_prompt_dir.exists():
             raise FileNotFoundError(f"Configuration directory '{system_prompt_dir}' not found")

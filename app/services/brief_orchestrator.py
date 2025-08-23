@@ -202,9 +202,37 @@ class BriefOrchestratorService:
                 for warning in validation_result["warnings"]:
                     logger.warning(f"⚠️ Validation warning: {warning} [ID: {request_id}]")
             
-            # Step 3: Enhance the brief using AI Client (LLM as Creative Director)
-            logger.info(f"🚀 Enhancing brief using AI Creative Director [ID: {request_id}]")
-            enhanced_brief = await self.ai_client.enhance_brief(initial_brief)
+            # CRITICAL REFACTOR LOG POINT: Log structured WizardInput data before enhancement
+            logger.info(f"🎯 MISSION CRITICAL: Sending structured data to Creative Director [ID: {request_id}]", extra={
+                "request_id": request_id,
+                "operation": "PRE_CREATIVE_DIRECTOR_DATA_DISPATCH",
+                "structured_data_fields": list(wizard_input.model_dump().keys()),
+                "product_name": wizard_input.product_name,
+                "user_request_preview": wizard_input.user_request[:100] + "..." if len(wizard_input.user_request) > 100 else wizard_input.user_request,
+                "refactor_phase": "STRUCTURED_DATA_TO_CREATIVE_DIRECTOR"
+            })
+            logger.debug("🔍 MISSION DEBUG: Pre-enhancement structured data", extra={
+                "full_structured_data": wizard_input.model_dump()
+            })
+            
+            # CRITICAL CHANGE: Send structured data to refactored Creative Director
+            logger.info(f"🚀 CRITICAL REFACTOR: Calling refactored Creative Director with structured data [ID: {request_id}]")
+            enhanced_brief = await self.ai_client.enhance_brief_from_structured_data(wizard_input.model_dump())
+            
+            # CRITICAL REFACTOR LOG POINT: Validate and log enhanced output
+            word_count = len(enhanced_brief.split())
+            section_count = enhanced_brief.count('##')
+            logger.info(f"📊 MISSION VALIDATION: Enhanced brief analysis [ID: {request_id}]", extra={
+                "request_id": request_id,
+                "enhanced_brief_length": len(enhanced_brief),
+                "word_count": word_count,
+                "section_count": section_count,
+                "refactor_success": word_count > 200 and section_count >= 5,
+                "operation": "POST_CREATIVE_DIRECTOR_VALIDATION"
+            })
+            logger.debug("📝 MISSION DEBUG: Final enhanced brief", extra={
+                "enhanced_brief_preview": enhanced_brief[:500] + "..." if len(enhanced_brief) > 500 else enhanced_brief
+            })
             
             logger.debug(f"📈 Enhanced brief metrics [ID: {request_id}]", extra={
                 "request_id": request_id,

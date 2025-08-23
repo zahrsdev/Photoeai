@@ -70,7 +70,7 @@ class TextGenerationRequest(BaseModel):
     """
     prompt: str = Field(..., description="The text prompt for generation")
     user_api_key: str = Field(..., description="User-provided API key for the AI service")
-    provider: Optional[str] = Field(None, description="Override provider (sumopod, openrouter, openai, gemini)")
+    provider: Optional[str] = Field(None, description="Override provider (sumopod, gemini, openai, midjourney)")
     model: Optional[str] = Field(None, description="Specific model to use (e.g., gpt-4o, gemini-2.5-flash)")
     max_tokens: Optional[int] = Field(150, description="Maximum tokens to generate")
     temperature: Optional[float] = Field(0.7, description="Sampling temperature (0.0 to 1.0)")
@@ -80,7 +80,7 @@ class TextGenerationRequest(BaseModel):
             "example": {
                 "prompt": "Generate a detailed photography brief for luxury skincare products",
                 "user_api_key": "your-api-key-here",
-                "provider": "openrouter",
+                "provider": "gemini",
                 "model": "openai/gpt-4o",
                 "max_tokens": 200,
                 "temperature": 0.8
@@ -99,7 +99,7 @@ class TextOutput(BaseModel):
         schema_extra = {
             "example": {
                 "generated_text": "A comprehensive photography brief for luxury skincare...",
-                "provider_used": "openrouter", 
+                "provider_used": "gemini", 
                 "model_used": "openai/gpt-4o",
                 "generation_metadata": {
                     "tokens_used": 156,
@@ -116,7 +116,7 @@ class ImageGenerationRequest(BaseModel):
     user_api_key: str = Field(..., description="User's API key for the image generation service.")
     negative_prompt: Optional[str] = Field(None, description="Optional concepts to exclude from the image.")
     style_preset: Optional[str] = Field("photorealistic", description="Artistic style for the image generation.")
-    provider: Optional[str] = Field(None, description="Optional provider override (stability_ai, openai_dalle, openrouter, sumopod, midjourney)")
+    provider: Optional[str] = Field(None, description="Optional provider override. Supported: 'openai' (DALL-E, recommended), 'gemini' (Imagen, experimental), 'midjourney' (requires subscription). Note: Sumopod is text-only.")
 
 class ImageEnhancementRequest(BaseModel):
     """Model for iteratively enhancing a previously generated image."""
@@ -125,7 +125,7 @@ class ImageEnhancementRequest(BaseModel):
     enhancement_instruction: str = Field(..., description="User's instruction for what to change, e.g., 'Make it colder with more condensation.'")
     user_api_key: str = Field(..., description="User's API key for the image generation service.")
     seed: Optional[int] = Field(None, description="The seed of the original image to maintain consistency.")
-    provider: Optional[str] = Field(None, description="Optional provider override (stability_ai, openai_dalle, openrouter, sumopod, midjourney)")
+    provider: Optional[str] = Field(None, description="Optional provider override (openai, gemini, midjourney). Note: Sumopod only supports text, not images")
 
 class ImageOutput(BaseModel):
     """Model for the response after a successful image generation."""
@@ -133,5 +133,18 @@ class ImageOutput(BaseModel):
     generation_id: str
     seed: int
     revised_prompt: str
+    final_enhanced_prompt: str  # MISSION 2: Added field for downloadable prompt feature
+
+
+class DownloadBriefRequest(BaseModel):
+    """MISSION 2: Request model for downloading photography brief as text file."""
+    prompt_text: str = Field(..., description="The prompt text to be downloaded as a file")
+    
+    class Config:
+        schema_extra = {
+            "example": {
+                "prompt_text": "Professional product photography of a luxury skincare bottle..."
+            }
+        }
 
 # --- END NEW MODELS ---

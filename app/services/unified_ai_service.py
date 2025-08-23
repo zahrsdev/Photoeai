@@ -1,6 +1,6 @@
 """
 Enhanced multi-provider service supporting both text and image generation.
-Handles the actual API formats shown by the user for Sumopod, OpenRouter, OpenAI, and Gemini.
+Handles the actual API formats for Sumopod, OpenAI, Gemini, and Midjourney.
 """
 import requests
 import json
@@ -9,6 +9,7 @@ from enum import Enum
 from loguru import logger
 from app.config.settings import settings
 from app.schemas.models import ImageOutput
+from app.services.ai_client import AIClient
 
 class ProviderType(Enum):
     """Types of AI services supported."""
@@ -18,13 +19,34 @@ class ProviderType(Enum):
 
 class AIProvider(Enum):
     """Supported AI providers with their capabilities."""
-    SUMOPOD = "sumopod"           # Both text and image
-    OPENROUTER = "openrouter"     # Both text and image  
-    OPENAI = "openai"             # Both text (GPT) and image (DALL-E)
-    GEMINI = "gemini"             # Text completion
-    STABILITY_AI = "stability_ai"  # Image generation only
-    MIDJOURNEY = "midjourney"     # Image generation only
-    GENERIC = "generic"           # Fallback
+    SUMOPOD = "sumopod"           # Text completion only (no image generation)
+    OPENAI = "openai"             # Both text (GPT) and image (DALL-E) ✅ RELIABLE
+    GEMINI = "gemini"             # Text + image (Imagen) ⚠️ EXPERIMENTAL - requires special access
+    MIDJOURNEY = "midjourney"     # Image generation only ⚠️ REQUIRES API SUBSCRIPTION
+    
+    @classmethod
+    def normalize_provider_name(cls, provider_name: str) -> str:
+        """Normalize provider name to handle common variations."""
+        if not provider_name:
+            return "openai"  # Default provider
+            
+        # First strip and lowercase, but preserve original for alias lookup
+        original_lower = provider_name.lower().strip()
+        normalized = original_lower.replace('_', '').replace('-', '')
+        
+        # Handle common alias mappings
+        provider_aliases = {
+            "openaidalle": "openai",
+            "dalle": "openai", 
+            "dalle3": "openai",
+            "geminiimagen": "gemini",  # Fixed: handles gemini_imagen correctly
+            "imagen": "gemini",
+            "sumo": "sumopod",
+            "mj": "midjourney",
+        }
+        
+        # Return alias if found, otherwise return the original input
+        return provider_aliases.get(normalized, original_lower)
 
 class UnifiedAIService:
     """
@@ -32,9 +54,30 @@ class UnifiedAIService:
     across multiple providers using their actual API formats.
     """
     
+    # Provider-to-base-URL mapping
+    PROVIDER_BASE_URLS = {
+        AIProvider.SUMOPOD: "https://ai.sumopod.com/v1",
+        AIProvider.OPENAI: "https://api.openai.com/v1",
+        AIProvider.GEMINI: "https://generativelanguage.googleapis.com/v1",
+        AIProvider.MIDJOURNEY: "https://api.midjourneyapi.io/v2"
+    }
+    
     def __init__(self):
+        # Use OpenAI as default for image generation (most reliable)
         self.api_base_url = settings.IMAGE_API_BASE_URL
         self.default_model = settings.IMAGE_GENERATION_MODEL
+        
+        # Override default if it's pointing to unsupported providers
+        if "openrouter.ai" in self.api_base_url:
+            logger.warning("🔄 OpenRouter detected as default - switching to OpenAI for image generation")
+            self.api_base_url = "https://api.openai.com/v1"
+        elif "sumopod.com" in self.api_base_url:
+            logger.warning("🔄 Sumopod may not support image generation - switching to OpenAI")
+            self.api_base_url = "https://api.openai.com/v1"
+        
+    def get_provider_base_url(self, provider: AIProvider) -> str:
+        """Get the correct base URL for the specified provider."""
+        return self.PROVIDER_BASE_URLS.get(provider, self.api_base_url)
         
     def detect_provider(self, api_base_url: str) -> AIProvider:
         """Auto-detect the provider based on the API URL."""
@@ -42,18 +85,15 @@ class UnifiedAIService:
         
         if "sumopod" in url_lower:
             return AIProvider.SUMOPOD
-        elif "openrouter" in url_lower:
-            return AIProvider.OPENROUTER
+        elif "generativelanguage" in url_lower or "gemini" in url_lower:
+            return AIProvider.GEMINI
         elif "openai" in url_lower or "api.openai.com" in url_lower:
             return AIProvider.OPENAI
-        elif "gemini" in url_lower or "generativeai" in url_lower:
-            return AIProvider.GEMINI
-        elif "stability" in url_lower or "stabilityai" in url_lower:
-            return AIProvider.STABILITY_AI
         elif "midjourney" in url_lower:
             return AIProvider.MIDJOURNEY
         else:
-            return AIProvider.GENERIC
+            # Default to OpenAI for unknown URLs
+            return AIProvider.OPENAI
     
     # TEXT COMPLETION METHODS (for brief generation)
     
@@ -72,16 +112,6 @@ class UnifiedAIService:
                 "temperature": temperature
             }
         
-        elif provider == AIProvider.OPENROUTER:
-            # Using OpenRouter chat completions format
-            return {
-                "model": model or "openai/gpt-4o",
-                "messages": [{"role": "user", "content": prompt}],
-                "max_tokens": max_tokens,
-                "temperature": temperature,
-                "stream": False  # We'll handle non-streaming for simplicity
-            }
-        
         elif provider == AIProvider.OPENAI:
             # Using OpenAI chat completions format
             return {
@@ -94,11 +124,18 @@ class UnifiedAIService:
         elif provider == AIProvider.GEMINI:
             # Gemini uses different format
             return {
-                "model": model or "gemini-2.5-flash",
-                "contents": prompt
+                "contents": [{
+                    "parts": [{
+                        "text": prompt
+                    }]
+                }],
+                "generationConfig": {
+                    "maxOutputTokens": max_tokens,
+                    "temperature": temperature
+                }
             }
         
-        else:  # GENERIC
+        else:  # Default to OpenAI format
             return {
                 "model": model or "gpt-4",
                 "messages": [{"role": "user", "content": prompt}],
@@ -111,10 +148,9 @@ class UnifiedAIService:
         
         endpoints = {
             AIProvider.SUMOPOD: "/chat/completions",        # OpenAI-compatible
-            AIProvider.OPENROUTER: "/api/v1/chat/completions",  # As shown in your example
-            AIProvider.OPENAI: "/v1/chat/completions",      # Standard OpenAI
-            AIProvider.GEMINI: "/models/generate_content",   # Gemini format
-            AIProvider.GENERIC: "/chat/completions"
+            AIProvider.OPENAI: "/chat/completions",         # Standard OpenAI (base URL already has /v1)
+            AIProvider.GEMINI: "/models/gemini-pro:generateContent",   # Gemini format
+            AIProvider.MIDJOURNEY: "/chat/completions"       # Default to OpenAI-compatible
         }
         
         return endpoints.get(provider, "/chat/completions")
@@ -132,20 +168,30 @@ class UnifiedAIService:
         # Detect or override provider
         if provider_override:
             try:
-                provider = AIProvider(provider_override.lower())
+                # Normalize provider name using the new method
+                normalized_name = AIProvider.normalize_provider_name(provider_override)
+                provider = AIProvider(normalized_name)
+                logger.info(f"🎯 Text Provider override: '{provider_override}' → '{provider.value}'")
             except ValueError:
-                provider = AIProvider.GENERIC
+                logger.warning(f"🔄 Unknown provider '{provider_override}' (normalized: '{normalized_name}'), defaulting to OpenAI")
+                provider = AIProvider.OPENAI
         else:
             provider = self.detect_provider(self.api_base_url)
         
+        # Get provider-specific base URL
+        base_url = self.get_provider_base_url(provider)
+        
         # Build request for text completion
-        endpoint = f"{self.api_base_url.rstrip('/')}{self.get_text_completion_endpoint(provider)}"
+        endpoint = f"{base_url.rstrip('/')}{self.get_text_completion_endpoint(provider)}"
+        if provider == AIProvider.GEMINI:
+            endpoint = f"{endpoint}?key={user_api_key}"
+            
         payload = self.build_text_completion_payload(provider, prompt, model, max_tokens, temperature)
         
         # Set up headers based on provider
         headers = self._get_headers(provider, user_api_key)
         
-        logger.info(f"🤖 Sending text completion request to {provider.value}")
+        logger.info(f"🤖 Sending text completion request to {provider.value} at {endpoint}")
         
         try:
             if provider == AIProvider.GEMINI:
@@ -172,19 +218,7 @@ class UnifiedAIService:
                                      model: Optional[str] = None) -> Dict[str, Any]:
         """Build image generation payload based on provider specifications."""
         
-        if provider == AIProvider.STABILITY_AI:
-            return {
-                "model": model or "stable-diffusion-xl-1024-v1-0",
-                "prompt": brief_prompt,
-                "negative_prompt": negative_prompt,
-                "steps": 50,
-                "cfg_scale": 7,
-                "width": 1024,
-                "height": 1024,
-                "samples": 1
-            }
-        
-        elif provider == AIProvider.OPENAI:
+        if provider == AIProvider.OPENAI:
             # DALL-E image generation
             return {
                 "model": model or "dall-e-3",
@@ -195,31 +229,41 @@ class UnifiedAIService:
                 "response_format": "url"
             }
         
-        elif provider == AIProvider.OPENROUTER:
-            # OpenRouter image generation (if they support it)
+        elif provider == AIProvider.GEMINI:
+            # Gemini does not support image generation through the standard API
+            # Google's Imagen is separate and requires Vertex AI access
+            # For now, we'll redirect to OpenAI
+            logger.warning("🔄 Gemini image generation not supported - switching to OpenAI")
             return {
-                "model": model or "stability-ai/stable-diffusion-xl",
+                "model": model or "dall-e-3",
                 "prompt": brief_prompt,
-                "negative_prompt": negative_prompt,
-                "steps": 50,
-                "cfg_scale": 7,
-                "width": 1024,
-                "height": 1024
+                "n": 1,
+                "size": "1024x1024",
+                "quality": "hd",
+                "response_format": "url"
             }
         
         elif provider == AIProvider.SUMOPOD:
-            # Sumopod image generation (if they support it)  
+            # Sumopod image generation (may not be supported - check provider docs)
+            # Using OpenAI-compatible format as fallback
             return {
-                "model": model or "stable-diffusion-xl",
+                "model": model or "dall-e-3",
                 "prompt": brief_prompt,
-                "negative_prompt": negative_prompt,
-                "guidance_scale": 7,
-                "num_inference_steps": 50,
-                "width": 1024,
-                "height": 1024
+                "n": 1,
+                "size": "1024x1024",
+                "response_format": "url"
             }
         
-        else:  # GENERIC
+        elif provider == AIProvider.MIDJOURNEY:
+            # Midjourney image generation
+            return {
+                "prompt": brief_prompt,
+                "model": model or "midjourney-v6",
+                "aspect_ratio": "1:1",
+                "quality": "high"
+            }
+        
+        else:  # Default format
             return {
                 "prompt": brief_prompt,
                 "negative_prompt": negative_prompt,
@@ -232,12 +276,10 @@ class UnifiedAIService:
         """Get the correct image generation endpoint for each provider."""
         
         endpoints = {
-            AIProvider.STABILITY_AI: "/text-to-image",
-            AIProvider.OPENAI: "/v1/images/generations",
-            AIProvider.OPENROUTER: "/api/v1/generate",  # May vary
-            AIProvider.SUMOPOD: "/v1/images/generate",  # Hypothetical
-            AIProvider.MIDJOURNEY: "/generate",
-            AIProvider.GENERIC: "/generate"
+            AIProvider.OPENAI: "/images/generations",       # OpenAI (base URL already has /v1)
+            AIProvider.GEMINI: "/images/generations",       # Redirect to OpenAI format since Gemini doesn't support image generation
+            AIProvider.SUMOPOD: "/images/generations",      # OpenAI-compatible (text-only provider)
+            AIProvider.MIDJOURNEY: "/generate"              # Midjourney (requires API access)
         }
         
         return endpoints.get(provider, "/generate")
@@ -248,27 +290,124 @@ class UnifiedAIService:
                            model: Optional[str] = None) -> ImageOutput:
         """Generate image using the appropriate provider format."""
         
+        # --- CRITICAL FIX: Prompt Enhancement Integration ---
+        ai_client = AIClient()
+        try:
+            logger.info("🎨 Attempting to enhance prompt with Creative Director LLM...")
+            enhanced_brief = await ai_client.revise_prompt_for_generation(brief_prompt)
+            logger.info("✨ Prompt successfully enhanced.")
+            
+            # CRITICAL: Remove Unicode characters that cause encoding issues
+            import re
+            # Remove emojis and other problematic Unicode characters
+            enhanced_brief = re.sub(r'[^\x00-\x7F]+', '', enhanced_brief)
+            
+            # CRITICAL: Validate and truncate prompt length for external API limits
+            MAX_PROMPT_LENGTH = 4000  # DALL-E 3 limit
+            if len(enhanced_brief) > MAX_PROMPT_LENGTH:
+                logger.warning(f"⚠️ Enhanced prompt too long ({len(enhanced_brief)} chars). Truncating to {MAX_PROMPT_LENGTH} chars.")
+                
+                # Smart truncation: try to end at section breaks, then sentences, then words
+                truncated = enhanced_brief[:MAX_PROMPT_LENGTH]
+                
+                # Try to end at a section break (---) 
+                section_break = truncated.rfind('\n---\n')
+                if section_break > MAX_PROMPT_LENGTH * 0.7:  # Only if we don't lose too much content
+                    truncated = enhanced_brief[:section_break]
+                    logger.info(f"✂️ Truncated at section break to {len(truncated)} characters")
+                else:
+                    # Try to end at a complete sentence
+                    sentence_end = max(truncated.rfind('. '), truncated.rfind('.\n'))
+                    if sentence_end > MAX_PROMPT_LENGTH * 0.8:  # Only if we don't lose too much content
+                        truncated = enhanced_brief[:sentence_end + 1]
+                        logger.info(f"✂️ Truncated at sentence end to {len(truncated)} characters")
+                    else:
+                        # Fall back to word boundary
+                        truncated = enhanced_brief[:MAX_PROMPT_LENGTH].rsplit(' ', 1)[0]
+                        logger.info(f"✂️ Truncated at word boundary to {len(truncated)} characters")
+                
+                enhanced_brief = truncated
+            
+            brief_prompt = enhanced_brief  # CRITICAL: Overwrite the original prompt with the enhanced version
+        except Exception as e:
+            logger.warning(f"⚠️ Prompt enhancement failed: {e}. Falling back to original prompt.")
+            # The original brief_prompt will be used automatically.
+            pass
+        # --- END ENHANCEMENT INTEGRATION ---
+        
         # Detect or override provider
         if provider_override:
             try:
-                provider = AIProvider(provider_override.lower())
+                # Normalize provider name using the new method
+                normalized_name = AIProvider.normalize_provider_name(provider_override)
+                provider = AIProvider(normalized_name)
+                logger.info(f"🎯 Image Provider override: '{provider_override}' → '{provider.value}'")
             except ValueError:
-                provider = AIProvider.GENERIC
+                logger.warning(f"🔄 Unknown provider '{provider_override}' (normalized: '{normalized_name}'), defaulting to OpenAI")
+                provider = AIProvider.OPENAI
         else:
             provider = self.detect_provider(self.api_base_url)
         
+        # Get provider-specific base URL
+        base_url = self.get_provider_base_url(provider)
+        
+        # Safety check: Block unsupported providers for image generation
+        if "openrouter.ai" in base_url:
+            logger.error(f"❌ OpenRouter does not support image generation - switching to OpenAI")
+            provider = AIProvider.OPENAI
+            base_url = self.get_provider_base_url(provider)
+        elif "sumopod.com" in base_url and provider == AIProvider.SUMOPOD:
+            logger.warning(f"⚠️ Sumopod may not support image generation - switching to OpenAI")
+            provider = AIProvider.OPENAI
+            base_url = self.get_provider_base_url(provider)
+        elif provider == AIProvider.GEMINI:
+            logger.warning(f"🔄 Gemini does not support image generation - redirecting to OpenAI")
+            provider = AIProvider.OPENAI
+            base_url = self.get_provider_base_url(provider)
+        elif provider == AIProvider.MIDJOURNEY:
+            logger.info(f"🎨 Using Midjourney - requires valid API subscription")
+        
         # Build request for image generation
-        endpoint = f"{self.api_base_url.rstrip('/')}{self.get_image_generation_endpoint(provider)}"
+        endpoint = f"{base_url.rstrip('/')}{self.get_image_generation_endpoint(provider)}"
+            
         payload = self.build_image_generation_payload(provider, brief_prompt, negative_prompt, model)
         
         # Set up headers
         headers = self._get_headers(provider, user_api_key)
         
-        logger.info(f"🎨 Sending image generation request to {provider.value}")
+        # MISSION 1 LOG POINT: Log final prompt being sent to image generation service
+        logger.info("Sending final prompt to image generation service.")
+        logger.debug(f"Image generation prompt: {brief_prompt}")
+        
+        logger.info(f"🎨 Sending image generation request to {provider.value} at {endpoint}")
+        logger.debug(f"Provider: {provider.value}, Base URL: {base_url}")
+        logger.debug(f"Payload: {json.dumps(payload, indent=2)}")
         
         try:
             response = requests.post(endpoint, headers=headers, json=payload, timeout=120)
-            response.raise_for_status()
+            
+            # Better error handling
+            if not response.ok:
+                error_detail = ""
+                try:
+                    error_response = response.json()
+                    error_detail = error_response.get('error', {}).get('message', str(error_response))
+                except:
+                    error_detail = response.text
+                
+                logger.error(f"💥 Image generation API error (HTTP {response.status_code}): {error_detail}")
+                
+                # Provide specific error messages
+                if response.status_code == 401:
+                    raise Exception("Authentication failed - please check your API key")
+                elif response.status_code == 403:
+                    raise Exception("Access forbidden - check your API key permissions")
+                elif response.status_code == 404:
+                    raise Exception(f"Image generation endpoint not found for {provider.value}")
+                elif response.status_code == 503:
+                    raise Exception(f"Image generation service temporarily unavailable for {provider.value}")
+                else:
+                    raise Exception(f"Image generation failed (HTTP {response.status_code}): {error_detail}")
             
             api_response = response.json()
             return self._parse_image_response(provider, api_response, brief_prompt)
@@ -282,26 +421,17 @@ class UnifiedAIService:
     def _get_headers(self, provider: AIProvider, api_key: str) -> Dict[str, str]:
         """Get appropriate headers for each provider."""
         
-        base_headers = {
-            "Authorization": f"Bearer {api_key}",
-            "Content-Type": "application/json"
-        }
-        
-        if provider == AIProvider.OPENROUTER:
-            # OpenRouter specific headers as shown in your example
-            base_headers.update({
-                "HTTP-Referer": "https://photoeai.app",  # Your domain
-                "X-Title": "PhotoeAI"
-            })
-        elif provider == AIProvider.OPENAI:
-            # OpenAI specific headers if needed
-            # Could add Organization and Project headers here
-            pass
-        elif provider == AIProvider.GEMINI:
-            # Gemini might use different auth format
-            base_headers["Authorization"] = f"Bearer {api_key}"
-        
-        return base_headers
+        if provider == AIProvider.GEMINI:
+            # Gemini uses API key as query parameter instead of header
+            return {
+                "Content-Type": "application/json"
+            }
+        else:
+            # Most providers use Bearer token
+            return {
+                "Authorization": f"Bearer {api_key}",
+                "Content-Type": "application/json"
+            }
     
     def _parse_text_response(self, provider: AIProvider, response_data: Dict[str, Any]) -> str:
         """Parse text completion response based on provider format."""
@@ -311,19 +441,26 @@ class UnifiedAIService:
                 # OpenAI-compatible format
                 return response_data["choices"][0]["message"]["content"]
             
-            elif provider == AIProvider.OPENROUTER:
-                # OpenRouter format (similar to OpenAI)
-                return response_data["choices"][0]["message"]["content"]
-            
             elif provider == AIProvider.OPENAI:
                 # OpenAI format
                 return response_data["choices"][0]["message"]["content"]
             
             elif provider == AIProvider.GEMINI:
                 # Gemini format
+                if "candidates" in response_data and len(response_data["candidates"]) > 0:
+                    candidate = response_data["candidates"][0]
+                    if "content" in candidate and "parts" in candidate["content"]:
+                        return candidate["content"]["parts"][0].get("text", "")
                 return response_data.get("text", "")
             
-            else:  # GENERIC
+            elif provider == AIProvider.MIDJOURNEY:
+                # Midjourney text format (if supported)
+                if "choices" in response_data:
+                    return response_data["choices"][0]["message"]["content"]
+                else:
+                    return response_data.get("text", "")
+            
+            else:  # Default fallback
                 # Try common patterns
                 if "choices" in response_data:
                     return response_data["choices"][0]["message"]["content"]
@@ -341,26 +478,29 @@ class UnifiedAIService:
         """Parse image generation response based on provider format."""
         
         try:
-            if provider == AIProvider.STABILITY_AI:
-                image_data = response_data["artifacts"][0]
-                return ImageOutput(
-                    image_url=f"data:image/png;base64,{image_data['base64']}",
-                    generation_id=f"gen_{image_data.get('seed', 'unknown')}",
-                    seed=image_data.get('seed', 0),
-                    revised_prompt=original_prompt
-                )
-            
-            elif provider == AIProvider.OPENAI:
+            if provider == AIProvider.OPENAI:
                 image_data = response_data["data"][0]
                 return ImageOutput(
                     image_url=image_data["url"],
                     generation_id=f"dalle_{response_data.get('created', 'unknown')}",
                     seed=0,  # DALL-E doesn't use seeds
-                    revised_prompt=image_data.get("revised_prompt", original_prompt)
+                    revised_prompt=image_data.get("revised_prompt", original_prompt),
+                    final_enhanced_prompt=original_prompt  # MISSION 2: Include final enhanced prompt
                 )
             
-            elif provider in [AIProvider.OPENROUTER, AIProvider.SUMOPOD]:
-                # Try common response patterns
+            elif provider == AIProvider.GEMINI:
+                # Since Gemini redirects to OpenAI, use OpenAI response format
+                image_data = response_data["data"][0]
+                return ImageOutput(
+                    image_url=image_data["url"],
+                    generation_id=f"gemini_via_dalle_{response_data.get('created', 'unknown')}",
+                    seed=0,  # DALL-E doesn't use seeds
+                    revised_prompt=image_data.get("revised_prompt", original_prompt),
+                    final_enhanced_prompt=original_prompt  # MISSION 2: Include final enhanced prompt
+                )
+            
+            elif provider == AIProvider.SUMOPOD:
+                # Sumopod response format
                 if "data" in response_data:
                     image_data = response_data["data"][0]
                     image_url = image_data.get("url") or f"data:image/png;base64,{image_data.get('base64', '')}"
@@ -372,12 +512,25 @@ class UnifiedAIService:
                 
                 return ImageOutput(
                     image_url=image_url,
-                    generation_id=f"{provider.value}_{response_data.get('id', 'unknown')}",
+                    generation_id=f"sumopod_{response_data.get('id', 'unknown')}",
                     seed=response_data.get('seed', 0),
-                    revised_prompt=original_prompt
+                    revised_prompt=original_prompt,
+                    final_enhanced_prompt=original_prompt  # MISSION 2: Include final enhanced prompt
                 )
             
-            else:  # GENERIC
+            elif provider == AIProvider.MIDJOURNEY:
+                # Midjourney response format
+                image_url = response_data.get("image_url") or response_data.get("url", "")
+                
+                return ImageOutput(
+                    image_url=image_url,
+                    generation_id=f"midjourney_{response_data.get('id', 'unknown')}",
+                    seed=response_data.get('seed', 0),
+                    revised_prompt=original_prompt,
+                    final_enhanced_prompt=original_prompt  # MISSION 2: Include final enhanced prompt
+                )
+            
+            else:  # Default fallback
                 image_url = (response_data.get("image_url") or 
                            response_data.get("url") or 
                            f"data:image/png;base64,{response_data.get('image', '')}")
@@ -386,7 +539,8 @@ class UnifiedAIService:
                     image_url=image_url,
                     generation_id=f"gen_{response_data.get('id', 'unknown')}",
                     seed=response_data.get('seed', 0),
-                    revised_prompt=original_prompt
+                    revised_prompt=original_prompt,
+                    final_enhanced_prompt=original_prompt  # MISSION 2: Include final enhanced prompt
                 )
         
         except (KeyError, IndexError, TypeError) as e:
@@ -395,11 +549,16 @@ class UnifiedAIService:
     
     async def enhance_image(self, original_prompt: str, instruction: str, 
                           user_api_key: str, seed: int = 0) -> ImageOutput:
-        """Enhanced image generation with modified prompt."""
-        enhanced_prompt = f"{original_prompt}\n\n---\n**ENHANCEMENT:** {instruction}"
-        logger.info(f"✨ Enhancing with: '{instruction}'")
+        """Enhanced image generation using intelligent prompt enhancement."""
+        from app.services.image_generator import ImageGenerationService
         
-        return await self.generate_image(
-            brief_prompt=enhanced_prompt,
-            user_api_key=user_api_key
+        logger.info(f"✨ Using intelligent enhancement for: '{instruction}'")
+        
+        # Use the enhanced image generator service for better enhancement
+        enhanced_service = ImageGenerationService()
+        return await enhanced_service.enhance_image(
+            original_prompt=original_prompt,
+            instruction=instruction,
+            user_api_key=user_api_key,
+            seed=seed
         )

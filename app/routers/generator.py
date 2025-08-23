@@ -4,12 +4,14 @@ Defines the REST API endpoints for brief generation functionality.
 """
 
 from fastapi import APIRouter, HTTPException
+from fastapi.responses import StreamingResponse  # MISSION 2: Added for download endpoint
 from loguru import logger
+import io  # MISSION 2: Added for download endpoint
 # Models to import (add the new ones)
 from app.schemas.models import (
     InitialUserRequest, WizardInput, BriefOutput, 
     ImageGenerationRequest, ImageEnhancementRequest, ImageOutput,
-    TextGenerationRequest, TextOutput
+    TextGenerationRequest, TextOutput, DownloadBriefRequest  # MISSION 2: Added DownloadBriefRequest
 )
 from app.services.brief_orchestrator import BriefOrchestratorService
 # Import the new service
@@ -176,7 +178,7 @@ async def health_check():
 async def generate_text_advanced(request: TextGenerationRequest) -> TextOutput:
     """
     Advanced text generation with full provider control.
-    Supports all the provider endpoints shown: Sumopod, OpenRouter, OpenAI, Gemini.
+    Supports all the provider endpoints: Sumopod, OpenAI, Gemini, Midjourney.
     """
     logger.info(f"🤖 Advanced text generation with provider: {request.provider}")
     
@@ -266,7 +268,7 @@ async def generate_image(request: ImageGenerationRequest) -> ImageOutput:
     Takes a professionally crafted brief prompt and generates a photorealistic image.
     This is the final step of the PhotoeAI pipeline.
     Requires the user to provide their own API key for the image generation service.
-    Supports multiple providers: Stability AI, OpenAI DALL-E, OpenRouter, Sumopod, Midjourney.
+    Supports multiple providers: OpenAI DALL-E, Gemini, Sumopod, Midjourney.
     """
     try:
         if not request.brief_prompt or not request.brief_prompt.strip():
@@ -292,7 +294,7 @@ async def enhance_image(request: ImageEnhancementRequest) -> ImageOutput:
     """
     Enhances or modifies a previously generated image based on user feedback.
     Requires the user to provide their own API key for the image generation service.
-    Supports multiple providers: Stability AI, OpenAI DALL-E, OpenRouter, Sumopod, Midjourney.
+    Supports multiple providers: OpenAI DALL-E, Gemini, Sumopod, Midjourney.
     """
     try:
         if not request.enhancement_instruction or not request.enhancement_instruction.strip():
@@ -312,5 +314,53 @@ async def enhance_image(request: ImageEnhancementRequest) -> ImageOutput:
     except Exception as e:
         logger.error(f"Error in /enhance-image endpoint: {e}")
         raise HTTPException(status_code=503, detail=f"Image enhancement service is unavailable: {str(e)}")
+
+
+# MISSION 2: New endpoint for downloading photography brief as text file
+@router.post("/download-brief", tags=["Export"])
+async def download_brief(request: DownloadBriefRequest):
+    """
+    Download the final enhanced prompt as a text file.
+    
+    This endpoint allows users and developers to download the exact, final text prompt
+    that was used to generate an image for inspection and auditing purposes.
+    
+    Args:
+        request: DownloadBriefRequest containing the prompt text to download
+        
+    Returns:
+        StreamingResponse: Text file download with photography_brief.txt filename
+        
+    Raises:
+        HTTPException: If the request is invalid
+    """
+    try:
+        if not request.prompt_text or not request.prompt_text.strip():
+            raise HTTPException(
+                status_code=400, 
+                detail="Prompt text cannot be empty"
+            )
+        
+        # Convert the prompt string to a byte stream
+        stream = io.StringIO(request.prompt_text)
+        response = StreamingResponse(
+            iter([stream.read()]), 
+            media_type="text/plain",
+            headers={"Content-Disposition": "attachment; filename=photography_brief.txt"}
+        )
+        
+        logger.info("📥 Photography brief download requested")
+        logger.debug(f"Download content length: {len(request.prompt_text)} characters")
+        
+        return response
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"💥 Download brief failed: {e}")
+        raise HTTPException(
+            status_code=500, 
+            detail=f"Failed to generate download: {str(e)}"
+        )
 
 # --- END NEW ENDPOINTS ---
