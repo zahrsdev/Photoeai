@@ -4,14 +4,24 @@ Defines the REST API endpoints for brief generation functionality.
 """
 
 from fastapi import APIRouter, HTTPException
-from app.schemas.models import InitialUserRequest, WizardInput, BriefOutput
+from loguru import logger
+# Models to import (add the new ones)
+from app.schemas.models import (
+    InitialUserRequest, WizardInput, BriefOutput, 
+    ImageGenerationRequest, ImageEnhancementRequest, ImageOutput
+)
 from app.services.brief_orchestrator import BriefOrchestratorService
+# Import the new service
+from app.services.image_generator import ImageGenerationService
 
-# Create router instance
+# Create router instance and orchestrator (existing)
 router = APIRouter(prefix="/api/v1", tags=["generator"])
-
-# Initialize the orchestrator service
 orchestrator = BriefOrchestratorService()
+
+# --- NEW ---
+# Initialize the new image generation service
+image_service = ImageGenerationService()
+# --- END NEW ---
 
 
 @router.post("/extract-and-fill", response_model=WizardInput)
@@ -155,3 +165,46 @@ async def health_check():
         "service": "PhotoeAI Backend",
         "version": "1.0.0"
     }
+
+
+# --- NEW ENDPOINTS ---
+
+@router.post("/generate-image", response_model=ImageOutput, tags=["Image Generation"])
+async def generate_image(request: ImageGenerationRequest) -> ImageOutput:
+    """
+    Takes a professionally crafted brief prompt and generates a photorealistic image.
+    This is the final step of the PhotoeAI pipeline.
+    """
+    try:
+        if not request.brief_prompt or not request.brief_prompt.strip():
+            raise HTTPException(status_code=400, detail="Brief prompt cannot be empty.")
+        
+        result = await image_service.generate_image(
+            brief_prompt=request.brief_prompt,
+            negative_prompt=request.negative_prompt
+        )
+        return result
+    except Exception as e:
+        logger.error(f"Error in /generate-image endpoint: {e}")
+        raise HTTPException(status_code=503, detail=f"Image generation service is unavailable: {str(e)}")
+
+@router.post("/enhance-image", response_model=ImageOutput, tags=["Image Generation"])
+async def enhance_image(request: ImageEnhancementRequest) -> ImageOutput:
+    """
+    Enhances or modifies a previously generated image based on user feedback.
+    """
+    try:
+        if not request.enhancement_instruction or not request.enhancement_instruction.strip():
+            raise HTTPException(status_code=400, detail="Enhancement instruction cannot be empty.")
+
+        result = await image_service.enhance_image(
+            original_prompt=request.original_brief_prompt,
+            instruction=request.enhancement_instruction,
+            seed=request.seed
+        )
+        return result
+    except Exception as e:
+        logger.error(f"Error in /enhance-image endpoint: {e}")
+        raise HTTPException(status_code=503, detail=f"Image enhancement service is unavailable: {str(e)}")
+
+# --- END NEW ENDPOINTS ---

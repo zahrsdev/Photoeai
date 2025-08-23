@@ -60,6 +60,13 @@ class Settings(BaseSettings):
     openai_api_key: str = Field(..., description="OpenAI API key")
     openai_model: str = Field(default="gpt-4o", description="OpenAI model to use")
     sumopod_api_base_url: str = Field(..., description="Sumopod API base URL")
+
+    # --- NEW ---
+    # Image Generation Service Configuration
+    IMAGE_API_KEY: str = Field(..., description="API Key for the Text-to-Image Service")
+    IMAGE_API_BASE_URL: str = Field(..., description="Base URL for the Text-to-Image API endpoint")
+    IMAGE_GENERATION_MODEL: str = Field(default="stable-diffusion-xl-1024-v1-0", description="Default model for image generation")
+    # --- END NEW ---
     
     # Server Configuration
     host: str = Field(default="0.0.0.0", description="Server host address")

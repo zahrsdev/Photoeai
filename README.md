@@ -87,6 +87,11 @@ Once running, access the interactive API documentation at:
 - **POST** `/api/v1/preview-brief` - Preview initial brief (debugging)
 - **GET** `/api/v1/health` - Health check
 
+### Image Generation Endpoints:
+
+- **POST** `/api/v1/generate-image` - Generate an image from a final brief
+- **POST** `/api/v1/enhance-image` - Enhance a previously generated image
+
 ### Example Usage:
 
 ```python
