@@ -3022,3 +3022,327 @@ Create an ultra-r...'
 2025-08-24 18:12:59 | INFO     | app.services.multi_provider_image_generator:generate_image:378 | ✅ Received response from openai_gpt_image
 2025-08-24 18:12:59 | INFO     | app.services.multi_provider_image_generator:_save_base64_to_file:205 | 💾 Saved image: static\images\img_d523d236.png → http://0.0.0.0:8000/static/images/img_d523d236.png
 2025-08-24 18:12:59 | INFO     | app.routers.image_analysis:analyze_and_enhance:100 | ✅ Analyze-and-enhance completed successfully
+2025-08-24 18:18:12 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-24 18:20:18 | INFO     | app.routers.image_analysis:analyze_and_enhance:55 | 🚀 Starting analyze-and-enhance workflow
+2025-08-24 18:20:18 | INFO     | app.routers.image_analysis:analyze_and_enhance:67 | 👁️ Step 2: Analyzing image with Vision API
+2025-08-24 18:20:18 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:30 | 🖼️ Starting product image analysis for file: static/images/uploads/fe3b44be-1286-400f-a88e-1c7c41377353.jpeg
+2025-08-24 18:20:18 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:186 | 👁️ Starting image analysis with custom client base64 [ID: 4367]
+2025-08-24 18:20:23 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:237 | ✅ Custom client base64 analysis completed [ID: 4367]
+2025-08-24 18:20:23 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:51 | ✅ Image analysis completed successfully
+2025-08-24 18:20:23 | INFO     | app.routers.image_analysis:analyze_and_enhance:72 | 🌉 Step 3: Bridging analysis with user prompt
+2025-08-24 18:20:23 | INFO     | app.services.image_wizard_bridge:combine_image_and_prompt:35 | 🌉 Bridging image analysis with user prompt
+2025-08-24 18:20:23 | INFO     | app.services.image_wizard_bridge:combine_image_and_prompt:56 | ✅ Input validation passed
+2025-08-24 18:20:23 | INFO     | app.services.image_wizard_bridge:combine_image_and_prompt:92 | ✅ Image-wizard bridge completed
+2025-08-24 18:20:23 | INFO     | app.routers.image_analysis:analyze_and_enhance:77 | 📝 Step 4: Generating enhanced brief via existing orchestrator
+2025-08-24 18:20:23 | INFO     | app.services.brief_orchestrator:__init__:24 | BriefOrchestratorService initialized with self-healing architecture
+2025-08-24 18:20:23 | INFO     | app.services.brief_orchestrator:generate_final_brief:168 | 🎨 Starting final brief generation workflow [ID: 3019312948448]
+2025-08-24 18:20:23 | INFO     | app.services.brief_orchestrator:generate_final_brief:177 | 📝 Composing initial brief from wizard input [ID: 3019312948448]
+2025-08-24 18:20:23 | INFO     | app.services.prompt_composer:compose_initial_brief:76 | 📝 Starting initial brief composition [ID: 3019312948448]
+2025-08-24 18:20:23 | INFO     | app.services.prompt_composer:compose_initial_brief:126 | ✅ Initial brief composition completed [ID: 3019312948448]
+2025-08-24 18:20:23 | INFO     | app.services.brief_orchestrator:generate_final_brief:187 | ✅ Validating composed brief [ID: 3019312948448]
+2025-08-24 18:20:23 | INFO     | app.services.brief_orchestrator:generate_final_brief:199 | ✅ Brief validation passed [ID: 3019312948448]
+2025-08-24 18:20:23 | WARNING  | app.services.brief_orchestrator:generate_final_brief:203 | ⚠️ Validation warning: Consider using more natural color descriptions to ensure authenticity [ID: 3019312948448]
+2025-08-24 18:20:23 | INFO     | app.services.brief_orchestrator:generate_final_brief:206 | 🎯 MISSION CRITICAL: Sending structured data to Creative Director [ID: 3019312948448]
+2025-08-24 18:20:23 | INFO     | app.services.brief_orchestrator:generate_final_brief:219 | 🚀 CRITICAL REFACTOR: Calling refactored Creative Director with structured data [ID: 3019312948448]
+2025-08-24 18:20:23 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:334 | 🎭 ADVANCED: Creative Director enhanced composition [ID: 9644]
+2025-08-24 18:20:45 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:527 | ✅ ADVANCED: Elite enhancement completed [ID: 9644]
+2025-08-24 18:20:45 | INFO     | app.services.brief_orchestrator:generate_final_brief:225 | 📊 MISSION VALIDATION: Enhanced brief analysis [ID: 3019312948448]
+2025-08-24 18:20:45 | INFO     | app.services.brief_orchestrator:generate_final_brief:244 | 🎉 Brief generation completed successfully [ID: 3019312948448]
+2025-08-24 18:20:45 | INFO     | app.routers.image_analysis:analyze_and_enhance:86 | 🎨 Step 5: Generating enhanced image
+2025-08-24 18:20:45 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:45 | 🎯 Normalizing prompt: 9060 chars
+2025-08-24 18:20:45 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:72 | ⚡ Optimizing: 8614 → target ~3500 chars
+2025-08-24 18:20:45 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:173 | ✅ Normalization complete: 9060 → 3255 chars (35.9%)
+2025-08-24 18:20:45 | INFO     | app.services.multi_provider_image_generator:generate_image:370 | 🎨 Sending request to openai_gpt_image for: '# **Food & Beverage Photography Brief: Gourmet Ind...'
+2025-08-24 18:20:45 | INFO     | app.services.multi_provider_image_generator:generate_image:371 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-24 18:21:34 | INFO     | app.services.multi_provider_image_generator:generate_image:378 | ✅ Received response from openai_gpt_image
+2025-08-24 18:21:34 | INFO     | app.services.multi_provider_image_generator:_save_base64_to_file:205 | 💾 Saved image: static\images\img_a950e380.png → http://0.0.0.0:8000/static/images/img_a950e380.png
+2025-08-24 18:21:34 | INFO     | app.routers.image_analysis:analyze_and_enhance:100 | ✅ Analyze-and-enhance completed successfully
+2025-08-24 18:23:08 | INFO     | app.routers.image_analysis:analyze_and_enhance:55 | 🚀 Starting analyze-and-enhance workflow
+2025-08-24 18:23:08 | INFO     | app.routers.image_analysis:analyze_and_enhance:67 | 👁️ Step 2: Analyzing image with Vision API
+2025-08-24 18:23:08 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:30 | 🖼️ Starting product image analysis for file: static/images/uploads/3c0b1693-0b5e-4b72-b9dc-c5c7050e113a.jpeg
+2025-08-24 18:23:08 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:186 | 👁️ Starting image analysis with custom client base64 [ID: 4367]
+2025-08-24 18:23:13 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:237 | ✅ Custom client base64 analysis completed [ID: 4367]
+2025-08-24 18:23:13 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:51 | ✅ Image analysis completed successfully
+2025-08-24 18:23:13 | INFO     | app.routers.image_analysis:analyze_and_enhance:72 | 🌉 Step 3: Bridging analysis with user prompt
+2025-08-24 18:23:13 | INFO     | app.services.image_wizard_bridge:combine_image_and_prompt:35 | 🌉 Bridging image analysis with user prompt
+2025-08-24 18:23:13 | INFO     | app.services.image_wizard_bridge:combine_image_and_prompt:56 | ✅ Input validation passed
+2025-08-24 18:23:13 | INFO     | app.services.image_wizard_bridge:combine_image_and_prompt:92 | ✅ Image-wizard bridge completed
+2025-08-24 18:23:13 | INFO     | app.routers.image_analysis:analyze_and_enhance:77 | 📝 Step 4: Generating enhanced brief via existing orchestrator
+2025-08-24 18:23:13 | INFO     | app.services.brief_orchestrator:__init__:24 | BriefOrchestratorService initialized with self-healing architecture
+2025-08-24 18:23:13 | INFO     | app.services.brief_orchestrator:generate_final_brief:168 | 🎨 Starting final brief generation workflow [ID: 3019312997760]
+2025-08-24 18:23:13 | INFO     | app.services.brief_orchestrator:generate_final_brief:177 | 📝 Composing initial brief from wizard input [ID: 3019312997760]
+2025-08-24 18:23:13 | INFO     | app.services.prompt_composer:compose_initial_brief:76 | 📝 Starting initial brief composition [ID: 3019312997760]
+2025-08-24 18:23:13 | INFO     | app.services.prompt_composer:compose_initial_brief:126 | ✅ Initial brief composition completed [ID: 3019312997760]
+2025-08-24 18:23:13 | INFO     | app.services.brief_orchestrator:generate_final_brief:187 | ✅ Validating composed brief [ID: 3019312997760]
+2025-08-24 18:23:13 | INFO     | app.services.brief_orchestrator:generate_final_brief:199 | ✅ Brief validation passed [ID: 3019312997760]
+2025-08-24 18:23:13 | WARNING  | app.services.brief_orchestrator:generate_final_brief:203 | ⚠️ Validation warning: Consider using more natural color descriptions to ensure authenticity [ID: 3019312997760]
+2025-08-24 18:23:13 | INFO     | app.services.brief_orchestrator:generate_final_brief:206 | 🎯 MISSION CRITICAL: Sending structured data to Creative Director [ID: 3019312997760]
+2025-08-24 18:23:13 | INFO     | app.services.brief_orchestrator:generate_final_brief:219 | 🚀 CRITICAL REFACTOR: Calling refactored Creative Director with structured data [ID: 3019312997760]
+2025-08-24 18:23:13 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:334 | 🎭 ADVANCED: Creative Director enhanced composition [ID: 1096]
+2025-08-24 18:23:38 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:527 | ✅ ADVANCED: Elite enhancement completed [ID: 1096]
+2025-08-24 18:23:38 | INFO     | app.services.brief_orchestrator:generate_final_brief:225 | 📊 MISSION VALIDATION: Enhanced brief analysis [ID: 3019312997760]
+2025-08-24 18:23:38 | INFO     | app.services.brief_orchestrator:generate_final_brief:244 | 🎉 Brief generation completed successfully [ID: 3019312997760]
+2025-08-24 18:23:38 | INFO     | app.routers.image_analysis:analyze_and_enhance:86 | 🎨 Step 5: Generating enhanced image
+2025-08-24 18:23:38 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:45 | 🎯 Normalizing prompt: 8747 chars
+2025-08-24 18:23:38 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:72 | ⚡ Optimizing: 8038 → target ~3500 chars
+2025-08-24 18:23:38 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:173 | ✅ Normalization complete: 8747 → 3198 chars (36.6%)
+2025-08-24 18:23:38 | INFO     | app.services.multi_provider_image_generator:generate_image:370 | 🎨 Sending request to openai_gpt_image for: '# **Food & Beverage Photography Brief: Noodles wit...'
+2025-08-24 18:23:38 | INFO     | app.services.multi_provider_image_generator:generate_image:371 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-24 18:24:27 | INFO     | app.services.multi_provider_image_generator:generate_image:378 | ✅ Received response from openai_gpt_image
+2025-08-24 18:24:27 | INFO     | app.services.multi_provider_image_generator:_save_base64_to_file:205 | 💾 Saved image: static\images\img_ffbea229.png → http://0.0.0.0:8000/static/images/img_ffbea229.png
+2025-08-24 18:24:27 | INFO     | app.routers.image_analysis:analyze_and_enhance:100 | ✅ Analyze-and-enhance completed successfully
+2025-08-24 19:14:06 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-24 19:16:08 | INFO     | app.routers.image_analysis:analyze_and_enhance:55 | 🚀 Starting analyze-and-enhance workflow
+2025-08-24 19:16:08 | INFO     | app.routers.image_analysis:analyze_and_enhance:67 | 👁️ Step 2: Analyzing image with Vision API
+2025-08-24 19:16:08 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:30 | 🖼️ Starting product image analysis for file: static/images/uploads/6ed0641f-9913-4415-b194-4c6b8538056d.jpeg
+2025-08-24 19:16:08 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:186 | 👁️ Starting image analysis with custom client base64 [ID: 4367]
+2025-08-24 19:16:13 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:237 | ✅ Custom client base64 analysis completed [ID: 4367]
+2025-08-24 19:16:13 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:51 | ✅ Image analysis completed successfully
+2025-08-24 19:16:13 | INFO     | app.routers.image_analysis:analyze_and_enhance:72 | 🌉 Step 3: Bridging analysis with user prompt
+2025-08-24 19:16:13 | INFO     | app.services.image_wizard_bridge:combine_image_and_prompt:35 | 🌉 Bridging image analysis with user prompt
+2025-08-24 19:16:13 | INFO     | app.services.image_wizard_bridge:combine_image_and_prompt:56 | ✅ Input validation passed
+2025-08-24 19:16:13 | INFO     | app.services.image_wizard_bridge:combine_image_and_prompt:92 | ✅ Image-wizard bridge completed
+2025-08-24 19:16:13 | INFO     | app.routers.image_analysis:analyze_and_enhance:77 | 📝 Step 4: Generating enhanced brief via existing orchestrator
+2025-08-24 19:16:13 | INFO     | app.services.brief_orchestrator:__init__:24 | BriefOrchestratorService initialized with self-healing architecture
+2025-08-24 19:16:13 | INFO     | app.services.brief_orchestrator:generate_final_brief:168 | 🎨 Starting final brief generation workflow [ID: 3019313188528]
+2025-08-24 19:16:13 | INFO     | app.services.brief_orchestrator:generate_final_brief:177 | 📝 Composing initial brief from wizard input [ID: 3019313188528]
+2025-08-24 19:16:13 | INFO     | app.services.prompt_composer:compose_initial_brief:76 | 📝 Starting initial brief composition [ID: 3019313188528]
+2025-08-24 19:16:13 | INFO     | app.services.prompt_composer:compose_initial_brief:126 | ✅ Initial brief composition completed [ID: 3019313188528]
+2025-08-24 19:16:13 | INFO     | app.services.brief_orchestrator:generate_final_brief:187 | ✅ Validating composed brief [ID: 3019313188528]
+2025-08-24 19:16:13 | INFO     | app.services.brief_orchestrator:generate_final_brief:199 | ✅ Brief validation passed [ID: 3019313188528]
+2025-08-24 19:16:13 | WARNING  | app.services.brief_orchestrator:generate_final_brief:203 | ⚠️ Validation warning: Consider using more natural color descriptions to ensure authenticity [ID: 3019313188528]
+2025-08-24 19:16:13 | INFO     | app.services.brief_orchestrator:generate_final_brief:206 | 🎯 MISSION CRITICAL: Sending structured data to Creative Director [ID: 3019313188528]
+2025-08-24 19:16:13 | INFO     | app.services.brief_orchestrator:generate_final_brief:219 | 🚀 CRITICAL REFACTOR: Calling refactored Creative Director with structured data [ID: 3019313188528]
+2025-08-24 19:16:13 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:334 | 🎭 ADVANCED: Creative Director enhanced composition [ID: 8654]
+2025-08-24 19:16:36 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:527 | ✅ ADVANCED: Elite enhancement completed [ID: 8654]
+2025-08-24 19:16:36 | INFO     | app.services.brief_orchestrator:generate_final_brief:225 | 📊 MISSION VALIDATION: Enhanced brief analysis [ID: 3019313188528]
+2025-08-24 19:16:36 | INFO     | app.services.brief_orchestrator:generate_final_brief:244 | 🎉 Brief generation completed successfully [ID: 3019313188528]
+2025-08-24 19:16:36 | INFO     | app.routers.image_analysis:analyze_and_enhance:86 | 🎨 Step 5: Generating enhanced image
+2025-08-24 19:16:36 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:45 | 🎯 Normalizing prompt: 9597 chars
+2025-08-24 19:16:36 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:72 | ⚡ Optimizing: 8940 → target ~3500 chars
+2025-08-24 19:16:36 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:173 | ✅ Normalization complete: 9597 → 3181 chars (33.1%)
+2025-08-24 19:16:36 | INFO     | app.services.multi_provider_image_generator:generate_image:370 | 🎨 Sending request to openai_gpt_image for: '# **Accessories Photography Brief: Photo Frame wit...'
+2025-08-24 19:16:36 | INFO     | app.services.multi_provider_image_generator:generate_image:371 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-24 19:17:32 | INFO     | app.services.multi_provider_image_generator:generate_image:378 | ✅ Received response from openai_gpt_image
+2025-08-24 19:17:32 | INFO     | app.services.multi_provider_image_generator:_save_base64_to_file:205 | 💾 Saved image: static\images\img_913216a0.png → http://0.0.0.0:8000/static/images/img_913216a0.png
+2025-08-24 19:17:32 | INFO     | app.routers.image_analysis:analyze_and_enhance:100 | ✅ Analyze-and-enhance completed successfully
+2025-08-24 19:19:37 | INFO     | app.routers.image_analysis:analyze_and_enhance:55 | 🚀 Starting analyze-and-enhance workflow
+2025-08-24 19:19:37 | INFO     | app.routers.image_analysis:analyze_and_enhance:67 | 👁️ Step 2: Analyzing image with Vision API
+2025-08-24 19:19:37 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:30 | 🖼️ Starting product image analysis for file: static/images/uploads/6c3687f5-fb4a-43f4-ac5e-1d5ee0e23a95.jpeg
+2025-08-24 19:19:38 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:186 | 👁️ Starting image analysis with custom client base64 [ID: 4367]
+2025-08-24 19:19:41 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:237 | ✅ Custom client base64 analysis completed [ID: 4367]
+2025-08-24 19:19:41 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:51 | ✅ Image analysis completed successfully
+2025-08-24 19:19:41 | INFO     | app.routers.image_analysis:analyze_and_enhance:72 | 🌉 Step 3: Bridging analysis with user prompt
+2025-08-24 19:19:41 | INFO     | app.services.image_wizard_bridge:combine_image_and_prompt:35 | 🌉 Bridging image analysis with user prompt
+2025-08-24 19:19:41 | INFO     | app.services.image_wizard_bridge:combine_image_and_prompt:56 | ✅ Input validation passed
+2025-08-24 19:19:41 | INFO     | app.services.image_wizard_bridge:combine_image_and_prompt:92 | ✅ Image-wizard bridge completed
+2025-08-24 19:19:41 | INFO     | app.routers.image_analysis:analyze_and_enhance:77 | 📝 Step 4: Generating enhanced brief via existing orchestrator
+2025-08-24 19:19:42 | INFO     | app.services.brief_orchestrator:__init__:24 | BriefOrchestratorService initialized with self-healing architecture
+2025-08-24 19:19:42 | INFO     | app.services.brief_orchestrator:generate_final_brief:168 | 🎨 Starting final brief generation workflow [ID: 3019313188128]
+2025-08-24 19:19:42 | INFO     | app.services.brief_orchestrator:generate_final_brief:177 | 📝 Composing initial brief from wizard input [ID: 3019313188128]
+2025-08-24 19:19:42 | INFO     | app.services.prompt_composer:compose_initial_brief:76 | 📝 Starting initial brief composition [ID: 3019313188128]
+2025-08-24 19:19:42 | INFO     | app.services.prompt_composer:compose_initial_brief:126 | ✅ Initial brief composition completed [ID: 3019313188128]
+2025-08-24 19:19:42 | INFO     | app.services.brief_orchestrator:generate_final_brief:187 | ✅ Validating composed brief [ID: 3019313188128]
+2025-08-24 19:19:42 | INFO     | app.services.brief_orchestrator:generate_final_brief:199 | ✅ Brief validation passed [ID: 3019313188128]
+2025-08-24 19:19:42 | WARNING  | app.services.brief_orchestrator:generate_final_brief:203 | ⚠️ Validation warning: Consider using more natural color descriptions to ensure authenticity [ID: 3019313188128]
+2025-08-24 19:19:42 | INFO     | app.services.brief_orchestrator:generate_final_brief:206 | 🎯 MISSION CRITICAL: Sending structured data to Creative Director [ID: 3019313188128]
+2025-08-24 19:19:42 | INFO     | app.services.brief_orchestrator:generate_final_brief:219 | 🚀 CRITICAL REFACTOR: Calling refactored Creative Director with structured data [ID: 3019313188128]
+2025-08-24 19:19:42 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:334 | 🎭 ADVANCED: Creative Director enhanced composition [ID: 5338]
+2025-08-24 19:20:01 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:527 | ✅ ADVANCED: Elite enhancement completed [ID: 5338]
+2025-08-24 19:20:01 | INFO     | app.services.brief_orchestrator:generate_final_brief:225 | 📊 MISSION VALIDATION: Enhanced brief analysis [ID: 3019313188128]
+2025-08-24 19:20:01 | INFO     | app.services.brief_orchestrator:generate_final_brief:244 | 🎉 Brief generation completed successfully [ID: 3019313188128]
+2025-08-24 19:20:01 | INFO     | app.routers.image_analysis:analyze_and_enhance:86 | 🎨 Step 5: Generating enhanced image
+2025-08-24 19:20:01 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:45 | 🎯 Normalizing prompt: 8678 chars
+2025-08-24 19:20:01 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:72 | ⚡ Optimizing: 8232 → target ~3500 chars
+2025-08-24 19:20:01 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:173 | ✅ Normalization complete: 8678 → 3192 chars (36.8%)
+2025-08-24 19:20:01 | INFO     | app.services.multi_provider_image_generator:generate_image:370 | 🎨 Sending request to openai_gpt_image for: '# **Accessories Photography Brief: Photo Frame wit...'
+2025-08-24 19:20:01 | INFO     | app.services.multi_provider_image_generator:generate_image:371 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-24 19:20:46 | INFO     | app.services.multi_provider_image_generator:generate_image:378 | ✅ Received response from openai_gpt_image
+2025-08-24 19:20:46 | INFO     | app.services.multi_provider_image_generator:_save_base64_to_file:205 | 💾 Saved image: static\images\img_e32447ff.png → http://0.0.0.0:8000/static/images/img_e32447ff.png
+2025-08-24 19:20:46 | INFO     | app.routers.image_analysis:analyze_and_enhance:100 | ✅ Analyze-and-enhance completed successfully
+2025-08-24 19:22:00 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-24 19:23:55 | INFO     | app.routers.image_analysis:analyze_and_enhance:55 | 🚀 Starting analyze-and-enhance workflow
+2025-08-24 19:23:55 | INFO     | app.routers.image_analysis:analyze_and_enhance:67 | 👁️ Step 2: Analyzing image with Vision API
+2025-08-24 19:23:55 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:30 | 🖼️ Starting product image analysis for file: static/images/uploads/fa3478c8-230d-4d6e-8023-f8232c2600e1.jpeg
+2025-08-24 19:23:55 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:186 | 👁️ Starting image analysis with custom client base64 [ID: 1163]
+2025-08-24 19:24:00 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:237 | ✅ Custom client base64 analysis completed [ID: 1163]
+2025-08-24 19:24:00 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:51 | ✅ Image analysis completed successfully
+2025-08-24 19:24:00 | INFO     | app.routers.image_analysis:analyze_and_enhance:72 | 🌉 Step 3: Bridging analysis with user prompt
+2025-08-24 19:24:00 | INFO     | app.services.image_wizard_bridge:combine_image_and_prompt:35 | 🌉 Bridging image analysis with user prompt
+2025-08-24 19:24:00 | INFO     | app.services.image_wizard_bridge:combine_image_and_prompt:56 | ✅ Input validation passed
+2025-08-24 19:24:00 | INFO     | app.services.image_wizard_bridge:combine_image_and_prompt:92 | ✅ Image-wizard bridge completed
+2025-08-24 19:24:00 | INFO     | app.routers.image_analysis:analyze_and_enhance:77 | 📝 Step 4: Generating enhanced brief via existing orchestrator
+2025-08-24 19:24:00 | INFO     | app.services.brief_orchestrator:__init__:24 | BriefOrchestratorService initialized with self-healing architecture
+2025-08-24 19:24:00 | INFO     | app.services.brief_orchestrator:generate_final_brief:168 | 🎨 Starting final brief generation workflow [ID: 2516354985856]
+2025-08-24 19:24:00 | INFO     | app.services.brief_orchestrator:generate_final_brief:177 | 📝 Composing initial brief from wizard input [ID: 2516354985856]
+2025-08-24 19:24:00 | INFO     | app.services.prompt_composer:compose_initial_brief:76 | 📝 Starting initial brief composition [ID: 2516354985856]
+2025-08-24 19:24:00 | INFO     | app.services.prompt_composer:compose_initial_brief:126 | ✅ Initial brief composition completed [ID: 2516354985856]
+2025-08-24 19:24:00 | INFO     | app.services.brief_orchestrator:generate_final_brief:187 | ✅ Validating composed brief [ID: 2516354985856]
+2025-08-24 19:24:00 | INFO     | app.services.brief_orchestrator:generate_final_brief:199 | ✅ Brief validation passed [ID: 2516354985856]
+2025-08-24 19:24:00 | WARNING  | app.services.brief_orchestrator:generate_final_brief:203 | ⚠️ Validation warning: Consider using more natural color descriptions to ensure authenticity [ID: 2516354985856]
+2025-08-24 19:24:00 | INFO     | app.services.brief_orchestrator:generate_final_brief:206 | 🎯 MISSION CRITICAL: Sending structured data to Creative Director [ID: 2516354985856]
+2025-08-24 19:24:00 | INFO     | app.services.brief_orchestrator:generate_final_brief:219 | 🚀 CRITICAL REFACTOR: Calling refactored Creative Director with structured data [ID: 2516354985856]
+2025-08-24 19:24:00 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:334 | 🎭 ADVANCED: Creative Director enhanced composition [ID: 9715]
+2025-08-24 19:24:28 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:527 | ✅ ADVANCED: Elite enhancement completed [ID: 9715]
+2025-08-24 19:24:28 | INFO     | app.services.brief_orchestrator:generate_final_brief:225 | 📊 MISSION VALIDATION: Enhanced brief analysis [ID: 2516354985856]
+2025-08-24 19:24:28 | INFO     | app.services.brief_orchestrator:generate_final_brief:244 | 🎉 Brief generation completed successfully [ID: 2516354985856]
+2025-08-24 19:24:28 | INFO     | app.routers.image_analysis:analyze_and_enhance:86 | 🎨 Step 5: Generating enhanced image
+2025-08-24 19:24:28 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:45 | 🎯 Normalizing prompt: 9866 chars
+2025-08-24 19:24:28 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:72 | ⚡ Optimizing: 9396 → target ~3500 chars
+2025-08-24 19:24:28 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:173 | ✅ Normalization complete: 9866 → 3291 chars (33.4%)
+2025-08-24 19:24:28 | INFO     | app.services.multi_provider_image_generator:generate_image:370 | 🎨 Sending request to openai_gpt_image for: '# **Accessories Photography Brief: Photo Frame wit...'
+2025-08-24 19:24:28 | INFO     | app.services.multi_provider_image_generator:generate_image:371 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-24 19:25:09 | INFO     | app.services.multi_provider_image_generator:generate_image:378 | ✅ Received response from openai_gpt_image
+2025-08-24 19:25:09 | INFO     | app.services.multi_provider_image_generator:_save_base64_to_file:205 | 💾 Saved image: static\images\img_44c2eb96.png → http://0.0.0.0:8000/static/images/img_44c2eb96.png
+2025-08-24 19:25:09 | INFO     | app.routers.image_analysis:analyze_and_enhance:100 | ✅ Analyze-and-enhance completed successfully
+2025-08-24 19:26:24 | INFO     | app.routers.image_analysis:analyze_and_enhance:55 | 🚀 Starting analyze-and-enhance workflow
+2025-08-24 19:26:24 | INFO     | app.routers.image_analysis:analyze_and_enhance:67 | 👁️ Step 2: Analyzing image with Vision API
+2025-08-24 19:26:25 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:30 | 🖼️ Starting product image analysis for file: static/images/uploads/d1a4206a-775b-4f36-9642-a41d908a183d.png
+2025-08-24 19:26:26 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:186 | 👁️ Starting image analysis with custom client base64 [ID: 6042]
+2025-08-24 19:26:31 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:237 | ✅ Custom client base64 analysis completed [ID: 6042]
+2025-08-24 19:26:31 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:51 | ✅ Image analysis completed successfully
+2025-08-24 19:26:31 | INFO     | app.routers.image_analysis:analyze_and_enhance:72 | 🌉 Step 3: Bridging analysis with user prompt
+2025-08-24 19:26:31 | INFO     | app.services.image_wizard_bridge:combine_image_and_prompt:35 | 🌉 Bridging image analysis with user prompt
+2025-08-24 19:26:31 | INFO     | app.services.image_wizard_bridge:combine_image_and_prompt:56 | ✅ Input validation passed
+2025-08-24 19:26:31 | INFO     | app.services.image_wizard_bridge:combine_image_and_prompt:92 | ✅ Image-wizard bridge completed
+2025-08-24 19:26:31 | INFO     | app.routers.image_analysis:analyze_and_enhance:77 | 📝 Step 4: Generating enhanced brief via existing orchestrator
+2025-08-24 19:26:33 | INFO     | app.services.brief_orchestrator:__init__:24 | BriefOrchestratorService initialized with self-healing architecture
+2025-08-24 19:26:33 | INFO     | app.services.brief_orchestrator:generate_final_brief:168 | 🎨 Starting final brief generation workflow [ID: 2516355034448]
+2025-08-24 19:26:33 | INFO     | app.services.brief_orchestrator:generate_final_brief:177 | 📝 Composing initial brief from wizard input [ID: 2516355034448]
+2025-08-24 19:26:33 | INFO     | app.services.prompt_composer:compose_initial_brief:76 | 📝 Starting initial brief composition [ID: 2516355034448]
+2025-08-24 19:26:33 | INFO     | app.services.prompt_composer:compose_initial_brief:126 | ✅ Initial brief composition completed [ID: 2516355034448]
+2025-08-24 19:26:33 | INFO     | app.services.brief_orchestrator:generate_final_brief:187 | ✅ Validating composed brief [ID: 2516355034448]
+2025-08-24 19:26:33 | INFO     | app.services.brief_orchestrator:generate_final_brief:199 | ✅ Brief validation passed [ID: 2516355034448]
+2025-08-24 19:26:33 | WARNING  | app.services.brief_orchestrator:generate_final_brief:203 | ⚠️ Validation warning: Consider using more natural color descriptions to ensure authenticity [ID: 2516355034448]
+2025-08-24 19:26:33 | INFO     | app.services.brief_orchestrator:generate_final_brief:206 | 🎯 MISSION CRITICAL: Sending structured data to Creative Director [ID: 2516355034448]
+2025-08-24 19:26:33 | INFO     | app.services.brief_orchestrator:generate_final_brief:219 | 🚀 CRITICAL REFACTOR: Calling refactored Creative Director with structured data [ID: 2516355034448]
+2025-08-24 19:26:33 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:334 | 🎭 ADVANCED: Creative Director enhanced composition [ID: 9338]
+2025-08-24 19:26:57 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:527 | ✅ ADVANCED: Elite enhancement completed [ID: 9338]
+2025-08-24 19:26:57 | INFO     | app.services.brief_orchestrator:generate_final_brief:225 | 📊 MISSION VALIDATION: Enhanced brief analysis [ID: 2516355034448]
+2025-08-24 19:26:57 | INFO     | app.services.brief_orchestrator:generate_final_brief:244 | 🎉 Brief generation completed successfully [ID: 2516355034448]
+2025-08-24 19:26:57 | INFO     | app.routers.image_analysis:analyze_and_enhance:86 | 🎨 Step 5: Generating enhanced image
+2025-08-24 19:26:57 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:45 | 🎯 Normalizing prompt: 9842 chars
+2025-08-24 19:26:57 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:72 | ⚡ Optimizing: 9077 → target ~3500 chars
+2025-08-24 19:26:57 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:173 | ✅ Normalization complete: 9842 → 3177 chars (32.3%)
+2025-08-24 19:26:57 | INFO     | app.services.multi_provider_image_generator:generate_image:370 | 🎨 Sending request to openai_gpt_image for: '# **Beauty & Wellness Photography Brief: Dove Radi...'
+2025-08-24 19:26:57 | INFO     | app.services.multi_provider_image_generator:generate_image:371 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-24 19:27:42 | INFO     | app.services.multi_provider_image_generator:generate_image:378 | ✅ Received response from openai_gpt_image
+2025-08-24 19:27:42 | INFO     | app.services.multi_provider_image_generator:_save_base64_to_file:205 | 💾 Saved image: static\images\img_09b03cd2.png → http://0.0.0.0:8000/static/images/img_09b03cd2.png
+2025-08-24 19:27:42 | INFO     | app.routers.image_analysis:analyze_and_enhance:100 | ✅ Analyze-and-enhance completed successfully
+2025-08-24 19:31:01 | INFO     | app.routers.image_analysis:analyze_and_enhance:55 | 🚀 Starting analyze-and-enhance workflow
+2025-08-24 19:31:01 | INFO     | app.routers.image_analysis:analyze_and_enhance:67 | 👁️ Step 2: Analyzing image with Vision API
+2025-08-24 19:31:01 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:30 | 🖼️ Starting product image analysis for file: static/images/uploads/b2c7f44f-55b9-4474-8ff4-455cde7ebec5.png
+2025-08-24 19:31:01 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:186 | 👁️ Starting image analysis with custom client base64 [ID: 6042]
+2025-08-24 19:31:06 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:237 | ✅ Custom client base64 analysis completed [ID: 6042]
+2025-08-24 19:31:06 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:51 | ✅ Image analysis completed successfully
+2025-08-24 19:31:06 | INFO     | app.routers.image_analysis:analyze_and_enhance:72 | 🌉 Step 3: Bridging analysis with user prompt
+2025-08-24 19:31:06 | INFO     | app.services.image_wizard_bridge:combine_image_and_prompt:35 | 🌉 Bridging image analysis with user prompt
+2025-08-24 19:31:06 | INFO     | app.services.image_wizard_bridge:combine_image_and_prompt:56 | ✅ Input validation passed
+2025-08-24 19:31:06 | INFO     | app.services.image_wizard_bridge:combine_image_and_prompt:92 | ✅ Image-wizard bridge completed
+2025-08-24 19:31:06 | INFO     | app.routers.image_analysis:analyze_and_enhance:77 | 📝 Step 4: Generating enhanced brief via existing orchestrator
+2025-08-24 19:31:06 | INFO     | app.services.brief_orchestrator:__init__:24 | BriefOrchestratorService initialized with self-healing architecture
+2025-08-24 19:31:06 | INFO     | app.services.brief_orchestrator:generate_final_brief:168 | 🎨 Starting final brief generation workflow [ID: 2516355190288]
+2025-08-24 19:31:06 | INFO     | app.services.brief_orchestrator:generate_final_brief:177 | 📝 Composing initial brief from wizard input [ID: 2516355190288]
+2025-08-24 19:31:06 | INFO     | app.services.prompt_composer:compose_initial_brief:76 | 📝 Starting initial brief composition [ID: 2516355190288]
+2025-08-24 19:31:06 | INFO     | app.services.prompt_composer:compose_initial_brief:126 | ✅ Initial brief composition completed [ID: 2516355190288]
+2025-08-24 19:31:06 | INFO     | app.services.brief_orchestrator:generate_final_brief:187 | ✅ Validating composed brief [ID: 2516355190288]
+2025-08-24 19:31:06 | INFO     | app.services.brief_orchestrator:generate_final_brief:199 | ✅ Brief validation passed [ID: 2516355190288]
+2025-08-24 19:31:06 | WARNING  | app.services.brief_orchestrator:generate_final_brief:203 | ⚠️ Validation warning: Consider using more natural color descriptions to ensure authenticity [ID: 2516355190288]
+2025-08-24 19:31:06 | INFO     | app.services.brief_orchestrator:generate_final_brief:206 | 🎯 MISSION CRITICAL: Sending structured data to Creative Director [ID: 2516355190288]
+2025-08-24 19:31:06 | INFO     | app.services.brief_orchestrator:generate_final_brief:219 | 🚀 CRITICAL REFACTOR: Calling refactored Creative Director with structured data [ID: 2516355190288]
+2025-08-24 19:31:06 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:334 | 🎭 ADVANCED: Creative Director enhanced composition [ID: 9507]
+2025-08-24 19:31:28 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:527 | ✅ ADVANCED: Elite enhancement completed [ID: 9507]
+2025-08-24 19:31:28 | INFO     | app.services.brief_orchestrator:generate_final_brief:225 | 📊 MISSION VALIDATION: Enhanced brief analysis [ID: 2516355190288]
+2025-08-24 19:31:28 | INFO     | app.services.brief_orchestrator:generate_final_brief:244 | 🎉 Brief generation completed successfully [ID: 2516355190288]
+2025-08-24 19:31:28 | INFO     | app.routers.image_analysis:analyze_and_enhance:86 | 🎨 Step 5: Generating enhanced image
+2025-08-24 19:31:28 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:45 | 🎯 Normalizing prompt: 8752 chars
+2025-08-24 19:31:28 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:72 | ⚡ Optimizing: 8067 → target ~3500 chars
+2025-08-24 19:31:28 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:173 | ✅ Normalization complete: 8752 → 3246 chars (37.1%)
+2025-08-24 19:31:28 | INFO     | app.services.multi_provider_image_generator:generate_image:370 | 🎨 Sending request to openai_gpt_image for: '# **Beauty & Wellness Photography Brief: Dove Radi...'
+2025-08-24 19:31:28 | INFO     | app.services.multi_provider_image_generator:generate_image:371 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-24 19:32:16 | INFO     | app.services.multi_provider_image_generator:generate_image:378 | ✅ Received response from openai_gpt_image
+2025-08-24 19:32:16 | INFO     | app.services.multi_provider_image_generator:_save_base64_to_file:205 | 💾 Saved image: static\images\img_ec6d7961.png → http://0.0.0.0:8000/static/images/img_ec6d7961.png
+2025-08-24 19:32:16 | INFO     | app.routers.image_analysis:analyze_and_enhance:100 | ✅ Analyze-and-enhance completed successfully
+2025-08-24 19:50:01 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-24 19:51:31 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-24 19:51:41 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-24 19:51:49 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-24 19:52:31 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-24 19:52:39 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-24 19:52:50 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-24 19:53:06 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-24 19:53:56 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-24 19:54:05 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-24 19:54:13 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-24 19:54:25 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-24 19:54:26 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-24 19:58:21 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-24 19:59:03 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-24 20:00:04 | INFO     | app.routers.image_analysis:analyze_and_enhance:55 | 🚀 Starting analyze-and-enhance workflow
+2025-08-24 20:00:04 | INFO     | app.routers.image_analysis:analyze_and_enhance:67 | 👁️ Step 2: Analyzing image with Vision API
+2025-08-24 20:00:05 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:30 | 🖼️ Starting product image analysis for file: static/images/uploads/69ffd045-9cf0-4492-bb89-e6c478a4509d.jpeg
+2025-08-24 20:00:06 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:186 | 👁️ Starting image analysis with custom client base64 [ID: 1716]
+2025-08-24 20:00:11 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:237 | ✅ Custom client base64 analysis completed [ID: 1716]
+2025-08-24 20:00:11 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:51 | ✅ Image analysis completed successfully
+2025-08-24 20:00:11 | INFO     | app.routers.image_analysis:analyze_and_enhance:72 | 🌉 Step 3: Bridging analysis with user prompt
+2025-08-24 20:00:11 | INFO     | app.services.image_wizard_bridge:combine_image_and_prompt:35 | 🌉 Bridging image analysis with user prompt
+2025-08-24 20:00:11 | INFO     | app.services.image_wizard_bridge:combine_image_and_prompt:56 | ✅ Input validation passed
+2025-08-24 20:00:11 | INFO     | app.services.image_wizard_bridge:combine_image_and_prompt:92 | ✅ Image-wizard bridge completed
+2025-08-24 20:00:11 | INFO     | app.routers.image_analysis:analyze_and_enhance:77 | 📝 Step 4: Generating enhanced brief via existing orchestrator
+2025-08-24 20:00:12 | INFO     | app.services.brief_orchestrator:__init__:24 | BriefOrchestratorService initialized with self-healing architecture
+2025-08-24 20:00:12 | INFO     | app.services.brief_orchestrator:generate_final_brief:168 | 🎨 Starting final brief generation workflow [ID: 2540568373328]
+2025-08-24 20:00:12 | INFO     | app.services.brief_orchestrator:generate_final_brief:177 | 📝 Composing initial brief from wizard input [ID: 2540568373328]
+2025-08-24 20:00:12 | INFO     | app.services.prompt_composer:compose_initial_brief:76 | 📝 Starting initial brief composition [ID: 2540568373328]
+2025-08-24 20:00:12 | INFO     | app.services.prompt_composer:compose_initial_brief:126 | ✅ Initial brief composition completed [ID: 2540568373328]
+2025-08-24 20:00:12 | INFO     | app.services.brief_orchestrator:generate_final_brief:187 | ✅ Validating composed brief [ID: 2540568373328]
+2025-08-24 20:00:12 | INFO     | app.services.brief_orchestrator:generate_final_brief:199 | ✅ Brief validation passed [ID: 2540568373328]
+2025-08-24 20:00:12 | WARNING  | app.services.brief_orchestrator:generate_final_brief:203 | ⚠️ Validation warning: Consider using more natural color descriptions to ensure authenticity [ID: 2540568373328]
+2025-08-24 20:00:12 | INFO     | app.services.brief_orchestrator:generate_final_brief:206 | 🎯 MISSION CRITICAL: Sending structured data to Creative Director [ID: 2540568373328]
+2025-08-24 20:00:12 | INFO     | app.services.brief_orchestrator:generate_final_brief:219 | 🚀 CRITICAL REFACTOR: Calling refactored Creative Director with structured data [ID: 2540568373328]
+2025-08-24 20:00:12 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:334 | 🎭 ADVANCED: Creative Director enhanced composition [ID: 4459]
+2025-08-24 20:00:46 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:527 | ✅ ADVANCED: Elite enhancement completed [ID: 4459]
+2025-08-24 20:00:46 | INFO     | app.services.brief_orchestrator:generate_final_brief:225 | 📊 MISSION VALIDATION: Enhanced brief analysis [ID: 2540568373328]
+2025-08-24 20:00:46 | INFO     | app.services.brief_orchestrator:generate_final_brief:244 | 🎉 Brief generation completed successfully [ID: 2540568373328]
+2025-08-24 20:00:46 | INFO     | app.routers.image_analysis:analyze_and_enhance:86 | 🎨 Step 5: Generating enhanced image
+2025-08-24 20:00:46 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:45 | 🎯 Normalizing prompt: 8546 chars
+2025-08-24 20:00:46 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:72 | ⚡ Optimizing: 7818 → target ~3500 chars
+2025-08-24 20:00:46 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:173 | ✅ Normalization complete: 8546 → 3251 chars (38.0%)
+2025-08-24 20:00:46 | INFO     | app.services.multi_provider_image_generator:generate_image:370 | 🎨 Sending request to openai_gpt_image for: '# **Accessories Photography Brief: Brown Leather W...'
+2025-08-24 20:00:46 | INFO     | app.services.multi_provider_image_generator:generate_image:371 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-24 20:01:39 | INFO     | app.services.multi_provider_image_generator:generate_image:378 | ✅ Received response from openai_gpt_image
+2025-08-24 20:01:39 | INFO     | app.services.multi_provider_image_generator:_save_base64_to_file:205 | 💾 Saved image: static\images\img_d715913e.png → http://0.0.0.0:8000/static/images/img_d715913e.png
+2025-08-24 20:01:39 | INFO     | app.routers.image_analysis:analyze_and_enhance:100 | ✅ Analyze-and-enhance completed successfully
+2025-08-24 20:04:17 | INFO     | app.routers.image_analysis:analyze_and_enhance:55 | 🚀 Starting analyze-and-enhance workflow
+2025-08-24 20:04:17 | INFO     | app.routers.image_analysis:analyze_and_enhance:67 | 👁️ Step 2: Analyzing image with Vision API
+2025-08-24 20:04:18 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:30 | 🖼️ Starting product image analysis for file: static/images/uploads/0e443bcc-01c6-408b-88ed-c72aaae80947.jpeg
+2025-08-24 20:04:18 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:186 | 👁️ Starting image analysis with custom client base64 [ID: 1716]
+2025-08-24 20:04:23 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:237 | ✅ Custom client base64 analysis completed [ID: 1716]
+2025-08-24 20:04:23 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:51 | ✅ Image analysis completed successfully
+2025-08-24 20:04:23 | INFO     | app.routers.image_analysis:analyze_and_enhance:72 | 🌉 Step 3: Bridging analysis with user prompt
+2025-08-24 20:04:23 | INFO     | app.services.image_wizard_bridge:combine_image_and_prompt:35 | 🌉 Bridging image analysis with user prompt
+2025-08-24 20:04:23 | INFO     | app.services.image_wizard_bridge:combine_image_and_prompt:56 | ✅ Input validation passed
+2025-08-24 20:04:23 | INFO     | app.services.image_wizard_bridge:combine_image_and_prompt:92 | ✅ Image-wizard bridge completed
+2025-08-24 20:04:23 | INFO     | app.routers.image_analysis:analyze_and_enhance:77 | 📝 Step 4: Generating enhanced brief via existing orchestrator
+2025-08-24 20:04:24 | INFO     | app.services.brief_orchestrator:__init__:24 | BriefOrchestratorService initialized with self-healing architecture
+2025-08-24 20:04:24 | INFO     | app.services.brief_orchestrator:generate_final_brief:168 | 🎨 Starting final brief generation workflow [ID: 2540551400944]
+2025-08-24 20:04:24 | INFO     | app.services.brief_orchestrator:generate_final_brief:177 | 📝 Composing initial brief from wizard input [ID: 2540551400944]
+2025-08-24 20:04:24 | INFO     | app.services.prompt_composer:compose_initial_brief:76 | 📝 Starting initial brief composition [ID: 2540551400944]
+2025-08-24 20:04:24 | INFO     | app.services.prompt_composer:compose_initial_brief:126 | ✅ Initial brief composition completed [ID: 2540551400944]
+2025-08-24 20:04:24 | INFO     | app.services.brief_orchestrator:generate_final_brief:187 | ✅ Validating composed brief [ID: 2540551400944]
+2025-08-24 20:04:24 | INFO     | app.services.brief_orchestrator:generate_final_brief:199 | ✅ Brief validation passed [ID: 2540551400944]
+2025-08-24 20:04:24 | WARNING  | app.services.brief_orchestrator:generate_final_brief:203 | ⚠️ Validation warning: Consider using more natural color descriptions to ensure authenticity [ID: 2540551400944]
+2025-08-24 20:04:24 | INFO     | app.services.brief_orchestrator:generate_final_brief:206 | 🎯 MISSION CRITICAL: Sending structured data to Creative Director [ID: 2540551400944]
+2025-08-24 20:04:24 | INFO     | app.services.brief_orchestrator:generate_final_brief:219 | 🚀 CRITICAL REFACTOR: Calling refactored Creative Director with structured data [ID: 2540551400944]
+2025-08-24 20:04:24 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:334 | 🎭 ADVANCED: Creative Director enhanced composition [ID: 2712]
+2025-08-24 20:04:46 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:527 | ✅ ADVANCED: Elite enhancement completed [ID: 2712]
+2025-08-24 20:04:46 | INFO     | app.services.brief_orchestrator:generate_final_brief:225 | 📊 MISSION VALIDATION: Enhanced brief analysis [ID: 2540551400944]
+2025-08-24 20:04:46 | INFO     | app.services.brief_orchestrator:generate_final_brief:244 | 🎉 Brief generation completed successfully [ID: 2540551400944]
+2025-08-24 20:04:46 | INFO     | app.routers.image_analysis:analyze_and_enhance:86 | 🎨 Step 5: Generating enhanced image
+2025-08-24 20:04:46 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:45 | 🎯 Normalizing prompt: 8733 chars
+2025-08-24 20:04:46 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:72 | ⚡ Optimizing: 8047 → target ~3500 chars
+2025-08-24 20:04:46 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:173 | ✅ Normalization complete: 8733 → 3253 chars (37.2%)
+2025-08-24 20:04:46 | INFO     | app.services.multi_provider_image_generator:generate_image:370 | 🎨 Sending request to openai_gpt_image for: '# **Beauty & Wellness Photography Brief: Dove Radi...'
+2025-08-24 20:04:46 | INFO     | app.services.multi_provider_image_generator:generate_image:371 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-24 20:05:37 | INFO     | app.services.multi_provider_image_generator:generate_image:378 | ✅ Received response from openai_gpt_image
+2025-08-24 20:05:37 | INFO     | app.services.multi_provider_image_generator:_save_base64_to_file:205 | 💾 Saved image: static\images\img_e3a275d3.png → http://0.0.0.0:8000/static/images/img_e3a275d3.png
+2025-08-24 20:05:37 | INFO     | app.routers.image_analysis:analyze_and_enhance:100 | ✅ Analyze-and-enhance completed successfully

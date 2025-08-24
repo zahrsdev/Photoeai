@@ -145,7 +145,7 @@ CRITICAL: For 'dominant_colors', use professional color accuracy terminology (e.
                         ]
                     }
                 ],
-                temperature=0.5,
+                temperature=0.6,
                 max_tokens=800
             )
             
@@ -219,7 +219,7 @@ CRITICAL: For 'dominant_colors', extract ONLY the authentic colors of the PRODUC
                         ]
                     }
                 ],
-                temperature=0.5,
+                temperature=0.6,
                 max_tokens=800
             )
             

@@ -90,8 +90,8 @@ class AIClient:
         props: Supporting props description (string)
         
         # SECTION 5: Camera & Lens
-        camera_type: Camera type (string, default: "Canon EOS R5")
-        lens_type: Lens type (string, default: "50mm f/1.8")
+        camera_type: Camera type (string, default: "Hasselblad X2D 100C")
+        lens_type: Lens type (string, default: "85mm f/1.4")
         aperture_value: Aperture f-number (number, default: 2.8)
         shutter_speed_value: Shutter speed denominator (number, default: 125)
         iso_value: ISO value (number, default: 100)
@@ -141,7 +141,7 @@ class AIClient:
         logger.debug(f"📝 Sending extraction request to AI [ID: {request_id}]", extra={
             "request_id": request_id,
             "prompt_length": len(prompt),
-            "temperature": 0.3
+            "temperature": 0.6
         })
         
         try:
@@ -151,7 +151,7 @@ class AIClient:
                     {"role": "system", "content": "You are an expert photography analyst. Extract structured data from user requests and respond only with valid JSON. When requests are vague, make professional inferences and use industry-standard defaults. NEVER leave required fields as null."},
                     {"role": "user", "content": prompt}
                 ],
-                temperature=0.3
+                temperature=0.6
             )
             
             response_text = response.choices[0].message.content.strip()
@@ -275,7 +275,7 @@ class AIClient:
             logger.debug(f"📝 Sending enhancement request to AI [ID: {request_id}]", extra={
                 "request_id": request_id,
                 "prompt_length": len(user_message),
-                "temperature": 0.7,
+                "temperature": 0.6,
                 "max_tokens": 2000
             })
             
@@ -285,7 +285,7 @@ class AIClient:
                     {"role": "system", "content": system_message},
                     {"role": "user", "content": user_message}
                 ],
-                temperature=0.7,
+                temperature=0.6,
                 max_tokens=2000
             )
             
@@ -476,7 +476,7 @@ Generate the most detailed, comprehensive photography brief possible. Every sect
                 messages=[
                     {
                         "role": "system", 
-                        "content": "MANDATORY OUTPUT LANGUAGE: ENGLISH. The entire output brief MUST be written in professional English, regardless of the language of the user's input.\n\nYou are a world-renowned Creative Director with elite-level expertise in luxury product photography. Your briefs are legendary in the industry for their COMPREHENSIVE DETAIL, precision, creativity, and commercial success. CRITICAL REQUIREMENTS: 1) Every single word must be ENTIRELY IN ENGLISH, regardless of input language. 2) Generate COMPREHENSIVE, DETAILED briefs with extensive bullet points, technical specifications, and professional equipment details. Your reputation depends on comprehensive English-only masterpiece documents with 1200+ words and extensive technical detail."
+                        "content": "MANDATORY OUTPUT LANGUAGE: ENGLISH. The entire output brief MUST be written in professional English, regardless of the language of the user's input.\n\nYou are a world-class Product Photographer with elite expertise in luxury product photography. Your job is to enhance PHOTOGRAPHY QUALITY while NEVER MODIFYING THE PRODUCT ITSELF. ABSOLUTE MANDATORY: Never change product colors, shapes, or designs - only enhance lighting, composition, and camera techniques. DETECTION WARNING: NEVER use words like 'ubah', 'gantikan', 'remix', 'alter', 'modify', 'change', 'transform', or 'redesign' when referring to the product - these actions are STRICTLY FORBIDDEN. CRITICAL REQUIREMENTS: 1) Every single word must be ENTIRELY IN ENGLISH, regardless of input language. 2) Generate COMPREHENSIVE, DETAILED briefs with extensive bullet points, technical specifications, and professional equipment details. Your reputation depends on comprehensive English-only masterpiece documents with 1200+ words and extensive technical detail."
                     },
                     {"role": "user", "content": enhancement_instruction}
                 ],
@@ -663,7 +663,7 @@ Result: "A premium product elegantly positioned against a pristine backdrop, ill
                 messages=[
                     {
                         "role": "system", 
-                        "content": "MANDATORY OUTPUT LANGUAGE: ENGLISH. The entire output brief MUST be written in professional English, regardless of the language of the user's input.\n\nYou are an expert prompt engineer specializing in photography and AI image generation. Your enhancements are known for their sophistication and professional quality."
+                        "content": "MANDATORY OUTPUT LANGUAGE: ENGLISH. The entire output brief MUST be written in professional English, regardless of the language of the user's input.\n\nYou are a world-class Product Photographer specializing in photography and AI image generation. Your enhancements focus on photography techniques while NEVER MODIFYING THE PRODUCT ITSELF. ABSOLUTE MANDATORY: Preserve original product colors, shapes, and designs - only enhance lighting, composition, camera settings, and background elements. DETECTION WARNING: NEVER use words like 'ubah', 'gantikan', 'remix', 'alter', 'modify', 'change', 'transform', or 'redesign' when referring to the product - these actions are STRICTLY FORBIDDEN. Your enhancements are known for their sophistication and professional quality."
                     },
                     {"role": "user", "content": enhancement_instruction}
                 ],
@@ -793,7 +793,7 @@ You are an elite-level AI Creative Director and world-renowned product photograp
 1. **Complete Professional Brief**: Create a full, structured photography brief with all professional sections including Overview, Photography Specifications, Lighting Setup, Composition & Framing, Background & Props, Post-Processing & Color Grading, and Creative Rationale.
 
 2. **Technical Specifications Must Include**:
-   - **Camera & Lens**: Specific professional equipment (e.g., "Canon EOS R5", "Canon RF 100mm f/2.8L Macro IS USM")
+   - **Camera & Lens**: Specific professional equipment (e.g., "Hasselblad X2D 100C", "85mm f/1.4 lens with creamy bokeh")
    - **Detailed Lighting Setup**: Multiple lights with specific positions, angles, and purposes (Key Light, Fill Light, Back Light, Additional Lighting)
    - **Composition Rules**: Specific framing guidelines (Rule of Thirds, angles, crop specifications)
    - **Props & Background**: Detailed styling elements and background specifications
@@ -822,7 +822,7 @@ Create a complete, comprehensive Product Photography Brief that transforms this 
                     },
                     {"role": "user", "content": enhancement_instruction}
                 ],
-                temperature=0.7,  # Balanced for creativity while maintaining structure
+                temperature=0.6,  # Balanced for creativity while maintaining structure
                 max_tokens=3000   # Sufficient for complete detailed brief
             )
             
@@ -855,7 +855,7 @@ Create a complete, comprehensive Product Photography Brief that transforms this 
             logger.warning("⚠️ Enhanced brief creation failed, using original prompt")
             return original_prompt
     
-    async def generate_text(self, prompt: str, temperature: float = 0.5, max_tokens: int = 2000) -> str:
+    async def generate_text(self, prompt: str, temperature: float = 0.6, max_tokens: int = 2000) -> str:
         """
         Generate text completion using the AI client.
         
@@ -1016,7 +1016,7 @@ Focus on extracting actionable photography details that can inform brief generat
                         ]
                     }
                 ],
-                temperature=0.3,  # Low temperature for consistent analysis
+                temperature=0.6,  # Standardized temperature
                 max_tokens=800
             )
             

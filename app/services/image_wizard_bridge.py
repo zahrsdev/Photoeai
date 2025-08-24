@@ -82,8 +82,8 @@ class ImageWizardBridge:
                 environment=self._upgrade_environment(image_analysis.get("background_type")),
                 dominant_colors=self._format_color_list(image_analysis.get("dominant_colors")),
                 accent_colors="complementary professional background tones",
-                camera_type=self._upgrade_camera_type("Canon EOS R5"),
-                lens_type=self._upgrade_lens_type("50mm f/1.8"),
+                camera_type=self._upgrade_camera_type("default"),
+                lens_type=self._upgrade_lens_type("default"),
                 aperture_value=2.8,          
                 shutter_speed_value=125,     
                 iso_value=100               
@@ -313,7 +313,7 @@ class ImageWizardBridge:
             "Hasselblad X2D 100C medium format camera",
             "Phase One XF IQ4 digital back", 
             "Sony A7R V mirrorless with 61MP sensor",
-            "Canon EOS R5 with 15-stop dynamic range"
+            "Hasselblad H6D-400c multi-shot digital back"
         ]
         return professional_cameras[0]  # Default ke Hasselblad
     

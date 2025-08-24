@@ -71,7 +71,7 @@ Now, produce the single, compressed, and powerful paragraph for the image genera
             logger.debug(f"📝 Sending compression request to AI [ID: {request_id}]", extra={
                 "request_id": request_id,
                 "instruction_length": len(compression_instruction),
-                "temperature": 0.5
+                "temperature": 0.6
             })
             
             response = await self.ai_client.generate_text(compression_instruction)

@@ -1,6 +1,6 @@
 {
   "prompt_structure": {
-    "introduction": "Create a photorealistic, world-class commercial product photograph using professional photography techniques. Adhere strictly to every parameter specified. CRITICAL: Preserve the original product colors and appearance exactly as they would appear in reality - do not alter, stylize, or reinterpret the natural colors of the product itself. Execute with the precision of award-winning commercial photographers.",
+    "introduction": "Create a photorealistic, world-class commercial product photograph using professional photography techniques. Adhere strictly to every parameter specified. ABSOLUTE MANDATORY: NEVER CHANGE THE PRODUCT - Preserve the original product colors, shapes, and appearance EXACTLY as they would appear in reality. You are strictly FORBIDDEN from altering, stylizing, or reinterpreting the product itself in any way. Only enhance photography elements: lighting, background, composition, and camera techniques. Execute with the precision of award-winning commercial photographers.",
     "main_subject": {
       "header": "1. Main Subject:",
       "description": "A single, hero shot of the product: {{product_name}}.",
@@ -41,8 +41,15 @@
       "aesthetics": "Technical Excellence: Shot with medium format digital camera, ultra-fine grain, professional color grading with minimal retouching to preserve natural skin tones, clean white background isolation, high dynamic range tonal compression, matte finish commercial look, 8K resolution with crystal-clear detail.",
       "influences": "Photography Masters: Inspired by the technical precision of {{photographer_influences}} and contemporary commercial photography standards."
     },
+    "product_lock": {
+      "header": "7. ABSOLUTE MANDATORY: PRODUCT LOCK SYSTEM:",
+      "mandate": "NEVER CHANGE THE PRODUCT: The product must appear EXACTLY as it exists in reality. Zero modifications allowed to product appearance, colors, shapes, textures, or design elements.",
+      "forbidden_actions": "STRICTLY PROHIBITED: ubah, gantikan, remix, alter, modify, change, transform, redesign, recolor, reshape, or stylize the product in any way.",
+      "allowed_enhancements": "PHOTOGRAPHY ONLY: lighting setup, camera angles, background elements, depth of field, composition rules, and professional photography techniques.",
+      "penalty": "VIOLATION DETECTION: Any attempt to modify the product itself will result in immediate rejection. The product is SACRED and untouchable."
+    },
     "color_preservation": {
-      "header": "7. CRITICAL: Original Product Color Preservation:",
+      "header": "8. CRITICAL: Original Product Color Preservation:",
       "mandate": "The product must appear in its authentic, original colors as it would in real life. Do not apply color filters, stylistic color changes, or artistic reinterpretations to the product itself.",
       "enhancement": "Only enhance: lighting quality, sharpness, contrast, and overall photographic technique. The product's inherent colors must remain true to reality.",
       "restriction": "Absolutely prohibited: changing product color temperature, adding color casts to the product, or making the product match the background color palette."

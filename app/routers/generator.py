@@ -277,7 +277,7 @@ async def generate_text(request: InitialUserRequest) -> BriefOutput:
         # Use AI client for text generation
         generated_text = await ai_client.generate_text(
             prompt=text_prompt,
-            temperature=0.7,
+            temperature=0.6,
             max_tokens=1000
         )
         
@@ -584,22 +584,22 @@ async def _create_optimized_enhanced_brief(original_prompt: str, wizard_input, s
             # Very short prompts (like "bottle in lake") - enhance 8-12x but target ~800 chars
             target_enhancement = "8-10x longer, target 800-1200 characters"
             max_tokens = 400
-            temperature = 0.6  # More creative for minimal input
+            temperature = 0.6  # Standardized temperature
         elif original_length < 300:
             # Medium prompts (like our test) - enhance 6-8x, target 1800-2400 chars  
             target_enhancement = "6-8x longer, target 1800-2400 characters"
             max_tokens = 600
-            temperature = 0.5  # Balanced
+            temperature = 0.6  # Standardized temperature
         elif original_length < 500:
             # Longer prompts - enhance 4-5x, target 2000-2500 chars
             target_enhancement = "4-5x longer, target 2000-2500 characters"
             max_tokens = 700
-            temperature = 0.4  # More structured
+            temperature = 0.6  # Standardized temperature
         else:
             # Already detailed prompts - enhance 2-3x, target 1200-1800 chars
             target_enhancement = "2-3x longer, target 1200-1800 characters"
             max_tokens = 500
-            temperature = 0.3  # Preserve original structure
+            temperature = 0.6  # Standardized temperature
         
         enhancement_instruction = f"""
 You are a professional photography director creating an enhanced brief for realistic image generation.
@@ -712,7 +712,7 @@ ENHANCED NATURAL PHOTOGRAPHY PROMPT:
         # Use AI client for ChatGPT-quality enhancement
         enhanced_brief = await ai_client.generate_text(
             prompt=enhancement_instruction,
-            temperature=0.3,  # Lower temperature for consistency
+            temperature=0.6,  # Standardized temperature
             max_tokens=1500   # Moderate length to avoid over-enhancement
         )
         
@@ -813,7 +813,7 @@ ENHANCED COMPREHENSIVE BRIEF:
         # Use AI client for intelligent enhancement
         enhanced_brief = await ai_client.generate_text(
             prompt=enhancement_instruction,
-            temperature=0.4,  # Balanced creativity and consistency
+            temperature=0.6,  # Standardized temperature
             max_tokens=2000   # Allow for detailed output
         )
         
@@ -862,7 +862,7 @@ Create a compressed version that maintains technical precision while removing re
         # Use AI client for intelligent compression
         compressed = await ai_client.generate_text(
             prompt=compression_instruction,
-            temperature=0.3,  # Low temperature for consistent compression
+            temperature=0.6,  # Standardized temperature
             max_tokens=1500   # Sufficient for compressed output
         )
         

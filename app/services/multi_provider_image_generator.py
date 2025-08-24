@@ -88,8 +88,18 @@ class OpenAIImageService:
             normalized = re.sub(r'The central focus features a large ', 'Large ', normalized)
             normalized = re.sub(r'positioned strategically to emerge ', 'emerging ', normalized)
             
-            # Step 2: If STILL too long, prioritize technical + visual (keep HD specs)
+            # Step 2: If STILL too long, prioritize PRODUCT PRESERVATION + technical + visual
             if len(normalized) > target_length:
+                # TOP PRIORITY: Product preservation constraints (NEVER filter out)
+                product_preservation_priority = [
+                    'preserve', 'original', 'authentic', 'never change', 'product lock',
+                    'forbidden', 'prohibited', 'sacred', 'untouchable', 'exact colors',
+                    'maintain', 'keep original', 'as-is', 'unchanged', 'natural colors',
+                    'ubah', 'gantikan', 'remix', 'alter', 'modify', 'transform', 'redesign',
+                    'absolute mandatory', 'strictly forbidden', 'violation', 'penalty',
+                    'product must', 'never alter', 'zero modifications', 'photography only'
+                ]
+                
                 # PRIORITY: Keep technical specs that affect HD quality (COMPLETE sentences only)
                 technical_priority = [
                     'Canon EOS R5', 'f/1.8', 'f/5.6', '50mm', 'lens',
@@ -122,15 +132,19 @@ class OpenAIImageService:
                 # Restore the periods in technical specs
                 sentences = [s.replace('DOTPLACEHOLDER', '.') for s in sentences]
                 
-                # Categorize by importance (technical + visual = highest priority)
+                # Categorize by importance (PRODUCT PRESERVATION = TOP PRIORITY)
                 critical_sentences = []
                 important_sentences = []
                 
                 for sentence in sentences:
+                    has_product_preservation = any(preserve.lower() in sentence.lower() for preserve in product_preservation_priority)
                     has_technical = any(tech.lower() in sentence.lower() for tech in technical_priority)
                     has_visual = any(visual.lower() in sentence.lower() for visual in visual_priority)
                     
-                    if has_technical or has_visual:
+                    if has_product_preservation:
+                        # ABSOLUTE TOP PRIORITY - product preservation NEVER gets filtered
+                        critical_sentences.insert(0, sentence)  # Insert at beginning
+                    elif has_technical or has_visual:
                         critical_sentences.append(sentence)
                     elif len(sentence) > 30:  # Keep meaningful sentences
                         important_sentences.append(sentence)

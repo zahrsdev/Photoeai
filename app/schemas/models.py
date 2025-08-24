@@ -103,7 +103,7 @@ class TextGenerationRequest(BaseModel):
     provider: Optional[str] = Field(None, description="Provider override (always uses 'openai' for GPT Image 1)")
     model: Optional[str] = Field(None, description="Specific model to use (e.g., gpt-4o, gemini-2.5-flash)")
     max_tokens: Optional[int] = Field(150, description="Maximum tokens to generate")
-    temperature: Optional[float] = Field(0.7, description="Sampling temperature (0.0 to 1.0)")
+    temperature: Optional[float] = Field(0.6, description="Sampling temperature (0.0 to 1.0)")
     
     class Config:
         schema_extra = {
@@ -113,7 +113,7 @@ class TextGenerationRequest(BaseModel):
                 "provider": "openai",
                 "model": "openai/gpt-4o",
                 "max_tokens": 200,
-                "temperature": 0.8
+                "temperature": 0.6
             }
         }
 

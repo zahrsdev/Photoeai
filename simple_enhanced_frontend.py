@@ -36,12 +36,13 @@ def upload_image(uploaded_file) -> Optional[str]:
         st.error(f"❌ Error uploading image: {str(e)}")
         return None
 
-def analyze_and_enhance(image_filename: str, user_prompt: str, generate_image: bool = True) -> Optional[Dict]:
+def analyze_and_enhance(image_filename: str, user_prompt: str, api_key: str, generate_image: bool = True) -> Optional[Dict]:
     """Analyze image + user prompt and generate enhanced image"""
     try:
         payload = {
             "image_filename": image_filename,
             "user_prompt": user_prompt,
+            "api_key": api_key,
             "generate_image": generate_image
         }
         
@@ -99,15 +100,23 @@ def main():
             height=100
         )
         
+        st.markdown("### 🔑 OpenAI API Key")
+        api_key = st.text_input(
+            "Enter your OpenAI API key",
+            type="password",
+            placeholder="sk-proj-... or sk-...",
+            help="Your OpenAI API key is required for AI processing"
+        )
+        
         # Generate button
-        if st.button("🚀 Generate Enhanced Image", disabled=not uploaded_file or not user_prompt.strip()):
-            if uploaded_file and user_prompt.strip():
+        if st.button("🚀 Generate Enhanced Image", disabled=not uploaded_file or not user_prompt.strip() or not api_key.strip()):
+            if uploaded_file and user_prompt.strip() and api_key.strip():
                 # Upload image
                 filename = upload_image(uploaded_file)
                 
                 if filename:
                     # Analyze and enhance
-                    result = analyze_and_enhance(filename, user_prompt.strip())
+                    result = analyze_and_enhance(filename, user_prompt.strip(), api_key.strip())
                     
                     if result:
                         # Store results
