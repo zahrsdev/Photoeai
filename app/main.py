@@ -6,8 +6,10 @@ Initializes the app, configures CORS, includes routers, and sets up structured l
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from loguru import logger
 import sys
+import os
 from app.config.settings import settings
 from app.routers.generator import router as generator_router
 
@@ -32,6 +34,26 @@ logger.add(
 
 logger.info("🚀 MISSION 3: Structured logging system initialized")
 
+def cleanup_old_images():
+    """Clean up image files older than 2 hours"""
+    import time
+    import glob
+    
+    image_dir = "static/images"
+    if not os.path.exists(image_dir):
+        return
+        
+    current_time = time.time()
+    max_age = 2 * 3600  # 2 hours in seconds
+    
+    for image_file in glob.glob(os.path.join(image_dir, "img_*.png")):
+        if os.path.getmtime(image_file) < (current_time - max_age):
+            try:
+                os.remove(image_file)
+                logger.info(f"🗑️ Cleaned up old image: {image_file}")
+            except Exception as e:
+                logger.warning(f"⚠️ Failed to cleanup {image_file}: {e}")
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """
@@ -42,6 +64,10 @@ async def lifespan(app: FastAPI):
     print("🚀 PhotoeAI Backend starting up...")
     print(f"📍 Environment: {'Development' if settings.debug else 'Production'}")
     print(f"🤖 OpenAI Model: {settings.openai_model}")
+    
+    # Cleanup old images on startup
+    cleanup_old_images()
+    
     print("✅ Startup completed successfully")
     
     yield  # Application runs here
@@ -68,6 +94,13 @@ app.add_middleware(
     allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
 )
+
+# Create static images directory if not exists
+static_dir = "static/images"
+os.makedirs(static_dir, exist_ok=True)
+
+# Mount static files for serving generated images
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Include API routers
 app.include_router(generator_router)

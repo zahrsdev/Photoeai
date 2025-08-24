@@ -7,6 +7,9 @@ from enum import Enum
 from loguru import logger
 import requests
 import re
+import base64
+import os
+import uuid
 from app.config.settings import settings
 from app.schemas.models import ImageOutput
 
@@ -171,6 +174,37 @@ class OpenAIImageService:
         
         return normalized.strip()
     
+    def _save_base64_to_file(self, base64_data: str, file_extension: str = "png") -> str:
+        """
+        Save base64 image data to static file and return URL.
+        
+        Args:
+            base64_data: Base64 encoded image data
+            file_extension: File extension (default: png)
+            
+        Returns:
+            HTTP URL to the saved image file
+        """
+        # Generate unique filename
+        file_id = str(uuid.uuid4())[:8]
+        filename = f"img_{file_id}.{file_extension}"
+        filepath = os.path.join("static", "images", filename)
+        
+        # Create directory if not exists
+        os.makedirs(os.path.dirname(filepath), exist_ok=True)
+        
+        # Decode and save base64 data
+        image_bytes = base64.b64decode(base64_data)
+        with open(filepath, 'wb') as f:
+            f.write(image_bytes)
+        
+        # Return HTTP URL
+        base_url = f"http://{settings.host}:{settings.port}"
+        image_url = f"{base_url}/static/images/{filename}"
+        
+        logger.info(f"💾 Saved image: {filepath} → {image_url}")
+        return image_url
+    
     def _extract_enhancement_ratio(self, brief_content: str) -> str:
         """Extract enhancement ratio information for display"""
         import re
@@ -246,9 +280,9 @@ class OpenAIImageService:
                     if "url" in image_data:
                         image_url = image_data["url"]
                     elif "b64_json" in image_data:
-                        # GPT Image 1 format - convert base64 to data URL
+                        # GPT Image 1 format - save base64 to file and return URL
                         base64_data = image_data["b64_json"]
-                        image_url = f"data:image/png;base64,{base64_data}"
+                        image_url = self._save_base64_to_file(base64_data)
                     else:
                         raise KeyError("No 'url' or 'b64_json' found in response")
                     
@@ -276,9 +310,9 @@ class OpenAIImageService:
                 if "url" in image_data:
                     image_url = image_data["url"]
                 elif "b64_json" in image_data:
-                    # GPT Image 1 format - convert base64 to data URL
+                    # GPT Image 1 format - save base64 to file and return URL
                     base64_data = image_data["b64_json"]
-                    image_url = f"data:image/png;base64,{base64_data}"
+                    image_url = self._save_base64_to_file(base64_data)
                 else:
                     raise KeyError("No 'url' or 'b64_json' found in response")
                 
