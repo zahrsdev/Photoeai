@@ -283,6 +283,12 @@ class PromptComposerService:
                     for field in required_fields:
                         if field not in wizard_dict or wizard_dict[field] is None or wizard_dict[field] == "":
                             validation_result["errors"].append(f"Required field '{field}' is missing or empty")
+                    
+                    # Check optional recommended fields (as warnings, not errors)
+                    optional_fields = rule.get("optional_recommended_fields", [])
+                    for field in optional_fields:
+                        if field not in wizard_dict or wizard_dict[field] is None or wizard_dict[field] == "":
+                            validation_result["warnings"].append(f"Recommended field '{field}' is missing - brief quality may be improved with this field")
                 
                 elif rule_name == "Check for Vague Language":
                     # Check for banned words
@@ -293,6 +299,36 @@ class PromptComposerService:
                             for banned_word in banned_list:
                                 if banned_word.lower() in value:
                                     validation_result["warnings"].append(f"Vague term '{banned_word}' found in '{field}'. Consider being more specific.")
+                
+                elif rule_name == "Check for Color Preservation":
+                    # Check color preservation
+                    color_validation = rule.get("color_validation", {})
+                    
+                    # Check if colors are present
+                    if color_validation.get("required_color_presence", False):
+                        if "dominant_colors" not in wizard_dict or not wizard_dict["dominant_colors"]:
+                            validation_result["warnings"].append("No product colors specified - color preservation cannot be verified")
+                        else:
+                            colors_str = str(wizard_dict["dominant_colors"]).lower()
+                            
+                            # Check for generic colors
+                            avoid_colors = color_validation.get("avoid_generic_colors", [])
+                            for generic_color in avoid_colors:
+                                if generic_color in colors_str:
+                                    validation_result["warnings"].append(f"Generic color term '{generic_color}' found - consider more specific product colors")
+                            
+                            # Check for preservation indicators (good)
+                            preservation_indicators = color_validation.get("color_preservation_indicators", [])
+                            has_preservation_indicator = any(indicator in colors_str for indicator in preservation_indicators)
+                            
+                            # Check for warning keywords (bad)
+                            warning_keywords = color_validation.get("warning_keywords", [])
+                            has_warning_keyword = any(keyword in colors_str for keyword in warning_keywords)
+                            
+                            if has_warning_keyword:
+                                validation_result["errors"].append("Color stylization detected - ensure original product colors are preserved")
+                            elif not has_preservation_indicator and len(preservation_indicators) > 0:
+                                validation_result["warnings"].append("Consider using more natural color descriptions to ensure authenticity")
                 
                 elif rule_name == "Check for Contradictions":
                     # Check logical consistency

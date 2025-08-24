@@ -200,12 +200,12 @@ def main():
                 help="Your API key for the selected AI provider"
             )
             
-            # 3. User select provider
+            # 3. User select provider  
             provider = st.selectbox(
                 "🤖 **AI Provider**",
-                options=["openai", "gemini", "midjourney"],
+                options=["openai"],
                 index=0,
-                help="Choose which AI provider to use for image generation"
+                help="Using OpenAI for professional image generation"
             )
             
             # Optional: Negative prompt
@@ -285,9 +285,9 @@ def main():
                 
                 provider_enhance = st.selectbox(
                     "🤖 **AI Provider**",
-                    options=["openai", "gemini", "midjourney"],
+                    options=["openai"],
                     index=0,
-                    help="Choose which AI provider to use for enhancement",
+                    help="Using OpenAI for professional image enhancement",
                     key="enhance_provider"
                 )
                 

@@ -651,9 +651,9 @@ You are an elite prompt engineer with deep expertise in photography and AI image
 5. **NARRATIVE FLOW**: Ensure the enhanced prompt reads smoothly and professionally
 
 **EXAMPLE TRANSFORMATION:**
-Original: "A bottle of perfume on a white background with soft lighting"
-Enhancement Request: "Make it more luxurious"
-Result: "An exquisite luxury perfume bottle elegantly positioned against a pristine seamless backdrop, illuminated by sophisticated softbox lighting that creates gentle gradient shadows and highlights the bottle's premium crystal facets. The composition exudes refined elegance with carefully controlled depth of field and a color palette that speaks to exclusivity and sophistication."
+Original: "A product on a clean background with good lighting"
+Enhancement Request: "Make it more professional"
+Result: "A premium product elegantly positioned against a pristine backdrop, illuminated by sophisticated studio lighting that creates professional gradient shadows and highlights the product's key features. The composition exudes commercial quality with carefully controlled depth of field and a color palette that supports the product's intended market positioning."
 
 **EXECUTE ENHANCEMENT:** Create the intelligently enhanced prompt now.
 """
@@ -961,3 +961,113 @@ Create a complete, comprehensive Product Photography Brief that transforms this 
             logger.debug(f"✅ POST-PROCESS: No language corrections needed [ID: {request_id}]")
             
         return cleaned_text
+
+    async def analyze_image(self, image_url: str) -> Dict[str, Any]:
+        """
+        Analyze uploaded image using OpenAI Vision API.
+        Extract product type, style, lighting, composition details.
+        
+        Args:
+            image_url: URL to the uploaded image
+            
+        Returns:
+            Dictionary with structured image analysis data
+        """
+        request_id = hash(image_url) % 10000
+        
+        logger.info(f"👁️ Starting image analysis [ID: {request_id}]", extra={
+            "request_id": request_id,
+            "image_url": image_url,
+            "ai_model": self.model,
+            "operation": "analyze_image"
+        })
+        
+        try:
+            analysis_instruction = """
+Analyze this product image and extract detailed photography information.
+
+**REQUIRED OUTPUT FORMAT (JSON only):**
+```json
+{
+    "product_type": "category (e.g., food, electronics, cosmetics, accessories)",
+    "product_name": "specific product name or description",
+    "lighting_style": "current lighting type (natural, studio, dramatic, soft, etc.)",
+    "background_type": "background description (white, wooden, marble, outdoor, etc.)",
+    "composition_style": "shot angle (close-up, wide, overhead, side-angle, etc.)", 
+    "style_preference": "overall mood/style (modern, vintage, luxury, casual, etc.)",
+    "current_quality": "assessment (amateur, professional, commercial, etc.)",
+    "improvement_areas": ["list", "of", "areas", "needing", "enhancement"],
+    "dominant_colors": ["primary", "colors", "in", "image"],
+    "camera_angle": "specific angle description"
+}
+```
+
+Focus on extracting actionable photography details that can inform brief generation.
+"""
+
+            response = self.client.chat.completions.create(
+                model=self.model,
+                messages=[
+                    {
+                        "role": "user",
+                        "content": [
+                            {"type": "text", "text": analysis_instruction},
+                            {"type": "image_url", "image_url": {"url": image_url}}
+                        ]
+                    }
+                ],
+                temperature=0.3,  # Low temperature for consistent analysis
+                max_tokens=800
+            )
+            
+            analysis_text = response.choices[0].message.content.strip()
+            
+            # Extract JSON from response
+            import re
+            json_match = re.search(r'```json\s*(\{.*?\})\s*```', analysis_text, re.DOTALL)
+            if json_match:
+                analysis_data = json.loads(json_match.group(1))
+            else:
+                # Fallback: try to parse entire response as JSON
+                analysis_data = json.loads(analysis_text)
+            
+            logger.info(f"✅ Image analysis completed [ID: {request_id}]", extra={
+                "request_id": request_id,
+                "product_type": analysis_data.get("product_type", "unknown"),
+                "analysis_fields": list(analysis_data.keys()),
+                "operation": "analyze_image",
+                "status": "success"
+            })
+            
+            return analysis_data
+            
+        except json.JSONDecodeError as e:
+            logger.error(f"💥 JSON parsing error in image analysis [ID: {request_id}]", extra={
+                "request_id": request_id,
+                "error": str(e),
+                "raw_response": analysis_text[:200] + "..." if 'analysis_text' in locals() else "No response",
+                "operation": "analyze_image"
+            })
+            
+            # Return fallback structure
+            return {
+                "product_type": "unknown",
+                "product_name": "Product",
+                "lighting_style": "natural",
+                "background_type": "neutral",
+                "composition_style": "standard",
+                "style_preference": "modern",
+                "current_quality": "amateur",
+                "improvement_areas": ["lighting", "composition"],
+                "dominant_colors": ["neutral"],
+                "camera_angle": "front"
+            }
+            
+        except Exception as e:
+            logger.error(f"💥 Critical error in image analysis [ID: {request_id}]", extra={
+                "request_id": request_id,
+                "error": str(e),
+                "operation": "analyze_image",
+                "status": "error"
+            })
+            raise Exception(f"Image analysis failed: {str(e)}")

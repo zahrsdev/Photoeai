@@ -1,6 +1,6 @@
 {
   "prompt_structure": {
-    "introduction": "Create a photorealistic, world-class product photograph based on the following detailed brief. Adhere strictly to every parameter specified.",
+    "introduction": "Create a photorealistic, world-class product photograph based on the following detailed brief. Adhere strictly to every parameter specified. CRITICAL: Preserve the original product colors and appearance exactly as they would appear in reality - do not alter, stylize, or reinterpret the natural colors of the product itself.",
     "main_subject": {
       "header": "1. Main Subject:",
       "description": "A single, hero shot of the product: {{product_name}}.",
@@ -23,7 +23,7 @@
     "background_and_setting": {
       "header": "4. Background and Setting:",
       "environment": "Environment: {{environment}} (e.g., Seamless studio backdrop, Textured surface like marble or wood, Abstract geometric shapes, In a contextual setting like a kitchen counter or a forest floor).",
-      "color_palette": "Color Palette: Dominated by {{dominant_colors}} with accents of {{accent_colors}}.",
+      "color_palette": "Color Palette: Background dominated by {{dominant_colors}} with accents of {{accent_colors}}. IMPORTANT: The product itself must maintain its original, authentic colors - only the background and lighting should follow this color palette.",
       "props": "Supporting Props: {{props}} (subtle and complementary, not distracting)."
     },
     "camera_and_lens": {
@@ -40,6 +40,12 @@
       "overall_style": "Style: {{overall_style}} (e.g., Commercial product photography, Editorial style, Cinematic, Hyper-realistic).",
       "aesthetics": "Aesthetics: Ultra-detailed, 8K, UHD, sharp focus, professional color grading, award-winning photography.",
       "influences": "Inspired by the work of photographers like {{photographer_influences}}."
+    },
+    "color_preservation": {
+      "header": "7. CRITICAL: Original Product Color Preservation:",
+      "mandate": "The product must appear in its authentic, original colors as it would in real life. Do not apply color filters, stylistic color changes, or artistic reinterpretations to the product itself.",
+      "enhancement": "Only enhance: lighting quality, sharpness, contrast, and overall photographic technique. The product's inherent colors must remain true to reality.",
+      "restriction": "Absolutely prohibited: changing product color temperature, adding color casts to the product, or making the product match the background color palette."
     }
   }
 }

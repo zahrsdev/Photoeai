@@ -26,8 +26,11 @@
       "description": "Ensures all critical fields are filled.",
       "required_fields": [
         "product_name",
+        "user_request"
+      ],
+      "optional_recommended_fields": [
         "shot_type",
-        "framing",
+        "framing", 
         "lighting_style",
         "environment"
       ],
@@ -41,6 +44,17 @@
         "lighting_style": ["interesting"]
       },
       "error": "Avoid vague terms. Please be more descriptive."
+    },
+    {
+      "rule_name": "Check for Color Preservation",
+      "description": "Ensures original product colors are preserved and not stylized.",
+      "color_validation": {
+        "required_color_presence": true,
+        "avoid_generic_colors": ["neutral", "basic", "standard", "normal", "typical"],
+        "color_preservation_indicators": ["natural", "original", "authentic", "product"],
+        "warning_keywords": ["stylized", "artistic", "filter", "enhanced color", "color correction"]
+      },
+      "error": "Color preservation validation failed - ensure original product colors are maintained."
     }
   ]
 }

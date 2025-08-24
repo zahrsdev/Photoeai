@@ -358,8 +358,8 @@ def render_image_generation_from_brief(client: PhotoEAIClient, brief: str):
     with col1:
         provider = st.selectbox(
             "🎨 **Provider**",
-            ["openai_dalle", "gemini", "sumopod", "midjourney"],
-            help="Choose image generation provider"
+            ["openai"],
+            help="Using OpenAI for professional image generation"
         )
     
     with col2:
@@ -434,8 +434,8 @@ def render_direct_image_generation(client: PhotoEAIClient):
     with col1:
         provider = st.selectbox(
             "🎨 **Provider**",
-            ["openai_dalle", "gemini", "sumopod", "midjourney"],
-            help="Choose image generation provider"
+            ["openai"],
+            help="Using OpenAI for professional image generation"
         )
     
     with col2:
@@ -812,13 +812,10 @@ def render_about_help():
     ## 🛠️ Technical Details
     
     ### Supported Image Providers:
-    - **OpenAI DALL-E**: High-quality, reliable generation
-    - **Google Gemini**: Advanced AI capabilities  
-    - **SumoPod**: Specialized creative AI
-    - **Midjourney**: Artistic and stylized outputs
+    - **OpenAI**: Professional-grade image generation with consistent quality
     
     ### API Requirements:
-    - Valid API key for chosen image generation provider
+    - Valid OpenAI API key for image generation
     - PhotoEAI backend server running on localhost:8000
     
     ### Performance:

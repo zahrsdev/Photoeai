@@ -19,10 +19,12 @@ class WizardInput(BaseModel):
     """
     # Section 1: Main Subject & Story
     product_name: Optional[str] = None
+    product_type: Optional[str] = None
     user_request: Optional[str] = None
     product_description: Optional[str] = None
     key_features: Optional[str] = None
     product_state: Optional[str] = None
+    style_preference: Optional[str] = None
 
     # Section 2: Composition & Framing
     shot_type: Optional[str] = None
@@ -174,7 +176,7 @@ class DownloadBriefRequest(BaseModel):
     class Config:
         schema_extra = {
             "example": {
-                "prompt_text": "Professional product photography of a luxury skincare bottle..."
+                "prompt_text": "Professional product photography brief with detailed specifications..."
             }
         }
 

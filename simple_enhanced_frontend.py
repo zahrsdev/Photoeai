@@ -36,13 +36,12 @@ def upload_image(uploaded_file) -> Optional[str]:
         st.error(f"❌ Error uploading image: {str(e)}")
         return None
 
-def analyze_and_enhance(image_filename: str, user_prompt: str, api_key: str, generate_image: bool = True) -> Optional[Dict]:
+def analyze_and_enhance(image_filename: str, user_prompt: str, generate_image: bool = True) -> Optional[Dict]:
     """Analyze image + user prompt and generate enhanced image"""
     try:
         payload = {
             "image_filename": image_filename,
             "user_prompt": user_prompt,
-            "api_key": api_key,
             "generate_image": generate_image
         }
         
@@ -79,22 +78,6 @@ def main():
         st.info("💡 Run: `python run.py` in your backend directory")
         return
     
-    # API Key input
-    st.markdown("### 🔑 OpenAI API Key")
-    api_key = st.text_input(
-        "Enter your OpenAI API Key:",
-        type="password",
-        placeholder="sk-...",
-        help="Your OpenAI API key is required for AI image analysis and generation"
-    )
-    
-    if not api_key:
-        st.warning("⚠️ Please enter your OpenAI API Key to continue")
-        st.info("💡 You can get your API key from: https://platform.openai.com/api-keys")
-        return
-    
-    st.divider()
-
     # Main interface
     col1, col2 = st.columns(2)
     
@@ -124,7 +107,7 @@ def main():
                 
                 if filename:
                     # Analyze and enhance
-                    result = analyze_and_enhance(filename, user_prompt.strip(), api_key)
+                    result = analyze_and_enhance(filename, user_prompt.strip())
                     
                     if result:
                         # Store results

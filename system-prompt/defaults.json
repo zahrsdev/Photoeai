@@ -1,9 +1,12 @@
 {
   "defaults": {
     "product_name": "Premium Product",
+    "product_type": "other",
+    "user_request": "Create a professional product photograph",
     "product_description": "High-quality product with elegant design",
     "key_features": "Premium materials and craftsmanship",
     "product_state": "pristine",
+    "style_preference": "modern",
     "shot_type": "Eye-level",
     "framing": "Close-Up",
     "compositional_rule": "Rule of Thirds",
@@ -14,8 +17,8 @@
     "rim_light_setup": "Subtle rim light from behind to separate subject from background",
     "mood": "Clean and professional",
     "environment": "Seamless studio backdrop",
-    "dominant_colors": "neutral whites and grays",
-    "accent_colors": "warm golden tones",
+    "dominant_colors": "natural product colors",
+    "accent_colors": "complementary background tones",
     "props": "minimal geometric shapes",
     "camera_type": "Canon EOS R5",
     "lens_type": "100mm Macro",

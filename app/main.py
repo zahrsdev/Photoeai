@@ -12,6 +12,8 @@ import sys
 import os
 from app.config.settings import settings
 from app.routers.generator import router as generator_router
+from app.routers.image_upload import router as image_upload_router
+from app.routers.image_analysis import router as image_analysis_router
 
 # Configure structured logging with Loguru
 logger.remove()  # Remove default handler
@@ -97,13 +99,17 @@ app.add_middleware(
 
 # Create static images directory if not exists
 static_dir = "static/images"
+upload_dir = "static/images/uploads"
 os.makedirs(static_dir, exist_ok=True)
+os.makedirs(upload_dir, exist_ok=True)
 
 # Mount static files for serving generated images
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Include API routers
 app.include_router(generator_router)
+app.include_router(image_upload_router)
+app.include_router(image_analysis_router)
 
 
 @app.get("/")
