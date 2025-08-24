@@ -13,14 +13,21 @@ from app.config.settings import settings
 class AIClient:
     """
     Client for interacting with OpenAI's API.
-    Handles both extraction (LLM as Analyst) and enhancement (LLM as Creative Director) operations.
+    Handles both extraction            )
+            
+            enhanced_brief = response.choices[0].message.content.strip()
+            
+            # CRITICAL POST-PROCESSING: English language validation and cleanup
+            enhanced_brief = self._ensure_english_output(enhanced_brief, request_id)
+            
+            # COMPREHENSIVE QUALITY VALIDATION WITH LANGUAGE COMPLIANCE as Analyst) and enhancement (LLM as Creative Director) operations.
     """
     
     def __init__(self):
-        """Initialize the OpenAI client with API key and custom base URL from settings."""
+        """Initialize the OpenAI client with API key and official OpenAI base URL from settings."""
         self.client = OpenAI(
             api_key=settings.openai_api_key,
-            base_url=settings.sumopod_api_base_url
+            base_url="https://api.openai.com/v1"  # Use official OpenAI API directly
         )
         self.model = settings.openai_model
     
@@ -55,41 +62,80 @@ class AIClient:
         - lighting_style: Choose from [Studio Softbox, Hard light, Natural window light, Golden hour glow, Cinematic neon]
         - environment: Choose from [Seamless studio backdrop, Textured surface, Natural setting, Indoor setting]
         
-        Extract information for ALL fields below (ALL VALUES MUST BE STRINGS, NOT ARRAYS):
+        Extract information for ALL 46 fields below (ALL VALUES MUST BE STRINGS, NOT ARRAYS):
         
+        # SECTION 1: Main Subject & Story
         product_name: Name of the product (REQUIRED - string, never null)
         product_description: Description of the product (string)
         key_features: Key features to highlight (string, comma-separated if multiple)
         product_state: State of the product (string, default: "pristine")
+        
+        # SECTION 2: Composition & Framing
         shot_type: Type of shot (REQUIRED - string, choose most appropriate)
         framing: Framing style (REQUIRED - string, choose most appropriate) 
         compositional_rule: Compositional rule (string, default: "Rule of Thirds")
         negative_space: Negative space approach (string, default: "Balanced")
+        
+        # SECTION 3: Lighting & Atmosphere
         lighting_style: Lighting style (REQUIRED - string, choose most appropriate)
         key_light_setup: Key light setup description (string)
         fill_light_setup: Fill light setup description (string)
         rim_light_setup: Rim light setup description (string)
         mood: Overall mood (string, default: "Clean and professional")
+        
+        # SECTION 4: Background & Setting
         environment: Environment/background (REQUIRED - string, choose most appropriate)
         dominant_colors: Dominant color palette (string, comma-separated if multiple)
         accent_colors: Accent colors (string, comma-separated if multiple)
         props: Supporting props description (string)
+        
+        # SECTION 5: Camera & Lens
         camera_type: Camera type (string, default: "Canon EOS R5")
         lens_type: Lens type (string, default: "50mm f/1.8")
         aperture_value: Aperture f-number (number, default: 2.8)
         shutter_speed_value: Shutter speed denominator (number, default: 125)
         iso_value: ISO value (number, default: 100)
         visual_effect: Visual effect description (string)
+        
+        # SECTION 6: Style & Post-Production
         overall_style: Overall photographic style (string, default: "Professional product photography")
         photographer_influences: Photographer influences (string, comma-separated if multiple)
         
+        # SECTION 7: Advanced Lighting (NEW)
+        light_temperature: Light temperature (string, e.g. "warm 3200K", "daylight 5600K")
+        shadow_intensity: Shadow intensity (string: "soft", "hard", "medium")
+        highlight_control: Highlight control (string: "preserved", "blown", "controlled")
+        lighting_direction: Lighting direction (string: "front", "side", "back", "top")
+        ambient_lighting: Ambient lighting (string: "studio", "natural", "mixed")
+        
+        # SECTION 8: Advanced Composition (NEW)
+        perspective_angle: Perspective angle (string: "eye-level", "low-angle", "high-angle")
+        depth_layers: Depth layers (string describing foreground/midground/background)
+        leading_lines: Leading lines (string: "diagonal", "curved", "vertical", "none")
+        symmetry_type: Symmetry type (string: "perfect", "asymmetrical", "radial")
+        focal_emphasis: Focal emphasis (string: "center", "off-center", "multiple points")
+        
+        # SECTION 9: Technical Details (NEW)
+        focus_mode: Focus mode (string: "manual", "single-point AF", "zone AF")
+        metering_mode: Metering mode (string: "matrix", "center-weighted", "spot")
+        white_balance: White balance (string: "auto", "daylight", "tungsten", "custom")
+        file_format: File format (string: "RAW", "JPEG", "TIFF")
+        image_stabilization: Image stabilization (string: "on", "off", "lens-based", "body-based")
+        
+        # SECTION 10: Brand & Marketing Context (NEW)
+        target_audience: Target audience (string: "luxury", "mass market", "professional")
+        brand_personality: Brand personality (string: "premium", "friendly", "innovative")
+        usage_purpose: Usage purpose (string: "e-commerce", "advertising", "social media")
+        seasonal_context: Seasonal context (string: "spring", "summer", "holiday", "evergreen")
+        competitive_differentiation: Competitive differentiation (string: unique selling points)
+        
         IMPORTANT: 
-        - Respond ONLY with valid JSON
+        - Respond ONLY with valid JSON containing ALL 46 fields
         - ALL text fields must be STRINGS, not arrays
         - Use comma-separated strings for multiple values (e.g. "red, blue, gold" not ["red", "blue", "gold"])
-        - NEVER use null for required fields (product_name, shot_type, framing, lighting_style, environment)
+        - NEVER use null for any field - provide intelligent defaults
         - Use reasonable professional photography defaults when information is unclear
-        - Make intelligent inferences based on the request context
+        - Make intelligent inferences based on the request context and product type
         """
         
         logger.debug(f"📝 Sending extraction request to AI [ID: {request_id}]", extra={
@@ -203,6 +249,8 @@ class AIClient:
             
             # Build the enhancement prompt
             system_message = enhancement_template.get("enhancement_instructions", [{}])[0].get("content", "")
+            # Add mandatory English enforcement to system message
+            system_message = "MANDATORY OUTPUT LANGUAGE: ENGLISH. The entire output brief MUST be written in professional English, regardless of the language of the user's input.\n\n" + system_message
             user_template = enhancement_template.get("enhancement_instructions", [{}, {}])[1].get("content", "")
             
             # Replace the template variable
@@ -242,6 +290,9 @@ class AIClient:
             )
             
             enhanced_brief = response.choices[0].message.content.strip()
+            
+            # CRITICAL POST-PROCESSING: English language validation and cleanup
+            enhanced_brief = self._ensure_english_output(enhanced_brief, request_id)
             
             logger.info(f"✅ Brief enhancement completed successfully [ID: {request_id}]", extra={
                 "request_id": request_id,
@@ -289,59 +340,124 @@ class AIClient:
         })
         
         try:
-            # ADVANCED ENHANCEMENT INSTRUCTION WITH DEEPER CREATIVE INTELLIGENCE
+            # CRITICAL FINAL REFACTOR: ULTRA-DETAILED STRUCTURE ENFORCEMENT
             enhancement_instruction = f"""
-You are an ELITE Creative Director with 20+ years of world-class product photography experience. You've worked with luxury brands, directed award-winning campaigns, and your images are featured in top-tier publications. Your mission: Transform the structured JSON data into a MASTERPIECE photography brief that would be worthy of a $100,000 commercial shoot.
+🚨🚨🚨 CRITICAL SYSTEM OVERRIDE: COMPREHENSIVE DETAILED BRIEF MANDATORY 🚨🚨🚨
 
-**ELITE ENHANCEMENT MANDATES:**
+You are an ELITE Creative Director with 20+ years of world-class product photography experience. You've worked with luxury brands, directed award-winning campaigns, and your images are featured in top-tier publications.
 
-1. **VISIONARY DOCUMENT CREATION**: Generate a comprehensive, structured Markdown document that reads like a professional creative brief from the world's top agencies. This is premium commercial photography direction.
+**⚠️⚠️⚠️ ABSOLUTE NON-NEGOTIABLE REQUIREMENTS ⚠️⚠️⚠️**
 
-2. **SACRED DATA FOUNDATION**: The JSON below contains the client's core vision. Treat every detail as sacred input that must be elevated to professional excellence. Build upon, never replace.
+❌ FORBIDDEN: Writing in Indonesian, Spanish, French, German, or ANY non-English language
+✅ MANDATORY: Write 100% in professional English only
+❌ FORBIDDEN: Short, basic, or incomplete briefs
+✅ MANDATORY: Generate a COMPREHENSIVE, DETAILED brief exactly like this structure with extensive bullet points and sub-details
 
-3. **EXPERT CREATIVE AMPLIFICATION**: For any basic or missing elements, apply world-class expertise:
-   - Transform simple descriptions into vivid, cinematic language
-   - Specify professional-grade equipment with technical justification
-   - Create sophisticated lighting scenarios with precise positioning
-   - Design compelling color stories with psychological impact
-   - Develop sophisticated post-processing workflows
+**🚨 COMPREHENSIVE STRUCTURE ENFORCEMENT:**
 
-4. **LUXURY NARRATIVE STYLE**: Write with the sophistication of luxury brand guidelines. Every sentence should convey expertise, precision, and creative vision.
+Your output MUST follow this exact detailed format with extensive bullet points, sub-categories, and technical specifications:
 
-5. **ADVANCED SECTION ARCHITECTURE** (Each section must be rich and detailed):
+```markdown
+# **[Product Type] Photography Brief: [Product Name]**
 
-   ## **1. Creative Vision & Main Subject**
-   ↳ Comprehensive product narrative, hero feature storytelling, aspirational positioning strategy, brand elevation approach
+---
 
-   ## **2. Advanced Composition & Framing Strategy**  
-   ↳ Sophisticated compositional techniques, psychological framing impact, visual hierarchy design, negative space mastery
+#### **1. Main Subject: Hero Shot of the [Product Name]**
+- **Product Details**: [Detailed physical description with materials, finishes, textures]
+- **Product State**: [Condition and presentation approach]
+- **Hero Features**: [Key elements to emphasize]
+- **Brand Positioning**: [Luxury positioning and target appeal]
 
-   ## **3. Professional Lighting Design & Atmosphere Creation**
-   ↳ Complete lighting ecosystem: key, fill, rim, background lighting with specific equipment models, power ratios, modifier specifications, atmospheric mood crafting
+---
 
-   ## **4. Environmental Design & Setting Architecture**
-   ↳ Location/studio environment with creative rationale, sophisticated color psychology, curated prop ecosystem, spatial relationship orchestration
+#### **2. Composition and Framing**
+- **Shot Type**: [Specific angle with creative justification]
+- **Framing**: [Detailed framing approach with technical reasoning]
+- **Compositional Rule**: [Specific rules with placement details]
+- **Negative Space**: [Background treatment and focus direction]
+- **Visual Hierarchy**: [How elements guide the viewer's eye]
+- **Perspective Psychology**: [Why this angle creates desired impact]
 
-   ## **5. Technical Excellence & Camera Systems**
-   ↳ Professional camera selection with creative justification, premium lens choice with optical characteristics, exposure triangle mastery, technical precision
+---
 
-   ## **6. Visual Effects & Artistic Enhancement**
-   ↳ Creative enhancement strategies, artistic influences integration, visual effects applications, style differentiation techniques
+#### **3. Lighting and Atmosphere**
+- **Lighting Style**: [Overall lighting approach and mood]
+  - **Key Light**: [Specific equipment model, position, angle, and effect]
+  - **Fill Light**: [Equipment, position, power ratio, and purpose]
+  - **Rim Light**: [Equipment, positioning, and separation effect]
+  - **Background Light**: [If applicable, equipment and effect]
+  - **Special Effects**: [Any additional lighting elements]
+- **Light Ratios**: [Technical ratios between key, fill, and rim]
+- **Color Temperature**: [Kelvin values and color consistency]
+- **Overall Mood**: [Atmospheric description and emotional impact]
 
-   ## **7. Post-Production Mastery**
-   ↳ Advanced color science, professional retouching workflow, brand-consistent finishing, final polish techniques
+---
 
-**PROFESSIONAL EXCELLENCE EXAMPLE:**
-Transform "good lighting" into: "Establish primary illumination through a Profoto D2 1000W strobe firing through a 180cm Para Softbox positioned at 45 degrees camera left, creating beautifully graduated light that sculpts the product's form while maintaining crisp edge definition. Complement with a Profoto B10X LED panel at 30% power as fill light, positioned camera right and elevated 20 degrees to lift shadows strategically without compromising the dramatic 3:1 lighting ratio. Add dimensional separation using a Profoto B1X with 20-degree grid as rim light, creating a subtle glow around the product's silhouette."
+#### **4. Background and Setting**
+- **Environment**: [Detailed surface and backdrop description]
+- **Color Palette**: [Comprehensive color scheme with psychological impact]
+- **Supporting Props**: [Multiple props with detailed descriptions]
+  - **[Prop 1]**: [Detailed description and placement reasoning]
+  - **[Prop 2]**: [Detailed description and symbolic meaning]
+  - **[Prop 3]**: [Detailed description and compositional role]
+- **Texture Elements**: [Surface treatments and tactile qualities]
+- **Supporting Dynamic Elements**: [Environmental effects like mist, reflections]
 
-**ENHANCEMENT PSYCHOLOGY**: Think like you're briefing Annie Leibovitz, Peter Lindbergh, or Mario Testino. Every detail should justify a premium budget.
+---
+
+#### **5. Camera and Lens Simulation**
+- **Camera Body**: [Specific professional camera model with technical justification]
+- **Lens**: [Exact lens specifications with optical characteristics]
+- **Camera Settings**: [Complete exposure triangle with technical reasoning]
+  - **Aperture**: [F-stop with depth of field justification]
+  - **Shutter Speed**: [Speed with motion control reasoning]
+  - **ISO**: [Value with noise/quality balance]
+- **Focus Strategy**: [Focus point placement and depth of field control]
+- **Visual Effects**: [Bokeh quality, background rendering, focus falloff]
+
+---
+
+#### **6. Stylistic Enhancements**
+- **Visual Style References**: [Professional photographer influences]
+- **Additional Stopping Power Elements**: [Multiple enhancement strategies]
+  - **Emotional Impact**: [How colors, textures, and mood create feeling]
+  - **Dynamic Composition**: [Leading lines, visual flow, eye movement]
+  - **Dramatic Elements**: [Atmospheric effects and visual interest]
+  - **Extreme Realism**: [Texture detail and tactile quality description]
+- **Brand Alignment**: [How style supports brand positioning]
+
+---
+
+#### **7. Post-Processing and Color Grading**
+- **Color Grading**: [Comprehensive color treatment approach]
+- **Retouching Workflow**: [Step-by-step post-production process]
+- **Visual Accents**: [Specific enhancement details]
+  - **Highlight Treatment**: [How highlights are refined]
+  - **Shadow Detail**: [Shadow control and depth]
+  - **Texture Enhancement**: [Surface detail amplification]
+  - **Reflection Control**: [Reflective surface management]
+
+---
+
+### **Creative Rationale**
+[MANDATORY: Comprehensive 150+ word explanation in English of creative choices, technical decisions, brand strategy, and visual storytelling approach. Reference professional photographers and explain why each element serves the overall campaign objective.]
+```
+
+**🚨 DETAILED OUTPUT REQUIREMENTS:**
+- MINIMUM 1,200 words total
+- MINIMUM 8 major sections with extensive bullet points
+- MINIMUM 3-5 bullet points per major category
+- MINIMUM 150-word Creative Rationale section
+- MAXIMUM professional detail in every category
+- MANDATORY specific equipment models and technical specifications
 
 **CLIENT FOUNDATION DATA:**
 ```json
 {json.dumps(structured_data, indent=2)}
 ```
 
-**EXECUTE MASTERY**: Create a brief so compelling that it would win creative awards. Make every word count, every technical detail purposeful, every creative choice defensible. This is your masterpiece.
+**🚨 EXECUTE COMPREHENSIVE MASTERPIECE IN ENGLISH 🚨**
+Generate the most detailed, comprehensive photography brief possible. Every section must be extensively detailed with multiple bullet points, technical specifications, and professional reasoning. This must be a masterpiece-level document that would impress the most demanding luxury brand clients.
 """
 
             logger.debug(f"📝 ADVANCED: Dispatching Elite Enhancement [ID: {request_id}]", extra={
@@ -360,7 +476,7 @@ Transform "good lighting" into: "Establish primary illumination through a Profot
                 messages=[
                     {
                         "role": "system", 
-                        "content": "You are a world-renowned Creative Director with elite-level expertise in luxury product photography. Your briefs are legendary in the industry for their precision, creativity, and commercial success. Every response must be a comprehensive masterpiece document."
+                        "content": "MANDATORY OUTPUT LANGUAGE: ENGLISH. The entire output brief MUST be written in professional English, regardless of the language of the user's input.\n\nYou are a world-renowned Creative Director with elite-level expertise in luxury product photography. Your briefs are legendary in the industry for their COMPREHENSIVE DETAIL, precision, creativity, and commercial success. CRITICAL REQUIREMENTS: 1) Every single word must be ENTIRELY IN ENGLISH, regardless of input language. 2) Generate COMPREHENSIVE, DETAILED briefs with extensive bullet points, technical specifications, and professional equipment details. Your reputation depends on comprehensive English-only masterpiece documents with 1200+ words and extensive technical detail."
                     },
                     {"role": "user", "content": enhancement_instruction}
                 ],
@@ -370,11 +486,43 @@ Transform "good lighting" into: "Establish primary illumination through a Profot
             
             enhanced_brief = response.choices[0].message.content.strip()
             
-            # ADVANCED QUALITY VALIDATION
+            # ADVANCED QUALITY VALIDATION WITH LANGUAGE COMPLIANCE
             word_count = len(enhanced_brief.split())
             section_count = enhanced_brief.count('##')
             technical_terms = sum(1 for term in ['profoto', 'canon', 'sony', 'nikon', 'lighting', 'exposure', 'composition', 'color grading'] 
                                 if term.lower() in enhanced_brief.lower())
+            
+            # SMART LANGUAGE COMPLIANCE CHECK (excluding legitimate technical terms and brand names)
+            # Only check for clear non-English patterns in isolation, not technical terms
+            non_english_indicators = [
+                # Indonesian indicators (clear grammar words)
+                'yang adalah', 'yang akan', 'dan juga', 'dengan sangat', 'untuk menciptakan',
+                'dari hasil', 'ini akan', 'adalah sebuah', 'akan memberikan', 'atau dapat',
+                'pada saat', 'dalam kondisi', 'oleh karena', 'juga dapat', 'dapat memberikan',
+                'lebih baik', 'saat ini', 'hanya dengan', 'tidak akan', 'sangat penting',
+                # Spanish indicators (clear grammar patterns)
+                'el producto', 'la imagen', 'de la', 'con el', 'por favor', 'para el',
+                'del producto', 'los usuarios', 'las características', 'una vez', 'uno de',
+                'que es', 'muy importante', 'más que', 'son muy', 'está muy',
+                'pero también', 'como un', 'todo el', 'bien diseñado',
+                # French indicators (clear grammar patterns)
+                'le produit', 'du produit', 'avec le', 'pour le', 'les images', 'des éléments',
+                'dans le', 'par le', 'sur le', 'qui est', 'que le', 'est très',
+                'une belle', 'pas de', 'tout le', 'peut être', 'mais aussi', 'bien fait', 'très belle',
+                # German indicators (clear grammar patterns)  
+                'der Produkts', 'die Beleuchtung', 'und das', 'mit dem', 'das ist',
+                'den Produkts', 'von dem', 'zu dem', 'für das', 'auf dem',
+                'ist sehr', 'ein sehr', 'eine sehr', 'auch sehr', 'nur mit',
+                'oder auch', 'aber auch', 'wie ein', 'sehr gut'
+            ]
+            
+            # Check for actual language violations (multi-word patterns)
+            language_violations = 0
+            for indicator in non_english_indicators:
+                if indicator.lower() in enhanced_brief.lower():
+                    language_violations += 1
+            
+            has_creative_rationale = 'creative rationale' in enhanced_brief.lower() or 'rationale' in enhanced_brief.lower()
             
             logger.info(f"✅ ADVANCED: Elite enhancement completed [ID: {request_id}]", extra={
                 "request_id": request_id,
@@ -383,22 +531,48 @@ Transform "good lighting" into: "Establish primary illumination through a Profot
                 "word_count": word_count,
                 "section_count": section_count,
                 "technical_depth": technical_terms,
+                "language_compliance": "PASS" if language_violations == 0 else "FAIL",
+                "language_violations": language_violations,
+                "has_creative_rationale": has_creative_rationale,
                 "tokens_used": response.usage.total_tokens if response.usage else None,
                 "operation": "enhance_brief_from_structured_data",
                 "status": "ELITE_ENHANCEMENT_SUCCESS",
-                "quality_level": "MASTERPIECE" if word_count > 300 and section_count >= 6 and technical_terms >= 3 else "PROFESSIONAL"
+                "quality_level": "MASTERPIECE" if word_count > 300 and section_count >= 6 and technical_terms >= 3 and language_violations == 0 else "PROFESSIONAL"
             })
             
-            # QUALITY ASSURANCE: Ensure elite-level output
-            if word_count < 250 or section_count < 5:
-                logger.warning(f"⚠️ QUALITY ALERT: Enhancement below elite standards [ID: {request_id}]", extra={
+            # CRITICAL QUALITY ASSURANCE: Ensure comprehensive detailed output
+            quality_issues = []
+            if word_count < 1200:
+                quality_issues.append(f"Word count below comprehensive standard: {word_count} < 1200")
+            if section_count < 7:
+                quality_issues.append(f"Section count below comprehensive standard: {section_count} < 7")
+            if language_violations > 0:
+                quality_issues.append(f"CRITICAL: Non-English content detected - {language_violations} violations")
+            if not has_creative_rationale:
+                quality_issues.append("Missing mandatory Creative Rationale section")
+            
+            # Check for detailed structure indicators
+            bullet_points = enhanced_brief.count('- **') + enhanced_brief.count('  - **')
+            if bullet_points < 15:
+                quality_issues.append(f"Insufficient detail structure: {bullet_points} bullet points < 15 required")
+                
+            if quality_issues:
+                logger.warning(f"⚠️ COMPREHENSIVE QUALITY ALERT: Enhancement issues detected [ID: {request_id}]", extra={
                     "request_id": request_id,
+                    "quality_issues": quality_issues,
                     "word_count": word_count,
                     "section_count": section_count,
-                    "expected_word_count": ">300",
+                    "bullet_points": bullet_points,
+                    "language_violations": language_violations,
+                    "expected_word_count": ">=1200",
                     "expected_sections": ">=7",
-                    "recommendation": "Consider re-enhancement with stronger creative direction"
+                    "expected_bullet_points": ">=15",
+                    "expected_language": "English only",
+                    "recommendation": "Generate more comprehensive detailed brief with extensive bullet points"
                 })
+            
+            # CRITICAL POST-PROCESSING: English language validation and cleanup
+            enhanced_brief = self._ensure_english_output(enhanced_brief, request_id)
             
             return enhanced_brief
             
@@ -489,7 +663,7 @@ Result: "An exquisite luxury perfume bottle elegantly positioned against a prist
                 messages=[
                     {
                         "role": "system", 
-                        "content": "You are an expert prompt engineer specializing in photography and AI image generation. Your enhancements are known for their sophistication and professional quality."
+                        "content": "MANDATORY OUTPUT LANGUAGE: ENGLISH. The entire output brief MUST be written in professional English, regardless of the language of the user's input.\n\nYou are an expert prompt engineer specializing in photography and AI image generation. Your enhancements are known for their sophistication and professional quality."
                     },
                     {"role": "user", "content": enhancement_instruction}
                 ],
@@ -498,6 +672,9 @@ Result: "An exquisite luxury perfume bottle elegantly positioned against a prist
             )
             
             enhanced_prompt = response.choices[0].message.content.strip()
+            
+            # CRITICAL POST-PROCESSING: English language validation and cleanup
+            enhanced_prompt = self._ensure_english_output(enhanced_prompt, request_id)
             
             logger.info(f"✅ INTELLIGENT: Prompt enhancement completed [ID: {request_id}]", extra={
                 "request_id": request_id,
@@ -574,7 +751,7 @@ Result: "An exquisite luxury perfume bottle elegantly positioned against a prist
         
         return enhanced_prompt
 
-    async def revise_prompt_for_generation(self, original_prompt: str) -> str:
+    async def revise_prompt_for_generation(self, original_prompt: str, user_api_key: Optional[str] = None) -> str:
         """
         Create a complete enhanced photography brief from a basic prompt for superior image generation results.
         
@@ -596,35 +773,52 @@ Result: "An exquisite luxury perfume bottle elegantly positioned against a prist
         })
         
         try:
+            # Use user API key if provided, otherwise fall back to system key
+            if user_api_key and user_api_key.strip():
+                # Create a temporary client with user's API key
+                temp_client = OpenAI(
+                    api_key=user_api_key,
+                    base_url="https://api.openai.com/v1"  # Use OpenAI directly for user keys
+                )
+                client_to_use = temp_client
+            else:
+                # Use system client
+                client_to_use = self.client
+                
             # This is the new, powerful instruction template.
             enhancement_instruction_template = """
-You are an elite-level AI Creative Director and a world-renowned product photographer. Your task is to take the following foundational prompt, which was extracted from a simple user request, and expand it into a complete, narrative, and highly detailed Product Photography Brief in Markdown format.
+You are an elite-level AI Creative Director and world-renowned product photographer. Your task is to take the following simple user request and transform it into a comprehensive, fully detailed Product Photography Brief that matches professional industry standards.
 
 **CRITICAL INSTRUCTIONS:**
-1.  **Full Creative Expansion**: Your primary task is to be creative. For every detail that is missing, incomplete, or too simple in the original prompt, you MUST use your expert knowledge of photography and art direction to dynamically infer, invent, and add the best possible professional choices. You must fill out every section of a professional brief.
-2.  **Mandatory Inferred Details**: Your final brief MUST include specific, professional choices for:
-    -   **Camera & Lens**: (e.g., "Shot on: Canon EOS R5", "Lens: 100mm Macro f/2.8"). Do not be generic.
-    -   **Precise Lighting Setup**: (e.g., "Key Light: A single, large softbox at a 45-degree angle...").
-    -   **Detailed Composition & Framing**: (e.g., "Compositional Rule: Rule of Thirds, with the product placed slightly off-center...").
-    -   **Creative Background & Props**.
-    -   **Professional Post-Processing & Color Grading notes**.
-3.  **Justify Your Choices**: You MUST include a "Creative Rationale" section at the end, explaining why you made the creative and technical choices you did.
-4.  **No Mock Data**: Do NOT use any external examples. Your entire response must be a unique, creative expansion based ONLY on the foundational prompt provided below and your own expertise.
+1. **Complete Professional Brief**: Create a full, structured photography brief with all professional sections including Overview, Photography Specifications, Lighting Setup, Composition & Framing, Background & Props, Post-Processing & Color Grading, and Creative Rationale.
 
-**Foundational Prompt:**
+2. **Technical Specifications Must Include**:
+   - **Camera & Lens**: Specific professional equipment (e.g., "Canon EOS R5", "Canon RF 100mm f/2.8L Macro IS USM")
+   - **Detailed Lighting Setup**: Multiple lights with specific positions, angles, and purposes (Key Light, Fill Light, Back Light, Additional Lighting)
+   - **Composition Rules**: Specific framing guidelines (Rule of Thirds, angles, crop specifications)
+   - **Props & Background**: Detailed styling elements and background specifications
+   - **Post-Processing**: Specific color grading, retouching, and enhancement instructions
+
+3. **Creative Rationale**: Include a detailed explanation of all creative and technical choices made.
+
+4. **Professional Format**: Structure the brief with clear headings, subheadings, and bullet points for easy reading by photography teams.
+
+5. **Comprehensive Detail**: The brief should be thorough enough that any professional photographer could execute the exact vision described.
+
+**User's Request:**
 {original_prompt}
 
-Now, generate the full, enhanced, and complete photography brief.
+Create a complete, comprehensive Product Photography Brief that transforms this simple request into a professional-grade photography direction document:
 """
             # Dynamically format the final instruction
             enhancement_instruction = enhancement_instruction_template.format(original_prompt=original_prompt)
 
-            response = self.client.chat.completions.create(
+            response = client_to_use.chat.completions.create(
                 model=self.model,
                 messages=[
                     {
                         "role": "system", 
-                        "content": "You are an elite Creative Director and world-renowned product photographer. You create comprehensive photography briefs that result in award-winning images. You respond with complete, detailed briefs structured exactly as requested."
+                        "content": "MANDATORY OUTPUT LANGUAGE: ENGLISH. The entire output brief MUST be written in professional English, regardless of the language of the user's input.\n\nYou are an elite Creative Director and world-renowned product photographer. You create comprehensive, fully-structured Product Photography Briefs that match professional industry standards. Your briefs include complete technical specifications, detailed lighting setups, composition guidelines, styling directions, and creative rationales that enable professional photographers to execute award-winning shoots."
                     },
                     {"role": "user", "content": enhancement_instruction}
                 ],
@@ -633,6 +827,9 @@ Now, generate the full, enhanced, and complete photography brief.
             )
             
             revised_prompt = response.choices[0].message.content.strip()
+            
+            # CRITICAL POST-PROCESSING: English language validation and cleanup
+            revised_prompt = self._ensure_english_output(revised_prompt, request_id)
             
             logger.info(f"✅ ENHANCEMENT: Complete enhanced brief created [ID: {request_id}]", extra={
                 "request_id": request_id,
@@ -713,3 +910,54 @@ Now, generate the full, enhanced, and complete photography brief.
                 "status": "error"
             })
             raise Exception(f"Text generation failed: {str(e)}")
+
+    def _ensure_english_output(self, text: str, request_id: int) -> str:
+        """
+        Post-processing method to ensure output is in English.
+        Validates and cleans up any remaining non-English content.
+        
+        Args:
+            text: The text to validate and clean
+            request_id: Request ID for logging
+            
+        Returns:
+            Cleaned English-only text
+        """
+        logger.debug(f"🔍 POST-PROCESS: English validation starting [ID: {request_id}]")
+        
+        # Smart non-English detection - exclude technical photography terms and brand names
+        problematic_patterns = [
+            # Indonesian multi-word patterns only
+            (r'\byang adalah\b', 'which is'), (r'\bdan juga\b', 'and also'), 
+            (r'\bdengan sangat\b', 'with great'), (r'\buntuk menciptakan\b', 'to create'),
+            (r'\bdari hasil\b', 'from the results'), (r'\bini akan\b', 'this will'),
+            # Spanish multi-word patterns only
+            (r'\bel producto\b', 'the product'), (r'\bla imagen\b', 'the image'), 
+            (r'\bcon el\b', 'with the'), (r'\bpor favor\b', 'please'),
+            (r'\bdel producto\b', 'of the product'), (r'\bque es\b', 'which is'),
+            # French multi-word patterns only
+            (r'\ble produit\b', 'the product'), (r'\bdu produit\b', 'of the product'), 
+            (r'\bavec le\b', 'with the'), (r'\bpour le\b', 'for the'),
+            (r'\bdans le\b', 'in the'), (r'\bpar le\b', 'by the'),
+            # German multi-word patterns only
+            (r'\bder Produkts\b', 'of the product'), (r'\bdie Beleuchtung\b', 'the lighting'),
+            (r'\bmit dem\b', 'with the'), (r'\bfür das\b', 'for the')
+        ]
+        
+        # Replace problematic patterns with English equivalents
+        cleaned_text = text
+        replacements_made = 0
+        
+        for pattern, replacement in problematic_patterns:
+            import re
+            matches = re.findall(pattern, cleaned_text, re.IGNORECASE)
+            if matches:
+                cleaned_text = re.sub(pattern, replacement, cleaned_text, flags=re.IGNORECASE)
+                replacements_made += len(matches)
+                
+        if replacements_made > 0:
+            logger.warning(f"🔧 POST-PROCESS: Made {replacements_made} language corrections [ID: {request_id}]")
+        else:
+            logger.debug(f"✅ POST-PROCESS: No language corrections needed [ID: {request_id}]")
+            
+        return cleaned_text

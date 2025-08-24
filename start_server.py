@@ -65,15 +65,15 @@ if __name__ == "__main__":
     print(f"🌐 Server will start on http://{host}:{port}")
     print(f"📚 API Documentation: http://{host}:{port}/docs")
     print(f"🔍 ReDoc Documentation: http://{host}:{port}/redoc")
-    print("🔄 Auto-reload enabled for development")
+    print("⚡ Stable mode: Auto-reload DISABLED to prevent restarts")
     
     try:
-        # Start the FastAPI server with reload for development
+        # Start the FastAPI server without reload for stability
         uvicorn.run(
             "app.main:app",
             host=host,
             port=port,
-            reload=True,
+            reload=False,  # Disabled for stability
             log_level="info"
         )
     except KeyboardInterrupt:

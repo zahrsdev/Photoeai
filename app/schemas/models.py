@@ -54,6 +54,34 @@ class WizardInput(BaseModel):
     # Section 6: Style & Post-Production
     overall_style: Optional[str] = None
     photographer_influences: Optional[str] = None
+    
+    # Section 7: Advanced Lighting (NEW - 5 fields)
+    light_temperature: Optional[str] = None  # "warm 3200K" or "daylight 5600K"
+    shadow_intensity: Optional[str] = None   # "soft", "hard", "medium"
+    highlight_control: Optional[str] = None  # "preserved", "blown", "controlled"
+    lighting_direction: Optional[str] = None # "front", "side", "back", "top"
+    ambient_lighting: Optional[str] = None   # "studio", "natural", "mixed"
+    
+    # Section 8: Advanced Composition (NEW - 5 fields) 
+    perspective_angle: Optional[str] = None   # "eye-level", "low-angle", "high-angle"
+    depth_layers: Optional[str] = None        # "foreground", "midground", "background"
+    leading_lines: Optional[str] = None       # "diagonal", "curved", "vertical", "none"
+    symmetry_type: Optional[str] = None       # "perfect", "asymmetrical", "radial"
+    focal_emphasis: Optional[str] = None      # "center", "off-center", "multiple points"
+    
+    # Section 9: Technical Details (NEW - 5 fields)
+    focus_mode: Optional[str] = None          # "manual", "single-point AF", "zone AF"
+    metering_mode: Optional[str] = None       # "matrix", "center-weighted", "spot"
+    white_balance: Optional[str] = None       # "auto", "daylight", "tungsten", "custom"
+    file_format: Optional[str] = None         # "RAW", "JPEG", "TIFF"
+    image_stabilization: Optional[str] = None # "on", "off", "lens-based", "body-based"
+    
+    # Section 10: Brand & Marketing Context (NEW - 5 fields)
+    target_audience: Optional[str] = None     # "luxury", "mass market", "professional"
+    brand_personality: Optional[str] = None   # "premium", "friendly", "innovative"
+    usage_purpose: Optional[str] = None       # "e-commerce", "advertising", "social media"
+    seasonal_context: Optional[str] = None    # "spring", "summer", "holiday", "evergreen"
+    competitive_differentiation: Optional[str] = None # unique selling points
 
 
 class BriefOutput(BaseModel):
@@ -70,7 +98,7 @@ class TextGenerationRequest(BaseModel):
     """
     prompt: str = Field(..., description="The text prompt for generation")
     user_api_key: str = Field(..., description="User-provided API key for the AI service")
-    provider: Optional[str] = Field(None, description="Override provider (sumopod, gemini, openai, midjourney)")
+    provider: Optional[str] = Field(None, description="Provider override (always uses 'openai' for GPT Image 1)")
     model: Optional[str] = Field(None, description="Specific model to use (e.g., gpt-4o, gemini-2.5-flash)")
     max_tokens: Optional[int] = Field(150, description="Maximum tokens to generate")
     temperature: Optional[float] = Field(0.7, description="Sampling temperature (0.0 to 1.0)")
@@ -80,7 +108,7 @@ class TextGenerationRequest(BaseModel):
             "example": {
                 "prompt": "Generate a detailed photography brief for luxury skincare products",
                 "user_api_key": "your-api-key-here",
-                "provider": "gemini",
+                "provider": "openai",
                 "model": "openai/gpt-4o",
                 "max_tokens": 200,
                 "temperature": 0.8
@@ -99,7 +127,7 @@ class TextOutput(BaseModel):
         schema_extra = {
             "example": {
                 "generated_text": "A comprehensive photography brief for luxury skincare...",
-                "provider_used": "gemini", 
+                "provider_used": "openai", 
                 "model_used": "openai/gpt-4o",
                 "generation_metadata": {
                     "tokens_used": 156,
@@ -116,7 +144,8 @@ class ImageGenerationRequest(BaseModel):
     user_api_key: str = Field(..., description="User's API key for the image generation service.")
     negative_prompt: Optional[str] = Field(None, description="Optional concepts to exclude from the image.")
     style_preset: Optional[str] = Field("photorealistic", description="Artistic style for the image generation.")
-    provider: Optional[str] = Field(None, description="Optional provider override. Supported: 'openai' (DALL-E, recommended), 'gemini' (Imagen, experimental), 'midjourney' (requires subscription). Note: Sumopod is text-only.")
+    provider: Optional[str] = Field(None, description="Optional provider override. Only 'openai' supported for GPT Image 1.")
+    use_raw_prompt: Optional[bool] = Field(False, description="If True, use the brief_prompt directly without processing it through the wizard system.")
 
 class ImageEnhancementRequest(BaseModel):
     """Model for iteratively enhancing a previously generated image."""
@@ -125,7 +154,7 @@ class ImageEnhancementRequest(BaseModel):
     enhancement_instruction: str = Field(..., description="User's instruction for what to change, e.g., 'Make it colder with more condensation.'")
     user_api_key: str = Field(..., description="User's API key for the image generation service.")
     seed: Optional[int] = Field(None, description="The seed of the original image to maintain consistency.")
-    provider: Optional[str] = Field(None, description="Optional provider override (openai, gemini, midjourney). Note: Sumopod only supports text, not images")
+    provider: Optional[str] = Field(None, description="Optional provider override. Only 'openai' supported for GPT Image 1.")
 
 class ImageOutput(BaseModel):
     """Model for the response after a successful image generation."""
@@ -134,6 +163,8 @@ class ImageOutput(BaseModel):
     seed: int
     revised_prompt: str
     final_enhanced_prompt: str  # MISSION 2: Added field for downloadable prompt feature
+    model_used: Optional[str] = Field(None, description="AI model used for generation")
+    provider_used: Optional[str] = Field(None, description="Provider service used")
 
 
 class DownloadBriefRequest(BaseModel):

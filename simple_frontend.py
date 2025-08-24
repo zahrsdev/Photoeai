@@ -32,11 +32,30 @@ def check_server_running(host="localhost", port=8000, timeout=5):
         return False
 
 
-def generate_image(prompt: str, api_key: str, provider: str = None, negative_prompt: str = None) -> Optional[Dict]:
-    """Generate image from prompt using the backend API"""
+def generate_comprehensive_brief(user_prompt: str) -> Optional[Dict]:
+    """Generate comprehensive photography brief from simple user prompt"""
     try:
         payload = {
-            "brief_prompt": prompt,
+            "user_request": user_prompt
+        }
+        
+        response = requests.post(
+            f"{API_BASE_URL}/generate-brief-from-prompt",
+            json=payload,
+            timeout=TIMEOUT
+        )
+        response.raise_for_status()
+        return response.json()
+    except requests.exceptions.RequestException as e:
+        st.error(f"❌ Brief generation failed: {e}")
+        return None
+
+
+def generate_image_from_brief(comprehensive_brief: str, api_key: str, provider: str = None, negative_prompt: str = None) -> Optional[Dict]:
+    """Generate image from comprehensive photography brief"""
+    try:
+        payload = {
+            "brief_prompt": comprehensive_brief,
             "user_api_key": api_key
         }
         
@@ -54,6 +73,48 @@ def generate_image(prompt: str, api_key: str, provider: str = None, negative_pro
         return response.json()
     except requests.exceptions.RequestException as e:
         st.error(f"❌ Image generation failed: {e}")
+        return None
+
+
+def generate_image(prompt: str, api_key: str, provider: str = None, negative_prompt: str = None) -> Optional[Dict]:
+    """Generate image from prompt using the enhanced two-step process"""
+    try:
+        # Step 1: Generate comprehensive brief from simple prompt
+        st.info("📝 Step 1: Creating comprehensive photography brief...")
+        brief_result = generate_comprehensive_brief(prompt)
+        
+        if not brief_result:
+            return None
+            
+        comprehensive_brief = brief_result.get("final_prompt", "")
+        if not comprehensive_brief:
+            st.error("❌ Failed to generate comprehensive brief")
+            return None
+        
+        st.success(f"✅ Step 1 Complete: Generated {len(comprehensive_brief)} character brief")
+        
+        # Show brief preview in expandable section
+        with st.expander("📋 View Generated Photography Brief", expanded=False):
+            st.text_area("Comprehensive Brief:", value=comprehensive_brief, height=200, disabled=True)
+        
+        # Step 2: Generate image from comprehensive brief
+        st.info("🎨 Step 2: Generating image from comprehensive brief...")
+        result = generate_image_from_brief(
+            comprehensive_brief=comprehensive_brief,
+            api_key=api_key,
+            provider=provider,
+            negative_prompt=negative_prompt
+        )
+        
+        if result:
+            st.success("✅ Step 2 Complete: Image generated successfully!")
+            # Add the brief to the result for display
+            result["comprehensive_brief"] = comprehensive_brief
+        
+        return result
+        
+    except Exception as e:
+        st.error(f"❌ Generation process failed: {e}")
         return None
 
 
@@ -142,7 +203,7 @@ def main():
             # 3. User select provider
             provider = st.selectbox(
                 "🤖 **AI Provider**",
-                options=["openai", "gemini", "sumopod", "midjourney"],
+                options=["openai", "gemini", "midjourney"],
                 index=0,
                 help="Choose which AI provider to use for image generation"
             )
@@ -224,7 +285,7 @@ def main():
                 
                 provider_enhance = st.selectbox(
                     "🤖 **AI Provider**",
-                    options=["openai", "gemini", "sumopod", "midjourney"],
+                    options=["openai", "gemini", "midjourney"],
                     index=0,
                     help="Choose which AI provider to use for enhancement",
                     key="enhance_provider"
@@ -284,23 +345,30 @@ def main():
         # 7. Prompt Output display
         st.subheader("📄 Prompt Details")
         
+        # Show comprehensive brief if available
+        comprehensive_brief = result.get("comprehensive_brief", "")
+        if comprehensive_brief:
+            st.markdown("**📋 Comprehensive Photography Brief:**")
+            st.text_area("", value=comprehensive_brief, height=200, disabled=True, key="comprehensive_brief_display")
+        
         col1, col2 = st.columns(2)
         
         with col1:
-            st.markdown("**🎯 Original Prompt:**")
+            st.markdown("**🎯 Original User Prompt:**")
             st.text_area("", value=st.session_state.original_prompt, height=100, disabled=True, key="original_prompt_display")
         
         with col2:
-            # Show the enhanced prompt if available
-            enhanced_prompt = result.get("final_enhanced_prompt", "")
-            if enhanced_prompt and enhanced_prompt != st.session_state.original_prompt:
-                st.markdown("**✨ Enhanced Prompt:**")
-                st.text_area("", value=enhanced_prompt, height=100, disabled=True, key="enhanced_prompt_display")
+            # Show the actual generation prompt used for DALL-E
+            revised_prompt = result.get("revised_prompt", "")
+            if revised_prompt and revised_prompt != comprehensive_brief:
+                st.markdown("**🎨 Optimized Generation Prompt:**")
+                st.text_area("", value=revised_prompt, height=100, disabled=True, key="revised_prompt_display")
+                st.caption("This is the optimized version sent to the AI image generator")
             else:
-                revised_prompt = result.get("revised_prompt", "")
-                if revised_prompt:
-                    st.markdown("**🔄 Revised Prompt:**")
-                    st.text_area("", value=revised_prompt, height=100, disabled=True, key="revised_prompt_display")
+                enhanced_prompt = result.get("final_enhanced_prompt", "")
+                if enhanced_prompt and enhanced_prompt != st.session_state.original_prompt:
+                    st.markdown("**✨ Final Enhanced Prompt:**")
+                    st.text_area("", value=enhanced_prompt, height=100, disabled=True, key="enhanced_prompt_display")
         
         # Generation metadata
         with st.expander("ℹ️ Generation Details"):
@@ -317,17 +385,21 @@ def main():
         
         with col1:
             if st.button("📥 **Download Prompt Details**", use_container_width=True):
+                comprehensive_brief = result.get("comprehensive_brief", "")
                 prompt_details = f"""PhotoEAI Generation Details
 ==========================
 
-Original Prompt:
+Original User Prompt:
 {st.session_state.original_prompt}
 
-Enhanced Prompt:
-{result.get('final_enhanced_prompt', 'N/A')}
+Comprehensive Photography Brief:
+{comprehensive_brief if comprehensive_brief else 'N/A'}
 
-Revised Prompt:
+Optimized Generation Prompt:
 {result.get('revised_prompt', 'N/A')}
+
+Final Enhanced Prompt:
+{result.get('final_enhanced_prompt', 'N/A')}
 
 Generation Info:
 - ID: {result.get('generation_id', 'Unknown')}

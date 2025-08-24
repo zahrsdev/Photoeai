@@ -14,10 +14,11 @@ if __name__ == "__main__":
     print("📚 API Documentation available at: http://localhost:8000/docs")
     print("─" * 50)
     
+    # ⚡ STABILITY FIX: Disable auto-reload to prevent server restarts
     uvicorn.run(
         "app.main:app",
         host=settings.host,
         port=settings.port,
-        reload=settings.debug,
+        reload=False,  # Disabled to prevent automatic restarts
         log_level="info" if not settings.debug else "debug"
     )

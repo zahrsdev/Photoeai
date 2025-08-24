@@ -728,3 +728,761 @@
 2025-08-23 20:11:48 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
 2025-08-23 20:11:49 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
 2025-08-23 20:12:46 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:13:03 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:13:45 | INFO     | app.services.unified_ai_service:generate_image:299 | 🎨 Attempting to enhance prompt with Creative Director LLM...
+2025-08-23 20:13:45 | INFO     | app.services.ai_client:revise_prompt_for_generation:592 | ✨ ENHANCEMENT: Creating complete enhanced brief [ID: 3274]
+2025-08-23 20:14:05 | INFO     | app.services.ai_client:revise_prompt_for_generation:637 | ✅ ENHANCEMENT: Complete enhanced brief created [ID: 3274]
+2025-08-23 20:14:05 | INFO     | app.services.unified_ai_service:generate_image:301 | ✨ Prompt successfully enhanced.
+2025-08-23 20:14:05 | INFO     | app.services.unified_ai_service:generate_image:311 | 📏 Enhanced brief (6945 chars) exceeds API limit. Applying smart compression...
+2025-08-23 20:14:05 | INFO     | app.services.prompt_compressor:compress_brief_for_generation:43 | 🔧 COMPRESSION: Starting smart brief compression [ID: 2289]
+2025-08-23 20:14:08 | INFO     | app.services.prompt_compressor:compress_brief_for_generation:88 | ✅ COMPRESSION: Smart compression completed [ID: 2289]
+2025-08-23 20:14:08 | INFO     | app.services.unified_ai_service:generate_image:316 | 🎯 Smart compression complete: 6945 → 1429 chars
+2025-08-23 20:14:08 | INFO     | app.services.unified_ai_service:generate_image:334 | 🎯 Image Provider override: 'openai' → 'openai'
+2025-08-23 20:14:08 | INFO     | app.services.unified_ai_service:generate_image:369 | Sending final prompt to image generation service.
+2025-08-23 20:14:08 | INFO     | app.services.unified_ai_service:generate_image:372 | 🎨 Sending image generation request to openai at https://api.openai.com/v1/images/generations
+2025-08-23 20:16:44 | INFO     | app.services.unified_ai_service:generate_image:299 | 🎨 Attempting to enhance prompt with Creative Director LLM...
+2025-08-23 20:16:44 | INFO     | app.services.ai_client:revise_prompt_for_generation:592 | ✨ ENHANCEMENT: Creating complete enhanced brief [ID: 9751]
+2025-08-23 20:16:59 | INFO     | app.services.ai_client:revise_prompt_for_generation:637 | ✅ ENHANCEMENT: Complete enhanced brief created [ID: 9751]
+2025-08-23 20:16:59 | INFO     | app.services.unified_ai_service:generate_image:301 | ✨ Prompt successfully enhanced.
+2025-08-23 20:16:59 | INFO     | app.services.unified_ai_service:generate_image:311 | 📏 Enhanced brief (6835 chars) exceeds API limit. Applying smart compression...
+2025-08-23 20:16:59 | INFO     | app.services.prompt_compressor:compress_brief_for_generation:43 | 🔧 COMPRESSION: Starting smart brief compression [ID: 4210]
+2025-08-23 20:17:02 | INFO     | app.services.prompt_compressor:compress_brief_for_generation:88 | ✅ COMPRESSION: Smart compression completed [ID: 4210]
+2025-08-23 20:17:02 | INFO     | app.services.unified_ai_service:generate_image:316 | 🎯 Smart compression complete: 6835 → 1238 chars
+2025-08-23 20:17:02 | INFO     | app.services.unified_ai_service:generate_image:334 | 🎯 Image Provider override: 'openai' → 'openai'
+2025-08-23 20:17:02 | INFO     | app.services.unified_ai_service:generate_image:369 | Sending final prompt to image generation service.
+2025-08-23 20:17:02 | INFO     | app.services.unified_ai_service:generate_image:372 | 🎨 Sending image generation request to openai at https://api.openai.com/v1/images/generations
+2025-08-23 20:21:33 | INFO     | app.services.unified_ai_service:generate_image:299 | 🎨 Attempting to enhance prompt with Creative Director LLM...
+2025-08-23 20:21:33 | INFO     | app.services.ai_client:revise_prompt_for_generation:592 | ✨ ENHANCEMENT: Creating complete enhanced brief [ID: 2312]
+2025-08-23 20:21:46 | INFO     | app.services.ai_client:revise_prompt_for_generation:637 | ✅ ENHANCEMENT: Complete enhanced brief created [ID: 2312]
+2025-08-23 20:21:46 | INFO     | app.services.unified_ai_service:generate_image:301 | ✨ Prompt successfully enhanced.
+2025-08-23 20:21:46 | INFO     | app.services.unified_ai_service:generate_image:311 | 📏 Enhanced brief (6483 chars) exceeds API limit. Applying smart compression...
+2025-08-23 20:21:46 | INFO     | app.services.prompt_compressor:compress_brief_for_generation:43 | 🔧 COMPRESSION: Starting smart brief compression [ID: 7874]
+2025-08-23 20:21:49 | INFO     | app.services.prompt_compressor:compress_brief_for_generation:88 | ✅ COMPRESSION: Smart compression completed [ID: 7874]
+2025-08-23 20:21:49 | INFO     | app.services.unified_ai_service:generate_image:316 | 🎯 Smart compression complete: 6483 → 1512 chars
+2025-08-23 20:21:49 | INFO     | app.services.unified_ai_service:generate_image:334 | 🎯 Image Provider override: 'openai' → 'openai'
+2025-08-23 20:21:49 | INFO     | app.services.unified_ai_service:generate_image:369 | Sending final prompt to image generation service.
+2025-08-23 20:21:49 | INFO     | app.services.unified_ai_service:generate_image:372 | 🎨 Sending image generation request to openai at https://api.openai.com/v1/images/generations
+2025-08-23 20:22:09 | ERROR    | app.services.unified_ai_service:generate_image:388 | 💥 Image generation API error (HTTP 500): The server had an error processing your request. Sorry about that! You can retry your request, or contact us through our help center at help.openai.com if you keep seeing this error. (Please include the request ID req_a77bd0d352d850bbc866965b6ea83afd in your email.)
+2025-08-23 20:22:09 | ERROR    | app.services.unified_ai_service:generate_image:406 | 💥 Image generation failed for openai: Image generation failed (HTTP 500): The server had an error processing your request. Sorry about that! You can retry your request, or contact us through our help center at help.openai.com if you keep seeing this error. (Please include the request ID req_a77bd0d352d850bbc866965b6ea83afd in your email.)
+2025-08-23 20:22:09 | ERROR    | app.routers.generator:generate_image:289 | Error in /generate-image endpoint: Image generation service failed: Image generation failed (HTTP 500): The server had an error processing your request. Sorry about that! You can retry your request, or contact us through our help center at help.openai.com if you keep seeing this error. (Please include the request ID req_a77bd0d352d850bbc866965b6ea83afd in your email.)
+2025-08-23 20:23:12 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:23:55 | INFO     | app.services.unified_ai_service:generate_image:299 | 🎨 Attempting to enhance prompt with Creative Director LLM...
+2025-08-23 20:23:55 | INFO     | app.services.ai_client:revise_prompt_for_generation:592 | ✨ ENHANCEMENT: Creating complete enhanced brief [ID: 8899]
+2025-08-23 20:24:08 | INFO     | app.services.ai_client:revise_prompt_for_generation:637 | ✅ ENHANCEMENT: Complete enhanced brief created [ID: 8899]
+2025-08-23 20:24:08 | INFO     | app.services.unified_ai_service:generate_image:301 | ✨ Prompt successfully enhanced.
+2025-08-23 20:24:08 | INFO     | app.services.unified_ai_service:generate_image:311 | 📏 Enhanced brief (6264 chars) exceeds API limit. Applying smart compression...
+2025-08-23 20:24:08 | INFO     | app.services.prompt_compressor:compress_brief_for_generation:43 | 🔧 COMPRESSION: Starting smart brief compression [ID: 2289]
+2025-08-23 20:24:12 | INFO     | app.services.prompt_compressor:compress_brief_for_generation:88 | ✅ COMPRESSION: Smart compression completed [ID: 2289]
+2025-08-23 20:24:12 | INFO     | app.services.unified_ai_service:generate_image:316 | 🎯 Smart compression complete: 6264 → 1380 chars
+2025-08-23 20:24:12 | INFO     | app.services.unified_ai_service:generate_image:334 | 🎯 Image Provider override: 'openai' → 'openai'
+2025-08-23 20:24:12 | INFO     | app.services.unified_ai_service:generate_image:369 | Sending final prompt to image generation service.
+2025-08-23 20:24:12 | INFO     | app.services.unified_ai_service:generate_image:372 | 🎨 Sending image generation request to openai at https://api.openai.com/v1/images/generations
+2025-08-23 20:29:57 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:30:06 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:30:29 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:30:59 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:31:01 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:33:35 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:33:45 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:33:58 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:35:11 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:35:22 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:36:22 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:36:23 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:37:02 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:37:17 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:38:19 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:39:48 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:39:49 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:42:06 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:42:22 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:42:33 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:43:26 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:43:27 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:45:38 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:45:39 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:46:15 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:46:17 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:46:30 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 2336364861536]
+2025-08-23 20:46:30 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 2336364861536]
+2025-08-23 20:46:30 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 6536]
+2025-08-23 20:46:35 | WARNING  | app.services.ai_client:extract_wizard_data:141 | ⚠️ JSON parsing failed, attempting recovery [ID: 6536]
+2025-08-23 20:46:35 | INFO     | app.services.ai_client:extract_wizard_data:153 | ✅ Recovered JSON from malformed response [ID: 6536]
+2025-08-23 20:46:35 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 2336364861536]
+2025-08-23 20:46:35 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 2336364861536]
+2025-08-23 20:46:35 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 2336365652480]
+2025-08-23 20:46:35 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 2336365652480]
+2025-08-23 20:46:35 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 2336364861536]
+2025-08-23 20:46:37 | INFO     | app.services.brief_orchestrator:generate_final_brief:168 | 🎨 Starting final brief generation workflow [ID: 2336333526144]
+2025-08-23 20:46:37 | INFO     | app.services.brief_orchestrator:generate_final_brief:177 | 📝 Composing initial brief from wizard input [ID: 2336333526144]
+2025-08-23 20:46:37 | INFO     | app.services.prompt_composer:compose_initial_brief:76 | 📝 Starting initial brief composition [ID: 2336333526144]
+2025-08-23 20:46:37 | INFO     | app.services.prompt_composer:compose_initial_brief:126 | ✅ Initial brief composition completed [ID: 2336333526144]
+2025-08-23 20:46:37 | INFO     | app.services.brief_orchestrator:generate_final_brief:187 | ✅ Validating composed brief [ID: 2336333526144]
+2025-08-23 20:46:37 | INFO     | app.services.brief_orchestrator:generate_final_brief:199 | ✅ Brief validation passed [ID: 2336333526144]
+2025-08-23 20:46:37 | INFO     | app.services.brief_orchestrator:generate_final_brief:206 | 🎯 MISSION CRITICAL: Sending structured data to Creative Director [ID: 2336333526144]
+2025-08-23 20:46:37 | INFO     | app.services.brief_orchestrator:generate_final_brief:219 | 🚀 CRITICAL REFACTOR: Calling refactored Creative Director with structured data [ID: 2336333526144]
+2025-08-23 20:46:37 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:290 | 🎭 ADVANCED: Creative Director enhanced composition [ID: 4982]
+2025-08-23 20:46:58 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:483 | ✅ ADVANCED: Elite enhancement completed [ID: 4982]
+2025-08-23 20:46:58 | INFO     | app.services.brief_orchestrator:generate_final_brief:225 | 📊 MISSION VALIDATION: Enhanced brief analysis [ID: 2336333526144]
+2025-08-23 20:46:58 | INFO     | app.services.brief_orchestrator:generate_final_brief:244 | 🎉 Brief generation completed successfully [ID: 2336333526144]
+2025-08-23 20:48:28 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:49:25 | INFO     | app.services.unified_ai_service:generate_image:299 | 🎨 Attempting to enhance prompt with Creative Director LLM...
+2025-08-23 20:49:25 | INFO     | app.services.ai_client:revise_prompt_for_generation:719 | ✨ ENHANCEMENT: Creating complete enhanced brief [ID: 1041]
+2025-08-23 20:49:37 | INFO     | app.services.ai_client:revise_prompt_for_generation:764 | ✅ ENHANCEMENT: Complete enhanced brief created [ID: 1041]
+2025-08-23 20:49:37 | INFO     | app.services.unified_ai_service:generate_image:301 | ✨ Prompt successfully enhanced.
+2025-08-23 20:49:37 | INFO     | app.services.unified_ai_service:generate_image:311 | 📏 Enhanced brief (5844 chars) exceeds API limit. Applying smart compression...
+2025-08-23 20:49:37 | INFO     | app.services.prompt_compressor:compress_brief_for_generation:43 | 🔧 COMPRESSION: Starting smart brief compression [ID: 9021]
+2025-08-23 20:49:40 | INFO     | app.services.prompt_compressor:compress_brief_for_generation:88 | ✅ COMPRESSION: Smart compression completed [ID: 9021]
+2025-08-23 20:49:40 | INFO     | app.services.unified_ai_service:generate_image:316 | 🎯 Smart compression complete: 5844 → 1593 chars
+2025-08-23 20:49:40 | INFO     | app.services.unified_ai_service:generate_image:334 | 🎯 Image Provider override: 'openai' → 'openai'
+2025-08-23 20:49:40 | INFO     | app.services.unified_ai_service:generate_image:369 | Sending final prompt to image generation service.
+2025-08-23 20:49:40 | INFO     | app.services.unified_ai_service:generate_image:372 | 🎨 Sending image generation request to openai at https://api.openai.com/v1/images/generations
+2025-08-23 20:51:33 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:51:34 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:52:17 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:53:19 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:54:04 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:54:29 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:54:44 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:55:08 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:55:40 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:55:42 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:56:50 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 20:58:07 | INFO     | app.services.unified_ai_service:generate_image:298 | 🎨 Attempting to enhance prompt with Creative Director LLM...
+2025-08-23 20:58:07 | INFO     | app.services.ai_client:revise_prompt_for_generation:719 | ✨ ENHANCEMENT: Creating complete enhanced brief [ID: 1005]
+2025-08-23 20:58:20 | INFO     | app.services.ai_client:revise_prompt_for_generation:764 | ✅ ENHANCEMENT: Complete enhanced brief created [ID: 1005]
+2025-08-23 20:58:20 | INFO     | app.services.unified_ai_service:generate_image:300 | ✨ Prompt successfully enhanced.
+2025-08-23 20:58:20 | INFO     | app.services.unified_ai_service:generate_image:313 | 📏 Enhanced brief (6238 chars) exceeds API limit. Applying smart compression...
+2025-08-23 20:58:20 | INFO     | app.services.prompt_compressor:compress_brief_for_generation:43 | 🔧 COMPRESSION: Starting smart brief compression [ID: 9628]
+2025-08-23 20:58:23 | INFO     | app.services.prompt_compressor:compress_brief_for_generation:88 | ✅ COMPRESSION: Smart compression completed [ID: 9628]
+2025-08-23 20:58:23 | INFO     | app.services.unified_ai_service:generate_image:321 | 🎯 Smart compression complete: 6238 → 1493 chars
+2025-08-23 20:58:23 | INFO     | app.services.unified_ai_service:generate_image:350 | 🎯 Image Provider override: 'openai' → 'openai'
+2025-08-23 20:58:23 | INFO     | app.services.unified_ai_service:generate_image:385 | Sending final prompt to image generation service.
+2025-08-23 20:58:23 | INFO     | app.services.unified_ai_service:generate_image:388 | 🎨 Sending image generation request to openai at https://api.openai.com/v1/images/generations
+2025-08-23 21:00:19 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:00:20 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:00:39 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:03:30 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:05:11 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:05:42 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:05:50 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:05:57 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:06:03 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:06:11 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:06:21 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:06:44 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:07:43 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:09:08 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:10:24 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:11:21 | INFO     | app.services.unified_ai_service:generate_image:298 | 🎨 Attempting to enhance prompt with Creative Director LLM...
+2025-08-23 21:11:21 | INFO     | app.services.ai_client:revise_prompt_for_generation:719 | ✨ ENHANCEMENT: Creating complete enhanced brief [ID: 7405]
+2025-08-23 21:11:35 | INFO     | app.services.ai_client:revise_prompt_for_generation:764 | ✅ ENHANCEMENT: Complete enhanced brief created [ID: 7405]
+2025-08-23 21:11:35 | INFO     | app.services.unified_ai_service:generate_image:300 | ✨ Prompt successfully enhanced.
+2025-08-23 21:11:35 | INFO     | app.services.unified_ai_service:generate_image:313 | 📏 Enhanced brief (6713 chars) exceeds API limit. Applying smart compression...
+2025-08-23 21:11:35 | INFO     | app.services.prompt_compressor:compress_brief_for_generation:43 | 🔧 COMPRESSION: Starting smart brief compression [ID: 3771]
+2025-08-23 21:11:38 | INFO     | app.services.prompt_compressor:compress_brief_for_generation:88 | ✅ COMPRESSION: Smart compression completed [ID: 3771]
+2025-08-23 21:11:38 | INFO     | app.services.unified_ai_service:generate_image:321 | 🎯 Smart compression complete: 6713 → 1353 chars
+2025-08-23 21:11:38 | INFO     | app.services.unified_ai_service:generate_image:350 | 🎯 Image Provider override: 'openai' → 'openai'
+2025-08-23 21:11:38 | INFO     | app.services.unified_ai_service:generate_image:385 | Sending final prompt to image generation service.
+2025-08-23 21:11:38 | INFO     | app.services.unified_ai_service:generate_image:388 | 🎨 Sending image generation request to openai at https://api.openai.com/v1/images/generations
+2025-08-23 21:21:55 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:23:12 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:23:37 | INFO     | app.services.unified_ai_service:generate_image:298 | 🎨 Attempting to enhance prompt with Creative Director LLM...
+2025-08-23 21:23:37 | INFO     | app.services.ai_client:revise_prompt_for_generation:719 | ✨ ENHANCEMENT: Creating complete enhanced brief [ID: 4450]
+2025-08-23 21:23:38 | ERROR    | app.services.ai_client:revise_prompt_for_generation:777 | 💥 ENHANCED BRIEF CREATION ERROR [ID: 4450]
+2025-08-23 21:23:38 | WARNING  | app.services.ai_client:revise_prompt_for_generation:785 | ⚠️ Enhanced brief creation failed, using original prompt
+2025-08-23 21:23:38 | INFO     | app.services.unified_ai_service:generate_image:300 | ✨ Prompt successfully enhanced.
+2025-08-23 21:23:38 | INFO     | app.services.unified_ai_service:generate_image:333 | 📏 Enhanced brief within limits (61 chars), using full version
+2025-08-23 21:23:38 | INFO     | app.services.unified_ai_service:generate_image:350 | 🎯 Image Provider override: 'openai' → 'openai'
+2025-08-23 21:23:38 | INFO     | app.services.unified_ai_service:generate_image:385 | Sending final prompt to image generation service.
+2025-08-23 21:23:38 | INFO     | app.services.unified_ai_service:generate_image:388 | 🎨 Sending image generation request to openai at https://api.openai.com/v1/images/generations
+2025-08-23 21:25:07 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:25:15 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:25:21 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:25:28 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:25:41 | INFO     | app.services.unified_ai_service:generate_image:298 | 🎨 Attempting to enhance prompt with Creative Director LLM...
+2025-08-23 21:25:41 | INFO     | app.services.ai_client:revise_prompt_for_generation:719 | ✨ ENHANCEMENT: Creating complete enhanced brief [ID: 8824]
+2025-08-23 21:25:55 | INFO     | app.services.ai_client:revise_prompt_for_generation:776 | ✅ ENHANCEMENT: Complete enhanced brief created [ID: 8824]
+2025-08-23 21:25:55 | INFO     | app.services.unified_ai_service:generate_image:300 | ✨ Prompt successfully enhanced.
+2025-08-23 21:25:55 | INFO     | app.services.unified_ai_service:generate_image:333 | 📏 Enhanced brief within limits (3798 chars), using full version
+2025-08-23 21:25:55 | INFO     | app.services.unified_ai_service:generate_image:350 | 🎯 Image Provider override: 'openai' → 'openai'
+2025-08-23 21:25:55 | INFO     | app.services.unified_ai_service:generate_image:385 | Sending final prompt to image generation service.
+2025-08-23 21:25:55 | INFO     | app.services.unified_ai_service:generate_image:388 | 🎨 Sending image generation request to openai at https://api.openai.com/v1/images/generations
+2025-08-23 21:26:50 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:27:15 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:28:04 | INFO     | app.services.unified_ai_service:generate_image:298 | 🎨 Attempting to enhance prompt with Creative Director LLM...
+2025-08-23 21:28:04 | INFO     | app.services.ai_client:revise_prompt_for_generation:719 | ✨ ENHANCEMENT: Creating complete enhanced brief [ID: 6656]
+2025-08-23 21:28:15 | INFO     | app.services.ai_client:revise_prompt_for_generation:776 | ✅ ENHANCEMENT: Complete enhanced brief created [ID: 6656]
+2025-08-23 21:28:15 | INFO     | app.services.unified_ai_service:generate_image:300 | ✨ Prompt successfully enhanced.
+2025-08-23 21:28:15 | INFO     | app.services.unified_ai_service:generate_image:333 | 📏 Enhanced brief within limits (3516 chars), using full version
+2025-08-23 21:28:15 | INFO     | app.services.unified_ai_service:generate_image:350 | 🎯 Image Provider override: 'openai' → 'openai'
+2025-08-23 21:28:15 | INFO     | app.services.unified_ai_service:generate_image:385 | Sending final prompt to image generation service.
+2025-08-23 21:28:15 | INFO     | app.services.unified_ai_service:generate_image:388 | 🎨 Sending image generation request to openai at https://api.openai.com/v1/images/generations
+2025-08-23 21:30:04 | INFO     | app.services.unified_ai_service:generate_image:298 | 🎨 Attempting to enhance prompt with Creative Director LLM...
+2025-08-23 21:30:04 | INFO     | app.services.ai_client:revise_prompt_for_generation:719 | ✨ ENHANCEMENT: Creating complete enhanced brief [ID: 6728]
+2025-08-23 21:30:16 | INFO     | app.services.ai_client:revise_prompt_for_generation:776 | ✅ ENHANCEMENT: Complete enhanced brief created [ID: 6728]
+2025-08-23 21:30:16 | INFO     | app.services.unified_ai_service:generate_image:300 | ✨ Prompt successfully enhanced.
+2025-08-23 21:30:16 | INFO     | app.services.unified_ai_service:generate_image:333 | 📏 Enhanced brief within limits (3950 chars), using full version
+2025-08-23 21:30:16 | INFO     | app.services.unified_ai_service:generate_image:350 | 🎯 Image Provider override: 'openai' → 'openai'
+2025-08-23 21:30:16 | INFO     | app.services.unified_ai_service:generate_image:385 | Sending final prompt to image generation service.
+2025-08-23 21:30:16 | INFO     | app.services.unified_ai_service:generate_image:388 | 🎨 Sending image generation request to openai at https://api.openai.com/v1/images/generations
+2025-08-23 21:32:09 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:34:58 | INFO     | app.services.unified_ai_service:generate_image:298 | 🎨 Attempting to enhance prompt with Creative Director LLM...
+2025-08-23 21:34:58 | INFO     | app.services.ai_client:revise_prompt_for_generation:719 | ✨ ENHANCEMENT: Creating complete enhanced brief [ID: 9781]
+2025-08-23 21:35:14 | INFO     | app.services.ai_client:revise_prompt_for_generation:776 | ✅ ENHANCEMENT: Complete enhanced brief created [ID: 9781]
+2025-08-23 21:35:14 | INFO     | app.services.unified_ai_service:generate_image:300 | ✨ Prompt successfully enhanced.
+2025-08-23 21:35:14 | INFO     | app.services.unified_ai_service:generate_image:333 | 📏 Enhanced brief within limits (3047 chars), using full version
+2025-08-23 21:35:14 | INFO     | app.services.unified_ai_service:generate_image:350 | 🎯 Image Provider override: 'openai' → 'openai'
+2025-08-23 21:35:14 | INFO     | app.services.unified_ai_service:generate_image:385 | Sending final prompt to image generation service.
+2025-08-23 21:35:14 | INFO     | app.services.unified_ai_service:generate_image:388 | 🎨 Sending image generation request to openai at https://api.openai.com/v1/images/generations
+2025-08-23 21:39:24 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:40:06 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:40:28 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:40:39 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:40:47 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:42:15 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:42:32 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:42:44 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:43:00 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:43:15 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:43:31 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:43:47 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:44:08 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:45:07 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:46:00 | INFO     | app.services.unified_ai_service:generate_image:268 | 🎨 Attempting to enhance prompt with Creative Director LLM...
+2025-08-23 21:46:00 | INFO     | app.services.ai_client:revise_prompt_for_generation:719 | ✨ ENHANCEMENT: Creating complete enhanced brief [ID: 3878]
+2025-08-23 21:46:18 | INFO     | app.services.ai_client:revise_prompt_for_generation:776 | ✅ ENHANCEMENT: Complete enhanced brief created [ID: 3878]
+2025-08-23 21:46:18 | INFO     | app.services.unified_ai_service:generate_image:270 | ✨ Prompt successfully enhanced.
+2025-08-23 21:46:18 | INFO     | app.services.unified_ai_service:generate_image:283 | 📏 Enhanced brief (4118 chars) exceeds API limit. Applying smart compression...
+2025-08-23 21:46:18 | INFO     | app.services.prompt_compressor:compress_brief_for_generation:43 | 🔧 COMPRESSION: Starting smart brief compression [ID: 8826]
+2025-08-23 21:46:21 | INFO     | app.services.prompt_compressor:compress_brief_for_generation:88 | ✅ COMPRESSION: Smart compression completed [ID: 8826]
+2025-08-23 21:46:21 | INFO     | app.services.unified_ai_service:generate_image:291 | 🎯 Smart compression complete: 4118 → 862 chars
+2025-08-23 21:46:21 | INFO     | app.services.unified_ai_service:generate_image:320 | 🎯 Image Provider override: 'openai' → 'openai'
+2025-08-23 21:46:21 | INFO     | app.services.unified_ai_service:generate_image:355 | Sending final prompt to image generation service.
+2025-08-23 21:46:21 | INFO     | app.services.unified_ai_service:generate_image:358 | 🎨 Sending image generation request to openai at https://api.openai.com/v1/images/generations
+2025-08-23 21:48:33 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:48:33 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:48:43 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:48:43 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:49:08 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:49:09 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:49:10 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:49:11 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:49:31 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:49:31 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:50:20 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:50:20 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:51:37 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:51:37 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:51:47 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:51:47 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:52:11 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:52:11 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:52:23 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:52:23 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:53:45 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:53:45 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:54:08 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:54:08 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:54:24 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:54:24 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:54:25 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:56:51 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 21:56:51 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:03:36 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:03:36 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:03:44 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:03:44 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:04:12 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:04:12 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:04:21 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:04:22 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:04:28 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:04:28 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:04:34 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:04:34 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:04:46 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:04:46 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:05:03 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:05:03 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:06:03 | WARNING  | app.services.multi_provider_image_generator:generate_image:192 | Unknown provider 'openai', defaulting to OpenAI
+2025-08-23 22:06:03 | INFO     | app.services.multi_provider_image_generator:generate_image:210 | 🎨 Sending request to openai_dalle for: 'Professional product photography of a luxury skinc...'
+2025-08-23 22:06:03 | INFO     | app.services.multi_provider_image_generator:generate_image:211 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-23 22:06:18 | INFO     | app.services.multi_provider_image_generator:generate_image:218 | ✅ Received response from openai_dalle
+2025-08-23 22:06:18 | ERROR    | app.services.multi_provider_image_generator:generate_image:229 | 💥 Unexpected error with openai_dalle: 1 validation error for ImageOutput
+final_enhanced_prompt
+  Field required [type=missing, input_value={'image_url': 'https://oa...c product photography.'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/missing
+2025-08-23 22:06:18 | ERROR    | app.routers.generator:generate_image:289 | Error in /generate-image endpoint: Image generation service error: 1 validation error for ImageOutput
+final_enhanced_prompt
+  Field required [type=missing, input_value={'image_url': 'https://oa...c product photography.'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.10/v/missing
+2025-08-23 22:06:33 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:06:33 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:06:41 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:06:41 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:06:49 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:06:49 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:06:56 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:06:56 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:07:04 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:07:05 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:07:09 | WARNING  | app.services.multi_provider_image_generator:generate_image:202 | Unknown provider 'openai', defaulting to OpenAI
+2025-08-23 22:07:09 | INFO     | app.services.multi_provider_image_generator:generate_image:220 | 🎨 Sending request to openai_dalle for: 'Professional product photography of a luxury skinc...'
+2025-08-23 22:07:09 | INFO     | app.services.multi_provider_image_generator:generate_image:221 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-23 22:07:26 | INFO     | app.services.multi_provider_image_generator:generate_image:228 | ✅ Received response from openai_dalle
+2025-08-23 22:08:41 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:08:41 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:09:15 | INFO     | app.routers.generator:generate_image:281 | 📝 Creating comprehensive photography brief from: luxury perfume bottle elegant photography...
+2025-08-23 22:09:15 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 2311565037312]
+2025-08-23 22:09:15 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 2311565037312]
+2025-08-23 22:09:15 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 163]
+2025-08-23 22:09:19 | WARNING  | app.services.ai_client:extract_wizard_data:141 | ⚠️ JSON parsing failed, attempting recovery [ID: 163]
+2025-08-23 22:09:19 | INFO     | app.services.ai_client:extract_wizard_data:153 | ✅ Recovered JSON from malformed response [ID: 163]
+2025-08-23 22:09:19 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 2311565037312]
+2025-08-23 22:09:19 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 2311565037312]
+2025-08-23 22:09:19 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 2311565191424]
+2025-08-23 22:09:19 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 2311565191424]
+2025-08-23 22:09:19 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 2311565037312]
+2025-08-23 22:09:19 | ERROR    | app.routers.generator:generate_image:304 | Error in /generate-image endpoint: 'BriefOrchestratorService' object has no attribute 'generate_brief'
+2025-08-23 22:09:29 | INFO     | app.routers.generator:generate_image:281 | 📝 Creating comprehensive photography brief from: luxury perfume bottle elegant photography...
+2025-08-23 22:09:29 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 2311565037312]
+2025-08-23 22:09:29 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 2311565037312]
+2025-08-23 22:09:29 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 163]
+2025-08-23 22:09:34 | WARNING  | app.services.ai_client:extract_wizard_data:141 | ⚠️ JSON parsing failed, attempting recovery [ID: 163]
+2025-08-23 22:09:34 | INFO     | app.services.ai_client:extract_wizard_data:153 | ✅ Recovered JSON from malformed response [ID: 163]
+2025-08-23 22:09:34 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 2311565037312]
+2025-08-23 22:09:34 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 2311565037312]
+2025-08-23 22:09:34 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 2311565261888]
+2025-08-23 22:09:34 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 2311565261888]
+2025-08-23 22:09:34 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 2311565037312]
+2025-08-23 22:09:34 | ERROR    | app.routers.generator:generate_image:304 | Error in /generate-image endpoint: 'BriefOrchestratorService' object has no attribute 'generate_brief'
+2025-08-23 22:09:54 | INFO     | app.routers.generator:generate_image:281 | 📝 Creating comprehensive photography brief from: luxury perfume bottle elegant photography...
+2025-08-23 22:09:54 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 2311565037232]
+2025-08-23 22:09:54 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 2311565037232]
+2025-08-23 22:09:54 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 163]
+2025-08-23 22:09:59 | WARNING  | app.services.ai_client:extract_wizard_data:141 | ⚠️ JSON parsing failed, attempting recovery [ID: 163]
+2025-08-23 22:09:59 | INFO     | app.services.ai_client:extract_wizard_data:153 | ✅ Recovered JSON from malformed response [ID: 163]
+2025-08-23 22:09:59 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 2311565037232]
+2025-08-23 22:09:59 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 2311565037232]
+2025-08-23 22:09:59 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 2311565444864]
+2025-08-23 22:09:59 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 2311565444864]
+2025-08-23 22:09:59 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 2311565037232]
+2025-08-23 22:09:59 | ERROR    | app.routers.generator:generate_image:304 | Error in /generate-image endpoint: 'BriefOrchestratorService' object has no attribute 'generate_brief'
+2025-08-23 22:10:33 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:10:33 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:10:37 | INFO     | app.routers.generator:generate_image:281 | 📝 Creating comprehensive photography brief from: luxury perfume bottle elegant photography...
+2025-08-23 22:10:37 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 1368668917744]
+2025-08-23 22:10:37 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 1368668917744]
+2025-08-23 22:10:37 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 6914]
+2025-08-23 22:10:42 | WARNING  | app.services.ai_client:extract_wizard_data:141 | ⚠️ JSON parsing failed, attempting recovery [ID: 6914]
+2025-08-23 22:10:42 | INFO     | app.services.ai_client:extract_wizard_data:153 | ✅ Recovered JSON from malformed response [ID: 6914]
+2025-08-23 22:10:42 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 1368668917744]
+2025-08-23 22:10:42 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 1368668917744]
+2025-08-23 22:10:42 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 1368669068608]
+2025-08-23 22:10:42 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 1368669068608]
+2025-08-23 22:10:42 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 1368668917744]
+2025-08-23 22:10:42 | INFO     | app.services.brief_orchestrator:generate_final_brief:168 | 🎨 Starting final brief generation workflow [ID: 1368669198672]
+2025-08-23 22:10:42 | INFO     | app.services.brief_orchestrator:generate_final_brief:177 | 📝 Composing initial brief from wizard input [ID: 1368669198672]
+2025-08-23 22:10:42 | INFO     | app.services.prompt_composer:compose_initial_brief:76 | 📝 Starting initial brief composition [ID: 1368669198672]
+2025-08-23 22:10:42 | INFO     | app.services.prompt_composer:compose_initial_brief:126 | ✅ Initial brief composition completed [ID: 1368669198672]
+2025-08-23 22:10:42 | INFO     | app.services.brief_orchestrator:generate_final_brief:187 | ✅ Validating composed brief [ID: 1368669198672]
+2025-08-23 22:10:42 | INFO     | app.services.brief_orchestrator:generate_final_brief:199 | ✅ Brief validation passed [ID: 1368669198672]
+2025-08-23 22:10:42 | INFO     | app.services.brief_orchestrator:generate_final_brief:206 | 🎯 MISSION CRITICAL: Sending structured data to Creative Director [ID: 1368669198672]
+2025-08-23 22:10:42 | INFO     | app.services.brief_orchestrator:generate_final_brief:219 | 🚀 CRITICAL REFACTOR: Calling refactored Creative Director with structured data [ID: 1368669198672]
+2025-08-23 22:10:42 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:290 | 🎭 ADVANCED: Creative Director enhanced composition [ID: 8349]
+2025-08-23 22:11:04 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:483 | ✅ ADVANCED: Elite enhancement completed [ID: 8349]
+2025-08-23 22:11:04 | INFO     | app.services.brief_orchestrator:generate_final_brief:225 | 📊 MISSION VALIDATION: Enhanced brief analysis [ID: 1368669198672]
+2025-08-23 22:11:04 | INFO     | app.services.brief_orchestrator:generate_final_brief:244 | 🎉 Brief generation completed successfully [ID: 1368669198672]
+2025-08-23 22:11:04 | INFO     | app.routers.generator:generate_image:289 | ✅ Generated comprehensive brief (8777 characters)
+2025-08-23 22:11:04 | WARNING  | app.services.multi_provider_image_generator:generate_image:202 | Unknown provider 'openai', defaulting to OpenAI
+2025-08-23 22:11:04 | INFO     | app.services.multi_provider_image_generator:generate_image:220 | 🎨 Sending request to openai_dalle for: '# **Luxury Perfume Bottle Photography Brief: Sophi...'
+2025-08-23 22:11:04 | INFO     | app.services.multi_provider_image_generator:generate_image:221 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-23 22:11:04 | ERROR    | app.services.multi_provider_image_generator:generate_image:233 | 💥 API request failed for openai_dalle: 400 Client Error: Bad Request for url: https://api.openai.com/v1/images/generations
+2025-08-23 22:11:04 | ERROR    | app.services.multi_provider_image_generator:generate_image:235 | Response: {
+  "error": {
+    "message": "Invalid 'prompt': string too long. Expected a string with maximum length 4000, but got a string with length 8777 instead.",
+    "type": "invalid_request_error",
+    "param": "prompt",
+    "code": "string_above_max_length"
+  }
+}
+2025-08-23 22:11:04 | ERROR    | app.routers.generator:generate_image:304 | Error in /generate-image endpoint: Image generation request failed: 400 Client Error: Bad Request for url: https://api.openai.com/v1/images/generations
+2025-08-23 22:11:31 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:11:31 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:11:37 | INFO     | app.routers.generator:generate_image:281 | 📝 Creating comprehensive photography brief from: luxury perfume bottle elegant photography...
+2025-08-23 22:11:37 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 2311231852448]
+2025-08-23 22:11:37 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 2311231852448]
+2025-08-23 22:11:37 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 963]
+2025-08-23 22:11:41 | WARNING  | app.services.ai_client:extract_wizard_data:141 | ⚠️ JSON parsing failed, attempting recovery [ID: 963]
+2025-08-23 22:11:41 | INFO     | app.services.ai_client:extract_wizard_data:153 | ✅ Recovered JSON from malformed response [ID: 963]
+2025-08-23 22:11:41 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 2311231852448]
+2025-08-23 22:11:41 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 2311231852448]
+2025-08-23 22:11:41 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 2311232002048]
+2025-08-23 22:11:41 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 2311232002048]
+2025-08-23 22:11:41 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 2311231852448]
+2025-08-23 22:11:41 | INFO     | app.services.brief_orchestrator:generate_final_brief:168 | 🎨 Starting final brief generation workflow [ID: 2311232133376]
+2025-08-23 22:11:41 | INFO     | app.services.brief_orchestrator:generate_final_brief:177 | 📝 Composing initial brief from wizard input [ID: 2311232133376]
+2025-08-23 22:11:41 | INFO     | app.services.prompt_composer:compose_initial_brief:76 | 📝 Starting initial brief composition [ID: 2311232133376]
+2025-08-23 22:11:41 | INFO     | app.services.prompt_composer:compose_initial_brief:126 | ✅ Initial brief composition completed [ID: 2311232133376]
+2025-08-23 22:11:41 | INFO     | app.services.brief_orchestrator:generate_final_brief:187 | ✅ Validating composed brief [ID: 2311232133376]
+2025-08-23 22:11:41 | INFO     | app.services.brief_orchestrator:generate_final_brief:199 | ✅ Brief validation passed [ID: 2311232133376]
+2025-08-23 22:11:41 | INFO     | app.services.brief_orchestrator:generate_final_brief:206 | 🎯 MISSION CRITICAL: Sending structured data to Creative Director [ID: 2311232133376]
+2025-08-23 22:11:41 | INFO     | app.services.brief_orchestrator:generate_final_brief:219 | 🚀 CRITICAL REFACTOR: Calling refactored Creative Director with structured data [ID: 2311232133376]
+2025-08-23 22:11:41 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:290 | 🎭 ADVANCED: Creative Director enhanced composition [ID: 8727]
+2025-08-23 22:12:06 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:483 | ✅ ADVANCED: Elite enhancement completed [ID: 8727]
+2025-08-23 22:12:06 | INFO     | app.services.brief_orchestrator:generate_final_brief:225 | 📊 MISSION VALIDATION: Enhanced brief analysis [ID: 2311232133376]
+2025-08-23 22:12:06 | INFO     | app.services.brief_orchestrator:generate_final_brief:244 | 🎉 Brief generation completed successfully [ID: 2311232133376]
+2025-08-23 22:12:06 | INFO     | app.routers.generator:generate_image:289 | ✅ Generated comprehensive brief (8416 characters)
+2025-08-23 22:12:06 | INFO     | app.routers.generator:generate_image:305 | 🗜️ Created compressed prompt (205 characters) for image generation
+2025-08-23 22:12:06 | WARNING  | app.services.multi_provider_image_generator:generate_image:202 | Unknown provider 'openai', defaulting to OpenAI
+2025-08-23 22:12:06 | INFO     | app.services.multi_provider_image_generator:generate_image:220 | 🎨 Sending request to openai_dalle for: 'Professional product photography of Luxury Perfume...'
+2025-08-23 22:12:06 | INFO     | app.services.multi_provider_image_generator:generate_image:221 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-23 22:12:22 | INFO     | app.services.multi_provider_image_generator:generate_image:228 | ✅ Received response from openai_dalle
+2025-08-23 22:13:57 | INFO     | app.routers.generator:generate_image:281 | 📝 Creating comprehensive photography brief from: "A realistic, cinematic product photography of a glass jar of honey labeled 'Madu Ahlan Trigona' wit...
+2025-08-23 22:13:57 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 2311232133376]
+2025-08-23 22:13:57 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 2311232133376]
+2025-08-23 22:13:57 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 5642]
+2025-08-23 22:14:01 | WARNING  | app.services.ai_client:extract_wizard_data:141 | ⚠️ JSON parsing failed, attempting recovery [ID: 5642]
+2025-08-23 22:14:01 | INFO     | app.services.ai_client:extract_wizard_data:153 | ✅ Recovered JSON from malformed response [ID: 5642]
+2025-08-23 22:14:01 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 2311232133376]
+2025-08-23 22:14:01 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 2311232133376]
+2025-08-23 22:14:01 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 2311232122240]
+2025-08-23 22:14:01 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 2311232122240]
+2025-08-23 22:14:01 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 2311232133376]
+2025-08-23 22:14:01 | INFO     | app.services.brief_orchestrator:generate_final_brief:168 | 🎨 Starting final brief generation workflow [ID: 2311232173664]
+2025-08-23 22:14:01 | INFO     | app.services.brief_orchestrator:generate_final_brief:177 | 📝 Composing initial brief from wizard input [ID: 2311232173664]
+2025-08-23 22:14:01 | INFO     | app.services.prompt_composer:compose_initial_brief:76 | 📝 Starting initial brief composition [ID: 2311232173664]
+2025-08-23 22:14:01 | INFO     | app.services.prompt_composer:compose_initial_brief:126 | ✅ Initial brief composition completed [ID: 2311232173664]
+2025-08-23 22:14:01 | INFO     | app.services.brief_orchestrator:generate_final_brief:187 | ✅ Validating composed brief [ID: 2311232173664]
+2025-08-23 22:14:01 | INFO     | app.services.brief_orchestrator:generate_final_brief:199 | ✅ Brief validation passed [ID: 2311232173664]
+2025-08-23 22:14:01 | INFO     | app.services.brief_orchestrator:generate_final_brief:206 | 🎯 MISSION CRITICAL: Sending structured data to Creative Director [ID: 2311232173664]
+2025-08-23 22:14:01 | INFO     | app.services.brief_orchestrator:generate_final_brief:219 | 🚀 CRITICAL REFACTOR: Calling refactored Creative Director with structured data [ID: 2311232173664]
+2025-08-23 22:14:01 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:290 | 🎭 ADVANCED: Creative Director enhanced composition [ID: 5120]
+2025-08-23 22:14:33 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:483 | ✅ ADVANCED: Elite enhancement completed [ID: 5120]
+2025-08-23 22:14:33 | INFO     | app.services.brief_orchestrator:generate_final_brief:225 | 📊 MISSION VALIDATION: Enhanced brief analysis [ID: 2311232173664]
+2025-08-23 22:14:33 | INFO     | app.services.brief_orchestrator:generate_final_brief:244 | 🎉 Brief generation completed successfully [ID: 2311232173664]
+2025-08-23 22:14:33 | INFO     | app.routers.generator:generate_image:289 | ✅ Generated comprehensive brief (9376 characters)
+2025-08-23 22:14:33 | INFO     | app.routers.generator:generate_image:305 | 🗜️ Created compressed prompt (195 characters) for image generation
+2025-08-23 22:14:33 | WARNING  | app.services.multi_provider_image_generator:generate_image:202 | Unknown provider 'openai', defaulting to OpenAI
+2025-08-23 22:14:33 | INFO     | app.services.multi_provider_image_generator:generate_image:220 | 🎨 Sending request to openai_dalle for: 'Professional product photography of Madu Ahlan Tri...'
+2025-08-23 22:14:33 | INFO     | app.services.multi_provider_image_generator:generate_image:221 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-23 22:14:52 | INFO     | app.services.multi_provider_image_generator:generate_image:228 | ✅ Received response from openai_dalle
+2025-08-23 22:17:17 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:17:17 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:19:13 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:19:13 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:19:20 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:19:20 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:19:27 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:19:27 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:19:35 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:19:35 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:19:48 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:19:48 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:19:57 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:19:57 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:22:13 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:22:13 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:22:26 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:22:26 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:22:47 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:22:47 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:22:52 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:22:52 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:23:03 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:23:03 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:23:12 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:23:12 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:23:18 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:23:18 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:23:33 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:23:33 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:24:36 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:24:36 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:31:05 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:31:05 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:31:17 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:31:18 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:31:26 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:31:26 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:31:41 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:31:41 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:32:02 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:32:02 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:32:18 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:32:18 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:32:25 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:32:25 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:32:42 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:32:42 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:32:48 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:32:48 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:33:31 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:33:31 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:33:33 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:33:33 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:35:26 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:35:26 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:35:37 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:35:37 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:35:47 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:35:47 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:36:01 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:36:01 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:36:22 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:36:22 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:36:32 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:36:32 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:38:44 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:38:44 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:38:46 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:38:46 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:39:09 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:39:09 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:39:42 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:39:42 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:42:13 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:42:36 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:43:42 | INFO     | app.routers.generator:generate_image:305 | 🎨 Generating image from comprehensive brief (569 characters)
+2025-08-23 22:43:42 | INFO     | app.routers.generator:generate_image:320 | ⚠️ Simple prompt detected - creating comprehensive brief
+2025-08-23 22:43:42 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 2316417032480]
+2025-08-23 22:43:42 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 2316417032480]
+2025-08-23 22:43:42 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 9555]
+2025-08-23 22:43:46 | WARNING  | app.services.ai_client:extract_wizard_data:141 | ⚠️ JSON parsing failed, attempting recovery [ID: 9555]
+2025-08-23 22:43:46 | INFO     | app.services.ai_client:extract_wizard_data:153 | ✅ Recovered JSON from malformed response [ID: 9555]
+2025-08-23 22:43:46 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 2316417032480]
+2025-08-23 22:43:46 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 2316417032480]
+2025-08-23 22:43:46 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 2316417276736]
+2025-08-23 22:43:46 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 2316417276736]
+2025-08-23 22:43:46 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 2316417032480]
+2025-08-23 22:43:46 | INFO     | app.services.brief_orchestrator:generate_final_brief:168 | 🎨 Starting final brief generation workflow [ID: 2316417606720]
+2025-08-23 22:43:46 | INFO     | app.services.brief_orchestrator:generate_final_brief:177 | 📝 Composing initial brief from wizard input [ID: 2316417606720]
+2025-08-23 22:43:46 | INFO     | app.services.prompt_composer:compose_initial_brief:76 | 📝 Starting initial brief composition [ID: 2316417606720]
+2025-08-23 22:43:46 | INFO     | app.services.prompt_composer:compose_initial_brief:126 | ✅ Initial brief composition completed [ID: 2316417606720]
+2025-08-23 22:43:46 | INFO     | app.services.brief_orchestrator:generate_final_brief:187 | ✅ Validating composed brief [ID: 2316417606720]
+2025-08-23 22:43:46 | INFO     | app.services.brief_orchestrator:generate_final_brief:199 | ✅ Brief validation passed [ID: 2316417606720]
+2025-08-23 22:43:46 | INFO     | app.services.brief_orchestrator:generate_final_brief:206 | 🎯 MISSION CRITICAL: Sending structured data to Creative Director [ID: 2316417606720]
+2025-08-23 22:43:46 | INFO     | app.services.brief_orchestrator:generate_final_brief:219 | 🚀 CRITICAL REFACTOR: Calling refactored Creative Director with structured data [ID: 2316417606720]
+2025-08-23 22:43:46 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:295 | 🎭 ADVANCED: Creative Director enhanced composition [ID: 3825]
+2025-08-23 22:44:13 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:488 | ✅ ADVANCED: Elite enhancement completed [ID: 3825]
+2025-08-23 22:44:13 | INFO     | app.services.brief_orchestrator:generate_final_brief:225 | 📊 MISSION VALIDATION: Enhanced brief analysis [ID: 2316417606720]
+2025-08-23 22:44:13 | INFO     | app.services.brief_orchestrator:generate_final_brief:244 | 🎉 Brief generation completed successfully [ID: 2316417606720]
+2025-08-23 22:44:13 | INFO     | app.routers.generator:_create_smart_compressed_prompt:357 | 📝 Creating smart compressed prompt preserving technical details
+2025-08-23 22:44:26 | INFO     | app.routers.generator:_create_smart_compressed_prompt:388 | ✅ Smart compression successful: 10445 → 2257 characters
+2025-08-23 22:44:26 | INFO     | app.routers.generator:generate_image:327 | 🎯 Using optimized generation prompt (2257 characters)
+2025-08-23 22:44:26 | WARNING  | app.services.multi_provider_image_generator:generate_image:203 | Unknown provider 'openai', defaulting to OpenAI
+2025-08-23 22:44:26 | INFO     | app.services.multi_provider_image_generator:generate_image:221 | 🎨 Sending request to openai_dalle for: '**Product Photography Prompt: WATERMELON JUICE – S...'
+2025-08-23 22:44:26 | INFO     | app.services.multi_provider_image_generator:generate_image:222 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-23 22:44:56 | INFO     | app.services.multi_provider_image_generator:generate_image:229 | ✅ Received response from openai_dalle
+2025-08-23 22:46:57 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:46:57 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:48:11 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:48:11 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:48:32 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:48:33 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:48:56 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:48:56 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:48:57 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:49:31 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:49:31 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:49:32 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:49:33 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:50:03 | INFO     | app.routers.generator:generate_brief_from_prompt:198 | 📝 Creating comprehensive brief from simple prompt: Professional product photography of a luxury skincare bottle for e-commerce...
+2025-08-23 22:50:03 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 1952836406640]
+2025-08-23 22:50:03 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 1952836406640]
+2025-08-23 22:50:03 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 5859]
+2025-08-23 22:50:06 | WARNING  | app.services.ai_client:extract_wizard_data:141 | ⚠️ JSON parsing failed, attempting recovery [ID: 5859]
+2025-08-23 22:50:06 | INFO     | app.services.ai_client:extract_wizard_data:153 | ✅ Recovered JSON from malformed response [ID: 5859]
+2025-08-23 22:50:06 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 1952836406640]
+2025-08-23 22:50:06 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 1952836406640]
+2025-08-23 22:50:06 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 1952836740032]
+2025-08-23 22:50:06 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 1952836740032]
+2025-08-23 22:50:06 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 1952836406640]
+2025-08-23 22:50:06 | INFO     | app.services.brief_orchestrator:generate_final_brief:168 | 🎨 Starting final brief generation workflow [ID: 1952836952832]
+2025-08-23 22:50:06 | INFO     | app.services.brief_orchestrator:generate_final_brief:177 | 📝 Composing initial brief from wizard input [ID: 1952836952832]
+2025-08-23 22:50:06 | INFO     | app.services.prompt_composer:compose_initial_brief:76 | 📝 Starting initial brief composition [ID: 1952836952832]
+2025-08-23 22:50:06 | INFO     | app.services.prompt_composer:compose_initial_brief:126 | ✅ Initial brief composition completed [ID: 1952836952832]
+2025-08-23 22:50:06 | INFO     | app.services.brief_orchestrator:generate_final_brief:187 | ✅ Validating composed brief [ID: 1952836952832]
+2025-08-23 22:50:06 | INFO     | app.services.brief_orchestrator:generate_final_brief:199 | ✅ Brief validation passed [ID: 1952836952832]
+2025-08-23 22:50:06 | INFO     | app.services.brief_orchestrator:generate_final_brief:206 | 🎯 MISSION CRITICAL: Sending structured data to Creative Director [ID: 1952836952832]
+2025-08-23 22:50:06 | INFO     | app.services.brief_orchestrator:generate_final_brief:219 | 🚀 CRITICAL REFACTOR: Calling refactored Creative Director with structured data [ID: 1952836952832]
+2025-08-23 22:50:06 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:295 | 🎭 ADVANCED: Creative Director enhanced composition [ID: 1628]
+2025-08-23 22:50:32 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:488 | ✅ ADVANCED: Elite enhancement completed [ID: 1628]
+2025-08-23 22:50:32 | INFO     | app.services.brief_orchestrator:generate_final_brief:225 | 📊 MISSION VALIDATION: Enhanced brief analysis [ID: 1952836952832]
+2025-08-23 22:50:32 | INFO     | app.services.brief_orchestrator:generate_final_brief:244 | 🎉 Brief generation completed successfully [ID: 1952836952832]
+2025-08-23 22:50:32 | INFO     | app.routers.generator:generate_brief_from_prompt:206 | ✅ Generated comprehensive brief (10639 characters)
+2025-08-23 22:50:34 | INFO     | app.routers.generator:generate_image:308 | 🌟 [FRONTEND REQUEST] Generate image - Prompt length: 630 chars
+2025-08-23 22:50:34 | INFO     | app.routers.generator:generate_image:309 | 🔑 [FRONTEND REQUEST] Provider: openai
+2025-08-23 22:50:34 | INFO     | app.routers.generator:generate_image:319 | 🎨 [PROCESSING] Generating image from comprehensive brief (630 characters)
+2025-08-23 22:50:34 | INFO     | app.routers.generator:generate_image:334 | ⚠️ Simple prompt detected - creating comprehensive brief
+2025-08-23 22:50:34 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 1952794917648]
+2025-08-23 22:50:34 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 1952794917648]
+2025-08-23 22:50:34 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 4590]
+2025-08-23 22:50:37 | WARNING  | app.services.ai_client:extract_wizard_data:141 | ⚠️ JSON parsing failed, attempting recovery [ID: 4590]
+2025-08-23 22:50:37 | INFO     | app.services.ai_client:extract_wizard_data:153 | ✅ Recovered JSON from malformed response [ID: 4590]
+2025-08-23 22:50:37 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 1952794917648]
+2025-08-23 22:50:37 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 1952794917648]
+2025-08-23 22:50:37 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 1952837102976]
+2025-08-23 22:50:37 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 1952837102976]
+2025-08-23 22:50:37 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 1952794917648]
+2025-08-23 22:50:37 | INFO     | app.services.brief_orchestrator:generate_final_brief:168 | 🎨 Starting final brief generation workflow [ID: 1952837057376]
+2025-08-23 22:50:37 | INFO     | app.services.brief_orchestrator:generate_final_brief:177 | 📝 Composing initial brief from wizard input [ID: 1952837057376]
+2025-08-23 22:50:37 | INFO     | app.services.prompt_composer:compose_initial_brief:76 | 📝 Starting initial brief composition [ID: 1952837057376]
+2025-08-23 22:50:37 | INFO     | app.services.prompt_composer:compose_initial_brief:126 | ✅ Initial brief composition completed [ID: 1952837057376]
+2025-08-23 22:50:37 | INFO     | app.services.brief_orchestrator:generate_final_brief:187 | ✅ Validating composed brief [ID: 1952837057376]
+2025-08-23 22:50:37 | INFO     | app.services.brief_orchestrator:generate_final_brief:199 | ✅ Brief validation passed [ID: 1952837057376]
+2025-08-23 22:50:37 | INFO     | app.services.brief_orchestrator:generate_final_brief:206 | 🎯 MISSION CRITICAL: Sending structured data to Creative Director [ID: 1952837057376]
+2025-08-23 22:50:37 | INFO     | app.services.brief_orchestrator:generate_final_brief:219 | 🚀 CRITICAL REFACTOR: Calling refactored Creative Director with structured data [ID: 1952837057376]
+2025-08-23 22:50:37 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:295 | 🎭 ADVANCED: Creative Director enhanced composition [ID: 8644]
+2025-08-23 22:50:58 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:488 | ✅ ADVANCED: Elite enhancement completed [ID: 8644]
+2025-08-23 22:50:58 | INFO     | app.services.brief_orchestrator:generate_final_brief:225 | 📊 MISSION VALIDATION: Enhanced brief analysis [ID: 1952837057376]
+2025-08-23 22:50:58 | INFO     | app.services.brief_orchestrator:generate_final_brief:244 | 🎉 Brief generation completed successfully [ID: 1952837057376]
+2025-08-23 22:50:58 | INFO     | app.routers.generator:_create_smart_compressed_prompt:371 | 📝 Creating smart compressed prompt preserving technical details
+2025-08-23 22:51:08 | WARNING  | app.routers.generator:_create_smart_compressed_prompt:406 | AI compression still too long, using extraction fallback
+2025-08-23 22:51:08 | INFO     | app.routers.generator:generate_image:341 | 🎯 Using optimized generation prompt (222 characters)
+2025-08-23 22:51:08 | WARNING  | app.services.multi_provider_image_generator:generate_image:203 | Unknown provider 'openai', defaulting to OpenAI
+2025-08-23 22:51:08 | INFO     | app.services.multi_provider_image_generator:generate_image:221 | 🎨 Sending request to openai_dalle for: 'Professional product photography of glossy, shot w...'
+2025-08-23 22:51:08 | INFO     | app.services.multi_provider_image_generator:generate_image:222 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-23 22:51:24 | INFO     | app.services.multi_provider_image_generator:generate_image:229 | ✅ Received response from openai_dalle
+2025-08-23 22:52:16 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 22:52:17 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:17:46 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:18:03 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:18:28 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:18:57 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:18:59 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:20:41 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:21:58 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:22:37 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:23:12 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:25:03 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:25:04 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:25:31 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:25:55 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:26:38 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:28:51 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:28:52 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:30:50 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:31:37 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:31:37 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:31:38 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:31:53 | INFO     | app.routers.generator:generate_image:308 | 🌟 [FRONTEND REQUEST] Generate image - Prompt length: 630 chars
+2025-08-23 23:31:53 | INFO     | app.routers.generator:generate_image:309 | 🔑 [FRONTEND REQUEST] Provider: openai
+2025-08-23 23:31:53 | INFO     | app.routers.generator:generate_image:319 | 🎨 [PROCESSING] Generating image from prompt (630 characters)
+2025-08-23 23:31:53 | INFO     | app.routers.generator:_is_comprehensive_descriptive_prompt:457 | 📝 Detailed descriptive prompt detected (score: 27, words: 87)
+2025-08-23 23:31:53 | INFO     | app.routers.generator:generate_image:332 | ✅ Detected comprehensive prompt - enhancing with wizard intelligence
+2025-08-23 23:31:53 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 2019835272464]
+2025-08-23 23:31:53 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 2019835272464]
+2025-08-23 23:31:53 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 9901]
+2025-08-23 23:31:56 | WARNING  | app.services.ai_client:extract_wizard_data:141 | ⚠️ JSON parsing failed, attempting recovery [ID: 9901]
+2025-08-23 23:31:56 | INFO     | app.services.ai_client:extract_wizard_data:153 | ✅ Recovered JSON from malformed response [ID: 9901]
+2025-08-23 23:31:56 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 2019835272464]
+2025-08-23 23:31:56 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 2019835272464]
+2025-08-23 23:31:56 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 2019831820800]
+2025-08-23 23:31:56 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 2019831820800]
+2025-08-23 23:31:56 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 2019835272464]
+2025-08-23 23:31:56 | INFO     | app.routers.generator:_create_comprehensive_enhanced_brief:504 | 🎨 Creating comprehensive enhanced brief from user prompt + wizard intelligence
+2025-08-23 23:32:03 | INFO     | app.routers.generator:_create_comprehensive_enhanced_brief:567 | ✅ Enhanced brief created: 2680 characters
+2025-08-23 23:32:03 | INFO     | app.routers.generator:generate_image:356 | 🎯 Using optimized generation prompt (2680 characters)
+2025-08-23 23:32:03 | WARNING  | app.services.multi_provider_image_generator:generate_image:203 | Unknown provider 'openai', defaulting to OpenAI
+2025-08-23 23:32:03 | INFO     | app.services.multi_provider_image_generator:generate_image:221 | 🎨 Sending request to openai_dalle for: '**Product Photography Brief: Banana and Raisin Fla...'
+2025-08-23 23:32:03 | INFO     | app.services.multi_provider_image_generator:generate_image:222 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-23 23:32:22 | INFO     | app.services.multi_provider_image_generator:generate_image:229 | ✅ Received response from openai_dalle
+2025-08-23 23:32:24 | INFO     | app.routers.generator:generate_image:308 | 🌟 [FRONTEND REQUEST] Generate image - Prompt length: 630 chars
+2025-08-23 23:32:24 | INFO     | app.routers.generator:generate_image:309 | 🔑 [FRONTEND REQUEST] Provider: openai
+2025-08-23 23:32:24 | INFO     | app.routers.generator:generate_image:319 | 🎨 [PROCESSING] Generating image from prompt (630 characters)
+2025-08-23 23:32:24 | INFO     | app.routers.generator:generate_image:323 | 🔧 Raw prompt mode activated - using prompt as-is
+2025-08-23 23:32:24 | INFO     | app.routers.generator:generate_image:356 | 🎯 Using optimized generation prompt (630 characters)
+2025-08-23 23:32:24 | WARNING  | app.services.multi_provider_image_generator:generate_image:203 | Unknown provider 'openai', defaulting to OpenAI
+2025-08-23 23:32:24 | INFO     | app.services.multi_provider_image_generator:generate_image:221 | 🎨 Sending request to openai_dalle for: 'Ultra-realistic commercial product photography of ...'
+2025-08-23 23:32:24 | INFO     | app.services.multi_provider_image_generator:generate_image:222 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-23 23:32:40 | INFO     | app.services.multi_provider_image_generator:generate_image:229 | ✅ Received response from openai_dalle
+2025-08-23 23:34:17 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:34:18 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:34:48 | INFO     | app.routers.generator:generate_image:308 | 🌟 [FRONTEND REQUEST] Generate image - Prompt length: 630 chars
+2025-08-23 23:34:48 | INFO     | app.routers.generator:generate_image:309 | 🔑 [FRONTEND REQUEST] Provider: openai
+2025-08-23 23:34:48 | INFO     | app.routers.generator:generate_image:319 | 🎨 [PROCESSING] Generating image from prompt (630 characters)
+2025-08-23 23:34:48 | INFO     | app.routers.generator:generate_image:323 | 🔧 Raw prompt mode activated - using prompt as-is
+2025-08-23 23:34:48 | INFO     | app.routers.generator:generate_image:356 | 🎯 Using optimized generation prompt (630 characters)
+2025-08-23 23:34:48 | WARNING  | app.services.multi_provider_image_generator:generate_image:203 | Unknown provider 'openai', defaulting to OpenAI
+2025-08-23 23:34:48 | INFO     | app.services.multi_provider_image_generator:generate_image:221 | 🎨 Sending request to openai_dalle for: 'Ultra-realistic commercial product photography of ...'
+2025-08-23 23:34:48 | INFO     | app.services.multi_provider_image_generator:generate_image:222 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-23 23:35:05 | INFO     | app.services.multi_provider_image_generator:generate_image:229 | ✅ Received response from openai_dalle
+2025-08-23 23:35:34 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:36:35 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:36:37 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:38:30 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:39:06 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:39:18 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:39:44 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:40:31 | INFO     | app.routers.generator:generate_image:308 | 🌟 [FRONTEND REQUEST] Generate image - Prompt length: 630 chars
+2025-08-23 23:40:31 | INFO     | app.routers.generator:generate_image:309 | 🔑 [FRONTEND REQUEST] Provider: openai
+2025-08-23 23:40:31 | INFO     | app.routers.generator:generate_image:319 | 🎨 [PROCESSING] Generating image from prompt (630 characters)
+2025-08-23 23:40:31 | INFO     | app.routers.generator:_is_comprehensive_descriptive_prompt:471 | 📝 Detailed descriptive prompt detected (score: 27, words: 87)
+2025-08-23 23:40:31 | INFO     | app.routers.generator:generate_image:332 | ✅ Detected comprehensive prompt - enhancing with wizard intelligence
+2025-08-23 23:40:31 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 1653504650096]
+2025-08-23 23:40:31 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 1653504650096]
+2025-08-23 23:40:31 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 6661]
+2025-08-23 23:40:34 | WARNING  | app.services.ai_client:extract_wizard_data:141 | ⚠️ JSON parsing failed, attempting recovery [ID: 6661]
+2025-08-23 23:40:34 | INFO     | app.services.ai_client:extract_wizard_data:153 | ✅ Recovered JSON from malformed response [ID: 6661]
+2025-08-23 23:40:34 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 1653504650096]
+2025-08-23 23:40:34 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 1653504650096]
+2025-08-23 23:40:34 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 1653507536512]
+2025-08-23 23:40:34 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 1653507536512]
+2025-08-23 23:40:34 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 1653504650096]
+2025-08-23 23:40:34 | INFO     | app.routers.generator:_create_comprehensive_enhanced_brief:518 | 🎨 Creating comprehensive enhanced brief from user prompt + wizard intelligence
+2025-08-23 23:40:42 | INFO     | app.routers.generator:_create_comprehensive_enhanced_brief:581 | ✅ Enhanced brief created: 2723 characters
+2025-08-23 23:40:42 | INFO     | app.routers.generator:generate_image:348 | 📄 Using full enhanced brief (within DALL-E limits)
+2025-08-23 23:40:42 | INFO     | app.routers.generator:generate_image:370 | 🎯 Using optimized generation prompt (2723 characters)
+2025-08-23 23:40:42 | WARNING  | app.services.multi_provider_image_generator:generate_image:203 | Unknown provider 'openai', defaulting to OpenAI
+2025-08-23 23:40:42 | INFO     | app.services.multi_provider_image_generator:generate_image:221 | 🎨 Sending request to openai_dalle for: '**Product Photography Brief: Banana and Raisin Fla...'
+2025-08-23 23:40:42 | INFO     | app.services.multi_provider_image_generator:generate_image:222 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-23 23:40:50 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:40:50 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:40:50 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:40:58 | INFO     | app.services.multi_provider_image_generator:generate_image:229 | ✅ Received response from openai_dalle
+2025-08-23 23:41:00 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:41:00 | INFO     | app.routers.generator:generate_image:308 | 🌟 [FRONTEND REQUEST] Generate image - Prompt length: 630 chars
+2025-08-23 23:41:00 | INFO     | app.routers.generator:generate_image:309 | 🔑 [FRONTEND REQUEST] Provider: openai
+2025-08-23 23:41:00 | INFO     | app.routers.generator:generate_image:319 | 🎨 [PROCESSING] Generating image from prompt (630 characters)
+2025-08-23 23:41:00 | INFO     | app.routers.generator:_is_comprehensive_descriptive_prompt:471 | 📝 Detailed descriptive prompt detected (score: 27, words: 87)
+2025-08-23 23:41:00 | INFO     | app.routers.generator:generate_image:332 | ✅ Detected comprehensive prompt - enhancing with wizard intelligence
+2025-08-23 23:41:00 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 2190384311392]
+2025-08-23 23:41:00 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 2190384311392]
+2025-08-23 23:41:00 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 5647]
+2025-08-23 23:41:03 | WARNING  | app.services.ai_client:extract_wizard_data:141 | ⚠️ JSON parsing failed, attempting recovery [ID: 5647]
+2025-08-23 23:41:03 | INFO     | app.services.ai_client:extract_wizard_data:153 | ✅ Recovered JSON from malformed response [ID: 5647]
+2025-08-23 23:41:03 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 2190384311392]
+2025-08-23 23:41:03 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 2190384311392]
+2025-08-23 23:41:03 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 2190403091712]
+2025-08-23 23:41:03 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 2190403091712]
+2025-08-23 23:41:03 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 2190384311392]
+2025-08-23 23:41:03 | INFO     | app.routers.generator:_create_comprehensive_enhanced_brief:518 | 🎨 Creating comprehensive enhanced brief from user prompt + wizard intelligence
+2025-08-23 23:41:10 | INFO     | app.routers.generator:_create_comprehensive_enhanced_brief:581 | ✅ Enhanced brief created: 2767 characters
+2025-08-23 23:41:10 | INFO     | app.routers.generator:generate_image:348 | 📄 Using full enhanced brief (within DALL-E limits)
+2025-08-23 23:41:10 | INFO     | app.routers.generator:generate_image:370 | 🎯 Using optimized generation prompt (2767 characters)
+2025-08-23 23:41:10 | WARNING  | app.services.multi_provider_image_generator:generate_image:203 | Unknown provider 'openai', defaulting to OpenAI
+2025-08-23 23:41:10 | INFO     | app.services.multi_provider_image_generator:generate_image:221 | 🎨 Sending request to openai_dalle for: '**Product Photography Brief: Banana and Raisin Fla...'
+2025-08-23 23:41:10 | INFO     | app.services.multi_provider_image_generator:generate_image:222 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-23 23:41:36 | INFO     | app.services.multi_provider_image_generator:generate_image:229 | ✅ Received response from openai_dalle
+2025-08-23 23:41:39 | INFO     | app.routers.generator:generate_image:308 | 🌟 [FRONTEND REQUEST] Generate image - Prompt length: 630 chars
+2025-08-23 23:41:39 | INFO     | app.routers.generator:generate_image:309 | 🔑 [FRONTEND REQUEST] Provider: openai
+2025-08-23 23:41:39 | INFO     | app.routers.generator:generate_image:319 | 🎨 [PROCESSING] Generating image from prompt (630 characters)
+2025-08-23 23:41:39 | INFO     | app.routers.generator:generate_image:323 | 🔧 Raw prompt mode activated - using prompt as-is
+2025-08-23 23:41:39 | INFO     | app.routers.generator:generate_image:370 | 🎯 Using optimized generation prompt (630 characters)
+2025-08-23 23:41:39 | WARNING  | app.services.multi_provider_image_generator:generate_image:203 | Unknown provider 'openai', defaulting to OpenAI
+2025-08-23 23:41:39 | INFO     | app.services.multi_provider_image_generator:generate_image:221 | 🎨 Sending request to openai_dalle for: 'Ultra-realistic commercial product photography of ...'
+2025-08-23 23:41:39 | INFO     | app.services.multi_provider_image_generator:generate_image:222 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-23 23:41:56 | INFO     | app.services.multi_provider_image_generator:generate_image:229 | ✅ Received response from openai_dalle
+2025-08-23 23:42:33 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:42:33 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:42:33 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:42:33 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:42:35 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:42:35 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:42:35 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:42:41 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:42:41 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:42:41 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-23 23:42:41 | INFO     | app.main:<module>:33 | 🚀 MISSION 3: Structured logging system initialized

@@ -24,6 +24,26 @@
     "iso_value": 100,
     "visual_effect": "crystal clear focus with subtle depth of field",
     "overall_style": "Commercial product photography",
-    "photographer_influences": "Annie Leibovitz and Peter Lindbergh"
+    "photographer_influences": "Annie Leibovitz and Peter Lindbergh",
+    "light_temperature": "daylight 5600K",
+    "shadow_intensity": "soft",
+    "highlight_control": "controlled",
+    "lighting_direction": "side",
+    "ambient_lighting": "studio",
+    "perspective_angle": "eye-level",
+    "depth_layers": "foreground and background separation",
+    "leading_lines": "subtle diagonal lines",
+    "symmetry_type": "asymmetrical balance",
+    "focal_emphasis": "center",
+    "focus_mode": "single-point AF",
+    "metering_mode": "matrix",
+    "white_balance": "daylight",
+    "file_format": "RAW",
+    "image_stabilization": "lens-based",
+    "target_audience": "premium consumers",
+    "brand_personality": "premium and sophisticated",
+    "usage_purpose": "e-commerce and advertising",
+    "seasonal_context": "evergreen",
+    "competitive_differentiation": "superior quality and attention to detail"
   }
 }

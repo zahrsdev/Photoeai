@@ -67,7 +67,6 @@ class Settings(BaseSettings):
     # OpenAI Configuration
     openai_api_key: str = Field(..., description="OpenAI API key", alias="OPENAI_API_KEY")
     openai_model: str = Field(default="gpt-4o", description="OpenAI model to use", alias="OPENAI_MODEL")
-    sumopod_api_base_url: str = Field(..., description="Sumopod API base URL", alias="SUMOPOD_API_BASE_URL")
 
     # --- NEW ---
     # Image Generation Service Configuration
