@@ -2191,3 +2191,417 @@ We are tasked wit...'
 2025-08-24 11:54:58 | INFO     | app.services.multi_provider_image_generator:generate_image:336 | 🎨 Sending request to openai_gpt_image for: 'Capture an ultra-realistic product photograph of a...'
 2025-08-24 11:54:58 | INFO     | app.services.multi_provider_image_generator:generate_image:337 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
 2025-08-24 11:55:42 | INFO     | app.services.multi_provider_image_generator:generate_image:344 | ✅ Received response from openai_gpt_image
+2025-08-24 12:08:02 | INFO     | app.main:<module>:35 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-24 12:08:40 | INFO     | app.routers.generator:generate_image:308 | 🌟 [FRONTEND REQUEST] Generate image - Prompt length: 717 chars
+2025-08-24 12:08:40 | INFO     | app.routers.generator:generate_image:309 | 🔑 [FRONTEND REQUEST] Provider: openai
+2025-08-24 12:08:40 | INFO     | app.routers.generator:generate_image:324 | 🎨 [PROCESSING] Generating image from prompt (717 characters)
+2025-08-24 12:08:40 | INFO     | app.routers.generator:generate_image:333 | 🎯 Starting optimized brief processing workflow
+2025-08-24 12:08:40 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 1799458609408]
+2025-08-24 12:08:40 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 1799458609408]
+2025-08-24 12:08:40 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 9574]
+2025-08-24 12:08:45 | WARNING  | app.services.ai_client:extract_wizard_data:180 | ⚠️ JSON parsing failed, attempting recovery [ID: 9574]
+2025-08-24 12:08:45 | INFO     | app.services.ai_client:extract_wizard_data:192 | ✅ Recovered JSON from malformed response [ID: 9574]
+2025-08-24 12:08:45 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 1799458609408]
+2025-08-24 12:08:45 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 1799458609408]
+2025-08-24 12:08:45 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 1799465126912]
+2025-08-24 12:08:45 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 1799465126912]
+2025-08-24 12:08:45 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 1799458609408]
+2025-08-24 12:08:45 | INFO     | app.routers.generator:generate_image:339 | ✅ Wizard data extracted successfully
+2025-08-24 12:08:45 | INFO     | app.routers.generator:_is_comprehensive_descriptive_prompt:528 | 📝 Detailed descriptive prompt detected (score: 4, words: 106)
+2025-08-24 12:08:45 | INFO     | app.routers.generator:generate_image:345 | 📋 Comprehensive prompt detected - applying smart enhancement
+2025-08-24 12:08:45 | INFO     | app.routers.generator:_create_optimized_enhanced_brief:575 | ⚡ Starting optimized enhancement (skip_extraction=True)
+2025-08-24 12:08:51 | INFO     | app.routers.generator:_create_optimized_enhanced_brief:644 | ⚡ Optimized enhanced brief ready: 2201 chars (ratio: 3.1x)
+2025-08-24 12:08:51 | INFO     | app.routers.generator:generate_image:357 | 📄 Smart enhanced brief ready: 2201 chars
+2025-08-24 12:08:51 | INFO     | app.routers.generator:generate_image:395 | 🎯 Using optimized generation prompt (2201 characters)
+2025-08-24 12:08:51 | INFO     | app.services.multi_provider_image_generator:generate_image:354 | Provider override 'openai' requested, using OpenAI GPT Image 1
+2025-08-24 12:08:51 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:45 | 🎯 Normalizing prompt: 2201 chars
+2025-08-24 12:08:51 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:173 | ✅ Normalization complete: 2201 → 2193 chars (99.6%)
+2025-08-24 12:08:51 | INFO     | app.services.multi_provider_image_generator:generate_image:370 | 🎨 Sending request to openai_gpt_image for: '**ENHANCED PHOTOGRAPHY BRIEF:**
+
+Capture an ultra-...'
+2025-08-24 12:08:51 | INFO     | app.services.multi_provider_image_generator:generate_image:371 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-24 12:09:35 | INFO     | app.services.multi_provider_image_generator:generate_image:378 | ✅ Received response from openai_gpt_image
+2025-08-24 12:09:35 | INFO     | app.services.multi_provider_image_generator:_save_base64_to_file:205 | 💾 Saved image: static\images\img_90f6b547.png → http://0.0.0.0:8000/static/images/img_90f6b547.png
+2025-08-24 12:11:25 | INFO     | app.routers.generator:generate_image:308 | 🌟 [FRONTEND REQUEST] Generate image - Prompt length: 564 chars
+2025-08-24 12:11:25 | INFO     | app.routers.generator:generate_image:309 | 🔑 [FRONTEND REQUEST] Provider: openai
+2025-08-24 12:11:25 | INFO     | app.routers.generator:generate_image:324 | 🎨 [PROCESSING] Generating image from prompt (564 characters)
+2025-08-24 12:11:25 | INFO     | app.routers.generator:generate_image:333 | 🎯 Starting optimized brief processing workflow
+2025-08-24 12:11:25 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 1799458609408]
+2025-08-24 12:11:25 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 1799458609408]
+2025-08-24 12:11:25 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 9381]
+2025-08-24 12:11:30 | WARNING  | app.services.ai_client:extract_wizard_data:180 | ⚠️ JSON parsing failed, attempting recovery [ID: 9381]
+2025-08-24 12:11:30 | INFO     | app.services.ai_client:extract_wizard_data:192 | ✅ Recovered JSON from malformed response [ID: 9381]
+2025-08-24 12:11:30 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 1799458609408]
+2025-08-24 12:11:30 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 1799458609408]
+2025-08-24 12:11:30 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 1799465655232]
+2025-08-24 12:11:30 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 1799465655232]
+2025-08-24 12:11:30 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 1799458609408]
+2025-08-24 12:11:30 | INFO     | app.routers.generator:generate_image:339 | ✅ Wizard data extracted successfully
+2025-08-24 12:11:30 | INFO     | app.routers.generator:_is_comprehensive_descriptive_prompt:528 | 📝 Detailed descriptive prompt detected (score: 4, words: 93)
+2025-08-24 12:11:30 | INFO     | app.routers.generator:generate_image:345 | 📋 Comprehensive prompt detected - applying smart enhancement
+2025-08-24 12:11:30 | INFO     | app.routers.generator:_create_optimized_enhanced_brief:575 | ⚡ Starting optimized enhancement (skip_extraction=True)
+2025-08-24 12:11:36 | INFO     | app.routers.generator:_create_optimized_enhanced_brief:644 | ⚡ Optimized enhanced brief ready: 2283 chars (ratio: 4.0x)
+2025-08-24 12:11:36 | INFO     | app.routers.generator:generate_image:357 | 📄 Smart enhanced brief ready: 2283 chars
+2025-08-24 12:11:36 | INFO     | app.routers.generator:generate_image:395 | 🎯 Using optimized generation prompt (2283 characters)
+2025-08-24 12:11:36 | INFO     | app.services.multi_provider_image_generator:generate_image:354 | Provider override 'openai' requested, using OpenAI GPT Image 1
+2025-08-24 12:11:36 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:45 | 🎯 Normalizing prompt: 2283 chars
+2025-08-24 12:11:36 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:173 | ✅ Normalization complete: 2283 → 2274 chars (99.6%)
+2025-08-24 12:11:36 | INFO     | app.services.multi_provider_image_generator:generate_image:370 | 🎨 Sending request to openai_gpt_image for: '**Enhanced Photography Brief:**
+
+Capture a breatht...'
+2025-08-24 12:11:36 | INFO     | app.services.multi_provider_image_generator:generate_image:371 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-24 12:12:34 | INFO     | app.services.multi_provider_image_generator:generate_image:378 | ✅ Received response from openai_gpt_image
+2025-08-24 12:12:34 | INFO     | app.services.multi_provider_image_generator:_save_base64_to_file:205 | 💾 Saved image: static\images\img_31aa2fa3.png → http://0.0.0.0:8000/static/images/img_31aa2fa3.png
+2025-08-24 12:17:12 | INFO     | app.routers.generator:generate_image:308 | 🌟 [FRONTEND REQUEST] Generate image - Prompt length: 672 chars
+2025-08-24 12:17:12 | INFO     | app.routers.generator:generate_image:309 | 🔑 [FRONTEND REQUEST] Provider: openai
+2025-08-24 12:17:12 | INFO     | app.routers.generator:generate_image:324 | 🎨 [PROCESSING] Generating image from prompt (672 characters)
+2025-08-24 12:17:12 | INFO     | app.routers.generator:generate_image:333 | 🎯 Starting optimized brief processing workflow
+2025-08-24 12:17:12 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 1799458603568]
+2025-08-24 12:17:12 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 1799458603568]
+2025-08-24 12:17:12 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 4119]
+2025-08-24 12:17:17 | WARNING  | app.services.ai_client:extract_wizard_data:180 | ⚠️ JSON parsing failed, attempting recovery [ID: 4119]
+2025-08-24 12:17:17 | INFO     | app.services.ai_client:extract_wizard_data:192 | ✅ Recovered JSON from malformed response [ID: 4119]
+2025-08-24 12:17:17 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 1799458603568]
+2025-08-24 12:17:17 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 1799458603568]
+2025-08-24 12:17:17 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 1799458804608]
+2025-08-24 12:17:17 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 1799458804608]
+2025-08-24 12:17:17 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 1799458603568]
+2025-08-24 12:17:17 | INFO     | app.routers.generator:generate_image:339 | ✅ Wizard data extracted successfully
+2025-08-24 12:17:17 | INFO     | app.routers.generator:_is_comprehensive_descriptive_prompt:528 | 📝 Detailed descriptive prompt detected (score: 7, words: 100)
+2025-08-24 12:17:17 | INFO     | app.routers.generator:generate_image:345 | 📋 Comprehensive prompt detected - applying smart enhancement
+2025-08-24 12:17:17 | INFO     | app.routers.generator:_create_optimized_enhanced_brief:575 | ⚡ Starting optimized enhancement (skip_extraction=True)
+2025-08-24 12:17:22 | INFO     | app.routers.generator:_create_optimized_enhanced_brief:644 | ⚡ Optimized enhanced brief ready: 2107 chars (ratio: 3.1x)
+2025-08-24 12:17:22 | INFO     | app.routers.generator:generate_image:357 | 📄 Smart enhanced brief ready: 2107 chars
+2025-08-24 12:17:22 | INFO     | app.routers.generator:generate_image:395 | 🎯 Using optimized generation prompt (2107 characters)
+2025-08-24 12:17:22 | INFO     | app.services.multi_provider_image_generator:generate_image:354 | Provider override 'openai' requested, using OpenAI GPT Image 1
+2025-08-24 12:17:22 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:45 | 🎯 Normalizing prompt: 2107 chars
+2025-08-24 12:17:22 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:173 | ✅ Normalization complete: 2107 → 2098 chars (99.6%)
+2025-08-24 12:17:22 | INFO     | app.services.multi_provider_image_generator:generate_image:370 | 🎨 Sending request to openai_gpt_image for: '**ENHANCED PHOTOGRAPHY BRIEF:**
+
+Capture an ultra-...'
+2025-08-24 12:17:22 | INFO     | app.services.multi_provider_image_generator:generate_image:371 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-24 12:18:12 | INFO     | app.services.multi_provider_image_generator:generate_image:378 | ✅ Received response from openai_gpt_image
+2025-08-24 12:18:12 | INFO     | app.services.multi_provider_image_generator:_save_base64_to_file:205 | 💾 Saved image: static\images\img_d3d85c75.png → http://0.0.0.0:8000/static/images/img_d3d85c75.png
+2025-08-24 12:22:40 | INFO     | app.routers.generator:generate_image:308 | 🌟 [FRONTEND REQUEST] Generate image - Prompt length: 588 chars
+2025-08-24 12:22:40 | INFO     | app.routers.generator:generate_image:309 | 🔑 [FRONTEND REQUEST] Provider: openai
+2025-08-24 12:22:40 | INFO     | app.routers.generator:generate_image:324 | 🎨 [PROCESSING] Generating image from prompt (588 characters)
+2025-08-24 12:22:40 | INFO     | app.routers.generator:generate_image:333 | 🎯 Starting optimized brief processing workflow
+2025-08-24 12:22:40 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 1799465426112]
+2025-08-24 12:22:40 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 1799465426112]
+2025-08-24 12:22:40 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 3070]
+2025-08-24 12:22:45 | WARNING  | app.services.ai_client:extract_wizard_data:180 | ⚠️ JSON parsing failed, attempting recovery [ID: 3070]
+2025-08-24 12:22:45 | INFO     | app.services.ai_client:extract_wizard_data:192 | ✅ Recovered JSON from malformed response [ID: 3070]
+2025-08-24 12:22:45 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 1799465426112]
+2025-08-24 12:22:45 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 1799465426112]
+2025-08-24 12:22:45 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 1799465719104]
+2025-08-24 12:22:45 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 1799465719104]
+2025-08-24 12:22:45 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 1799465426112]
+2025-08-24 12:22:45 | INFO     | app.routers.generator:generate_image:339 | ✅ Wizard data extracted successfully
+2025-08-24 12:22:45 | INFO     | app.routers.generator:_is_comprehensive_descriptive_prompt:528 | 📝 Detailed descriptive prompt detected (score: 6, words: 90)
+2025-08-24 12:22:45 | INFO     | app.routers.generator:generate_image:345 | 📋 Comprehensive prompt detected - applying smart enhancement
+2025-08-24 12:22:45 | INFO     | app.routers.generator:_create_optimized_enhanced_brief:575 | ⚡ Starting optimized enhancement (skip_extraction=True)
+2025-08-24 12:22:48 | INFO     | app.routers.generator:_create_optimized_enhanced_brief:644 | ⚡ Optimized enhanced brief ready: 2118 chars (ratio: 3.6x)
+2025-08-24 12:22:48 | INFO     | app.routers.generator:generate_image:357 | 📄 Smart enhanced brief ready: 2118 chars
+2025-08-24 12:22:48 | INFO     | app.routers.generator:generate_image:395 | 🎯 Using optimized generation prompt (2118 characters)
+2025-08-24 12:22:48 | INFO     | app.services.multi_provider_image_generator:generate_image:354 | Provider override 'openai' requested, using OpenAI GPT Image 1
+2025-08-24 12:22:48 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:45 | 🎯 Normalizing prompt: 2118 chars
+2025-08-24 12:22:48 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:173 | ✅ Normalization complete: 2118 → 2110 chars (99.6%)
+2025-08-24 12:22:48 | INFO     | app.services.multi_provider_image_generator:generate_image:370 | 🎨 Sending request to openai_gpt_image for: '**ENHANCED PHOTOGRAPHY BRIEF:**
+
+Capture a luxurio...'
+2025-08-24 12:22:48 | INFO     | app.services.multi_provider_image_generator:generate_image:371 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-24 12:23:29 | INFO     | app.services.multi_provider_image_generator:generate_image:378 | ✅ Received response from openai_gpt_image
+2025-08-24 12:23:29 | INFO     | app.services.multi_provider_image_generator:_save_base64_to_file:205 | 💾 Saved image: static\images\img_208a09d2.png → http://0.0.0.0:8000/static/images/img_208a09d2.png
+2025-08-24 12:26:29 | INFO     | app.routers.generator:generate_image:308 | 🌟 [FRONTEND REQUEST] Generate image - Prompt length: 684 chars
+2025-08-24 12:26:29 | INFO     | app.routers.generator:generate_image:309 | 🔑 [FRONTEND REQUEST] Provider: openai
+2025-08-24 12:26:29 | INFO     | app.routers.generator:generate_image:324 | 🎨 [PROCESSING] Generating image from prompt (684 characters)
+2025-08-24 12:26:29 | INFO     | app.routers.generator:generate_image:333 | 🎯 Starting optimized brief processing workflow
+2025-08-24 12:26:29 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 1799462509840]
+2025-08-24 12:26:29 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 1799462509840]
+2025-08-24 12:26:29 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 8064]
+2025-08-24 12:26:34 | WARNING  | app.services.ai_client:extract_wizard_data:180 | ⚠️ JSON parsing failed, attempting recovery [ID: 8064]
+2025-08-24 12:26:34 | INFO     | app.services.ai_client:extract_wizard_data:192 | ✅ Recovered JSON from malformed response [ID: 8064]
+2025-08-24 12:26:34 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 1799462509840]
+2025-08-24 12:26:34 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 1799462509840]
+2025-08-24 12:26:34 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 1799469780800]
+2025-08-24 12:26:34 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 1799469780800]
+2025-08-24 12:26:34 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 1799462509840]
+2025-08-24 12:26:34 | INFO     | app.routers.generator:generate_image:339 | ✅ Wizard data extracted successfully
+2025-08-24 12:26:34 | INFO     | app.routers.generator:_is_comprehensive_descriptive_prompt:528 | 📝 Detailed descriptive prompt detected (score: 6, words: 99)
+2025-08-24 12:26:34 | INFO     | app.routers.generator:generate_image:345 | 📋 Comprehensive prompt detected - applying smart enhancement
+2025-08-24 12:26:34 | INFO     | app.routers.generator:_create_optimized_enhanced_brief:575 | ⚡ Starting optimized enhancement (skip_extraction=True)
+2025-08-24 12:26:39 | INFO     | app.routers.generator:_create_optimized_enhanced_brief:644 | ⚡ Optimized enhanced brief ready: 2212 chars (ratio: 3.2x)
+2025-08-24 12:26:39 | INFO     | app.routers.generator:generate_image:357 | 📄 Smart enhanced brief ready: 2212 chars
+2025-08-24 12:26:39 | INFO     | app.routers.generator:generate_image:395 | 🎯 Using optimized generation prompt (2212 characters)
+2025-08-24 12:26:39 | INFO     | app.services.multi_provider_image_generator:generate_image:354 | Provider override 'openai' requested, using OpenAI GPT Image 1
+2025-08-24 12:26:39 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:45 | 🎯 Normalizing prompt: 2212 chars
+2025-08-24 12:26:39 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:173 | ✅ Normalization complete: 2212 → 2204 chars (99.6%)
+2025-08-24 12:26:39 | INFO     | app.services.multi_provider_image_generator:generate_image:370 | 🎨 Sending request to openai_gpt_image for: '**ENHANCED PHOTOGRAPHY BRIEF:**
+
+Capture an ultra-...'
+2025-08-24 12:26:39 | INFO     | app.services.multi_provider_image_generator:generate_image:371 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-24 12:27:22 | INFO     | app.services.multi_provider_image_generator:generate_image:378 | ✅ Received response from openai_gpt_image
+2025-08-24 12:27:22 | INFO     | app.services.multi_provider_image_generator:_save_base64_to_file:205 | 💾 Saved image: static\images\img_3186d077.png → http://0.0.0.0:8000/static/images/img_3186d077.png
+2025-08-24 12:35:13 | INFO     | app.routers.generator:generate_image:308 | 🌟 [FRONTEND REQUEST] Generate image - Prompt length: 778 chars
+2025-08-24 12:35:13 | INFO     | app.routers.generator:generate_image:309 | 🔑 [FRONTEND REQUEST] Provider: openai
+2025-08-24 12:35:13 | INFO     | app.routers.generator:generate_image:324 | 🎨 [PROCESSING] Generating image from prompt (778 characters)
+2025-08-24 12:35:13 | INFO     | app.routers.generator:generate_image:333 | 🎯 Starting optimized brief processing workflow
+2025-08-24 12:35:13 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 1799427197600]
+2025-08-24 12:35:13 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 1799427197600]
+2025-08-24 12:35:13 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 6704]
+2025-08-24 12:35:17 | WARNING  | app.services.ai_client:extract_wizard_data:180 | ⚠️ JSON parsing failed, attempting recovery [ID: 6704]
+2025-08-24 12:35:17 | INFO     | app.services.ai_client:extract_wizard_data:192 | ✅ Recovered JSON from malformed response [ID: 6704]
+2025-08-24 12:35:17 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 1799427197600]
+2025-08-24 12:35:17 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 1799427197600]
+2025-08-24 12:35:17 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 1799465716160]
+2025-08-24 12:35:17 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 1799465716160]
+2025-08-24 12:35:17 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 1799427197600]
+2025-08-24 12:35:17 | INFO     | app.routers.generator:generate_image:339 | ✅ Wizard data extracted successfully
+2025-08-24 12:35:17 | INFO     | app.routers.generator:_is_comprehensive_descriptive_prompt:533 | 📄 Long descriptive text detected (115 words, 6 sentences, score: 2)
+2025-08-24 12:35:17 | INFO     | app.routers.generator:generate_image:345 | 📋 Comprehensive prompt detected - applying smart enhancement
+2025-08-24 12:35:17 | INFO     | app.routers.generator:_create_optimized_enhanced_brief:575 | ⚡ Starting optimized enhancement (skip_extraction=True)
+2025-08-24 12:35:22 | INFO     | app.routers.generator:_create_optimized_enhanced_brief:644 | ⚡ Optimized enhanced brief ready: 2171 chars (ratio: 2.8x)
+2025-08-24 12:35:22 | INFO     | app.routers.generator:generate_image:357 | 📄 Smart enhanced brief ready: 2171 chars
+2025-08-24 12:35:22 | INFO     | app.routers.generator:generate_image:395 | 🎯 Using optimized generation prompt (2171 characters)
+2025-08-24 12:35:22 | INFO     | app.services.multi_provider_image_generator:generate_image:354 | Provider override 'openai' requested, using OpenAI GPT Image 1
+2025-08-24 12:35:22 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:45 | 🎯 Normalizing prompt: 2171 chars
+2025-08-24 12:35:22 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:173 | ✅ Normalization complete: 2171 → 2162 chars (99.6%)
+2025-08-24 12:35:22 | INFO     | app.services.multi_provider_image_generator:generate_image:370 | 🎨 Sending request to openai_gpt_image for: '**Enhanced Photography Brief:**
+
+Capture the essen...'
+2025-08-24 12:35:22 | INFO     | app.services.multi_provider_image_generator:generate_image:371 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-24 12:36:09 | INFO     | app.services.multi_provider_image_generator:generate_image:378 | ✅ Received response from openai_gpt_image
+2025-08-24 12:36:09 | INFO     | app.services.multi_provider_image_generator:_save_base64_to_file:205 | 💾 Saved image: static\images\img_550fe246.png → http://0.0.0.0:8000/static/images/img_550fe246.png
+2025-08-24 12:37:49 | INFO     | app.routers.generator:generate_image:308 | 🌟 [FRONTEND REQUEST] Generate image - Prompt length: 644 chars
+2025-08-24 12:37:49 | INFO     | app.routers.generator:generate_image:309 | 🔑 [FRONTEND REQUEST] Provider: openai
+2025-08-24 12:37:49 | INFO     | app.routers.generator:generate_image:324 | 🎨 [PROCESSING] Generating image from prompt (644 characters)
+2025-08-24 12:37:49 | INFO     | app.routers.generator:generate_image:333 | 🎯 Starting optimized brief processing workflow
+2025-08-24 12:37:49 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 1799465423312]
+2025-08-24 12:37:49 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 1799465423312]
+2025-08-24 12:37:49 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 1288]
+2025-08-24 12:37:54 | WARNING  | app.services.ai_client:extract_wizard_data:180 | ⚠️ JSON parsing failed, attempting recovery [ID: 1288]
+2025-08-24 12:37:54 | INFO     | app.services.ai_client:extract_wizard_data:192 | ✅ Recovered JSON from malformed response [ID: 1288]
+2025-08-24 12:37:54 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 1799465423312]
+2025-08-24 12:37:54 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 1799465423312]
+2025-08-24 12:37:54 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 1799465443392]
+2025-08-24 12:37:54 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 1799465443392]
+2025-08-24 12:37:54 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 1799465423312]
+2025-08-24 12:37:54 | INFO     | app.routers.generator:generate_image:339 | ✅ Wizard data extracted successfully
+2025-08-24 12:37:54 | INFO     | app.routers.generator:_is_comprehensive_descriptive_prompt:528 | 📝 Detailed descriptive prompt detected (score: 3, words: 94)
+2025-08-24 12:37:54 | INFO     | app.routers.generator:generate_image:345 | 📋 Comprehensive prompt detected - applying smart enhancement
+2025-08-24 12:37:54 | INFO     | app.routers.generator:_create_optimized_enhanced_brief:575 | ⚡ Starting optimized enhancement (skip_extraction=True)
+2025-08-24 12:38:00 | INFO     | app.routers.generator:_create_optimized_enhanced_brief:644 | ⚡ Optimized enhanced brief ready: 2003 chars (ratio: 3.1x)
+2025-08-24 12:38:00 | INFO     | app.routers.generator:generate_image:357 | 📄 Smart enhanced brief ready: 2003 chars
+2025-08-24 12:38:00 | INFO     | app.routers.generator:generate_image:395 | 🎯 Using optimized generation prompt (2003 characters)
+2025-08-24 12:38:00 | INFO     | app.services.multi_provider_image_generator:generate_image:354 | Provider override 'openai' requested, using OpenAI GPT Image 1
+2025-08-24 12:38:00 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:45 | 🎯 Normalizing prompt: 2003 chars
+2025-08-24 12:38:00 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:173 | ✅ Normalization complete: 2003 → 1995 chars (99.6%)
+2025-08-24 12:38:00 | INFO     | app.services.multi_provider_image_generator:generate_image:370 | 🎨 Sending request to openai_gpt_image for: '**ENHANCED PHOTOGRAPHY BRIEF:**
+
+Capture the essen...'
+2025-08-24 12:38:00 | INFO     | app.services.multi_provider_image_generator:generate_image:371 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-24 12:38:51 | INFO     | app.services.multi_provider_image_generator:generate_image:378 | ✅ Received response from openai_gpt_image
+2025-08-24 12:38:51 | INFO     | app.services.multi_provider_image_generator:_save_base64_to_file:205 | 💾 Saved image: static\images\img_37672fbd.png → http://0.0.0.0:8000/static/images/img_37672fbd.png
+2025-08-24 12:40:31 | INFO     | app.routers.generator:generate_image:308 | 🌟 [FRONTEND REQUEST] Generate image - Prompt length: 666 chars
+2025-08-24 12:40:31 | INFO     | app.routers.generator:generate_image:309 | 🔑 [FRONTEND REQUEST] Provider: openai
+2025-08-24 12:40:31 | INFO     | app.routers.generator:generate_image:324 | 🎨 [PROCESSING] Generating image from prompt (666 characters)
+2025-08-24 12:40:31 | INFO     | app.routers.generator:generate_image:333 | 🎯 Starting optimized brief processing workflow
+2025-08-24 12:40:31 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 1799465425072]
+2025-08-24 12:40:31 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 1799465425072]
+2025-08-24 12:40:31 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 5489]
+2025-08-24 12:40:37 | WARNING  | app.services.ai_client:extract_wizard_data:180 | ⚠️ JSON parsing failed, attempting recovery [ID: 5489]
+2025-08-24 12:40:37 | INFO     | app.services.ai_client:extract_wizard_data:192 | ✅ Recovered JSON from malformed response [ID: 5489]
+2025-08-24 12:40:37 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 1799465425072]
+2025-08-24 12:40:37 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 1799465425072]
+2025-08-24 12:40:37 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 1799469752128]
+2025-08-24 12:40:37 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 1799469752128]
+2025-08-24 12:40:37 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 1799465425072]
+2025-08-24 12:40:37 | INFO     | app.routers.generator:generate_image:339 | ✅ Wizard data extracted successfully
+2025-08-24 12:40:37 | INFO     | app.routers.generator:_is_comprehensive_descriptive_prompt:528 | 📝 Detailed descriptive prompt detected (score: 3, words: 98)
+2025-08-24 12:40:37 | INFO     | app.routers.generator:generate_image:345 | 📋 Comprehensive prompt detected - applying smart enhancement
+2025-08-24 12:40:37 | INFO     | app.routers.generator:_create_optimized_enhanced_brief:575 | ⚡ Starting optimized enhancement (skip_extraction=True)
+2025-08-24 12:40:41 | INFO     | app.routers.generator:_create_optimized_enhanced_brief:644 | ⚡ Optimized enhanced brief ready: 2212 chars (ratio: 3.3x)
+2025-08-24 12:40:41 | INFO     | app.routers.generator:generate_image:357 | 📄 Smart enhanced brief ready: 2212 chars
+2025-08-24 12:40:41 | INFO     | app.routers.generator:generate_image:395 | 🎯 Using optimized generation prompt (2212 characters)
+2025-08-24 12:40:41 | INFO     | app.services.multi_provider_image_generator:generate_image:354 | Provider override 'openai' requested, using OpenAI GPT Image 1
+2025-08-24 12:40:41 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:45 | 🎯 Normalizing prompt: 2212 chars
+2025-08-24 12:40:41 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:173 | ✅ Normalization complete: 2212 → 2203 chars (99.6%)
+2025-08-24 12:40:41 | INFO     | app.services.multi_provider_image_generator:generate_image:370 | 🎨 Sending request to openai_gpt_image for: '**ENHANCED PHOTOGRAPHY BRIEF:**
+
+Capture an ultra-...'
+2025-08-24 12:40:41 | INFO     | app.services.multi_provider_image_generator:generate_image:371 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-24 12:41:30 | INFO     | app.services.multi_provider_image_generator:generate_image:378 | ✅ Received response from openai_gpt_image
+2025-08-24 12:41:30 | INFO     | app.services.multi_provider_image_generator:_save_base64_to_file:205 | 💾 Saved image: static\images\img_3f8608da.png → http://0.0.0.0:8000/static/images/img_3f8608da.png
+2025-08-24 12:43:53 | INFO     | app.routers.generator:generate_image:308 | 🌟 [FRONTEND REQUEST] Generate image - Prompt length: 980 chars
+2025-08-24 12:43:53 | INFO     | app.routers.generator:generate_image:309 | 🔑 [FRONTEND REQUEST] Provider: openai
+2025-08-24 12:43:53 | INFO     | app.routers.generator:generate_image:324 | 🎨 [PROCESSING] Generating image from prompt (980 characters)
+2025-08-24 12:43:53 | INFO     | app.routers.generator:generate_image:333 | 🎯 Starting optimized brief processing workflow
+2025-08-24 12:43:53 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 1799465423312]
+2025-08-24 12:43:53 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 1799465423312]
+2025-08-24 12:43:53 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 3783]
+2025-08-24 12:43:59 | WARNING  | app.services.ai_client:extract_wizard_data:180 | ⚠️ JSON parsing failed, attempting recovery [ID: 3783]
+2025-08-24 12:43:59 | INFO     | app.services.ai_client:extract_wizard_data:192 | ✅ Recovered JSON from malformed response [ID: 3783]
+2025-08-24 12:43:59 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 1799465423312]
+2025-08-24 12:43:59 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 1799465423312]
+2025-08-24 12:43:59 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 1799469917632]
+2025-08-24 12:43:59 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 1799469917632]
+2025-08-24 12:43:59 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 1799465423312]
+2025-08-24 12:43:59 | INFO     | app.routers.generator:generate_image:339 | ✅ Wizard data extracted successfully
+2025-08-24 12:43:59 | INFO     | app.routers.generator:_is_comprehensive_descriptive_prompt:533 | 📄 Long descriptive text detected (164 words, 9 sentences, score: 2)
+2025-08-24 12:43:59 | INFO     | app.routers.generator:generate_image:345 | 📋 Comprehensive prompt detected - applying smart enhancement
+2025-08-24 12:43:59 | INFO     | app.routers.generator:_create_optimized_enhanced_brief:575 | ⚡ Starting optimized enhancement (skip_extraction=True)
+2025-08-24 12:44:04 | INFO     | app.routers.generator:_create_optimized_enhanced_brief:644 | ⚡ Optimized enhanced brief ready: 2234 chars (ratio: 2.3x)
+2025-08-24 12:44:04 | INFO     | app.routers.generator:generate_image:357 | 📄 Smart enhanced brief ready: 2234 chars
+2025-08-24 12:44:04 | INFO     | app.routers.generator:generate_image:395 | 🎯 Using optimized generation prompt (2234 characters)
+2025-08-24 12:44:04 | INFO     | app.services.multi_provider_image_generator:generate_image:354 | Provider override 'openai' requested, using OpenAI GPT Image 1
+2025-08-24 12:44:04 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:45 | 🎯 Normalizing prompt: 2234 chars
+2025-08-24 12:44:04 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:173 | ✅ Normalization complete: 2234 → 2225 chars (99.6%)
+2025-08-24 12:44:04 | INFO     | app.services.multi_provider_image_generator:generate_image:370 | 🎨 Sending request to openai_gpt_image for: '**ENHANCED PHOTOGRAPHY BRIEF:**
+
+Capture a hyper-r...'
+2025-08-24 12:44:04 | INFO     | app.services.multi_provider_image_generator:generate_image:371 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-24 12:44:59 | INFO     | app.services.multi_provider_image_generator:generate_image:378 | ✅ Received response from openai_gpt_image
+2025-08-24 12:44:59 | INFO     | app.services.multi_provider_image_generator:_save_base64_to_file:205 | 💾 Saved image: static\images\img_ad6b905d.png → http://0.0.0.0:8000/static/images/img_ad6b905d.png
+2025-08-24 12:46:15 | INFO     | app.routers.generator:generate_image:308 | 🌟 [FRONTEND REQUEST] Generate image - Prompt length: 1286 chars
+2025-08-24 12:46:15 | INFO     | app.routers.generator:generate_image:309 | 🔑 [FRONTEND REQUEST] Provider: openai
+2025-08-24 12:46:15 | INFO     | app.routers.generator:generate_image:324 | 🎨 [PROCESSING] Generating image from prompt (1286 characters)
+2025-08-24 12:46:15 | INFO     | app.routers.generator:generate_image:333 | 🎯 Starting optimized brief processing workflow
+2025-08-24 12:46:15 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 1799465424192]
+2025-08-24 12:46:15 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 1799465424192]
+2025-08-24 12:46:15 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 1175]
+2025-08-24 12:46:20 | WARNING  | app.services.ai_client:extract_wizard_data:180 | ⚠️ JSON parsing failed, attempting recovery [ID: 1175]
+2025-08-24 12:46:20 | INFO     | app.services.ai_client:extract_wizard_data:192 | ✅ Recovered JSON from malformed response [ID: 1175]
+2025-08-24 12:46:20 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 1799465424192]
+2025-08-24 12:46:20 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 1799465424192]
+2025-08-24 12:46:20 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 1799469937856]
+2025-08-24 12:46:20 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 1799469937856]
+2025-08-24 12:46:20 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 1799465424192]
+2025-08-24 12:46:20 | INFO     | app.routers.generator:generate_image:339 | ✅ Wizard data extracted successfully
+2025-08-24 12:46:20 | INFO     | app.routers.generator:_is_comprehensive_descriptive_prompt:552 | 🔄 Simple prompt detected - will enhance (words: 208, score: 0, sentences: 11)
+2025-08-24 12:46:20 | INFO     | app.routers.generator:generate_image:367 | 🔧 Simple prompt detected - generating comprehensive brief efficiently
+2025-08-24 12:46:20 | INFO     | app.services.brief_orchestrator:generate_final_brief:168 | 🎨 Starting final brief generation workflow [ID: 1799465431632]
+2025-08-24 12:46:20 | INFO     | app.services.brief_orchestrator:generate_final_brief:177 | 📝 Composing initial brief from wizard input [ID: 1799465431632]
+2025-08-24 12:46:20 | INFO     | app.services.prompt_composer:compose_initial_brief:76 | 📝 Starting initial brief composition [ID: 1799465431632]
+2025-08-24 12:46:20 | INFO     | app.services.prompt_composer:compose_initial_brief:126 | ✅ Initial brief composition completed [ID: 1799465431632]
+2025-08-24 12:46:20 | INFO     | app.services.brief_orchestrator:generate_final_brief:187 | ✅ Validating composed brief [ID: 1799465431632]
+2025-08-24 12:46:21 | INFO     | app.services.brief_orchestrator:generate_final_brief:199 | ✅ Brief validation passed [ID: 1799465431632]
+2025-08-24 12:46:21 | INFO     | app.services.brief_orchestrator:generate_final_brief:206 | 🎯 MISSION CRITICAL: Sending structured data to Creative Director [ID: 1799465431632]
+2025-08-24 12:46:21 | INFO     | app.services.brief_orchestrator:generate_final_brief:219 | 🚀 CRITICAL REFACTOR: Calling refactored Creative Director with structured data [ID: 1799465431632]
+2025-08-24 12:46:21 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:334 | 🎭 ADVANCED: Creative Director enhanced composition [ID: 5526]
+2025-08-24 12:47:02 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:527 | ✅ ADVANCED: Elite enhancement completed [ID: 5526]
+2025-08-24 12:47:02 | INFO     | app.services.brief_orchestrator:generate_final_brief:225 | 📊 MISSION VALIDATION: Enhanced brief analysis [ID: 1799465431632]
+2025-08-24 12:47:02 | INFO     | app.services.brief_orchestrator:generate_final_brief:244 | 🎉 Brief generation completed successfully [ID: 1799465431632]
+2025-08-24 12:47:02 | INFO     | app.routers.generator:generate_image:379 | 📦 Brief too long, applying smart compression
+2025-08-24 12:47:02 | INFO     | app.routers.generator:_create_smart_compressed_prompt:839 | 📝 Creating smart compressed prompt preserving technical details
+2025-08-24 12:47:08 | INFO     | app.routers.generator:_create_smart_compressed_prompt:870 | ✅ Smart compression successful: 8426 → 2791 characters
+2025-08-24 12:47:08 | INFO     | app.routers.generator:generate_image:395 | 🎯 Using optimized generation prompt (2791 characters)
+2025-08-24 12:47:09 | INFO     | app.services.multi_provider_image_generator:generate_image:354 | Provider override 'openai' requested, using OpenAI GPT Image 1
+2025-08-24 12:47:09 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:45 | 🎯 Normalizing prompt: 2791 chars
+2025-08-24 12:47:09 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:173 | ✅ Normalization complete: 2791 → 2747 chars (98.4%)
+2025-08-24 12:47:09 | INFO     | app.services.multi_provider_image_generator:generate_image:370 | 🎨 Sending request to openai_gpt_image for: '**Product Photography Brief: Pawon Dadong Malang C...'
+2025-08-24 12:47:09 | INFO     | app.services.multi_provider_image_generator:generate_image:371 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-24 12:47:56 | INFO     | app.services.multi_provider_image_generator:generate_image:378 | ✅ Received response from openai_gpt_image
+2025-08-24 12:47:56 | INFO     | app.services.multi_provider_image_generator:_save_base64_to_file:205 | 💾 Saved image: static\images\img_433ea372.png → http://0.0.0.0:8000/static/images/img_433ea372.png
+2025-08-24 12:51:22 | INFO     | app.routers.generator:generate_image:308 | 🌟 [FRONTEND REQUEST] Generate image - Prompt length: 798 chars
+2025-08-24 12:51:22 | INFO     | app.routers.generator:generate_image:309 | 🔑 [FRONTEND REQUEST] Provider: openai
+2025-08-24 12:51:22 | INFO     | app.routers.generator:generate_image:324 | 🎨 [PROCESSING] Generating image from prompt (798 characters)
+2025-08-24 12:51:22 | INFO     | app.routers.generator:generate_image:333 | 🎯 Starting optimized brief processing workflow
+2025-08-24 12:51:22 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 1799458450448]
+2025-08-24 12:51:22 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 1799458450448]
+2025-08-24 12:51:22 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 646]
+2025-08-24 12:51:26 | WARNING  | app.services.ai_client:extract_wizard_data:180 | ⚠️ JSON parsing failed, attempting recovery [ID: 646]
+2025-08-24 12:51:26 | INFO     | app.services.ai_client:extract_wizard_data:192 | ✅ Recovered JSON from malformed response [ID: 646]
+2025-08-24 12:51:26 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 1799458450448]
+2025-08-24 12:51:26 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 1799458450448]
+2025-08-24 12:51:26 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 1799470010688]
+2025-08-24 12:51:26 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 1799470010688]
+2025-08-24 12:51:26 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 1799458450448]
+2025-08-24 12:51:26 | INFO     | app.routers.generator:generate_image:339 | ✅ Wizard data extracted successfully
+2025-08-24 12:51:26 | INFO     | app.routers.generator:_is_comprehensive_descriptive_prompt:528 | 📝 Detailed descriptive prompt detected (score: 3, words: 113)
+2025-08-24 12:51:26 | INFO     | app.routers.generator:generate_image:345 | 📋 Comprehensive prompt detected - applying smart enhancement
+2025-08-24 12:51:26 | INFO     | app.routers.generator:_create_optimized_enhanced_brief:575 | ⚡ Starting optimized enhancement (skip_extraction=True)
+2025-08-24 12:51:33 | INFO     | app.routers.generator:_create_optimized_enhanced_brief:644 | ⚡ Optimized enhanced brief ready: 2177 chars (ratio: 2.7x)
+2025-08-24 12:51:33 | INFO     | app.routers.generator:generate_image:357 | 📄 Smart enhanced brief ready: 2177 chars
+2025-08-24 12:51:33 | INFO     | app.routers.generator:generate_image:395 | 🎯 Using optimized generation prompt (2177 characters)
+2025-08-24 12:51:33 | INFO     | app.services.multi_provider_image_generator:generate_image:354 | Provider override 'openai' requested, using OpenAI GPT Image 1
+2025-08-24 12:51:33 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:45 | 🎯 Normalizing prompt: 2177 chars
+2025-08-24 12:51:33 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:173 | ✅ Normalization complete: 2177 → 2168 chars (99.6%)
+2025-08-24 12:51:33 | INFO     | app.services.multi_provider_image_generator:generate_image:370 | 🎨 Sending request to openai_gpt_image for: '**Enhanced Photography Brief:**
+
+Create an ultra-r...'
+2025-08-24 12:51:33 | INFO     | app.services.multi_provider_image_generator:generate_image:371 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-24 12:52:30 | INFO     | app.services.multi_provider_image_generator:generate_image:378 | ✅ Received response from openai_gpt_image
+2025-08-24 12:52:30 | INFO     | app.services.multi_provider_image_generator:_save_base64_to_file:205 | 💾 Saved image: static\images\img_12e8cc24.png → http://0.0.0.0:8000/static/images/img_12e8cc24.png
+2025-08-24 12:54:17 | INFO     | app.routers.generator:generate_image:308 | 🌟 [FRONTEND REQUEST] Generate image - Prompt length: 816 chars
+2025-08-24 12:54:17 | INFO     | app.routers.generator:generate_image:309 | 🔑 [FRONTEND REQUEST] Provider: openai
+2025-08-24 12:54:17 | INFO     | app.routers.generator:generate_image:324 | 🎨 [PROCESSING] Generating image from prompt (816 characters)
+2025-08-24 12:54:17 | INFO     | app.routers.generator:generate_image:333 | 🎯 Starting optimized brief processing workflow
+2025-08-24 12:54:17 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 1799458450448]
+2025-08-24 12:54:17 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 1799458450448]
+2025-08-24 12:54:17 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 2938]
+2025-08-24 12:54:24 | WARNING  | app.services.ai_client:extract_wizard_data:180 | ⚠️ JSON parsing failed, attempting recovery [ID: 2938]
+2025-08-24 12:54:24 | INFO     | app.services.ai_client:extract_wizard_data:192 | ✅ Recovered JSON from malformed response [ID: 2938]
+2025-08-24 12:54:24 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 1799458450448]
+2025-08-24 12:54:24 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 1799458450448]
+2025-08-24 12:54:24 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 1799465671936]
+2025-08-24 12:54:24 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 1799465671936]
+2025-08-24 12:54:24 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 1799458450448]
+2025-08-24 12:54:24 | INFO     | app.routers.generator:generate_image:339 | ✅ Wizard data extracted successfully
+2025-08-24 12:54:24 | INFO     | app.routers.generator:_is_comprehensive_descriptive_prompt:552 | 🔄 Simple prompt detected - will enhance (words: 118, score: 1, sentences: 6)
+2025-08-24 12:54:24 | INFO     | app.routers.generator:generate_image:367 | 🔧 Simple prompt detected - generating comprehensive brief efficiently
+2025-08-24 12:54:24 | INFO     | app.services.brief_orchestrator:generate_final_brief:168 | 🎨 Starting final brief generation workflow [ID: 1799465428752]
+2025-08-24 12:54:24 | INFO     | app.services.brief_orchestrator:generate_final_brief:177 | 📝 Composing initial brief from wizard input [ID: 1799465428752]
+2025-08-24 12:54:24 | INFO     | app.services.prompt_composer:compose_initial_brief:76 | 📝 Starting initial brief composition [ID: 1799465428752]
+2025-08-24 12:54:24 | INFO     | app.services.prompt_composer:compose_initial_brief:126 | ✅ Initial brief composition completed [ID: 1799465428752]
+2025-08-24 12:54:24 | INFO     | app.services.brief_orchestrator:generate_final_brief:187 | ✅ Validating composed brief [ID: 1799465428752]
+2025-08-24 12:54:24 | INFO     | app.services.brief_orchestrator:generate_final_brief:199 | ✅ Brief validation passed [ID: 1799465428752]
+2025-08-24 12:54:24 | INFO     | app.services.brief_orchestrator:generate_final_brief:206 | 🎯 MISSION CRITICAL: Sending structured data to Creative Director [ID: 1799465428752]
+2025-08-24 12:54:24 | INFO     | app.services.brief_orchestrator:generate_final_brief:219 | 🚀 CRITICAL REFACTOR: Calling refactored Creative Director with structured data [ID: 1799465428752]
+2025-08-24 12:54:24 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:334 | 🎭 ADVANCED: Creative Director enhanced composition [ID: 5183]
+2025-08-24 12:54:43 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:527 | ✅ ADVANCED: Elite enhancement completed [ID: 5183]
+2025-08-24 12:54:43 | INFO     | app.services.brief_orchestrator:generate_final_brief:225 | 📊 MISSION VALIDATION: Enhanced brief analysis [ID: 1799465428752]
+2025-08-24 12:54:43 | INFO     | app.services.brief_orchestrator:generate_final_brief:244 | 🎉 Brief generation completed successfully [ID: 1799465428752]
+2025-08-24 12:54:43 | INFO     | app.routers.generator:generate_image:379 | 📦 Brief too long, applying smart compression
+2025-08-24 12:54:43 | INFO     | app.routers.generator:_create_smart_compressed_prompt:839 | 📝 Creating smart compressed prompt preserving technical details
+2025-08-24 12:54:53 | INFO     | app.routers.generator:_create_smart_compressed_prompt:870 | ✅ Smart compression successful: 10273 → 2834 characters
+2025-08-24 12:54:53 | INFO     | app.routers.generator:generate_image:395 | 🎯 Using optimized generation prompt (2834 characters)
+2025-08-24 12:54:53 | INFO     | app.services.multi_provider_image_generator:generate_image:354 | Provider override 'openai' requested, using OpenAI GPT Image 1
+2025-08-24 12:54:53 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:45 | 🎯 Normalizing prompt: 2834 chars
+2025-08-24 12:54:53 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:173 | ✅ Normalization complete: 2834 → 2721 chars (96.0%)
+2025-08-24 12:54:53 | INFO     | app.services.multi_provider_image_generator:generate_image:370 | 🎨 Sending request to openai_gpt_image for: '**Photography Brief: SKinna Indonesia Skincare**
+
+...'
+2025-08-24 12:54:53 | INFO     | app.services.multi_provider_image_generator:generate_image:371 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-24 12:55:41 | INFO     | app.services.multi_provider_image_generator:generate_image:378 | ✅ Received response from openai_gpt_image
+2025-08-24 12:55:41 | INFO     | app.services.multi_provider_image_generator:_save_base64_to_file:205 | 💾 Saved image: static\images\img_0440ead8.png → http://0.0.0.0:8000/static/images/img_0440ead8.png
+2025-08-24 12:57:03 | INFO     | app.routers.generator:generate_image:308 | 🌟 [FRONTEND REQUEST] Generate image - Prompt length: 808 chars
+2025-08-24 12:57:03 | INFO     | app.routers.generator:generate_image:309 | 🔑 [FRONTEND REQUEST] Provider: openai
+2025-08-24 12:57:03 | INFO     | app.routers.generator:generate_image:324 | 🎨 [PROCESSING] Generating image from prompt (808 characters)
+2025-08-24 12:57:03 | INFO     | app.routers.generator:generate_image:333 | 🎯 Starting optimized brief processing workflow
+2025-08-24 12:57:03 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 1799458453888]
+2025-08-24 12:57:03 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 1799458453888]
+2025-08-24 12:57:03 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 5039]
+2025-08-24 12:57:10 | WARNING  | app.services.ai_client:extract_wizard_data:180 | ⚠️ JSON parsing failed, attempting recovery [ID: 5039]
+2025-08-24 12:57:10 | INFO     | app.services.ai_client:extract_wizard_data:192 | ✅ Recovered JSON from malformed response [ID: 5039]
+2025-08-24 12:57:10 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 1799458453888]
+2025-08-24 12:57:10 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 1799458453888]
+2025-08-24 12:57:10 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 1799469908672]
+2025-08-24 12:57:10 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 1799469908672]
+2025-08-24 12:57:10 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 1799458453888]
+2025-08-24 12:57:10 | INFO     | app.routers.generator:generate_image:339 | ✅ Wizard data extracted successfully
+2025-08-24 12:57:10 | INFO     | app.routers.generator:_is_comprehensive_descriptive_prompt:533 | 📄 Long descriptive text detected (117 words, 6 sentences, score: 2)
+2025-08-24 12:57:10 | INFO     | app.routers.generator:generate_image:345 | 📋 Comprehensive prompt detected - applying smart enhancement
+2025-08-24 12:57:10 | INFO     | app.routers.generator:_create_optimized_enhanced_brief:575 | ⚡ Starting optimized enhancement (skip_extraction=True)
+2025-08-24 12:57:16 | INFO     | app.routers.generator:_create_optimized_enhanced_brief:644 | ⚡ Optimized enhanced brief ready: 2373 chars (ratio: 2.9x)
+2025-08-24 12:57:16 | INFO     | app.routers.generator:generate_image:357 | 📄 Smart enhanced brief ready: 2373 chars
+2025-08-24 12:57:16 | INFO     | app.routers.generator:generate_image:395 | 🎯 Using optimized generation prompt (2373 characters)
+2025-08-24 12:57:16 | INFO     | app.services.multi_provider_image_generator:generate_image:354 | Provider override 'openai' requested, using OpenAI GPT Image 1
+2025-08-24 12:57:16 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:45 | 🎯 Normalizing prompt: 2373 chars
+2025-08-24 12:57:16 | INFO     | app.services.multi_provider_image_generator:_normalize_for_chatgpt_quality:173 | ✅ Normalization complete: 2373 → 2363 chars (99.6%)
+2025-08-24 12:57:16 | INFO     | app.services.multi_provider_image_generator:generate_image:370 | 🎨 Sending request to openai_gpt_image for: '**ENHANCED PHOTOGRAPHY BRIEF:**
+
+Create an ultra-r...'
+2025-08-24 12:57:16 | INFO     | app.services.multi_provider_image_generator:generate_image:371 | 🔗 Endpoint: https://api.openai.com/v1/images/generations
+2025-08-24 12:58:02 | INFO     | app.services.multi_provider_image_generator:generate_image:378 | ✅ Received response from openai_gpt_image
+2025-08-24 12:58:02 | INFO     | app.services.multi_provider_image_generator:_save_base64_to_file:205 | 💾 Saved image: static\images\img_4ce59a25.png → http://0.0.0.0:8000/static/images/img_4ce59a25.png
+2025-08-24 13:06:10 | INFO     | app.main:<module>:35 | 🚀 MISSION 3: Structured logging system initialized

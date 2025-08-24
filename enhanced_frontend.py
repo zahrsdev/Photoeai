@@ -162,7 +162,7 @@ def main():
         # Provider selection
         provider = st.selectbox(
             "🤖 AI Provider",
-            options=["openai", "gemini", "midjourney"],
+            options=["openai"],
             index=0,
             help="Choose your preferred AI image generation provider"
         )

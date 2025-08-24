@@ -338,8 +338,9 @@ async def generate_image(request: ImageGenerationRequest) -> ImageOutput:
                 wizard_input = await orchestrator.extract_and_autofill(initial_request)
                 logger.info("✅ Wizard data extracted successfully")
                 
-                # Step 2: Check if input is already comprehensive
-                is_comprehensive_brief = _is_comprehensive_descriptive_prompt(request.brief_prompt)
+                # Step 2: Force all prompts to use full brief generation
+                # is_comprehensive_brief = _is_comprehensive_descriptive_prompt(request.brief_prompt)
+                is_comprehensive_brief = False  # Force full brief generation for all inputs
                 
                 if is_comprehensive_brief:
                     logger.info("📋 Comprehensive prompt detected - applying smart enhancement")
