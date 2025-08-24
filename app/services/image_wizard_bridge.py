@@ -70,23 +70,23 @@ class ImageWizardBridge:
             # Combine user prompt dengan improvement suggestions dari image
             enhanced_user_request = self._enhance_user_request(image_analysis, user_prompt)
             
-            # Map image analysis ke WizardInput fields
+            # Map image analysis ke WizardInput fields dengan professional upgrade
             wizard_input = WizardInput(
                 product_name=product_name,
                 user_request=enhanced_user_request,
                 product_type=image_analysis.get("product_type"),
                 style_preference=image_analysis.get("style_preference"),
-                lighting_style=image_analysis.get("lighting_style"),
-                shot_type=image_analysis.get("composition_style"),  
-                framing=image_analysis.get("camera_angle"),         
-                environment=image_analysis.get("background_type"),
+                lighting_style=self._upgrade_lighting_style(image_analysis.get("lighting_style")),
+                shot_type=self._upgrade_shot_type(image_analysis.get("composition_style")),  
+                framing=self._upgrade_framing(image_analysis.get("camera_angle")),         
+                environment=self._upgrade_environment(image_analysis.get("background_type")),
                 dominant_colors=self._format_color_list(image_analysis.get("dominant_colors")),
-                accent_colors="complementary background tones",  # Keep background neutral
-                camera_type="Canon EOS R5",  # Default professional camera
-                lens_type="50mm f/1.8",      # Default lens
-                aperture_value=2.8,          # Default aperture
-                shutter_speed_value=125,     # Default shutter
-                iso_value=100               # Default ISO
+                accent_colors="complementary professional background tones",
+                camera_type=self._upgrade_camera_type("Canon EOS R5"),
+                lens_type=self._upgrade_lens_type("50mm f/1.8"),
+                aperture_value=2.8,          
+                shutter_speed_value=125,     
+                iso_value=100               
             )
             
             logger.info("✅ Image-wizard bridge completed", extra={
@@ -135,9 +135,9 @@ class ImageWizardBridge:
             user_request=user_prompt,
             product_type="other",
             style_preference="modern",
-            lighting_style="natural",
-            camera_type="Canon EOS R5",
-            lens_type="50mm f/1.8",
+            lighting_style="Rembrandt lighting with 45-degree key light",
+            camera_type="Hasselblad X2D 100C medium format camera",
+            lens_type="85mm f/1.4 lens with creamy bokeh",
             aperture_value=2.8,
             shutter_speed_value=125,
             iso_value=100
@@ -231,3 +231,99 @@ class ImageWizardBridge:
             return color_data
         
         return "natural product colors"
+    
+    def _upgrade_lighting_style(self, basic_lighting: str) -> str:
+        """Upgrade basic lighting terms ke professional photography terms"""
+        if not basic_lighting:
+            return "Rembrandt lighting with 45-degree key light"
+            
+        lighting_upgrades = {
+            "natural": "Golden hour warm directional light",
+            "studio": "Professional studio lighting with large octabox softbox",
+            "soft": "Butterfly lighting for beauty shots",
+            "dramatic": "Split lighting for dramatic product emphasis",
+            "bright": "High-key lighting for clean commercial look",
+            "moody": "Low-key lighting for luxury products",
+            "window": "Diffused window light with professional fill"
+        }
+        
+        for basic, professional in lighting_upgrades.items():
+            if basic.lower() in basic_lighting.lower():
+                return professional
+                
+        return f"Professional studio setup with {basic_lighting}"
+    
+    def _upgrade_shot_type(self, basic_shot: str) -> str:
+        """Upgrade basic shot types ke professional camera angles"""
+        if not basic_shot:
+            return "Eye-level with rule of thirds composition"
+            
+        shot_upgrades = {
+            "close": "Macro lens close-up with shallow depth of field",
+            "wide": "35mm environmental shot with leading lines",
+            "top": "Top-down flat lay with symmetrical composition",
+            "angle": "Dutch angle for dynamic product presentation"
+        }
+        
+        for basic, professional in shot_upgrades.items():
+            if basic.lower() in basic_shot.lower():
+                return professional
+                
+        return f"Professional {basic_shot} with compositional excellence"
+    
+    def _upgrade_framing(self, basic_framing: str) -> str:
+        """Upgrade basic framing ke professional composition"""
+        if not basic_framing:
+            return "Close-up with negative space balance"
+            
+        framing_upgrades = {
+            "tight": "Extreme close-up with critical focus",
+            "medium": "Medium shot with rule of thirds",
+            "wide": "Full product shot with environmental context",
+            "detail": "Macro detail with ultra-sharp focus"
+        }
+        
+        for basic, professional in framing_upgrades.items():
+            if basic.lower() in basic_framing.lower():
+                return professional
+                
+        return f"Professional {basic_framing} composition"
+    
+    def _upgrade_environment(self, basic_env: str) -> str:
+        """Upgrade basic environment ke professional studio setups"""
+        if not basic_env:
+            return "Seamless studio backdrop with controlled lighting"
+            
+        env_upgrades = {
+            "white": "Clean seamless white studio backdrop",
+            "black": "Professional black velvet backdrop",
+            "studio": "Professional studio with C-stand equipment",
+            "natural": "Environmental context with professional lighting control"
+        }
+        
+        for basic, professional in env_upgrades.items():
+            if basic.lower() in basic_env.lower():
+                return professional
+                
+        return f"Professional studio setup with {basic_env}"
+    
+    def _upgrade_camera_type(self, basic_camera: str) -> str:
+        """Upgrade ke professional camera equipment"""
+        professional_cameras = [
+            "Hasselblad X2D 100C medium format camera",
+            "Phase One XF IQ4 digital back", 
+            "Sony A7R V mirrorless with 61MP sensor",
+            "Canon EOS R5 with 15-stop dynamic range"
+        ]
+        return professional_cameras[0]  # Default ke Hasselblad
+    
+    def _upgrade_lens_type(self, basic_lens: str) -> str:
+        """Upgrade ke professional lens equipment"""
+        if "50mm" in basic_lens:
+            return "50mm f/1.2 prime lens for natural perspective"
+        elif "85mm" in basic_lens:
+            return "85mm f/1.4 lens with creamy bokeh"
+        elif "100mm" in basic_lens:
+            return "100mm f/2.8 macro lens for product detail"
+        else:
+            return "85mm f/1.4 lens with creamy bokeh"

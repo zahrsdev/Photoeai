@@ -112,25 +112,25 @@ class ImageAnalysisService:
         logger.info(f"👁️ Starting image analysis with custom client [ID: {request_id}]")
         
         analysis_instruction = """
-Analyze this product image and extract detailed photography information.
+Analyze this product image with professional commercial photography expertise and extract technical information.
 
 **REQUIRED OUTPUT FORMAT (JSON only):**
 ```json
 {
     "product_type": "category (e.g., food, electronics, cosmetics, accessories)",
     "product_name": "specific product name or description",
-    "lighting_style": "current lighting type (natural, studio, dramatic, soft, etc.)",
-    "background_type": "background description (white, wooden, marble, outdoor, etc.)",
-    "composition_style": "shot angle (close-up, wide, overhead, side-angle, etc.)", 
-    "style_preference": "overall mood/style (modern, vintage, luxury, casual, etc.)",
-    "current_quality": "assessment (amateur, professional, commercial, etc.)",
-    "improvement_areas": ["list", "of", "areas", "needing", "enhancement"],
-    "dominant_colors": ["primary", "product", "colors", "only"],
-    "camera_angle": "specific angle description"
+    "lighting_style": "professional lighting pattern (Rembrandt lighting, butterfly lighting, split lighting, clamshell setup, rim lighting, high-key, low-key, golden hour directional, etc.)",
+    "background_type": "professional backdrop (seamless white studio backdrop, black velvet, marble surface, wooden texture, environmental context, etc.)",
+    "composition_style": "professional shot technique (macro close-up with shallow DOF, environmental wide shot, top-down flat lay, Dutch angle dynamic, eye-level hero shot, etc.)", 
+    "style_preference": "photography aesthetic (luxury commercial, editorial fashion, minimalist product, vintage film, ultra-modern digital, award-winning commercial, etc.)",
+    "current_quality": "professional assessment (amateur snapshot, prosumer DSLR, professional commercial, award-winning photography, etc.)",
+    "improvement_areas": ["specific", "technical", "photography", "enhancements"],
+    "dominant_colors": ["precise", "professional", "product", "color", "descriptions"],
+    "camera_angle": "technical angle with professional context"
 }
 ```
 
-CRITICAL: For 'dominant_colors', identify ONLY the actual colors of the PRODUCT itself, not the background or environment. Be specific (e.g., "deep red", "bright yellow", "metallic silver") and focus on the product's authentic appearance.
+CRITICAL: For 'dominant_colors', use professional color accuracy terminology (e.g., "deep burgundy red", "warm champagne gold", "matte charcoal black"). Identify ONLY the actual colors of the PRODUCT itself, not background or environment. Focus on authentic product appearance with precision.
 """
 
         try:
@@ -145,7 +145,7 @@ CRITICAL: For 'dominant_colors', identify ONLY the actual colors of the PRODUCT 
                         ]
                     }
                 ],
-                temperature=0.3,
+                temperature=0.5,
                 max_tokens=800
             )
             
@@ -219,7 +219,7 @@ CRITICAL: For 'dominant_colors', extract ONLY the authentic colors of the PRODUC
                         ]
                     }
                 ],
-                temperature=0.3,
+                temperature=0.5,
                 max_tokens=800
             )
             

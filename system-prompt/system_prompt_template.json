@@ -1,6 +1,6 @@
 {
   "prompt_structure": {
-    "introduction": "Create a photorealistic, world-class product photograph based on the following detailed brief. Adhere strictly to every parameter specified. CRITICAL: Preserve the original product colors and appearance exactly as they would appear in reality - do not alter, stylize, or reinterpret the natural colors of the product itself.",
+    "introduction": "Create a photorealistic, world-class commercial product photograph using professional photography techniques. Adhere strictly to every parameter specified. CRITICAL: Preserve the original product colors and appearance exactly as they would appear in reality - do not alter, stylize, or reinterpret the natural colors of the product itself. Execute with the precision of award-winning commercial photographers.",
     "main_subject": {
       "header": "1. Main Subject:",
       "description": "A single, hero shot of the product: {{product_name}}.",
@@ -15,10 +15,10 @@
       "negative_space": "Negative Space: {{negative_space}} (e.g., Minimal, Generous, Balanced)."
     },
     "lighting_and_atmosphere": {
-      "header": "3. Lighting and Atmosphere:",
-      "style": "Lighting Style: {{lighting_style}} (e.g., Studio Softbox, Hard light with dramatic shadows, Natural window light, Golden hour glow, Cinematic neon).",
-      "setup": "Key Light: {{key_light_setup}}. Fill Light: {{fill_light_setup}}. Rim Light: {{rim_light_setup}}.",
-      "mood": "Overall Mood: {{mood}} (e.g., Bright and airy, Dark and moody, Luxurious, Energetic, Minimalist and clean)."
+      "header": "3. Professional Lighting Setup:",
+      "style": "Lighting Pattern: {{lighting_style}} (e.g., Rembrandt lighting with 45-degree key light, Loop lighting for portraits, Butterfly lighting for beauty shots, Split lighting for dramatic effect, Clamshell lighting for even coverage, Rim lighting for product separation, High-key lighting for clean commercial look, Low-key lighting for luxury products).",
+      "setup": "Equipment Setup: Key Light: {{key_light_setup}} using large octabox softbox or silver beauty dish with grid. Fill Light: {{fill_light_setup}} with reflector or diffused strobe. Rim Light: {{rim_light_setup}} for product edge definition.",
+      "mood": "Lighting Mood: {{mood}} (e.g., Golden hour warm directional light, Diffused window light with soft shadows, Professional studio lighting with controlled spill, Tungsten 3200K warm glow, Daylight 5600K cool tone for product clarity)."
     },
     "background_and_setting": {
       "header": "4. Background and Setting:",
@@ -27,19 +27,19 @@
       "props": "Supporting Props: {{props}} (subtle and complementary, not distracting)."
     },
     "camera_and_lens": {
-      "header": "5. Camera and Lens Simulation:",
-      "camera": "Shot on: {{camera_type}} (e.g., Hasselblad X2D, Sony A7R V, Canon EOS R5).",
-      "lens": "Lens: {{lens_type}} (e.g., 100mm Macro, 50mm f/1.2, 24-70mm f/2.8).",
-      "aperture": "Aperture: f/{{aperture_value}}.",
-      "shutter_speed": "Shutter Speed: 1/{{shutter_speed_value}}s.",
-      "iso": "ISO: {{iso_value}}.",
-      "effect": "Visual Effect: {{visual_effect}} (e.g., shallow depth of field with creamy bokeh, crystal clear focus stack, subtle lens flare, motion blur)."
+      "header": "5. Professional Camera Equipment:",
+      "camera": "Shot with: {{camera_type}} (e.g., Hasselblad X2D 100C medium format camera, Phase One XF IQ4 digital back, Sony A7R V mirrorless, Canon EOS R5 with 15-stop dynamic range sensor).",
+      "lens": "Professional Lens: {{lens_type}} (e.g., 85mm f/1.4 lens with creamy bokeh for portraits, 100mm f/2.8 macro lens for product detail, 35mm f/1.4 environmental lens, 50mm f/1.2 prime for natural perspective, tilt-shift lens for product photography).",
+      "aperture": "Aperture: f/{{aperture_value}} for precise depth of field control.",
+      "shutter_speed": "Shutter Speed: 1/{{shutter_speed_value}}s with leaf shutter flash sync capability.",
+      "iso": "ISO: {{iso_value}} for optimal dynamic range and minimal noise.",
+      "effect": "Photographic Technique: {{visual_effect}} (e.g., shallow depth of field with ultra-smooth bokeh, focus stacking for macro detail, subtle lens compression, professional color separation)."
     },
     "style_and_post_production": {
-      "header": "6. Stylistic Qualifiers:",
-      "overall_style": "Style: {{overall_style}} (e.g., Commercial product photography, Editorial style, Cinematic, Hyper-realistic).",
-      "aesthetics": "Aesthetics: Ultra-detailed, 8K, UHD, sharp focus, professional color grading, award-winning photography.",
-      "influences": "Inspired by the work of photographers like {{photographer_influences}}."
+      "header": "6. Professional Post-Production Style:",
+      "overall_style": "Commercial Style: {{overall_style}} (e.g., Award-winning commercial product photography, Editorial fashion photography style, Cinematic advertising campaign, Ultra-realistic product visualization, Luxury brand photography aesthetic).",
+      "aesthetics": "Technical Excellence: Shot with medium format digital camera, ultra-fine grain, professional color grading with minimal retouching to preserve natural skin tones, clean white background isolation, high dynamic range tonal compression, matte finish commercial look, 8K resolution with crystal-clear detail.",
+      "influences": "Photography Masters: Inspired by the technical precision of {{photographer_influences}} and contemporary commercial photography standards."
     },
     "color_preservation": {
       "header": "7. CRITICAL: Original Product Color Preservation:",

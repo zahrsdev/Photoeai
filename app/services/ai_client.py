@@ -465,7 +465,7 @@ Generate the most detailed, comprehensive photography brief possible. Every sect
                 "instruction_length": len(enhancement_instruction),
                 "structured_data_fields": list(structured_data.keys()),
                 "product_name": structured_data.get("product_name", "Unknown"),
-                "temperature": 0.85,  # Optimized for creative excellence
+                "temperature": 0.6,  # Balanced creativity for professional results
                 "max_tokens": 4500,   # Expanded for masterpiece output
                 "enhancement_level": "ELITE_PROFESSIONAL"
             })
@@ -480,7 +480,7 @@ Generate the most detailed, comprehensive photography brief possible. Every sect
                     },
                     {"role": "user", "content": enhancement_instruction}
                 ],
-                temperature=0.85,     # Optimized for creative but controlled enhancement
+                temperature=0.6,     # Balanced creativity for professional results
                 max_tokens=4500       # Increased for comprehensive masterpiece output
             )
             
@@ -667,7 +667,7 @@ Result: "A premium product elegantly positioned against a pristine backdrop, ill
                     },
                     {"role": "user", "content": enhancement_instruction}
                 ],
-                temperature=0.75,  # Balanced for creativity and consistency
+                temperature=0.6,  # Balanced creativity and consistency
                 max_tokens=1500    # Sufficient for detailed enhancement
             )
             
