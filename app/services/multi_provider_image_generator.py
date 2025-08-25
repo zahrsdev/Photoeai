@@ -718,6 +718,14 @@ class OpenAIImageService:
             # Convert to proper format for API
             image = Image.open(io.BytesIO(image_data))
             
+            # FIX: Resize image if too large to avoid 413 Payload Too Large
+            max_size = (1024, 1024)  # OpenAI Edit API recommended max size
+            if image.size[0] > max_size[0] or image.size[1] > max_size[1]:
+                logger.info(f"🔧 Resizing image from {image.size} to fit {max_size}")
+                image.thumbnail(max_size, Image.Resampling.LANCZOS)
+                if progress_callback:
+                    await progress_callback("📏 Resized image for optimal API payload size...")
+            
             # Convert to PNG for best compatibility 
             png_buffer = io.BytesIO()
             if image.mode == 'RGBA':
@@ -773,8 +781,8 @@ class OpenAIImageService:
             
             image_base64 = api_response['data'][0]['b64_json']
             
-            # TASK 3: Simple base64 to URL conversion (no save needed for now)
-            image_url = f"data:image/png;base64,{image_base64}"
+            # FIX: Save base64 to file like normal flow
+            image_url = self._save_base64_to_file(image_base64)
             
             return ImageOutput(
                 image_url=image_url,

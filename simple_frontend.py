@@ -22,7 +22,7 @@ from PIL import Image
 import io
 
 # Configuration
-API_BASE_URL = "http://localhost:8004/api/v1"
+API_BASE_URL = "http://localhost:8000/api/v1"
 TIMEOUT = 300  # Increased to 5 minutes for complex operations
 
 
@@ -54,26 +54,33 @@ def generate_comprehensive_brief(user_prompt: str) -> Optional[Dict]:
         return None
 
 
-def convert_image_to_base64(uploaded_file) -> Optional[str]:
-    """Convert uploaded image to base64 string"""
+def save_uploaded_image(uploaded_file) -> Optional[str]:
+    """Save uploaded image to static/images/uploads/ and return filename"""
     try:
-        # Read image data
-        image_data = uploaded_file.read()
+        import os
         
-        # Convert to base64
-        base64_string = base64.b64encode(image_data).decode('utf-8')
+        # Create uploads directory if not exists
+        upload_dir = "static/images/uploads"
+        os.makedirs(upload_dir, exist_ok=True)
         
-        # Reset file pointer for potential reuse
-        uploaded_file.seek(0)
+        # Generate unique filename with timestamp
+        timestamp = int(time.time())
+        file_extension = uploaded_file.name.split('.')[-1].lower()
+        filename = f"product_{timestamp}.{file_extension}"
         
-        return base64_string
+        # Save file
+        file_path = os.path.join(upload_dir, filename)
+        with open(file_path, "wb") as f:
+            f.write(uploaded_file.getbuffer())
+        
+        return filename
     except Exception as e:
-        st.error(f"❌ Failed to convert image: {e}")
+        st.error(f"❌ Failed to save image: {e}")
         return None
 
 
 def generate_image_from_brief(comprehensive_brief: str, api_key: str, provider: str = None, 
-                            negative_prompt: str = None, uploaded_image_base64: str = None) -> Optional[Dict]:
+                            negative_prompt: str = None, uploaded_image_filename: str = None) -> Optional[Dict]:
     """Generate image from comprehensive photography brief"""
     try:
         payload = {
@@ -82,8 +89,8 @@ def generate_image_from_brief(comprehensive_brief: str, api_key: str, provider: 
         }
         
         # Boss: Add image upload support for 2-step flow
-        if uploaded_image_base64:
-            payload["uploaded_image_base64"] = uploaded_image_base64
+        if uploaded_image_filename:
+            payload["uploaded_image_filename"] = uploaded_image_filename
         
         if provider:
             payload["provider"] = provider
@@ -103,7 +110,7 @@ def generate_image_from_brief(comprehensive_brief: str, api_key: str, provider: 
 
 
 def generate_image(prompt: str, api_key: str, provider: str = None, negative_prompt: str = None, 
-                  uploaded_image_base64: str = None) -> Optional[Dict]:
+                  uploaded_image_filename: str = None) -> Optional[Dict]:
     """Generate image from prompt with real-time progress display"""
     try:
         # Create progress placeholders
@@ -113,7 +120,7 @@ def generate_image(prompt: str, api_key: str, provider: str = None, negative_pro
         # Initialize progress bar
         progress_bar = progress_bar_placeholder.progress(0)
         
-        if uploaded_image_base64:
+        if uploaded_image_filename:
             progress_placeholder.info("🎨 Starting full pipeline analysis...")
             progress_bar.progress(10)
         else:
@@ -141,7 +148,7 @@ def generate_image(prompt: str, api_key: str, provider: str = None, negative_pro
             api_key=api_key,
             provider=provider,
             negative_prompt=negative_prompt,
-            uploaded_image_base64=uploaded_image_base64
+            uploaded_image_filename=uploaded_image_filename
         )
         
         progress_bar.progress(90)
@@ -165,12 +172,13 @@ def generate_image(prompt: str, api_key: str, provider: str = None, negative_pro
         return None
 
 
-def generate_image_breakthrough(prompt: str, api_key: str, uploaded_image_base64: str) -> Optional[Dict]:
+def generate_image_breakthrough(prompt: str, api_key: str, uploaded_image_filename: str) -> Optional[Dict]:
     """
     🚀 BREAKTHROUGH: Generate image using GPT Image-1 Edit API for PERFECT shape preservation
     
     This function uses the breakthrough IMAGE EDIT API instead of text-to-image:
-    - Uploads original product image directly to GPT Image-1
+    - Sends image filename to backend instead of base64
+    - Backend reads file from static/images/uploads/
     - Uses input_fidelity='high' to preserve original features
     - Applies professional photography enhancement only
     - Result: Enhanced image with PRESERVED original shape!
@@ -190,7 +198,7 @@ def generate_image_breakthrough(prompt: str, api_key: str, uploaded_image_base64
         payload = {
             "brief_prompt": prompt,
             "user_api_key": api_key,
-            "uploaded_image_base64": uploaded_image_base64,
+            "uploaded_image_filename": uploaded_image_filename,
             "provider": "gpt-image-1",
             "use_raw_prompt": False
         }
@@ -289,11 +297,14 @@ def main():
         )
         
         # Show image preview
-        uploaded_image_base64 = None
+        uploaded_image_filename = None
         if uploaded_file is not None:
             st.image(uploaded_file, caption="Original Product Image", use_container_width=True, width=400)
-            uploaded_image_base64 = convert_image_to_base64(uploaded_file)
-            st.success("✅ Gambar berhasil diupload!")
+            uploaded_image_filename = save_uploaded_image(uploaded_file)
+            if uploaded_image_filename:
+                st.success(f"✅ Gambar berhasil disimpan: {uploaded_image_filename}")
+            else:
+                st.error("❌ Gagal menyimpan gambar!")
         
         # 2. Input Prompt
         prompt = st.text_area(
@@ -320,7 +331,7 @@ def main():
     
     # Handle form submission
     if generate_clicked:
-        if not uploaded_image_base64:
+        if not uploaded_image_filename:
             st.error("❌ Upload gambar produk dulu!")
         elif not prompt.strip():
             st.error("❌ Masukan prompt enhancement!")
@@ -332,7 +343,7 @@ def main():
                 result = generate_image_breakthrough(
                     prompt=prompt.strip(),
                     api_key=api_key.strip(),
-                    uploaded_image_base64=uploaded_image_base64
+                    uploaded_image_filename=uploaded_image_filename
                 )
             
             if result:

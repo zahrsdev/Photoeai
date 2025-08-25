@@ -149,6 +149,7 @@ class ImageGenerationRequest(BaseModel):
     provider: Optional[str] = Field(None, description="Optional provider override. Only 'openai' supported for GPT Image 1.")
     use_raw_prompt: Optional[bool] = Field(False, description="If True, use the brief_prompt directly without processing it through the wizard system.")
     uploaded_image_base64: Optional[str] = Field(None, description="Base64 encoded uploaded image for 2-step Vision API flow.")
+    uploaded_image_filename: Optional[str] = Field(None, description="Filename of uploaded image in static/images/uploads/ (alternative to base64 for performance).")
 
 class ImageEnhancementRequest(BaseModel):
     """Model for iteratively enhancing a previously generated image."""

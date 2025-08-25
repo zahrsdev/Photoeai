@@ -7,6 +7,8 @@ from fastapi import APIRouter, HTTPException
 from fastapi.responses import StreamingResponse  # MISSION 2: Added for download endpoint
 from loguru import logger
 import io  # MISSION 2: Added for download endpoint
+import os
+import base64
 # Models to import (add the new ones)
 from app.schemas.models import (
     InitialUserRequest, WizardInput, BriefOutput, 
@@ -30,6 +32,38 @@ image_service = ImageGenerationService()  # Keep for backward compatibility
 openai_service = OpenAIImageService()  # OpenAI GPT Image 1 service
 ai_client = AIClient()  # AI client for text generation
 # --- END NEW ---
+
+
+def load_image_from_filename(filename: str) -> str:
+    """
+    Load image from static/images/uploads/ and convert to base64
+    
+    Args:
+        filename: Name of file in static/images/uploads/
+        
+    Returns:
+        base64 encoded image string
+        
+    Raises:
+        FileNotFoundError: If file doesn't exist
+        Exception: If file can't be read or converted
+    """
+    try:
+        file_path = os.path.join("static", "images", "uploads", filename)
+        
+        if not os.path.exists(file_path):
+            raise FileNotFoundError(f"Image file not found: {filename}")
+        
+        with open(file_path, "rb") as image_file:
+            image_data = image_file.read()
+            base64_string = base64.b64encode(image_data).decode('utf-8')
+            
+        logger.info(f"✅ Loaded image from file: {filename} ({len(image_data)} bytes)")
+        return base64_string
+        
+    except Exception as e:
+        logger.error(f"❌ Failed to load image from {filename}: {e}")
+        raise Exception(f"Could not load image file: {str(e)}")
 
 
 @router.get("/progress/{session_id}")
@@ -409,6 +443,19 @@ async def generate_image(request: ImageGenerationRequest) -> ImageOutput:
         
         logger.info(f"🎯 Using optimized generation prompt ({len(generation_prompt)} characters)")
         
+        # FIX: Handle both filename and base64 input methods (consistency with breakthrough)
+        uploaded_image_base64 = None
+        
+        if request.uploaded_image_filename:
+            # NEW: Load from filename (lighter requests!)
+            logger.info(f"📁 Loading image from file: {request.uploaded_image_filename}")
+            uploaded_image_base64 = load_image_from_filename(request.uploaded_image_filename)
+            
+        elif request.uploaded_image_base64:
+            # OLD: Use base64 directly (backward compatibility)
+            logger.info("📊 Using provided base64 image data")
+            uploaded_image_base64 = request.uploaded_image_base64
+        
         # Progress callback untuk real-time updates with tracker
         progress_messages = []
         
@@ -423,7 +470,7 @@ async def generate_image(request: ImageGenerationRequest) -> ImageOutput:
             user_api_key=request.user_api_key,
             negative_prompt=request.negative_prompt,
             provider_override=request.provider,
-            uploaded_image_base64=request.uploaded_image_base64,
+            uploaded_image_base64=uploaded_image_base64,
             progress_callback=progress_callback
         )
         
@@ -461,7 +508,7 @@ async def generate_image_breakthrough(request: ImageGenerationRequest) -> ImageO
     - Apply professional photography enhancement prompts
     - Result: Enhanced image with PRESERVED original shape!
     
-    REQUIRES: uploaded_image_base64 in the request
+    REQUIRES: uploaded_image_base64 OR uploaded_image_filename in the request
     """
     # Create progress session
     session_id = progress_tracker.create_session()
@@ -476,8 +523,21 @@ async def generate_image_breakthrough(request: ImageGenerationRequest) -> ImageO
         if not request.user_api_key or not request.user_api_key.strip():
             raise HTTPException(status_code=400, detail="User API key is required.")
         
-        if not request.uploaded_image_base64:
-            raise HTTPException(status_code=400, detail="Original product image is required for breakthrough shape preservation.")
+        # Handle both filename and base64 input methods
+        uploaded_image_base64 = None
+        
+        if request.uploaded_image_filename:
+            # NEW: Load from filename (lighter requests!)
+            logger.info(f"📁 Loading image from file: {request.uploaded_image_filename}")
+            uploaded_image_base64 = load_image_from_filename(request.uploaded_image_filename)
+            
+        elif request.uploaded_image_base64:
+            # OLD: Use base64 directly (backward compatibility)
+            logger.info("📊 Using provided base64 image data")
+            uploaded_image_base64 = request.uploaded_image_base64
+            
+        else:
+            raise HTTPException(status_code=400, detail="Original product image is required (either uploaded_image_filename or uploaded_image_base64).")
         
         # Validate API key format
         if "sk-proj-" not in request.user_api_key and "sk-" not in request.user_api_key:
@@ -493,12 +553,21 @@ async def generate_image_breakthrough(request: ImageGenerationRequest) -> ImageO
         result = await openai_service.generate_with_breakthrough_edit(
             brief_prompt=request.brief_prompt,
             user_api_key=request.user_api_key,
-            uploaded_image_base64=request.uploaded_image_base64,
+            uploaded_image_base64=uploaded_image_base64,
             progress_callback=progress_callback
         )
         
+        # FIX: Add missing required fields for ImageOutput schema
+        result.final_enhanced_prompt = request.brief_prompt
+        result.revised_prompt = request.brief_prompt
+        result.generation_id = f"edit_{session_id}"
+        result.seed = 0
+        
         # Add session info to result
         progress_messages = progress_tracker.get_progress(session_id).get('messages', [])
+        result.progress_messages = progress_messages
+        result.session_id = session_id
+        
         progress_tracker.set_completed(session_id, {
             'image_url': result.image_url,
             'progress_messages': progress_messages,
