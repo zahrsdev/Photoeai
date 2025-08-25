@@ -107,7 +107,8 @@ class PromptComposerService:
                 "lighting_and_atmosphere",
                 "background_and_setting",
                 "camera_and_lens",
-                "style_and_post_production"
+                "style_and_post_production",
+                "product_lock"
             ]
             
             sections_processed = []

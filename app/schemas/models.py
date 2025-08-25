@@ -4,7 +4,7 @@ Defines the data structures for user input, wizard input, and brief output.
 """
 
 from pydantic import BaseModel, Field
-from typing import Optional, Dict, Any
+from typing import Optional, Dict, Any, List
 
 
 class InitialUserRequest(BaseModel):
@@ -148,6 +148,7 @@ class ImageGenerationRequest(BaseModel):
     style_preset: Optional[str] = Field("photorealistic", description="Artistic style for the image generation.")
     provider: Optional[str] = Field(None, description="Optional provider override. Only 'openai' supported for GPT Image 1.")
     use_raw_prompt: Optional[bool] = Field(False, description="If True, use the brief_prompt directly without processing it through the wizard system.")
+    uploaded_image_base64: Optional[str] = Field(None, description="Base64 encoded uploaded image for 2-step Vision API flow.")
 
 class ImageEnhancementRequest(BaseModel):
     """Model for iteratively enhancing a previously generated image."""
@@ -167,6 +168,8 @@ class ImageOutput(BaseModel):
     final_enhanced_prompt: str  # MISSION 2: Added field for downloadable prompt feature
     model_used: Optional[str] = Field(None, description="AI model used for generation")
     provider_used: Optional[str] = Field(None, description="Provider service used")
+    progress_messages: Optional[list] = Field(None, description="Progress messages from pipeline processing")
+    session_id: Optional[str] = Field(None, description="Session ID for real-time progress tracking")
 
 
 class DownloadBriefRequest(BaseModel):

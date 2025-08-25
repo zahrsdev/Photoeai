@@ -17,8 +17,8 @@ if __name__ == "__main__":
     # ⚡ STABILITY FIX: Disable auto-reload to prevent server restarts
     uvicorn.run(
         "app.main:app",
-        host=settings.host,
-        port=settings.port,
+        host="0.0.0.0",
+        port=8004,
         reload=False,  # Disabled to prevent automatic restarts
         log_level="info" if not settings.debug else "debug"
     )

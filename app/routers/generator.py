@@ -18,6 +18,7 @@ from app.services.brief_orchestrator import BriefOrchestratorService
 from app.services.image_generator import ImageGenerationService
 from app.services.multi_provider_image_generator import OpenAIImageService
 from app.services.ai_client import AIClient
+from app.services.progress_tracker import progress_tracker
 
 # Create router instance and orchestrator (existing)
 router = APIRouter(prefix="/api/v1", tags=["generator"])
@@ -29,6 +30,15 @@ image_service = ImageGenerationService()  # Keep for backward compatibility
 openai_service = OpenAIImageService()  # OpenAI GPT Image 1 service
 ai_client = AIClient()  # AI client for text generation
 # --- END NEW ---
+
+
+@router.get("/progress/{session_id}")
+async def get_progress(session_id: str):
+    """Get real-time progress for image generation session"""
+    progress = progress_tracker.get_progress(session_id)
+    if not progress:
+        raise HTTPException(status_code=404, detail="Session not found")
+    return progress
 
 
 @router.post("/extract-and-fill", response_model=WizardInput)
@@ -90,7 +100,7 @@ async def generate_brief(wizard_input: WizardInput) -> BriefOutput:
     1. Receives complete WizardInput (validated by user)
     2. Composes initial brief using system prompt template
     3. Validates the brief against quality rules
-    4. Uses LLM as Creative Director to enhance the brief
+    4. Uses LLM as Product Photographer to enhance the brief
     5. Returns final BriefOutput with enhanced prompt
     
     Args:
@@ -300,11 +310,15 @@ async def generate_text(request: InitialUserRequest) -> BriefOutput:
 @router.post("/generate-image", response_model=ImageOutput)
 async def generate_image(request: ImageGenerationRequest) -> ImageOutput:
     """
-    Generate image from a professionally crafted brief prompt.
+    Generate image from a professionally crafted brief prompt with real-time progress.
     This endpoint expects to receive a comprehensive brief from /generate-brief endpoint.
     Optimized for OpenAI GPT Image 1.
     """
+    # Create progress session
+    session_id = progress_tracker.create_session()
+    
     try:
+        logger.info(f"🌟 [FRONTEND REQUEST] Generate image - Session: {session_id}")
         logger.info(f"🌟 [FRONTEND REQUEST] Generate image - Prompt length: {len(request.brief_prompt)} chars")
         logger.info(f"🔑 [FRONTEND REQUEST] Provider: {request.provider or 'Auto-detect'}")
         
@@ -395,23 +409,111 @@ async def generate_image(request: ImageGenerationRequest) -> ImageOutput:
         
         logger.info(f"🎯 Using optimized generation prompt ({len(generation_prompt)} characters)")
         
+        # Progress callback untuk real-time updates with tracker
+        progress_messages = []
+        
+        async def progress_callback(message: str):
+            progress_messages.append(message)
+            progress_tracker.add_message(session_id, message)
+            logger.info(f"📡 PROGRESS: {message}")
+        
         # Generate image with optimized prompt
         result = await openai_service.generate_image(
             brief_prompt=generation_prompt,
             user_api_key=request.user_api_key,
             negative_prompt=request.negative_prompt,
-            provider_override=request.provider
+            provider_override=request.provider,
+            uploaded_image_base64=request.uploaded_image_base64,
+            progress_callback=progress_callback
         )
         
         # Ensure the result includes the full comprehensive prompt for frontend display
         result.final_enhanced_prompt = comprehensive_prompt
         result.revised_prompt = generation_prompt  # The prompt actually used for generation
         
+        # Add progress messages and session_id to result
+        result.progress_messages = progress_messages
+        result.session_id = session_id
+        
+        # Mark session as completed
+        progress_tracker.set_completed(session_id, {
+            'image_url': result.image_url,
+            'progress_messages': progress_messages
+        })
+        
         return result
         
     except Exception as e:
+        # Mark session as error
+        progress_tracker.set_error(session_id, str(e))
         logger.error(f"Error in /generate-image endpoint: {e}")
         raise HTTPException(status_code=503, detail=f"Image generation service is unavailable: {str(e)}")
+
+
+@router.post("/generate-image-breakthrough", response_model=ImageOutput)
+async def generate_image_breakthrough(request: ImageGenerationRequest) -> ImageOutput:
+    """
+    🚀 BREAKTHROUGH: GPT Image-1 Edit API for PERFECT Shape Preservation
+    
+    This endpoint uses the IMAGE EDIT API instead of text-to-image generation:
+    - Upload original product image directly to GPT Image-1
+    - Use input_fidelity='high' to preserve original features  
+    - Apply professional photography enhancement prompts
+    - Result: Enhanced image with PRESERVED original shape!
+    
+    REQUIRES: uploaded_image_base64 in the request
+    """
+    # Create progress session
+    session_id = progress_tracker.create_session()
+    
+    try:
+        logger.info(f"🚀 [BREAKTHROUGH] GPT Image-1 Edit API - Session: {session_id}")
+        logger.info(f"🎯 [BREAKTHROUGH] Shape preservation mode activated")
+        
+        if not request.brief_prompt or not request.brief_prompt.strip():
+            raise HTTPException(status_code=400, detail="Brief prompt cannot be empty.")
+        
+        if not request.user_api_key or not request.user_api_key.strip():
+            raise HTTPException(status_code=400, detail="User API key is required.")
+        
+        if not request.uploaded_image_base64:
+            raise HTTPException(status_code=400, detail="Original product image is required for breakthrough shape preservation.")
+        
+        # Validate API key format
+        if "sk-proj-" not in request.user_api_key and "sk-" not in request.user_api_key:
+            raise HTTPException(status_code=400, detail="Invalid API key format.")
+        
+        logger.info(f"🔥 [BREAKTHROUGH] Processing with Edit API for shape preservation")
+        
+        # Progress tracking callback
+        async def progress_callback(message: str):
+            progress_tracker.add_message(session_id, message)
+        
+        # BREAKTHROUGH: Use Edit API instead of generation
+        result = await openai_service.generate_with_breakthrough_edit(
+            brief_prompt=request.brief_prompt,
+            user_api_key=request.user_api_key,
+            uploaded_image_base64=request.uploaded_image_base64,
+            progress_callback=progress_callback
+        )
+        
+        # Add session info to result
+        progress_messages = progress_tracker.get_progress(session_id).get('messages', [])
+        progress_tracker.set_completed(session_id, {
+            'image_url': result.image_url,
+            'progress_messages': progress_messages,
+            'breakthrough_mode': True,
+            'shape_preservation': 'HIGH_FIDELITY'
+        })
+        
+        logger.info(f"🎉 [BREAKTHROUGH] Shape preservation successful: {result.image_url}")
+        return result
+        
+    except Exception as e:
+        # Mark session as error
+        progress_tracker.set_error(session_id, str(e))
+        logger.error(f"💥 Error in /generate-image-breakthrough endpoint: {e}")
+        raise HTTPException(status_code=503, detail=f"Breakthrough image generation failed: {str(e)}")
 
 
 @router.post("/generate-brief-and-image", tags=["Unified Generation"])
@@ -602,7 +704,7 @@ async def _create_optimized_enhanced_brief(original_prompt: str, wizard_input, s
             temperature = 0.6  # Standardized temperature
         
         enhancement_instruction = f"""
-You are a professional photography director creating an enhanced brief for realistic image generation.
+You are a professional Product Photographer creating an enhanced brief for realistic image generation with ABSOLUTE PROHIBITION against modifying products. WARNA PRODUK HARAM DIUBAH: Never change product colors.
 
 ORIGINAL USER PROMPT ({original_length} chars):
 {original_prompt}
@@ -758,7 +860,7 @@ async def _create_comprehensive_enhanced_brief(original_prompt: str, wizard_inpu
         
         # Use AI to intelligently merge the comprehensive prompt with wizard data
         enhancement_instruction = f"""
-You are an expert photography director. Your task is to create an enhanced photography brief by intelligently combining:
+You are an expert Product Photographer with ABSOLUTE PROHIBITION against modifying products. WARNA PRODUK HARAM DIUBAH: Never change product colors or appearance. Your task is to create an enhanced photography brief by intelligently combining:
 
 1. USER'S COMPREHENSIVE PROMPT (preserve the core vision):
 {original_prompt}

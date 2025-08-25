@@ -154,7 +154,7 @@ class BriefOrchestratorService:
         1. Receive complete WizardInput
         2. Compose initial brief using template
         3. Validate the brief
-        4. Enhance the brief using AI Client (LLM as Creative Director)
+        4. Enhance the brief using AI Client (LLM as Product Photographer)
         5. Return final BriefOutput
         
         Args:
@@ -203,20 +203,20 @@ class BriefOrchestratorService:
                     logger.warning(f"⚠️ Validation warning: {warning} [ID: {request_id}]")
             
             # CRITICAL REFACTOR LOG POINT: Log structured WizardInput data before enhancement
-            logger.info(f"🎯 MISSION CRITICAL: Sending structured data to Creative Director [ID: {request_id}]", extra={
+            logger.info(f"🎯 MISSION CRITICAL: Sending structured data to Product Photographer [ID: {request_id}]", extra={
                 "request_id": request_id,
-                "operation": "PRE_CREATIVE_DIRECTOR_DATA_DISPATCH",
+                "operation": "PRE_PRODUCT_PHOTOGRAPHER_DATA_DISPATCH",
                 "structured_data_fields": list(wizard_input.model_dump().keys()),
                 "product_name": wizard_input.product_name,
                 "user_request_preview": wizard_input.user_request[:100] + "..." if len(wizard_input.user_request) > 100 else wizard_input.user_request,
-                "refactor_phase": "STRUCTURED_DATA_TO_CREATIVE_DIRECTOR"
+                "refactor_phase": "STRUCTURED_DATA_TO_PRODUCT_PHOTOGRAPHER"
             })
             logger.debug("🔍 MISSION DEBUG: Pre-enhancement structured data", extra={
                 "full_structured_data": wizard_input.model_dump()
             })
             
-            # CRITICAL CHANGE: Send structured data to refactored Creative Director
-            logger.info(f"🚀 CRITICAL REFACTOR: Calling refactored Creative Director with structured data [ID: {request_id}]")
+            # CRITICAL CHANGE: Send structured data to refactored Product Photographer
+            logger.info(f"🚀 CRITICAL REFACTOR: Calling refactored Product Photographer with structured data [ID: {request_id}]")
             enhanced_brief = await self.ai_client.enhance_brief_from_structured_data(wizard_input.model_dump())
             
             # CRITICAL REFACTOR LOG POINT: Validate and log enhanced output
@@ -228,11 +228,9 @@ class BriefOrchestratorService:
                 "word_count": word_count,
                 "section_count": section_count,
                 "refactor_success": word_count > 200 and section_count >= 5,
-                "operation": "POST_CREATIVE_DIRECTOR_VALIDATION"
+                "operation": "POST_PRODUCT_PHOTOGRAPHER_VALIDATION"
             })
-            logger.debug("📝 MISSION DEBUG: Final enhanced brief", extra={
-                "enhanced_brief_preview": enhanced_brief[:500] + "..." if len(enhanced_brief) > 500 else enhanced_brief
-            })
+            logger.info(f"📝 ENHANCED BRIEF PREVIEW [ID: {request_id}]: {enhanced_brief[:800]}{'...' if len(enhanced_brief) > 800 else ''}")
             
             logger.debug(f"📈 Enhanced brief metrics [ID: {request_id}]", extra={
                 "request_id": request_id,

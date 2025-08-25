@@ -20,7 +20,7 @@ class AIClient:
             # CRITICAL POST-PROCESSING: English language validation and cleanup
             enhanced_brief = self._ensure_english_output(enhanced_brief, request_id)
             
-            # COMPREHENSIVE QUALITY VALIDATION WITH LANGUAGE COMPLIANCE as Analyst) and enhancement (LLM as Creative Director) operations.
+            # COMPREHENSIVE QUALITY VALIDATION WITH LANGUAGE COMPLIANCE as Analyst) and enhancement (LLM as Product Photographer) operations.
     """
     
     def __init__(self):
@@ -217,7 +217,7 @@ class AIClient:
     
     async def enhance_brief(self, original_brief: str) -> str:
         """
-        Enhance a photography brief using LLM as Creative Director.
+        Enhance a photography brief using LLM as Product Photographer.
         
         Args:
             original_brief: The original brief text to be enhanced
@@ -320,7 +320,7 @@ class AIClient:
         """
         CRITICAL REFACTOR: Generate comprehensive photography brief from structured data.
         
-        This method implements the fully refactored Creative Director that generates complete,
+        This method implements the fully refactored Product Photographer that generates complete,
         multi-section, detailed photography briefs from JSON input data with ADVANCED ENHANCEMENT.
         
         Args:
@@ -331,7 +331,7 @@ class AIClient:
         """
         request_id = hash(str(structured_data)) % 10000  # Simple request tracking
         
-        logger.info(f"🎭 ADVANCED: Creative Director enhanced composition [ID: {request_id}]", extra={
+        logger.info(f"🎭 ADVANCED: Product Photographer enhanced composition [ID: {request_id}]", extra={
             "request_id": request_id,
             "product_name": structured_data.get("product_name", "Unknown"),
             "ai_model": self.model,
@@ -344,7 +344,7 @@ class AIClient:
             enhancement_instruction = f"""
 🚨🚨🚨 CRITICAL SYSTEM OVERRIDE: COMPREHENSIVE DETAILED BRIEF MANDATORY 🚨🚨🚨
 
-You are an ELITE Creative Director with 20+ years of world-class product photography experience. You've worked with luxury brands, directed award-winning campaigns, and your images are featured in top-tier publications.
+You are an ELITE Product Photographer with 20+ years of world-class product photography experience. You've worked with luxury brands, directed award-winning campaigns, and your images are featured in top-tier publications. ABSOLUTE MANDATORY: NEVER MODIFY THE PRODUCT ITSELF - only enhance photography techniques.
 
 **⚠️⚠️⚠️ ABSOLUTE NON-NEGOTIABLE REQUIREMENTS ⚠️⚠️⚠️**
 
@@ -436,6 +436,16 @@ Your output MUST follow this exact detailed format with extensive bullet points,
   - **Shadow Detail**: [Shadow control and depth]
   - **Texture Enhancement**: [Surface detail amplification]
   - **Reflection Control**: [Reflective surface management]
+
+---
+
+#### **7. ABSOLUTE MANDATORY: PRODUCT LOCK SYSTEM**
+- **NEVER CHANGE THE PRODUCT**: The product must appear EXACTLY as it exists in reality. Zero modifications allowed.
+- **WARNA PRODUK HARAM DIUBAH**: Original product colors must be preserved 100%. Never change white to black, blue to red, or any color transformation.
+- **STRICTLY PROHIBITED**: ubah warna, ganti warna, change colors, recolor, color swap, tint, hue shift, saturation boost on product.
+- **ORIGINAL COLORS SACRED**: Product's actual colors from real world must remain untouched and authentic.
+- **PHOTOGRAPHY ONLY ENHANCEMENTS**: lighting setup, camera angles, background elements, depth of field, composition rules.
+- **VIOLATION PENALTY**: Any attempt to modify the product colors or appearance will result in immediate rejection. PRODUK ASLI HARUS TETAP ASLI.
 
 ---
 
@@ -586,7 +596,7 @@ Generate the most detailed, comprehensive photography brief possible. Every sect
                 "input_data_size": len(str(structured_data)),
                 "product_name": structured_data.get("product_name", "Unknown")
             })
-            raise Exception(f"ELITE ENHANCEMENT FAILURE - Creative Director system unavailable: {str(e)}")
+            raise Exception(f"ELITE ENHANCEMENT FAILURE - Product Photographer system unavailable: {str(e)}")
 
     async def enhance_prompt_intelligently(self, original_prompt: str, enhancement_instruction: str) -> str:
         """
@@ -787,7 +797,7 @@ Result: "A premium product elegantly positioned against a pristine backdrop, ill
                 
             # This is the new, powerful instruction template.
             enhancement_instruction_template = """
-You are an elite-level AI Creative Director and world-renowned product photographer. Your task is to take the following simple user request and transform it into a comprehensive, fully detailed Product Photography Brief that matches professional industry standards.
+You are an elite-level Product Photographer and world-renowned product photography specialist. Your task is to take the following simple user request and transform it into a comprehensive, fully detailed Product Photography Brief that matches professional industry standards. ABSOLUTE MANDATORY: NEVER MODIFY THE PRODUCT ITSELF - only enhance photography techniques, lighting, and composition.
 
 **CRITICAL INSTRUCTIONS:**
 1. **Complete Professional Brief**: Create a full, structured photography brief with all professional sections including Overview, Photography Specifications, Lighting Setup, Composition & Framing, Background & Props, Post-Processing & Color Grading, and Creative Rationale.
@@ -818,7 +828,7 @@ Create a complete, comprehensive Product Photography Brief that transforms this 
                 messages=[
                     {
                         "role": "system", 
-                        "content": "MANDATORY OUTPUT LANGUAGE: ENGLISH. The entire output brief MUST be written in professional English, regardless of the language of the user's input.\n\nYou are an elite Creative Director and world-renowned product photographer. You create comprehensive, fully-structured Product Photography Briefs that match professional industry standards. Your briefs include complete technical specifications, detailed lighting setups, composition guidelines, styling directions, and creative rationales that enable professional photographers to execute award-winning shoots."
+                        "content": "MANDATORY OUTPUT LANGUAGE: ENGLISH. The entire output brief MUST be written in professional English, regardless of the language of the user's input.\n\nYou are an elite Product Photographer and world-renowned product photography specialist. You create comprehensive, fully-structured Product Photography Briefs that match professional industry standards. ABSOLUTE MANDATORY: NEVER MODIFY THE PRODUCT ITSELF - only enhance photography techniques, lighting, composition, and camera settings. Your briefs include complete technical specifications, detailed lighting setups, composition guidelines, styling directions, and creative rationales that enable professional photographers to execute award-winning shoots."
                     },
                     {"role": "user", "content": enhancement_instruction}
                 ],

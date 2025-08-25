@@ -17,10 +17,13 @@ import requests
 import json
 from typing import Optional, Dict
 import time
+import base64
+from PIL import Image
+import io
 
 # Configuration
-API_BASE_URL = "http://localhost:8000/api/v1"
-TIMEOUT = 120
+API_BASE_URL = "http://localhost:8004/api/v1"
+TIMEOUT = 300  # Increased to 5 minutes for complex operations
 
 
 def check_server_running(host="localhost", port=8000, timeout=5):
@@ -51,13 +54,36 @@ def generate_comprehensive_brief(user_prompt: str) -> Optional[Dict]:
         return None
 
 
-def generate_image_from_brief(comprehensive_brief: str, api_key: str, provider: str = None, negative_prompt: str = None) -> Optional[Dict]:
+def convert_image_to_base64(uploaded_file) -> Optional[str]:
+    """Convert uploaded image to base64 string"""
+    try:
+        # Read image data
+        image_data = uploaded_file.read()
+        
+        # Convert to base64
+        base64_string = base64.b64encode(image_data).decode('utf-8')
+        
+        # Reset file pointer for potential reuse
+        uploaded_file.seek(0)
+        
+        return base64_string
+    except Exception as e:
+        st.error(f"❌ Failed to convert image: {e}")
+        return None
+
+
+def generate_image_from_brief(comprehensive_brief: str, api_key: str, provider: str = None, 
+                            negative_prompt: str = None, uploaded_image_base64: str = None) -> Optional[Dict]:
     """Generate image from comprehensive photography brief"""
     try:
         payload = {
             "brief_prompt": comprehensive_brief,
             "user_api_key": api_key
         }
+        
+        # Boss: Add image upload support for 2-step flow
+        if uploaded_image_base64:
+            payload["uploaded_image_base64"] = uploaded_image_base64
         
         if provider:
             payload["provider"] = provider
@@ -76,12 +102,27 @@ def generate_image_from_brief(comprehensive_brief: str, api_key: str, provider: 
         return None
 
 
-def generate_image(prompt: str, api_key: str, provider: str = None, negative_prompt: str = None) -> Optional[Dict]:
-    """Generate image from prompt using the enhanced two-step process"""
+def generate_image(prompt: str, api_key: str, provider: str = None, negative_prompt: str = None, 
+                  uploaded_image_base64: str = None) -> Optional[Dict]:
+    """Generate image from prompt with real-time progress display"""
     try:
-        # Step 1: Generate comprehensive brief from simple prompt
-        st.info("📝 Step 1: Creating comprehensive photography brief...")
+        # Create progress placeholders
+        progress_placeholder = st.empty()
+        progress_bar_placeholder = st.empty()
+        
+        # Initialize progress bar
+        progress_bar = progress_bar_placeholder.progress(0)
+        
+        if uploaded_image_base64:
+            progress_placeholder.info("🎨 Starting full pipeline analysis...")
+            progress_bar.progress(10)
+        else:
+            progress_placeholder.info("🎨 Creating comprehensive photography brief...")
+            progress_bar.progress(20)
+        
+        # Step 1: Generate comprehensive brief from simple prompt (BACKGROUND)
         brief_result = generate_comprehensive_brief(prompt)
+        progress_bar.progress(40)
         
         if not brief_result:
             return None
@@ -91,30 +132,100 @@ def generate_image(prompt: str, api_key: str, provider: str = None, negative_pro
             st.error("❌ Failed to generate comprehensive brief")
             return None
         
-        st.success(f"✅ Step 1 Complete: Generated {len(comprehensive_brief)} character brief")
+        # Step 2: Generate image from comprehensive brief with progress tracking
+        progress_placeholder.info("🚀 Generating image with enhanced pipeline...")
+        progress_bar.progress(60)
         
-        # Show brief preview in expandable section
-        with st.expander("📋 View Generated Photography Brief", expanded=False):
-            st.text_area("Comprehensive Brief:", value=comprehensive_brief, height=200, disabled=True)
-        
-        # Step 2: Generate image from comprehensive brief
-        st.info("🎨 Step 2: Generating image from comprehensive brief...")
         result = generate_image_from_brief(
             comprehensive_brief=comprehensive_brief,
             api_key=api_key,
             provider=provider,
-            negative_prompt=negative_prompt
+            negative_prompt=negative_prompt,
+            uploaded_image_base64=uploaded_image_base64
         )
         
+        progress_bar.progress(90)
+        
         if result:
-            st.success("✅ Step 2 Complete: Image generated successfully!")
-            # Add the brief to the result for display
-            result["comprehensive_brief"] = comprehensive_brief
+            progress_bar.progress(100)
+            progress_placeholder.success("✅ Image generated successfully!")
+            
+            # Clean up progress indicators after brief delay
+            time.sleep(1)
+            progress_placeholder.empty()
+            progress_bar_placeholder.empty()
+            
+            return result
+        else:
+            progress_placeholder.error("❌ Image generation failed")
+            return None
+            
+    except Exception as e:
+        st.error(f"❌ Image generation error: {e}")
+        return None
+
+
+def generate_image_breakthrough(prompt: str, api_key: str, uploaded_image_base64: str) -> Optional[Dict]:
+    """
+    🚀 BREAKTHROUGH: Generate image using GPT Image-1 Edit API for PERFECT shape preservation
+    
+    This function uses the breakthrough IMAGE EDIT API instead of text-to-image:
+    - Uploads original product image directly to GPT Image-1
+    - Uses input_fidelity='high' to preserve original features
+    - Applies professional photography enhancement only
+    - Result: Enhanced image with PRESERVED original shape!
+    """
+    try:
+        # Create progress placeholders
+        progress_placeholder = st.empty()
+        progress_bar_placeholder = st.empty()
+        
+        # Initialize progress bar
+        progress_bar = progress_bar_placeholder.progress(0)
+        
+        progress_placeholder.info("🚀 BREAKTHROUGH: Initializing GPT Image-1 Edit API...")
+        progress_bar.progress(10)
+        
+        # Prepare payload for breakthrough endpoint
+        payload = {
+            "brief_prompt": prompt,
+            "user_api_key": api_key,
+            "uploaded_image_base64": uploaded_image_base64,
+            "provider": "gpt-image-1",
+            "use_raw_prompt": False
+        }
+        
+        progress_placeholder.info("🎯 Calling breakthrough Edit API for shape preservation...")
+        progress_bar.progress(30)
+        
+        # Call the breakthrough endpoint
+        response = requests.post(
+            f"{API_BASE_URL}/generate-image-breakthrough",
+            json=payload,
+            timeout=TIMEOUT
+        )
+        response.raise_for_status()
+        
+        progress_bar.progress(70)
+        progress_placeholder.info("🔥 Processing breakthrough result...")
+        
+        result = response.json()
+        
+        progress_bar.progress(100)
+        progress_placeholder.success("🎉 BREAKTHROUGH SUCCESS: Shape preserved!")
+        
+        # Clean up progress indicators after brief delay
+        time.sleep(1.5)
+        progress_placeholder.empty()
+        progress_bar_placeholder.empty()
         
         return result
         
+    except requests.exceptions.RequestException as e:
+        st.error(f"💥 BREAKTHROUGH API Error: {e}")
+        return None
     except Exception as e:
-        st.error(f"❌ Generation process failed: {e}")
+        st.error(f"💥 BREAKTHROUGH Error: {e}")
         return None
 
 
@@ -146,7 +257,7 @@ def enhance_image(original_prompt: str, enhancement_instruction: str, api_key: s
 
 
 def main():
-    """Main application interface"""
+    """Main application interface - SIMPLE SINGLE PAGE"""
     
     # Page config
     st.set_page_config(
@@ -157,15 +268,7 @@ def main():
     
     # Header
     st.title("🎨 PhotoEAI - AI Image Generator")
-    st.markdown("Simple AI-powered image generation with intelligent enhancement")
-    
-    # Check server status
-    if not check_server_running():
-        st.error("❌ Backend server is not running! Please start the server first.")
-        st.code("python run.py", language="bash")
-        st.stop()
-    
-    st.success("✅ Backend server is running")
+    st.markdown("Upload gambar produk, masukan prompt enhancement, dan generate!")
     st.markdown("---")
     
     # Initialize session state
@@ -173,262 +276,106 @@ def main():
         st.session_state.generated_image = None
     if 'original_prompt' not in st.session_state:
         st.session_state.original_prompt = ""
-    if 'generation_result' not in st.session_state:
-        st.session_state.generation_result = None
     
-    # Tabs for generation and enhancement
-    tab1, tab2 = st.tabs(["🎨 Generate New Image", "✨ Enhance Existing Image"])
-    
-    with tab1:
-        # Main form for image generation
-        with st.form("image_generation_form"):
-            st.subheader("📝 Generate Your Image")
-            
-            # 1. User input prompt
-            prompt = st.text_area(
-                "🖼️ **Image Prompt**",
-                placeholder="Describe the image you want to generate...\n\nExample: Professional product photography of a luxury skincare bottle with golden accents, soft studio lighting, marble background, high-end cosmetic photography style",
-                height=150,
-                help="Enter a detailed description of the image you want to create"
-            )
-            
-            # 2. User input API key
-            api_key = st.text_input(
-                "🔑 **API Key**",
-                type="password",
-                placeholder="Enter your AI provider API key",
-                help="Your API key for the selected AI provider"
-            )
-            
-            # 3. User select provider  
-            provider = st.selectbox(
-                "🤖 **AI Provider**",
-                options=["openai"],
-                index=0,
-                help="Using OpenAI for professional image generation"
-            )
-            
-            # Optional: Negative prompt
-            with st.expander("⚙️ Advanced Options (Optional)"):
-                negative_prompt = st.text_area(
-                    "🚫 **Negative Prompt**",
-                    placeholder="Things to avoid in the image (e.g., blurry, low quality, distorted)",
-                    help="Optional: Describe what you don't want in the image"
-                )
-            
-            # 4. Click generate button
-            generate_clicked = st.form_submit_button(
-                "🎨 **Generate Image**",
-                type="primary",
-                use_container_width=True
-            )
+    # SINGLE FORM - SIMPLE!
+    with st.form("simple_generation_form", clear_on_submit=False):
+        st.subheader("� Generate Enhanced Image")
         
-        # Handle form submission
-        if generate_clicked:
-            if not prompt.strip():
-                st.error("❌ Please enter an image prompt")
-            elif not api_key.strip():
-                st.error("❌ Please enter your API key")
-            else:
-                # Show loading
-                with st.spinner(f"🎨 Generating image using {provider.upper()}... Please wait..."):
-                    result = generate_image(
-                        prompt=prompt.strip(),
-                        api_key=api_key.strip(),
-                        provider=provider,
-                        negative_prompt=negative_prompt.strip() if negative_prompt.strip() else None
-                    )
-                
-                if result:
-                    # Store in session state
-                    st.session_state.generated_image = result
-                    st.session_state.original_prompt = prompt.strip()
-                    st.session_state.generation_result = result
-                    st.success("✅ Image generated successfully!")
-                    st.rerun()
-                else:
-                    st.error("❌ Failed to generate image. Please check your API key and try again.")
-    
-    with tab2:
-        # Enhancement form
-        st.subheader("✨ Enhance Your Image")
+        # 1. Upload Image
+        uploaded_file = st.file_uploader(
+            "📸 **Upload Product Image**",
+            type=["png", "jpg", "jpeg"],
+            help="Upload gambar produk yang mau di-enhance"
+        )
         
-        if st.session_state.generation_result is None:
-            st.info("🎨 Generate an image first to use the enhancement feature!")
+        # Show image preview
+        uploaded_image_base64 = None
+        if uploaded_file is not None:
+            st.image(uploaded_file, caption="Original Product Image", use_container_width=True, width=400)
+            uploaded_image_base64 = convert_image_to_base64(uploaded_file)
+            st.success("✅ Gambar berhasil diupload!")
+        
+        # 2. Input Prompt
+        prompt = st.text_area(
+            "🎯 **Enhancement Prompt**",
+            placeholder="Professional product photography with studio lighting and premium commercial aesthetics",
+            height=100,
+            help="Describe gimana mau di-enhance fotografinya"
+        )
+        
+        # 3. API Key
+        api_key = st.text_input(
+            "🔑 **OpenAI API Key**",
+            type="password",
+            placeholder="sk-proj-...",
+            help="OpenAI API key untuk GPT Image-1"
+        )
+        
+        # 4. Generate Button
+        generate_clicked = st.form_submit_button(
+            "🚀 **GENERATE IMAGE**",
+            type="primary",
+            use_container_width=True
+        )
+    
+    # Handle form submission
+    if generate_clicked:
+        if not uploaded_image_base64:
+            st.error("❌ Upload gambar produk dulu!")
+        elif not prompt.strip():
+            st.error("❌ Masukan prompt enhancement!")
+        elif not api_key.strip():
+            st.error("❌ Masukan OpenAI API key!")
         else:
-            # Show current image
-            with st.container():
-                st.markdown("**Current Image:**")
-                image_url = st.session_state.generation_result.get("image_url", "")
-                if image_url:
-                    st.image(image_url, caption="Current Generated Image", use_container_width=True)
-                
-                st.markdown("**Original Prompt:**")
-                st.text_area("", value=st.session_state.original_prompt, height=80, disabled=True, key="orig_prompt_display")
-            
-            # Enhancement form
-            with st.form("image_enhancement_form"):
-                enhancement_instruction = st.text_area(
-                    "🔧 **Enhancement Instruction**",
-                    placeholder="How would you like to enhance the image?\n\nExamples:\n- Make it more dramatic and cinematic\n- Add luxury and premium feel\n- Include golden hour lighting\n- Make it more minimalist and clean",
-                    height=120,
-                    help="Describe how you want to improve or modify the image"
-                )
-                
-                api_key_enhance = st.text_input(
-                    "🔑 **API Key**",
-                    type="password",
-                    placeholder="Enter your AI provider API key",
-                    help="Your API key for the selected AI provider",
-                    key="enhance_api_key"
-                )
-                
-                provider_enhance = st.selectbox(
-                    "🤖 **AI Provider**",
-                    options=["openai"],
-                    index=0,
-                    help="Using OpenAI for professional image enhancement",
-                    key="enhance_provider"
-                )
-                
-                enhance_clicked = st.form_submit_button(
-                    "✨ **Enhance Image**",
-                    type="primary",
-                    use_container_width=True
+            # BREAKTHROUGH GENERATION
+            with st.spinner("🚀 Processing with GPT Image-1 Edit API..."):
+                result = generate_image_breakthrough(
+                    prompt=prompt.strip(),
+                    api_key=api_key.strip(),
+                    uploaded_image_base64=uploaded_image_base64
                 )
             
-            # Handle enhancement submission
-            if enhance_clicked:
-                if not enhancement_instruction.strip():
-                    st.error("❌ Please enter an enhancement instruction")
-                elif not api_key_enhance.strip():
-                    st.error("❌ Please enter your API key")
-                else:
-                    # Show loading
-                    with st.spinner(f"✨ Enhancing image using {provider_enhance.upper()}... Please wait..."):
-                        enhanced_result = enhance_image(
-                            original_prompt=st.session_state.original_prompt,
-                            enhancement_instruction=enhancement_instruction.strip(),
-                            api_key=api_key_enhance.strip(),
-                            provider=provider_enhance,
-                            seed=st.session_state.generation_result.get('seed')
-                        )
-                    
-                    if enhanced_result:
-                        # Update session state with enhanced result
-                        st.session_state.generated_image = enhanced_result
-                        st.session_state.generation_result = enhanced_result
-                        st.success("✅ Image enhanced successfully!")
-                        st.rerun()
-                    else:
-                        st.error("❌ Failed to enhance image. Please check your API key and try again.")
+            if result:
+                st.session_state.generated_image = result
+                st.session_state.original_prompt = prompt.strip()
+                st.success("🎉 BREAKTHROUGH SUCCESS!")
+                st.rerun()
+            else:
+                st.error("💥 Generation failed!")
     
-    # Display results (works for both tabs)
+    # Display Results - SIMPLE!
     if st.session_state.generated_image:
         st.markdown("---")
         result = st.session_state.generated_image
         
-        # 5. Result Image
-        st.subheader("�️ Generated Image")
+        # Generated Image
+        st.subheader("🖼️ Enhanced Image")
         image_url = result.get("image_url", "")
         if image_url:
-            st.image(image_url, caption="Generated Image", use_container_width=True)
-        else:
-            st.error("❌ No image URL received")
-        
-        # 6. Link Image
-        st.subheader("🔗 Image Link")
-        if image_url:
+            st.image(image_url, caption="Enhanced Professional Photography", use_container_width=True)
             st.code(image_url)
-            st.markdown(f"**Direct Link:** [Open Image]({image_url})")
         
-        # 7. Prompt Output display
-        st.subheader("📄 Prompt Details")
+        # Final Prompt Used
+        st.subheader("� Final Enhanced Prompt")
+        final_prompt = result.get("comprehensive_brief", result.get("final_enhanced_prompt", ""))
+        if final_prompt:
+            st.text_area("Prompt yang digunakan:", value=final_prompt, height=200, disabled=True)
         
-        # Show comprehensive brief if available
-        comprehensive_brief = result.get("comprehensive_brief", "")
-        if comprehensive_brief:
-            st.markdown("**📋 Comprehensive Photography Brief:**")
-            st.text_area("", value=comprehensive_brief, height=200, disabled=True, key="comprehensive_brief_display")
-        
+        # Simple actions
         col1, col2 = st.columns(2)
-        
         with col1:
-            st.markdown("**🎯 Original User Prompt:**")
-            st.text_area("", value=st.session_state.original_prompt, height=100, disabled=True, key="original_prompt_display")
-        
-        with col2:
-            # Show the actual generation prompt used for DALL-E
-            revised_prompt = result.get("revised_prompt", "")
-            if revised_prompt and revised_prompt != comprehensive_brief:
-                st.markdown("**🎨 Optimized Generation Prompt:**")
-                st.text_area("", value=revised_prompt, height=100, disabled=True, key="revised_prompt_display")
-                st.caption("This is the optimized version sent to the AI image generator")
-            else:
-                enhanced_prompt = result.get("final_enhanced_prompt", "")
-                if enhanced_prompt and enhanced_prompt != st.session_state.original_prompt:
-                    st.markdown("**✨ Final Enhanced Prompt:**")
-                    st.text_area("", value=enhanced_prompt, height=100, disabled=True, key="enhanced_prompt_display")
-        
-        # Generation metadata
-        with st.expander("ℹ️ Generation Details"):
-            st.json({
-                "generation_id": result.get("generation_id", "Unknown"),
-                "seed": result.get("seed", "Unknown"),
-                "provider": result.get("provider", "Unknown"),
-                "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
-            })
-        
-        # Download and action options
-        st.markdown("---")
-        col1, col2, col3 = st.columns(3)
-        
-        with col1:
-            if st.button("📥 **Download Prompt Details**", use_container_width=True):
-                comprehensive_brief = result.get("comprehensive_brief", "")
-                prompt_details = f"""PhotoEAI Generation Details
-==========================
-
-Original User Prompt:
-{st.session_state.original_prompt}
-
-Comprehensive Photography Brief:
-{comprehensive_brief if comprehensive_brief else 'N/A'}
-
-Optimized Generation Prompt:
-{result.get('revised_prompt', 'N/A')}
-
-Final Enhanced Prompt:
-{result.get('final_enhanced_prompt', 'N/A')}
-
-Generation Info:
-- ID: {result.get('generation_id', 'Unknown')}
-- Seed: {result.get('seed', 'Unknown')}
-- Provider: {result.get('provider', 'Unknown')}
-- Timestamp: {time.strftime("%Y-%m-%d %H:%M:%S")}
-
-Image URL:
-{image_url}
-"""
-                st.download_button(
-                    "📄 Download Details",
-                    data=prompt_details,
-                    file_name=f"photoeai_generation_{int(time.time())}.txt",
-                    mime="text/plain"
-                )
-        
-        with col2:
-            if st.button("🔄 **Generate Another**", use_container_width=True):
-                # Clear session state
+            if st.button("� **Generate Lagi**", use_container_width=True):
                 st.session_state.generated_image = None
-                st.session_state.original_prompt = ""
-                st.session_state.generation_result = None
                 st.rerun()
-        
-        with col3:
-            if st.button("✨ **Enhance This**", use_container_width=True):
-                # Switch to enhancement tab
-                st.info("👆 Use the 'Enhance Existing Image' tab above to improve this image!")
+        with col2:
+            if final_prompt:
+                st.download_button(
+                    "� **Download Prompt**",
+                    data=final_prompt,
+                    file_name=f"enhanced_prompt_{int(time.time())}.txt",
+                    mime="text/plain",
+                    use_container_width=True
+                )
     
     # Footer
     st.markdown("---")

@@ -77,7 +77,7 @@ class Settings(BaseSettings):
     
     # Server Configuration
     host: str = Field(default="0.0.0.0", description="Server host address", alias="HOST")
-    port: int = Field(default=8000, description="Server port", alias="PORT")
+    port: int = Field(default=8002, description="Server port", alias="PORT")
     debug: bool = Field(default=False, description="Debug mode flag", alias="DEBUG")
     
     # Centralized System Configuration (initialized after object creation)
