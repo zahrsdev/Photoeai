@@ -687,13 +687,31 @@ class OpenAIImageService:
             finally:
                 Path(temp_path).unlink(missing_ok=True)
             
-            # STEP 2: Build preservation-focused edit prompt
+            # STEP 2: Enhance brief prompt first (CRITICAL FOR FULL PHOTOGRAPHY BRIEF)
+            if progress_callback:
+                await progress_callback("🎯 Enhancing prompt to full photography brief...")
+            
+            # Use correct brief orchestrator pipeline (STEP 1: InitialUserRequest)
+            from app.schemas.models import InitialUserRequest
+            initial_request = InitialUserRequest(user_request=brief_prompt)
+            
+            # Create brief orchestrator instance
+            brief_orchestrator = BriefOrchestratorService()
+            
+            # STEP 2: Extract to WizardInput
+            wizard_input = await brief_orchestrator.extract_and_autofill(initial_request)
+            
+            # STEP 3: Generate final enhanced brief  
+            brief_result = await brief_orchestrator.generate_final_brief(wizard_input)
+            enhanced_brief = brief_result.final_prompt
+            
+            # STEP 3: Build preservation-focused edit prompt with ENHANCED brief
             if progress_callback:
                 await progress_callback("🎯 Building shape preservation prompt...")
             
-            edit_prompt = self._build_edit_preservation_prompt(brief_prompt, analysis_text)
+            edit_prompt = self._build_edit_preservation_prompt(enhanced_brief, analysis_text)
             
-            # STEP 3: Prepare image for GPT Image-1 Edit API
+            # STEP 4: Prepare image for GPT Image-1 Edit API
             if progress_callback:
                 await progress_callback("🖼️ Preparing image for Edit API...")
             
@@ -762,8 +780,8 @@ class OpenAIImageService:
                 image_url=image_url,
                 generation_id=str(uuid.uuid4()),
                 seed=42,  # Default seed for Edit API
-                revised_prompt=brief_prompt,
-                final_enhanced_prompt=brief_prompt,
+                revised_prompt=enhanced_brief,
+                final_enhanced_prompt=enhanced_brief,
                 model_used="gpt-image-1",
                 provider_used="gpt-image-1-edit-breakthrough"
             )
