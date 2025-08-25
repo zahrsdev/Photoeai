@@ -557,9 +557,8 @@ async def generate_image_breakthrough(request: ImageGenerationRequest) -> ImageO
             progress_callback=progress_callback
         )
         
-        # FIX: Add missing required fields for ImageOutput schema
-        result.final_enhanced_prompt = request.brief_prompt
-        result.revised_prompt = request.brief_prompt
+        # FIX: Add missing required fields for ImageOutput schema (KEEP comprehensive prompt from service)
+        # DON'T OVERWRITE! Service already set comprehensive enhanced_brief as final_enhanced_prompt
         result.generation_id = f"edit_{session_id}"
         result.seed = 0
         
@@ -621,108 +620,21 @@ def _is_comprehensive_descriptive_prompt(prompt: str) -> bool:
     """
     Enhanced detection for comprehensive or descriptive prompts that should be used as-is.
     
-    Returns True if the prompt is:
-    1. A formal photography brief (contains technical indicators)
-    2. A detailed descriptive text that adequately describes the scene
-    3. Long enough and descriptive enough to work well without enhancement
+    FOKUS FIX: Force ALL prompts to go through wizard enhancement for full 46-field brief generation.
+    Even comprehensive prompts should get full wizard processing for maximum detail.
     
     Args:
         prompt: The input prompt to analyze
         
     Returns:
-        bool: True if prompt should be used directly, False if needs wizard processing
+        bool: Always False to force wizard enhancement (generates 15k-18k char briefs)
     """
     prompt_lower = prompt.lower().strip()
     prompt_length = len(prompt)
     words = len(prompt.split())
     
-    # Immediate rejection for very short prompts
-    if words < 5 or prompt_length < 25:
-        logger.info(f"🔄 Very short prompt detected - will enhance (words: {words}, length: {prompt_length})")
-        return False
-    
-    # 1. Check for formal photography brief indicators (highest priority)
-    photography_brief_indicators = [
-        'photography brief', 'lighting setup', 'camera settings', 'composition brief', 
-        'technical specifications', '###', '##', 'equipment:', 'shot with canon',
-        'shot with sony', 'shot with nikon', 'professional photography',
-        'camera:', 'lens:', 'lighting:', 'aperture:', 'iso:', 'shutter speed',
-        'f/', 'mm lens', 'profoto', 'softbox', 'key light', 'fill light'
-    ]
-    
-    if any(indicator in prompt_lower for indicator in photography_brief_indicators):
-        logger.info("📋 Formal photography brief detected")
-        return True
-    
-    # 2. Check for detailed descriptive content (requires multiple indicators)
-    descriptive_indicators = [
-        # Food/Drink products
-        'refreshing glass', 'steaming cup', 'bottle of', 'bowl of', 'plate of', 'milk drink bottle',
-        'bottle splashing', 'creamy milk', 'flavored milk', 'drink bottle',
-        
-        # Presentation and staging details
-        'served on', 'placed on', 'garnished with', 'accompanied by', 'surrounded by', 
-        'floating fresh', 'frozen mid-air', 'suspended in motion',
-        
-        # Setting and surface details
-        'wooden table', 'marble surface', 'ceramic mug', 'banana leaf', 'golden-yellow gradient',
-        'smooth gradient', 'glossy surface', 'detailed branding',
-        
-        # Lighting descriptions (broad coverage)
-        'natural lighting', 'soft lighting', 'warm lighting', 'morning lighting', 'studio lighting',
-        'soft reflections', 'highlights the', 'dynamic lighting',
-        
-        # Text and labeling elements
-        'text above reads', 'text below reads', 'label says', 'sign reads', 'branding',
-        
-        # Composition and camera work
-        'overhead view', 'close-up view', 'side view', 'beautiful view', 'cinematic style',
-        'high-resolution', 'sharp focus', 'hyper-detailed', 'ultra-realistic',
-        
-        # Visual effects and details
-        'drops of water', 'condensation', 'steam rising', 'bubbles', 'droplets suspended',
-        'high-speed', 'mid-air', 'dynamic splash', 'milk splash',
-        
-        # Cultural and specialty contexts
-        'traditional indonesian', 'authentic javanese', 'classic thai', 'local specialty',
-        'commercial product', 'product photography'
-    ]
-    
-    descriptive_score = sum(1 for indicator in descriptive_indicators if indicator in prompt_lower)
-    
-    # 3. Length and complexity analysis
-    sentences = prompt.count('.') + prompt.count('!') + prompt.count('?')
-    
-    # 4. Decision logic - requires multiple criteria
-    
-    # High-confidence comprehensive: Multiple descriptive elements + good length
-    if descriptive_score >= 3 and words >= 20:
-        logger.info(f"📝 Detailed descriptive prompt detected (score: {descriptive_score}, words: {words})")
-        return True
-    
-    # Medium-confidence comprehensive: Very detailed text
-    if words >= 35 and sentences >= 2 and descriptive_score >= 2:
-        logger.info(f"📄 Long descriptive text detected ({words} words, {sentences} sentences, score: {descriptive_score})")
-        return True
-    
-    # Strong descriptive content with good length
-    if prompt_length >= 120 and descriptive_score >= 3:
-        logger.info(f"📃 Comprehensive description detected ({prompt_length} chars, score: {descriptive_score})")
-        return True
-    
-    # 5. Check for very specific complete scene descriptions (stricter)
-    complete_scene_patterns = [
-        'refreshing glass of iced', 'steaming cup of traditional', 
-        'beautiful overhead view of', 'traditional indonesian dessert',
-        'served on a banana leaf', 'garnished with shaved ice'
-    ]
-    
-    if any(pattern in prompt_lower for pattern in complete_scene_patterns):
-        logger.info("🖼️ Complete scene description detected")
-        return True
-    
-    logger.info(f"🔄 Simple prompt detected - will enhance (words: {words}, score: {descriptive_score}, sentences: {sentences})")
-    return False
+    logger.info(f"🔄 Forcing wizard enhancement for comprehensive results (words: {words}, length: {prompt_length})")
+    return False  # Force all prompts through wizard for full brief generation
 
 
 async def _create_optimized_enhanced_brief(original_prompt: str, wizard_input, skip_extraction: bool = False) -> str:

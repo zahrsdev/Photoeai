@@ -831,6 +831,8 @@ ABSOLUTE PRESERVATION MANDATES:
 - KEEP all product details like ridges, grooves, embossing, or raised elements unchanged
 - MAINTAIN original lighting reflections and highlights on the product surface
 - DO NOT redesign, reshape, recolor, or alter ANY aspect of the physical product
+- NEVER ADD TEXT, LABELS, STICKERS, OR ANY ADDITIONAL ELEMENTS TO THE PRODUCT
+- DO NOT SUGGEST OR APPLY ANY TEXTUAL ADDITIONS, BRAND MODIFICATIONS, OR EXTRA GRAPHICS ON THE PRODUCT
 
 PHOTOGRAPHY ENHANCEMENT SPECIFICATIONS:
 - Apply professional commercial studio lighting with soft, even illumination
@@ -890,7 +892,7 @@ POST-PROCESSING WORKFLOW:
 - Color balance: Neutral whites with accurate product color reproduction
 - Shadow/highlight recovery: Maintain full tonal range and detail
 - Local adjustments: Selective masking for optimal product presentation
-- Output format: High-resolution JPEG and TIFF files for commercial use
+- Output format: 350 DPI high-resolution TIFF and JPEG files optimized for professional printing and commercial use
 
 {product_context}
 

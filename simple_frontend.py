@@ -6,7 +6,33 @@ A clean, simple interface for AI image generation with:
 - User input prompt
 - User input API key
 - User select provider 
-- Click generate button
+- Click gener        payload = {
+            "brief_prompt": user_prompt,
+            "user_api_key": api_key,
+            "uploaded_image_filename": uploaded_image_filename,
+                   # Final Prompt Used - FIX: Use correct key hierarchy for comprehensive prompt
+        st.subheader("📝 Final Enhanced Prompt")
+        # Priority: final_enhanced_prompt (comprehensive) -> revised_prompt -> comprehensive_brief -> fallback
+        final_prompt = (
+            result.get("final_enhanced_prompt", "") or 
+            result.get("revised_prompt", "") or 
+            result.get("comprehensive_brief", "") or
+            "No enhanced prompt available"
+        )
+        if final_prompt and final_prompt != "No enhanced prompt available":
+            st.text_area(
+                "Prompt yang digunakan:", 
+                value=final_prompt, 
+                height=300,  # Increase height for long comprehensive prompts
+                disabled=True
+            )
+            
+            # Show prompt statistics
+            st.info(f"📊 Prompt Length: {len(final_prompt)} characters")
+        else:
+            st.warning("⚠️ No comprehensive prompt found in response")vider": "gpt-image-1",
+            "use_raw_prompt": False
+        }ton
 - Result Image
 - Link Image  
 - Prompt Output display
@@ -22,11 +48,11 @@ from PIL import Image
 import io
 
 # Configuration
-API_BASE_URL = "http://localhost:8000/api/v1"
+API_BASE_URL = "http://localhost:8004/api/v1"
 TIMEOUT = 300  # Increased to 5 minutes for complex operations
 
 
-def check_server_running(host="localhost", port=8000, timeout=5):
+def check_server_running(host="localhost", port=8004, timeout=5):
     """Check if the backend server is running"""
     try:
         response = requests.get(f"http://{host}:{port}/api/v1/health", timeout=timeout)
@@ -379,7 +405,7 @@ def main():
                 st.session_state.generated_image = None
                 st.rerun()
         with col2:
-            if final_prompt:
+            if final_prompt and final_prompt != "No enhanced prompt available":
                 st.download_button(
                     "� **Download Prompt**",
                     data=final_prompt,

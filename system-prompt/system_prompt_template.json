@@ -1,6 +1,6 @@
 {
   "prompt_structure": {
-    "introduction": "Create a photorealistic, world-class commercial product photograph using professional photography techniques. Adhere strictly to every parameter specified. ABSOLUTE MANDATORY: NEVER CHANGE THE PRODUCT - Preserve the original product colors, shapes, and appearance EXACTLY as they would appear in reality. You are strictly FORBIDDEN from altering, stylizing, or reinterpreting the product itself in any way. CRITICAL WARNING: PRODUCT COLORS ARE SACRED AND UNTOUCHABLE - white stays white, black stays black, red stays red, blue stays blue. WARNA PRODUK HARAM DIUBAH. Any attempt to recolor, retint, change hue, or adjust product saturation is STRICTLY PROHIBITED. Only enhance photography elements: lighting, background, composition, and camera techniques. Execute with the precision of award-winning commercial photographers while keeping the product EXACTLY as it exists in reality.",
+    "introduction": "Create a photorealistic, world-class commercial product photograph using professional photography techniques. Adhere strictly to every parameter specified. ABSOLUTE MANDATORY: NEVER CHANGE THE PRODUCT - Preserve the original product colors, shapes, and appearance EXACTLY as they would appear in reality. You are strictly FORBIDDEN from altering, stylizing, or reinterpreting the product itself in any way. CRITICAL WARNING: PRODUCT COLORS ARE SACRED AND UNTOUCHABLE - white stays white, black stays black, red stays red, blue stays blue. WARNA PRODUK HARAM DIUBAH. Any attempt to recolor, retint, change hue, or adjust product saturation is STRICTLY PROHIBITED. NEVER ADD TEXT, LABELS, STICKERS, OR ANY ADDITIONAL ELEMENTS TO THE PRODUCT SURFACE. DO NOT SUGGEST OR APPLY ANY TEXTUAL ADDITIONS, BRAND MODIFICATIONS, OR EXTRA GRAPHICS ON THE PRODUCT. Only enhance photography elements: lighting, background, composition, and camera techniques. Execute with the precision of award-winning commercial photographers while keeping the product EXACTLY as it exists in reality.",
     "main_subject": {
       "header": "1. Main Subject:",
       "description": "A single, hero shot of the product: {{product_name}}.",
@@ -44,7 +44,7 @@
     "product_lock": {
       "header": "7. ABSOLUTE MANDATORY: PRODUCT LOCK SYSTEM:",
       "mandate": "NEVER CHANGE THE PRODUCT: The product must appear EXACTLY as it exists in reality. Zero modifications allowed to product appearance, colors, shapes, textures, or design elements.",
-      "forbidden_actions": "STRICTLY PROHIBITED: ubah, gantikan, remix, alter, modify, change, transform, redesign, recolor, reshape, or stylize the product in any way.",
+      "forbidden_actions": "STRICTLY PROHIBITED: ubah, gantikan, remix, alter, modify, change, transform, redesign, recolor, reshape, stylize the product in any way, or ADD TEXT, LABELS, STICKERS, GRAPHICS, OR ANY ADDITIONAL ELEMENTS TO THE PRODUCT SURFACE.",
       "allowed_enhancements": "PHOTOGRAPHY ONLY: lighting setup, camera angles, background elements, depth of field, composition rules, and professional photography techniques.",
       "penalty": "VIOLATION DETECTION: Any attempt to modify the product itself will result in immediate rejection. The product is SACRED and untouchable."
     },
