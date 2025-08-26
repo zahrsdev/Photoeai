@@ -31,6 +31,15 @@ class AIClient:
         )
         self.model = settings.openai_model
     
+    def _get_client(self, user_api_key: Optional[str] = None) -> OpenAI:
+        """Get OpenAI client with user API key if provided, otherwise use default."""
+        if user_api_key and user_api_key.strip():
+            return OpenAI(
+                api_key=user_api_key.strip(),
+                base_url="https://api.openai.com/v1"
+            )
+        return self.client
+    
     async def extract_wizard_data(self, user_request: str) -> Dict[str, Any]:
         """
         Extract structured wizard data from user request using LLM as Analyst.
@@ -316,7 +325,7 @@ class AIClient:
             })
             raise Exception(f"AI enhancement service unavailable: {str(e)}")
 
-    async def enhance_brief_from_structured_data(self, structured_data: dict) -> str:
+    async def enhance_brief_from_structured_data(self, structured_data: dict, user_api_key: Optional[str] = None) -> str:
         """
         CRITICAL REFACTOR: Generate comprehensive photography brief from structured data.
         
@@ -481,7 +490,8 @@ Generate the most detailed, comprehensive photography brief possible. Every sect
             })
 
             # OPTIMIZED PARAMETERS FOR CREATIVE EXCELLENCE
-            response = self.client.chat.completions.create(
+            client = self._get_client(user_api_key)
+            response = client.chat.completions.create(
                 model=self.model,
                 messages=[
                     {

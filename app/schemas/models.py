@@ -17,6 +17,9 @@ class WizardInput(BaseModel):
     Comprehensive model for structured product photography parameters.
     Used to capture all aspects of a photography brief through the wizard interface.
     """
+    # API Configuration
+    user_api_key: Optional[str] = None
+    
     # Section 1: Main Subject & Story
     product_name: Optional[str] = None
     product_type: Optional[str] = None

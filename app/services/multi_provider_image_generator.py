@@ -35,6 +35,38 @@ class OpenAIImageService:
         # Simplified: Always use OpenAI for GPT Image 1
         return ImageProvider.OPENAI_GPT_IMAGE
     
+    def _extract_quantity_requirements(self, prompt: str) -> str:
+        """
+        🔢 QUANTITY CONTROL: Extract and enforce specific quantity requirements from user prompt
+        """
+        quantity_enforcement = ""
+        prompt_lower = prompt.lower()
+        
+        # Pattern matching for specific quantities
+        import re
+        
+        # Check for "one/single/1" patterns
+        if re.search(r'\b(one|single|1)\b.*\b(donat|cake|bottle|product|item)', prompt_lower):
+            quantity_enforcement = "CRITICAL QUANTITY CONTROL: Show EXACTLY ONE item only. Never show multiple items. Single item composition."
+            logger.info("🔢 QUANTITY: Detected request for exactly ONE item")
+        
+        # Check for "two/pair/2" patterns  
+        elif re.search(r'\b(two|pair|couple|2)\b.*\b(donat|cake|bottle|product|item)', prompt_lower):
+            quantity_enforcement = "CRITICAL QUANTITY CONTROL: Show EXACTLY TWO items only. Never show one or more than two."
+            logger.info("🔢 QUANTITY: Detected request for exactly TWO items")
+        
+        # Check for "three/3" patterns
+        elif re.search(r'\b(three|3)\b.*\b(donat|cake|bottle|product|item)', prompt_lower):
+            quantity_enforcement = "CRITICAL QUANTITY CONTROL: Show EXACTLY THREE items only. Never show different count."
+            logger.info("🔢 QUANTITY: Detected request for exactly THREE items")
+        
+        # Check for "four/4" patterns
+        elif re.search(r'\b(four|4)\b.*\b(donat|cake|bottle|product|item)', prompt_lower):
+            quantity_enforcement = "CRITICAL QUANTITY CONTROL: Show EXACTLY FOUR items only. Never show different count."
+            logger.info("🔢 QUANTITY: Detected request for exactly FOUR items")
+        
+        return quantity_enforcement
+    
     def _normalize_for_chatgpt_quality(self, prompt: str) -> str:
         """
         🎯 SMART DALL-E OPTIMIZATION: Balance comprehensive brief with DALL-E limits
@@ -49,9 +81,16 @@ class OpenAIImageService:
         
         logger.info(f"🎯 Normalizing prompt for GENERATION API: {original_length} chars")
         
-        # FOCUSED FIX: DIRECT PRODUCT SHAPE PRESERVATION - NO OVER-ENGINEERING
-        # Simple and direct approach - focus on what matters
-        preservation_content = """You must photograph this EXACT product as it exists. DO NOT change the bottle shape, DO NOT redesign the cap, DO NOT alter label proportions. This is DOCUMENTARY PHOTOGRAPHY of an existing product - capture it EXACTLY as shown in the reference image. Your job is professional lighting and composition ONLY, not product design changes. Maintain original bottle dimensions, cap design, and label layout EXACTLY as they appear."""
+        # STEP 1: Extract quantity requirements from original prompt
+        quantity_enforcement = self._extract_quantity_requirements(prompt)
+        
+        # FOCUSED FIX: DIRECT PRODUCT SHAPE PRESERVATION + SPATIAL INTEGRATION + QUANTITY CONTROL
+        # Enhanced approach - focus on what matters most
+        preservation_content = """You must photograph this EXACT product as it exists. DO NOT change the bottle shape, DO NOT redesign the cap, DO NOT alter label proportions. This is professional product photography of an existing product - capture it EXACTLY as shown in the reference image. Your job is professional lighting and composition ONLY, not product design changes. Maintain original bottle dimensions, cap design, and label layout EXACTLY as they appear. 
+
+CRITICAL SPATIAL INTEGRATION: All objects must be physically grounded and naturally placed. NO floating elements, NO hovering objects, NO pasted-on appearance. Every element must cast appropriate shadows and interact naturally with surfaces. Objects must appear organically integrated into the scene, not artificially composited or layered. Ensure proper surface contact and realistic shadow placement.
+
+QUANTITY ENFORCEMENT: If user specifies "ONE donat" or "1 donat" or "single donat", show EXACTLY ONE donat only. If user specifies "TWO donats" show EXACTLY TWO. Match the EXACT count specified by the user. Do not add extra items for aesthetic purposes."""
         
         logger.info("🔒 PRESERVATION: Direct shape preservation protocol injected")
         logger.info("🔒 FOCUSED MODE: Documentary photography - no product modifications")
@@ -73,9 +112,12 @@ class OpenAIImageService:
         
         # CRITICAL: Re-inject product preservation rules at the beginning
         if preservation_content:
-            normalized = preservation_content + " " + normalized
-            logger.info(f"🔒 PRESERVATION INJECTION: Added {len(preservation_content)} chars of protection rules")
-            logger.info(f"🔒 PRESERVATION PREVIEW: {preservation_content[:100]}...")
+            final_preservation = preservation_content
+            if quantity_enforcement:
+                final_preservation = final_preservation + " " + quantity_enforcement
+            normalized = final_preservation + " " + normalized
+            logger.info(f"🔒 PRESERVATION INJECTION: Added {len(final_preservation)} chars of protection rules")
+            logger.info(f"🔒 PRESERVATION PREVIEW: {final_preservation[:100]}...")
         else:
             logger.error("🚨 CRITICAL ERROR: NO PRESERVATION RULES INJECTED - PRODUCT AT RISK!")
         

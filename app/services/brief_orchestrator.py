@@ -217,7 +217,53 @@ class BriefOrchestratorService:
             
             # CRITICAL CHANGE: Send structured data to refactored Product Photographer
             logger.info(f"🚀 CRITICAL REFACTOR: Calling refactored Product Photographer with structured data [ID: {request_id}]")
-            enhanced_brief = await self.ai_client.enhance_brief_from_structured_data(wizard_input.model_dump())
+            
+            # Add professional photography quality rules with proper English terminology
+            professional_photography_rules = """
+PROFESSIONAL PHOTOGRAPHY QUALITY CONTROL:
+
+## GAMMA CORRECTION & TONE CONSISTENCY
+- Apply proper gamma correction (power 1/2.2) for consistent tone mapping across all image elements
+- Maintain uniform luminance values and color temperature throughout composition
+- Ensure balanced exposure with natural dynamic range distribution
+
+## COLOR SPACE & CHANNEL MANAGEMENT  
+- Standardized RGBA channel consistency with proper color space workflow
+- Accurate color reproduction with natural saturation levels
+- Prevent color banding and maintain smooth gradients
+
+## NATURAL LIGHTING PHYSICS
+- Implement realistic light ray casting with proper directional shadows
+- Natural light falloff and ambient occlusion integration
+- Consistent light temperature and atmospheric perspective
+- Proper surface material interaction with light sources
+
+## SENSOR PHOTOSITE PRECISION (Logo & Text Clarity)
+- Sharp edge definition for all text elements and logo components
+- Sub-pixel precision rendering for crisp typography
+- Anti-aliasing optimization for readability at all scales
+- Maintain vector-like sharpness for brand elements
+
+## PREVIEW QUALITY & ARTIFACT PREVENTION
+- Eliminate compression artifacts and digital noise
+- Prevent haloing, ghosting, or composite seam visibility
+- Natural depth of field with proper bokeh characteristics
+- Avoid artificial post-processing appearance
+
+## REALISM INTEGRATION
+- All elements must appear naturally integrated and realistic
+- Objects in motion should have proper physics and natural movement blur
+- Ensure cohesive environmental lighting and proper shadow casting
+- Avoid artificial or composite appearance with seamless element integration
+"""
+            
+            enhanced_brief = await self.ai_client.enhance_brief_from_structured_data(
+                wizard_input.model_dump(), 
+                user_api_key=wizard_input.user_api_key
+            )
+            
+            # Combine with professional photography rules
+            final_brief = professional_photography_rules + enhanced_brief
             
             # CRITICAL REFACTOR LOG POINT: Validate and log enhanced output
             word_count = len(enhanced_brief.split())
@@ -247,7 +293,7 @@ class BriefOrchestratorService:
                 "status": "success"
             })
             
-            return BriefOutput(final_prompt=enhanced_brief)
+            return BriefOutput(final_prompt=final_brief)
             
         except Exception as e:
             logger.error(f"💥 Critical error in generate_final_brief [ID: {request_id}]", extra={

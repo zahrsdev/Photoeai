@@ -51,9 +51,16 @@ import io
 API_BASE_URL = "http://localhost:8004/api/v1"
 TIMEOUT = 300  # Increased to 5 minutes for complex operations
 
+# Extract port from API_BASE_URL
+import re
+_port_match = re.search(r'localhost:(\d+)', API_BASE_URL)
+_DEFAULT_PORT = int(_port_match.group(1)) if _port_match else 8000
 
-def check_server_running(host="localhost", port=8004, timeout=5):
+
+def check_server_running(host="localhost", port=None, timeout=5):
     """Check if the backend server is running"""
+    if port is None:
+        port = _DEFAULT_PORT
     try:
         response = requests.get(f"http://{host}:{port}/api/v1/health", timeout=timeout)
         return response.status_code == 200
