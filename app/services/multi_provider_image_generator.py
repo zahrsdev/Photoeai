@@ -49,9 +49,9 @@ class OpenAIImageService:
         
         logger.info(f"🎯 Normalizing prompt for GENERATION API: {original_length} chars")
         
-        # FOCUSED FIX: DIRECT PRODUCT SHAPE PRESERVATION - NO OVER-ENGINEERING
-        # Simple and direct approach - focus on what matters
-        preservation_content = """You must photograph this EXACT product as it exists. DO NOT change the bottle shape, DO NOT redesign the cap, DO NOT alter label proportions. This is DOCUMENTARY PHOTOGRAPHY of an existing product - capture it EXACTLY as shown in the reference image. Your job is professional lighting and composition ONLY, not product design changes. Maintain original bottle dimensions, cap design, and label layout EXACTLY as they appear."""
+        # FOCUSED FIX: UNIVERSAL PRODUCT PRESERVATION FOR ANY PRODUCT TYPE
+        # Generic preservation rules that work for shoes, bottles, cosmetics, etc.
+        preservation_content = """You must photograph this EXACT product as it exists. DO NOT change the product shape, DO NOT redesign any components, DO NOT alter proportions or design elements. This is professional product photography of an existing product - capture it EXACTLY as shown in the reference image. Your job is professional lighting and composition ONLY, not product design changes. Maintain original dimensions, design features, and visual characteristics EXACTLY as they appear."""
         
         logger.info("🔒 PRESERVATION: Direct shape preservation protocol injected")
         logger.info("🔒 FOCUSED MODE: Documentary photography - no product modifications")
@@ -98,33 +98,11 @@ class OpenAIImageService:
         normalized = re.sub(r'\|+', '', normalized)  # Remove remaining pipe characters
         normalized = re.sub(r'\s+', ' ', normalized)  # Normalize spaces
         
-        # 🎯 DYNAMIC DALL-E OPTIMIZATION: Adjust based on actual prompt length
-        # DALL-E 3 works best with 1500-3500 characters
-        target_length = min(3500, max(1500, len(normalized)))
-        
-        if len(normalized) > target_length:
-            logger.info(f"⚡ COMPRESSION for GENERATION API: {len(normalized)} → target ~{target_length} chars")
-            
-            # [Keep all the existing compression logic for generation API]
-            # Step 1: SMART COMPRESSION - Preserve sentence boundaries and technical specs
-            # Compress headers and redundant text while keeping complete sentences
-            normalized = re.sub(r'Professional Product Photography Brief:\s*', '', normalized)
-            normalized = re.sub(r'Campaign Overview\s*', '', normalized)
-            normalized = re.sub(r'Visual Composition & Artistic Direction\s*', '', normalized)
-            normalized = re.sub(r'Primary Subject & Product Placement\s*', '', normalized)
-            normalized = re.sub(r'Environmental Context & Location Aesthetics\s*', '', normalized)
-            normalized = re.sub(r'Lighting Design & Atmospheric Conditions\s*', '', normalized)
-            normalized = re.sub(r'Technical Camera Specifications\s*', '', normalized)
-            normalized = re.sub(r'Brand Integration & Product Presentation\s*', '', normalized)
-            
-            # CAREFULLY compress repetitive phrases without breaking sentences
-            normalized = re.sub(r'This comprehensive photography brief outlines the creative and technical specifications for capturing ', 'Capturing ', normalized)
-            normalized = re.sub(r'designed to showcase the brand\'s commitment to ', 'showcasing ', normalized)
-            normalized = re.sub(r'The central focus features a large ', 'Large ', normalized)
-            normalized = re.sub(r'positioned strategically to emerge ', 'emerging ', normalized)
+        # 🚀 GPT IMAGE-1 PROCESSING: No compression needed (high capacity model)
+        # GPT Image-1 can handle full comprehensive briefs without compression
         
         final_length = len(normalized)
-        logger.info(f"📏 GENERATION API Normalization complete: {original_length} → {final_length} chars")
+        logger.info(f"� GPT IMAGE-1 Processing complete: {original_length} → {final_length} chars (NO COMPRESSION)")
         
         return normalized
     
@@ -524,13 +502,13 @@ class OpenAIImageService:
                 
                 # STEP 2: Bridge analysis + prompt → wizard fields (BACKGROUND)  
                 if progress_callback:
-                    await progress_callback("Sedang mengisi 46 wizard dari image analysis dan prompt user")
+                    await progress_callback("Sedang mengisi 48 wizard fields dari image analysis dan prompt user")
                 logger.info("🌉 PIPELINE STEP 2: Bridging image analysis with user prompt...")
                 bridge = ImageWizardBridge()
                 wizard_input = bridge.combine_image_and_prompt(image_analysis, brief_prompt)
                 
                 if progress_callback:
-                    await progress_callback("Prompt dari user dan image berhasil di isi di 46 wizard")
+                    await progress_callback("Prompt dari user dan image berhasil di isi di 48 wizard fields")
                 
                 # STEP 3: Generate comprehensive brief from wizard (BACKGROUND)
                 if progress_callback:
@@ -579,7 +557,7 @@ class OpenAIImageService:
         logger.info(f"🔗 Endpoint: {endpoint}")
         
         try:
-            response = requests.post(endpoint, headers=headers, json=payload, timeout=120)
+            response = requests.post(endpoint, headers=headers, json=payload, timeout=300)
             response.raise_for_status()
             
             api_response = response.json()
@@ -760,7 +738,7 @@ class OpenAIImageService:
             data = {
                 'model': 'gpt-image-1',
                 'prompt': edit_prompt,
-                'input_fidelity': 'high',  # 🎯 PRESERVE ORIGINAL FEATURES
+                'input_fidelity': 'high', 
                 'quality': 'high',
                 'n': 1,
                 'output_format': 'png'
@@ -769,7 +747,7 @@ class OpenAIImageService:
             if progress_callback:
                 await progress_callback("⚡ Processing with GPT Image-1 Edit API...")
             
-            response = requests.post(endpoint, headers=headers, files=files, data=data, timeout=120)
+            response = requests.post(endpoint, headers=headers, files=files, data=data, timeout=300)
             response.raise_for_status()
             
             api_response = response.json()
@@ -886,6 +864,7 @@ POST-PROCESSING WORKFLOW:
 - RAW file processing in Phase One Capture One Pro
 - Lens correction: Distortion, vignetting, and chromatic aberration removal
 - Color grading: Professional product photography color palette
+- Gamma correction & tone consistency: Apply proper gamma correction (power 1/2.2) for consistent tone mapping across all image elements, maintain uniform luminance values and color temperature throughout composition, ensure balanced exposure with natural dynamic range distribution
 - Contrast enhancement: Subtle S-curve for dimensional depth
 - Sharpening: Output sharpening optimized for print and digital display
 - Noise reduction: Minimal processing to preserve fine detail texture

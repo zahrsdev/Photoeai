@@ -48,6 +48,19 @@ cover/
 # Environments
 .env
 .venv
+
+# Backup folders
+BACKUP*/
+**/BACKUP*/
+*.backup
+*.zip
+
+# Logs
+logs/
+*.log
+
+# Uploaded images
+static/images/uploads/
 env/
 venv/
 ENV/
