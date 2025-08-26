@@ -45,8 +45,9 @@ coverage.xml
 .pytest_cache/
 cover/
 
-# Environments
+# Environments & Secrets
 .env
+.env.*
 .venv
 
 # Backup folders
@@ -66,6 +67,10 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+*.key
+*.pem
+config.json
+secrets.json
 
 # IDE
 .vscode/
@@ -82,3 +87,16 @@ venv.bak/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# PhotoEAI Specific
+static/images/uploads/*
+!static/images/uploads/.gitkeep
+logs/*.log
+*.log
+temp/
+.temp/
+
+# Production Files  
+docker-compose.prod.yml
+nginx.conf
+ssl/

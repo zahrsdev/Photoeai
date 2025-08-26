@@ -1,58 +1,20 @@
 {
   "prompt_structure": {
-    "introduction": "Create a photorealistic, world-class commercial product photograph using professional photography techniques. Adhere strictly to every parameter specified. ABSOLUTE MANDATORY: NEVER CHANGE THE PRODUCT - Preserve the original product colors, shapes, and appearance EXACTLY as they would appear in reality. You are strictly FORBIDDEN from altering, stylizing, or reinterpreting the product itself in any way. CRITICAL WARNING: PRODUCT COLORS ARE SACRED AND UNTOUCHABLE - white stays white, black stays black, red stays red, blue stays blue. WARNA PRODUK HARAM DIUBAH. Any attempt to recolor, retint, change hue, or adjust product saturation is STRICTLY PROHIBITED. NEVER ADD TEXT, LABELS, STICKERS, OR ANY ADDITIONAL ELEMENTS TO THE PRODUCT SURFACE. DO NOT SUGGEST OR APPLY ANY TEXTUAL ADDITIONS, BRAND MODIFICATIONS, OR EXTRA GRAPHICS ON THE PRODUCT. Only enhance photography elements: lighting, background, composition, and camera techniques. Execute with the precision of award-winning commercial photographers while keeping the product EXACTLY as it exists in reality.",
-    "main_subject": {
-      "header": "1. Main Subject:",
-      "description": "A single, hero shot of the product: {{product_name}}.",
-      "details": "Product details: {{product_description}}. Key features to highlight: {{key_features}}.",
-      "state": "Product state: {{product_state}} (e.g., pristine, in-use, deconstructed)."
-    },
-    "composition_and_framing": {
-      "header": "2. Composition and Framing:",
-      "shot_type": "Shot Type: {{shot_type}} (e.g., Eye-level, High-angle, Low-angle, Dutch-angle, Top-down flat lay).",
-      "framing": "Framing: {{framing}} (e.g., Extreme Close-Up, Close-Up, Medium Shot, Full Shot).",
-      "rule": "Compositional Rule: Apply the {{compositional_rule}} (e.g., Rule of Thirds, Golden Ratio, Centered, Leading Lines).",
-      "negative_space": "Negative Space: {{negative_space}} (e.g., Minimal, Generous, Balanced)."
-    },
-    "lighting_and_atmosphere": {
-      "header": "3. Professional Lighting Setup:",
-      "style": "Lighting Pattern: {{lighting_style}} (e.g., Rembrandt lighting with 45-degree key light, Loop lighting for portraits, Butterfly lighting for beauty shots, Split lighting for dramatic effect, Clamshell lighting for even coverage, Rim lighting for product separation, High-key lighting for clean commercial look, Low-key lighting for luxury products).",
-      "setup": "Equipment Setup: Key Light: {{key_light_setup}} using large octabox softbox or silver beauty dish with grid. Fill Light: {{fill_light_setup}} with reflector or diffused strobe. Rim Light: {{rim_light_setup}} for product edge definition.",
-      "mood": "Lighting Mood: {{mood}} (e.g., Golden hour warm directional light, Diffused window light with soft shadows, Professional studio lighting with controlled spill, Tungsten 3200K warm glow, Daylight 5600K cool tone for product clarity)."
-    },
-    "background_and_setting": {
-      "header": "4. Background and Setting:",
-      "environment": "Environment: {{environment}} (e.g., Seamless studio backdrop, Textured surface like marble or wood, Abstract geometric shapes, In a contextual setting like a kitchen counter or a forest floor).",
-      "color_palette": "Color Palette: Background dominated by {{dominant_colors}} with accents of {{accent_colors}}. IMPORTANT: The product itself must maintain its original, authentic colors - only the background and lighting should follow this color palette.",
-      "props": "Supporting Props: {{props}} (subtle and complementary, not distracting)."
-    },
-    "camera_and_lens": {
-      "header": "5. Professional Camera Equipment:",
-      "camera": "Shot with: {{camera_type}} (e.g., Hasselblad X2D 100C medium format camera, Phase One XF IQ4 digital back, Sony A7R V mirrorless, Canon EOS R5 with 15-stop dynamic range sensor).",
-      "lens": "Professional Lens: {{lens_type}} (e.g., 85mm f/1.4 lens with creamy bokeh for portraits, 100mm f/2.8 macro lens for product detail, 35mm f/1.4 environmental lens, 50mm f/1.2 prime for natural perspective, tilt-shift lens for product photography).",
-      "aperture": "Aperture: f/{{aperture_value}} for precise depth of field control.",
-      "shutter_speed": "Shutter Speed: 1/{{shutter_speed_value}}s with leaf shutter flash sync capability.",
-      "iso": "ISO: {{iso_value}} for optimal dynamic range and minimal noise.",
-      "effect": "Photographic Technique: {{visual_effect}} (e.g., shallow depth of field with ultra-smooth bokeh, focus stacking for macro detail, subtle lens compression, professional color separation)."
-    },
-    "style_and_post_production": {
-      "header": "6. Professional Post-Production Style:",
-      "overall_style": "Commercial Style: {{overall_style}} (e.g., Award-winning commercial product photography, Editorial fashion photography style, Cinematic advertising campaign, Ultra-realistic product visualization, Luxury brand photography aesthetic).",
-      "aesthetics": "Technical Excellence: Shot with medium format digital camera, ultra-fine grain, professional color grading with minimal retouching to preserve natural skin tones, clean white background isolation, high dynamic range tonal compression, matte finish commercial look, 8K resolution with crystal-clear detail.",
-      "influences": "Photography Masters: Inspired by the technical precision of {{photographer_influences}} and contemporary commercial photography standards."
-    },
-    "product_lock": {
-      "header": "7. ABSOLUTE MANDATORY: PRODUCT LOCK SYSTEM:",
-      "mandate": "NEVER CHANGE THE PRODUCT: The product must appear EXACTLY as it exists in reality. Zero modifications allowed to product appearance, colors, shapes, textures, or design elements.",
-      "forbidden_actions": "STRICTLY PROHIBITED: ubah, gantikan, remix, alter, modify, change, transform, redesign, recolor, reshape, stylize the product in any way, or ADD TEXT, LABELS, STICKERS, GRAPHICS, OR ANY ADDITIONAL ELEMENTS TO THE PRODUCT SURFACE.",
-      "allowed_enhancements": "PHOTOGRAPHY ONLY: lighting setup, camera angles, background elements, depth of field, composition rules, and professional photography techniques.",
-      "penalty": "VIOLATION DETECTION: Any attempt to modify the product itself will result in immediate rejection. The product is SACRED and untouchable."
-    },
-    "color_preservation": {
-      "header": "8. CRITICAL: Original Product Color Preservation:",
-      "mandate": "The product must appear in its authentic, original colors as it would in real life. Do not apply color filters, stylistic color changes, or artistic reinterpretations to the product itself.",
-      "enhancement": "Only enhance: lighting quality, sharpness, contrast, and overall photographic technique. The product's inherent colors must remain true to reality.",
-      "restriction": "Absolutely prohibited: changing product color temperature, adding color casts to the product, or making the product match the background color palette."
-    }
-  }
+    "role": "professional photography director and creative consultant",
+    "task": "Generate comprehensive product photography brief",
+    "output_format": "structured professional brief",
+    "sections": [
+      "executive_summary",
+      "creative_direction", 
+      "technical_specifications",
+      "production_notes"
+    ]
+  },
+  "base_prompt": "You are an expert photography director creating detailed briefs for product photography. Generate a comprehensive brief that covers creative vision, technical requirements, and production details.",
+  "instructions": [
+    "Always provide specific, actionable guidance",
+    "Include technical photography parameters", 
+    "Consider commercial viability",
+    "Ensure brief is production-ready"
+  ]
 }

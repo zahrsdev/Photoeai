@@ -1,0 +1,587 @@
+2025-08-26 05:57:32 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-26 05:57:45 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-26 05:59:15 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-26 05:59:15 | INFO     | app.main:cleanup_old_images:55 | 🗑️ Cleaned up old image: static/images\img_273801f0.png
+2025-08-26 05:59:15 | INFO     | app.main:cleanup_old_images:55 | 🗑️ Cleaned up old image: static/images\img_66f0f78d.png
+2025-08-26 05:59:15 | INFO     | app.main:cleanup_old_images:55 | 🗑️ Cleaned up old image: static/images\img_6920a70b.png
+2025-08-26 05:59:15 | INFO     | app.main:cleanup_old_images:55 | 🗑️ Cleaned up old image: static/images\img_74f211ae.png
+2025-08-26 05:59:15 | INFO     | app.main:cleanup_old_images:55 | 🗑️ Cleaned up old image: static/images\img_ab60f5ea.png
+2025-08-26 06:04:46 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-26 07:32:09 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-26 07:45:10 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-26 07:48:26 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-26 07:49:05 | INFO     | app.routers.image_analysis:generate_image_breakthrough:194 | 🚀 BREAKTHROUGH: Starting GPT Image-1 Edit API generation
+2025-08-26 07:49:09 | ERROR    | app.routers.image_analysis:generate_image_breakthrough:245 | ❌ BREAKTHROUGH generation failed
+2025-08-26 07:49:09 | ERROR    | app.routers.image_analysis:generate_image_breakthrough:257 | 💥 BREAKTHROUGH endpoint error: 500: Breakthrough generation failed: Images.edit() got an unexpected keyword argument 'input_fidelity'
+2025-08-26 07:50:35 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-26 07:50:55 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-26 07:55:10 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-26 07:55:55 | ERROR    | app.routers.image_analysis:generate_image_breakthrough:216 | Breakthrough endpoint error: OpenAIImageService.generate_with_breakthrough_edit() got an unexpected keyword argument 'uploaded_image_filename'. Did you mean 'uploaded_image_base64'?
+2025-08-26 07:58:12 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-26 07:58:48 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-26 08:15:41 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-26 08:17:06 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-26 08:17:50 | INFO     | app.routers.image_analysis:generate_image_breakthrough:180 | 🚀 BREAKTHROUGH: Starting GPT Image-1 Edit API generation
+2025-08-26 08:17:50 | INFO     | app.services.multi_provider_image_generator:generate_with_breakthrough_edit:635 | 🔥 BREAKTHROUGH MODE: Using GPT Image-1 Edit API for shape preservation
+2025-08-26 08:17:54 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:30 | 🖼️ Starting product image analysis for file: C:\Users\Rekabit\AppData\Local\Temp\tmp011soxe7.png
+2025-08-26 08:17:55 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:186 | 👁️ Starting image analysis with custom client base64 [ID: 1583]
+2025-08-26 08:18:09 | ERROR    | app.services.image_analysis_service:_analyze_with_custom_client_base64:241 | 💥 Custom client base64 analysis error: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2025-08-26 08:18:09 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:51 | ✅ Image analysis completed successfully
+2025-08-26 08:18:09 | INFO     | app.services.brief_orchestrator:__init__:24 | BriefOrchestratorService initialized with self-healing architecture
+2025-08-26 08:18:09 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 1895806855808]
+2025-08-26 08:18:09 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 1895806855808]
+2025-08-26 08:18:09 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 5477]
+2025-08-26 08:18:10 | ERROR    | app.services.ai_client:extract_wizard_data:209 | 💥 Critical error in wizard data extraction [ID: 5477]
+2025-08-26 08:18:10 | WARNING  | app.services.brief_orchestrator:extract_and_autofill:126 | ⚠️ Attempt 1 failed with exception [ID: 1895806855808]
+2025-08-26 08:18:10 | WARNING  | app.services.brief_orchestrator:extract_and_autofill:70 | ⚠️ Attempt 2/2: Retry with error feedback [ID: 1895806855808]
+2025-08-26 08:18:10 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 7338]
+2025-08-26 08:18:10 | ERROR    | app.services.ai_client:extract_wizard_data:209 | 💥 Critical error in wizard data extraction [ID: 7338]
+2025-08-26 08:18:10 | ERROR    | app.services.brief_orchestrator:extract_and_autofill:118 | 💥 Critical extraction failure [ID: 1895806855808]
+2025-08-26 08:18:10 | ERROR    | app.services.multi_provider_image_generator:generate_with_breakthrough_edit:796 | 💥 BREAKTHROUGH Edit API failed: AI extraction service failed after 2 attempts: AI extraction failed: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************MhQA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-08-26 08:18:10 | ERROR    | app.routers.image_analysis:generate_image_breakthrough:197 | ❌ BREAKTHROUGH generation failed
+2025-08-26 08:18:10 | ERROR    | app.routers.image_analysis:generate_image_breakthrough:198 | 💥 BREAKTHROUGH endpoint error: 500: Breakthrough generation failed: GPT Image-1 Edit API failed: AI extraction service failed after 2 attempts: AI extraction failed: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************MhQA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-08-26 08:20:48 | INFO     | app.routers.image_analysis:generate_image_breakthrough:180 | 🚀 BREAKTHROUGH: Starting GPT Image-1 Edit API generation
+2025-08-26 08:20:48 | INFO     | app.services.multi_provider_image_generator:generate_with_breakthrough_edit:635 | 🔥 BREAKTHROUGH MODE: Using GPT Image-1 Edit API for shape preservation
+2025-08-26 08:20:51 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:30 | 🖼️ Starting product image analysis for file: C:\Users\Rekabit\AppData\Local\Temp\tmp8cyz8_jk.png
+2025-08-26 08:20:51 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:186 | 👁️ Starting image analysis with custom client base64 [ID: 1583]
+2025-08-26 08:21:01 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:237 | ✅ Custom client base64 analysis completed [ID: 1583]
+2025-08-26 08:21:01 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:51 | ✅ Image analysis completed successfully
+2025-08-26 08:21:01 | INFO     | app.services.brief_orchestrator:__init__:24 | BriefOrchestratorService initialized with self-healing architecture
+2025-08-26 08:21:01 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 1895764773936]
+2025-08-26 08:21:01 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 1895764773936]
+2025-08-26 08:21:01 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 5477]
+2025-08-26 08:21:02 | ERROR    | app.services.ai_client:extract_wizard_data:209 | 💥 Critical error in wizard data extraction [ID: 5477]
+2025-08-26 08:21:02 | WARNING  | app.services.brief_orchestrator:extract_and_autofill:126 | ⚠️ Attempt 1 failed with exception [ID: 1895764773936]
+2025-08-26 08:21:02 | WARNING  | app.services.brief_orchestrator:extract_and_autofill:70 | ⚠️ Attempt 2/2: Retry with error feedback [ID: 1895764773936]
+2025-08-26 08:21:02 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 7338]
+2025-08-26 08:21:03 | ERROR    | app.services.ai_client:extract_wizard_data:209 | 💥 Critical error in wizard data extraction [ID: 7338]
+2025-08-26 08:21:03 | ERROR    | app.services.brief_orchestrator:extract_and_autofill:118 | 💥 Critical extraction failure [ID: 1895764773936]
+2025-08-26 08:21:03 | ERROR    | app.services.multi_provider_image_generator:generate_with_breakthrough_edit:796 | 💥 BREAKTHROUGH Edit API failed: AI extraction service failed after 2 attempts: AI extraction failed: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************MhQA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-08-26 08:21:03 | ERROR    | app.routers.image_analysis:generate_image_breakthrough:197 | ❌ BREAKTHROUGH generation failed
+2025-08-26 08:21:03 | ERROR    | app.routers.image_analysis:generate_image_breakthrough:198 | 💥 BREAKTHROUGH endpoint error: 500: Breakthrough generation failed: GPT Image-1 Edit API failed: AI extraction service failed after 2 attempts: AI extraction failed: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************MhQA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-08-26 08:25:47 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-26 08:26:54 | INFO     | app.routers.generator:generate_image_breakthrough:517 | 🚀 [BREAKTHROUGH] GPT Image-1 Edit API - Session: 1224f1bc-65f9-437a-99ee-41dfa47fcde7
+2025-08-26 08:26:54 | INFO     | app.routers.generator:generate_image_breakthrough:518 | 🎯 [BREAKTHROUGH] Shape preservation mode activated
+2025-08-26 08:26:54 | INFO     | app.routers.generator:generate_image_breakthrough:531 | 📁 Loading image from file: product_1756171612.jpeg
+2025-08-26 08:26:54 | INFO     | app.routers.generator:load_image_from_filename:61 | ✅ Loaded image from file: product_1756171612.jpeg (959197 bytes)
+2025-08-26 08:26:54 | INFO     | app.routers.generator:generate_image_breakthrough:546 | 🔥 [BREAKTHROUGH] Processing with Edit API for shape preservation
+2025-08-26 08:26:54 | INFO     | app.services.multi_provider_image_generator:generate_with_breakthrough_edit:635 | 🔥 BREAKTHROUGH MODE: Using GPT Image-1 Edit API for shape preservation
+2025-08-26 08:26:55 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:30 | 🖼️ Starting product image analysis for file: C:\Users\Rekabit\AppData\Local\Temp\tmpw1lr68em.png
+2025-08-26 08:26:55 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:186 | 👁️ Starting image analysis with custom client base64 [ID: 3222]
+2025-08-26 08:27:03 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:237 | ✅ Custom client base64 analysis completed [ID: 3222]
+2025-08-26 08:27:03 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:51 | ✅ Image analysis completed successfully
+2025-08-26 08:27:03 | INFO     | app.services.brief_orchestrator:__init__:24 | BriefOrchestratorService initialized with self-healing architecture
+2025-08-26 08:27:03 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 2180626345216]
+2025-08-26 08:27:03 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 2180626345216]
+2025-08-26 08:27:03 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 1960]
+2025-08-26 08:27:03 | ERROR    | app.services.ai_client:extract_wizard_data:209 | 💥 Critical error in wizard data extraction [ID: 1960]
+2025-08-26 08:27:03 | WARNING  | app.services.brief_orchestrator:extract_and_autofill:126 | ⚠️ Attempt 1 failed with exception [ID: 2180626345216]
+2025-08-26 08:27:03 | WARNING  | app.services.brief_orchestrator:extract_and_autofill:70 | ⚠️ Attempt 2/2: Retry with error feedback [ID: 2180626345216]
+2025-08-26 08:27:03 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 2956]
+2025-08-26 08:27:04 | ERROR    | app.services.ai_client:extract_wizard_data:209 | 💥 Critical error in wizard data extraction [ID: 2956]
+2025-08-26 08:27:04 | ERROR    | app.services.brief_orchestrator:extract_and_autofill:118 | 💥 Critical extraction failure [ID: 2180626345216]
+2025-08-26 08:27:04 | ERROR    | app.services.multi_provider_image_generator:generate_with_breakthrough_edit:798 | 💥 BREAKTHROUGH Edit API failed: AI extraction service failed after 2 attempts: AI extraction failed: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************MhQA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-08-26 08:27:04 | ERROR    | app.routers.generator:generate_image_breakthrough:583 | 💥 Error in /generate-image-breakthrough endpoint: GPT Image-1 Edit API failed: AI extraction service failed after 2 attempts: AI extraction failed: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************MhQA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-08-26 08:44:55 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-26 08:45:46 | INFO     | app.routers.generator:generate_image_breakthrough:517 | 🚀 [BREAKTHROUGH] GPT Image-1 Edit API - Session: b6820c7c-806b-46fc-9ea1-e636af09a06d
+2025-08-26 08:45:46 | INFO     | app.routers.generator:generate_image_breakthrough:518 | 🎯 [BREAKTHROUGH] Shape preservation mode activated
+2025-08-26 08:45:46 | INFO     | app.routers.generator:generate_image_breakthrough:531 | 📁 Loading image from file: product_1756172744.jpeg
+2025-08-26 08:45:46 | INFO     | app.routers.generator:load_image_from_filename:61 | ✅ Loaded image from file: product_1756172744.jpeg (959197 bytes)
+2025-08-26 08:45:46 | INFO     | app.routers.generator:generate_image_breakthrough:546 | 🔥 [BREAKTHROUGH] Processing with Edit API for shape preservation
+2025-08-26 08:45:46 | INFO     | app.services.multi_provider_image_generator:generate_with_breakthrough_edit:635 | 🔥 BREAKTHROUGH MODE: Using GPT Image-1 Edit API for shape preservation
+2025-08-26 08:45:47 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:30 | 🖼️ Starting product image analysis for file: C:\Users\Rekabit\AppData\Local\Temp\tmp5usx38cq.png
+2025-08-26 08:45:47 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:186 | 👁️ Starting image analysis with custom client base64 [ID: 2550]
+2025-08-26 08:45:56 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:237 | ✅ Custom client base64 analysis completed [ID: 2550]
+2025-08-26 08:45:56 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:51 | ✅ Image analysis completed successfully
+2025-08-26 08:45:56 | INFO     | app.services.brief_orchestrator:__init__:24 | BriefOrchestratorService initialized with self-healing architecture
+2025-08-26 08:45:56 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 2115011954720]
+2025-08-26 08:45:56 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 2115011954720]
+2025-08-26 08:45:56 | INFO     | app.services.ai_client:extract_wizard_data:47 | 🔍 Starting wizard data extraction [ID: 2026]
+2025-08-26 08:46:06 | WARNING  | app.services.ai_client:extract_wizard_data:197 | ⚠️ JSON parsing failed, attempting recovery [ID: 2026]
+2025-08-26 08:46:06 | INFO     | app.services.ai_client:extract_wizard_data:209 | ✅ Recovered JSON from malformed response [ID: 2026]
+2025-08-26 08:46:06 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 2115011954720]
+2025-08-26 08:46:06 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 2115011954720]
+2025-08-26 08:46:06 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 2115056544448]
+2025-08-26 08:46:06 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 2115056544448]
+2025-08-26 08:46:06 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 2115011954720]
+2025-08-26 08:46:06 | INFO     | app.services.brief_orchestrator:generate_final_brief:168 | 🎨 Starting final brief generation workflow [ID: 2115010596448]
+2025-08-26 08:46:06 | INFO     | app.services.brief_orchestrator:generate_final_brief:177 | 📝 Composing initial brief from wizard input [ID: 2115010596448]
+2025-08-26 08:46:06 | INFO     | app.services.prompt_composer:compose_initial_brief:76 | 📝 Starting initial brief composition [ID: 2115010596448]
+2025-08-26 08:46:06 | INFO     | app.services.prompt_composer:compose_initial_brief:127 | ✅ Initial brief composition completed [ID: 2115010596448]
+2025-08-26 08:46:06 | INFO     | app.services.brief_orchestrator:generate_final_brief:187 | ✅ Validating composed brief [ID: 2115010596448]
+2025-08-26 08:46:06 | INFO     | app.services.brief_orchestrator:generate_final_brief:199 | ✅ Brief validation passed [ID: 2115010596448]
+2025-08-26 08:46:06 | WARNING  | app.services.brief_orchestrator:generate_final_brief:203 | ⚠️ Validation warning: Consider using more natural color descriptions to ensure authenticity [ID: 2115010596448]
+2025-08-26 08:46:06 | INFO     | app.services.brief_orchestrator:generate_final_brief:206 | 🎯 MISSION CRITICAL: Sending structured data to Product Photographer [ID: 2115010596448]
+2025-08-26 08:46:06 | INFO     | app.services.brief_orchestrator:generate_final_brief:219 | 🚀 CRITICAL REFACTOR: Calling refactored Product Photographer with structured data [ID: 2115010596448]
+2025-08-26 08:46:06 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:351 | 🎭 ADVANCED: Product Photographer enhanced composition [ID: 6864]
+2025-08-26 08:46:06 | ERROR    | app.services.ai_client:enhance_brief_from_structured_data:607 | 💥 CRITICAL ERROR: Elite enhancement system failure [ID: 6864]
+2025-08-26 08:46:06 | ERROR    | app.services.brief_orchestrator:generate_final_brief:253 | 💥 Critical error in generate_final_brief [ID: 2115010596448]
+2025-08-26 08:46:06 | ERROR    | app.services.multi_provider_image_generator:generate_with_breakthrough_edit:798 | 💥 BREAKTHROUGH Edit API failed: Failed to generate final brief: ELITE ENHANCEMENT FAILURE - Product Photographer system unavailable: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************MhQA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-08-26 08:46:06 | ERROR    | app.routers.generator:generate_image_breakthrough:583 | 💥 Error in /generate-image-breakthrough endpoint: GPT Image-1 Edit API failed: Failed to generate final brief: ELITE ENHANCEMENT FAILURE - Product Photographer system unavailable: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************MhQA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-08-26 08:49:06 | INFO     | app.routers.generator:generate_image_breakthrough:517 | 🚀 [BREAKTHROUGH] GPT Image-1 Edit API - Session: a63245bf-87d8-470d-89d5-4f096ea6e670
+2025-08-26 08:49:06 | INFO     | app.routers.generator:generate_image_breakthrough:518 | 🎯 [BREAKTHROUGH] Shape preservation mode activated
+2025-08-26 08:49:06 | INFO     | app.routers.generator:generate_image_breakthrough:531 | 📁 Loading image from file: product_1756172944.jpeg
+2025-08-26 08:49:06 | INFO     | app.routers.generator:load_image_from_filename:61 | ✅ Loaded image from file: product_1756172944.jpeg (959197 bytes)
+2025-08-26 08:49:06 | INFO     | app.routers.generator:generate_image_breakthrough:546 | 🔥 [BREAKTHROUGH] Processing with Edit API for shape preservation
+2025-08-26 08:49:06 | INFO     | app.services.multi_provider_image_generator:generate_with_breakthrough_edit:635 | 🔥 BREAKTHROUGH MODE: Using GPT Image-1 Edit API for shape preservation
+2025-08-26 08:49:07 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:30 | 🖼️ Starting product image analysis for file: C:\Users\Rekabit\AppData\Local\Temp\tmp7d9hay79.png
+2025-08-26 08:49:07 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:186 | 👁️ Starting image analysis with custom client base64 [ID: 2550]
+2025-08-26 08:49:15 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:237 | ✅ Custom client base64 analysis completed [ID: 2550]
+2025-08-26 08:49:15 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:51 | ✅ Image analysis completed successfully
+2025-08-26 08:49:15 | INFO     | app.services.brief_orchestrator:__init__:24 | BriefOrchestratorService initialized with self-healing architecture
+2025-08-26 08:49:15 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 2115042341456]
+2025-08-26 08:49:15 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 2115042341456]
+2025-08-26 08:49:15 | INFO     | app.services.ai_client:extract_wizard_data:47 | 🔍 Starting wizard data extraction [ID: 2026]
+2025-08-26 08:49:27 | WARNING  | app.services.ai_client:extract_wizard_data:197 | ⚠️ JSON parsing failed, attempting recovery [ID: 2026]
+2025-08-26 08:49:27 | INFO     | app.services.ai_client:extract_wizard_data:209 | ✅ Recovered JSON from malformed response [ID: 2026]
+2025-08-26 08:49:27 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 2115042341456]
+2025-08-26 08:49:27 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 2115042341456]
+2025-08-26 08:49:27 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 2115056560512]
+2025-08-26 08:49:27 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 2115056560512]
+2025-08-26 08:49:27 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 2115042341456]
+2025-08-26 08:49:27 | INFO     | app.services.brief_orchestrator:generate_final_brief:168 | 🎨 Starting final brief generation workflow [ID: 2115010597088]
+2025-08-26 08:49:27 | INFO     | app.services.brief_orchestrator:generate_final_brief:177 | 📝 Composing initial brief from wizard input [ID: 2115010597088]
+2025-08-26 08:49:27 | INFO     | app.services.prompt_composer:compose_initial_brief:76 | 📝 Starting initial brief composition [ID: 2115010597088]
+2025-08-26 08:49:27 | INFO     | app.services.prompt_composer:compose_initial_brief:127 | ✅ Initial brief composition completed [ID: 2115010597088]
+2025-08-26 08:49:27 | INFO     | app.services.brief_orchestrator:generate_final_brief:187 | ✅ Validating composed brief [ID: 2115010597088]
+2025-08-26 08:49:27 | INFO     | app.services.brief_orchestrator:generate_final_brief:199 | ✅ Brief validation passed [ID: 2115010597088]
+2025-08-26 08:49:27 | WARNING  | app.services.brief_orchestrator:generate_final_brief:203 | ⚠️ Validation warning: Consider using more natural color descriptions to ensure authenticity [ID: 2115010597088]
+2025-08-26 08:49:27 | INFO     | app.services.brief_orchestrator:generate_final_brief:206 | 🎯 MISSION CRITICAL: Sending structured data to Product Photographer [ID: 2115010597088]
+2025-08-26 08:49:27 | INFO     | app.services.brief_orchestrator:generate_final_brief:219 | 🚀 CRITICAL REFACTOR: Calling refactored Product Photographer with structured data [ID: 2115010597088]
+2025-08-26 08:49:27 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:351 | 🎭 ADVANCED: Product Photographer enhanced composition [ID: 8367]
+2025-08-26 08:49:27 | ERROR    | app.services.ai_client:enhance_brief_from_structured_data:607 | 💥 CRITICAL ERROR: Elite enhancement system failure [ID: 8367]
+2025-08-26 08:49:27 | ERROR    | app.services.brief_orchestrator:generate_final_brief:253 | 💥 Critical error in generate_final_brief [ID: 2115010597088]
+2025-08-26 08:49:27 | ERROR    | app.services.multi_provider_image_generator:generate_with_breakthrough_edit:798 | 💥 BREAKTHROUGH Edit API failed: Failed to generate final brief: ELITE ENHANCEMENT FAILURE - Product Photographer system unavailable: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************MhQA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-08-26 08:49:27 | ERROR    | app.routers.generator:generate_image_breakthrough:583 | 💥 Error in /generate-image-breakthrough endpoint: GPT Image-1 Edit API failed: Failed to generate final brief: ELITE ENHANCEMENT FAILURE - Product Photographer system unavailable: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************MhQA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-08-26 08:51:38 | INFO     | app.routers.generator:generate_image_breakthrough:517 | 🚀 [BREAKTHROUGH] GPT Image-1 Edit API - Session: 590b6592-a3eb-4d38-b3b4-cf665ea7be69
+2025-08-26 08:51:38 | INFO     | app.routers.generator:generate_image_breakthrough:518 | 🎯 [BREAKTHROUGH] Shape preservation mode activated
+2025-08-26 08:51:38 | INFO     | app.routers.generator:generate_image_breakthrough:531 | 📁 Loading image from file: product_1756173096.jpeg
+2025-08-26 08:51:38 | INFO     | app.routers.generator:load_image_from_filename:61 | ✅ Loaded image from file: product_1756173096.jpeg (959197 bytes)
+2025-08-26 08:51:38 | INFO     | app.routers.generator:generate_image_breakthrough:546 | 🔥 [BREAKTHROUGH] Processing with Edit API for shape preservation
+2025-08-26 08:51:38 | INFO     | app.services.multi_provider_image_generator:generate_with_breakthrough_edit:635 | 🔥 BREAKTHROUGH MODE: Using GPT Image-1 Edit API for shape preservation
+2025-08-26 08:51:39 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:30 | 🖼️ Starting product image analysis for file: C:\Users\Rekabit\AppData\Local\Temp\tmpyhisl8f8.png
+2025-08-26 08:51:39 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:186 | 👁️ Starting image analysis with custom client base64 [ID: 2550]
+2025-08-26 08:51:47 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:237 | ✅ Custom client base64 analysis completed [ID: 2550]
+2025-08-26 08:51:47 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:51 | ✅ Image analysis completed successfully
+2025-08-26 08:51:47 | INFO     | app.services.brief_orchestrator:__init__:24 | BriefOrchestratorService initialized with self-healing architecture
+2025-08-26 08:51:47 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 2115008563552]
+2025-08-26 08:51:47 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 2115008563552]
+2025-08-26 08:51:47 | INFO     | app.services.ai_client:extract_wizard_data:47 | 🔍 Starting wizard data extraction [ID: 2026]
+2025-08-26 08:51:55 | WARNING  | app.services.ai_client:extract_wizard_data:197 | ⚠️ JSON parsing failed, attempting recovery [ID: 2026]
+2025-08-26 08:51:55 | INFO     | app.services.ai_client:extract_wizard_data:209 | ✅ Recovered JSON from malformed response [ID: 2026]
+2025-08-26 08:51:55 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 2115008563552]
+2025-08-26 08:51:55 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 2115008563552]
+2025-08-26 08:51:55 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 2115056682112]
+2025-08-26 08:51:55 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 2115056682112]
+2025-08-26 08:51:55 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 2115008563552]
+2025-08-26 08:51:55 | INFO     | app.services.brief_orchestrator:generate_final_brief:168 | 🎨 Starting final brief generation workflow [ID: 2115042646912]
+2025-08-26 08:51:55 | INFO     | app.services.brief_orchestrator:generate_final_brief:177 | 📝 Composing initial brief from wizard input [ID: 2115042646912]
+2025-08-26 08:51:55 | INFO     | app.services.prompt_composer:compose_initial_brief:76 | 📝 Starting initial brief composition [ID: 2115042646912]
+2025-08-26 08:51:55 | INFO     | app.services.prompt_composer:compose_initial_brief:127 | ✅ Initial brief composition completed [ID: 2115042646912]
+2025-08-26 08:51:55 | INFO     | app.services.brief_orchestrator:generate_final_brief:187 | ✅ Validating composed brief [ID: 2115042646912]
+2025-08-26 08:51:55 | INFO     | app.services.brief_orchestrator:generate_final_brief:199 | ✅ Brief validation passed [ID: 2115042646912]
+2025-08-26 08:51:55 | WARNING  | app.services.brief_orchestrator:generate_final_brief:203 | ⚠️ Validation warning: Consider using more natural color descriptions to ensure authenticity [ID: 2115042646912]
+2025-08-26 08:51:55 | INFO     | app.services.brief_orchestrator:generate_final_brief:206 | 🎯 MISSION CRITICAL: Sending structured data to Product Photographer [ID: 2115042646912]
+2025-08-26 08:51:55 | INFO     | app.services.brief_orchestrator:generate_final_brief:219 | 🚀 CRITICAL REFACTOR: Calling refactored Product Photographer with structured data [ID: 2115042646912]
+2025-08-26 08:51:55 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:351 | 🎭 ADVANCED: Product Photographer enhanced composition [ID: 4991]
+2025-08-26 08:51:55 | ERROR    | app.services.ai_client:enhance_brief_from_structured_data:607 | 💥 CRITICAL ERROR: Elite enhancement system failure [ID: 4991]
+2025-08-26 08:51:55 | ERROR    | app.services.brief_orchestrator:generate_final_brief:253 | 💥 Critical error in generate_final_brief [ID: 2115042646912]
+2025-08-26 08:51:55 | ERROR    | app.services.multi_provider_image_generator:generate_with_breakthrough_edit:798 | 💥 BREAKTHROUGH Edit API failed: Failed to generate final brief: ELITE ENHANCEMENT FAILURE - Product Photographer system unavailable: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************MhQA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-08-26 08:51:55 | ERROR    | app.routers.generator:generate_image_breakthrough:583 | 💥 Error in /generate-image-breakthrough endpoint: GPT Image-1 Edit API failed: Failed to generate final brief: ELITE ENHANCEMENT FAILURE - Product Photographer system unavailable: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************MhQA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-08-26 08:53:15 | INFO     | app.routers.generator:generate_image_breakthrough:517 | 🚀 [BREAKTHROUGH] GPT Image-1 Edit API - Session: af1eb80d-3716-49f6-b546-63ebdf4b289a
+2025-08-26 08:53:15 | INFO     | app.routers.generator:generate_image_breakthrough:518 | 🎯 [BREAKTHROUGH] Shape preservation mode activated
+2025-08-26 08:53:15 | INFO     | app.routers.generator:generate_image_breakthrough:531 | 📁 Loading image from file: product_1756173193.jpeg
+2025-08-26 08:53:15 | INFO     | app.routers.generator:load_image_from_filename:61 | ✅ Loaded image from file: product_1756173193.jpeg (959197 bytes)
+2025-08-26 08:53:15 | INFO     | app.routers.generator:generate_image_breakthrough:546 | 🔥 [BREAKTHROUGH] Processing with Edit API for shape preservation
+2025-08-26 08:53:15 | INFO     | app.services.multi_provider_image_generator:generate_with_breakthrough_edit:635 | 🔥 BREAKTHROUGH MODE: Using GPT Image-1 Edit API for shape preservation
+2025-08-26 08:53:18 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:30 | 🖼️ Starting product image analysis for file: C:\Users\Rekabit\AppData\Local\Temp\tmpz1brqu0n.png
+2025-08-26 08:53:18 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:186 | 👁️ Starting image analysis with custom client base64 [ID: 2550]
+2025-08-26 08:53:28 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:237 | ✅ Custom client base64 analysis completed [ID: 2550]
+2025-08-26 08:53:28 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:51 | ✅ Image analysis completed successfully
+2025-08-26 08:53:28 | INFO     | app.services.brief_orchestrator:__init__:24 | BriefOrchestratorService initialized with self-healing architecture
+2025-08-26 08:53:28 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 2115042655312]
+2025-08-26 08:53:28 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 2115042655312]
+2025-08-26 08:53:28 | INFO     | app.services.ai_client:extract_wizard_data:47 | 🔍 Starting wizard data extraction [ID: 2026]
+2025-08-26 08:53:36 | WARNING  | app.services.ai_client:extract_wizard_data:197 | ⚠️ JSON parsing failed, attempting recovery [ID: 2026]
+2025-08-26 08:53:36 | INFO     | app.services.ai_client:extract_wizard_data:209 | ✅ Recovered JSON from malformed response [ID: 2026]
+2025-08-26 08:53:36 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 2115042655312]
+2025-08-26 08:53:36 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 2115042655312]
+2025-08-26 08:53:36 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 2115056943424]
+2025-08-26 08:53:36 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 2115056943424]
+2025-08-26 08:53:36 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 2115042655312]
+2025-08-26 08:53:36 | INFO     | app.services.brief_orchestrator:generate_final_brief:168 | 🎨 Starting final brief generation workflow [ID: 2115042647232]
+2025-08-26 08:53:36 | INFO     | app.services.brief_orchestrator:generate_final_brief:177 | 📝 Composing initial brief from wizard input [ID: 2115042647232]
+2025-08-26 08:53:36 | INFO     | app.services.prompt_composer:compose_initial_brief:76 | 📝 Starting initial brief composition [ID: 2115042647232]
+2025-08-26 08:53:36 | INFO     | app.services.prompt_composer:compose_initial_brief:127 | ✅ Initial brief composition completed [ID: 2115042647232]
+2025-08-26 08:53:36 | INFO     | app.services.brief_orchestrator:generate_final_brief:187 | ✅ Validating composed brief [ID: 2115042647232]
+2025-08-26 08:53:36 | INFO     | app.services.brief_orchestrator:generate_final_brief:199 | ✅ Brief validation passed [ID: 2115042647232]
+2025-08-26 08:53:36 | WARNING  | app.services.brief_orchestrator:generate_final_brief:203 | ⚠️ Validation warning: Consider using more natural color descriptions to ensure authenticity [ID: 2115042647232]
+2025-08-26 08:53:36 | INFO     | app.services.brief_orchestrator:generate_final_brief:206 | 🎯 MISSION CRITICAL: Sending structured data to Product Photographer [ID: 2115042647232]
+2025-08-26 08:53:36 | INFO     | app.services.brief_orchestrator:generate_final_brief:219 | 🚀 CRITICAL REFACTOR: Calling refactored Product Photographer with structured data [ID: 2115042647232]
+2025-08-26 08:53:36 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:351 | 🎭 ADVANCED: Product Photographer enhanced composition [ID: 2734]
+2025-08-26 08:53:37 | ERROR    | app.services.ai_client:enhance_brief_from_structured_data:607 | 💥 CRITICAL ERROR: Elite enhancement system failure [ID: 2734]
+2025-08-26 08:53:37 | ERROR    | app.services.brief_orchestrator:generate_final_brief:253 | 💥 Critical error in generate_final_brief [ID: 2115042647232]
+2025-08-26 08:53:37 | ERROR    | app.services.multi_provider_image_generator:generate_with_breakthrough_edit:798 | 💥 BREAKTHROUGH Edit API failed: Failed to generate final brief: ELITE ENHANCEMENT FAILURE - Product Photographer system unavailable: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************MhQA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-08-26 08:53:37 | ERROR    | app.routers.generator:generate_image_breakthrough:583 | 💥 Error in /generate-image-breakthrough endpoint: GPT Image-1 Edit API failed: Failed to generate final brief: ELITE ENHANCEMENT FAILURE - Product Photographer system unavailable: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************MhQA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-08-26 08:56:46 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-26 08:57:49 | INFO     | app.routers.generator:generate_image_breakthrough:517 | 🚀 [BREAKTHROUGH] GPT Image-1 Edit API - Session: 6e824326-ece4-4215-9e04-271624d6ec30
+2025-08-26 08:57:49 | INFO     | app.routers.generator:generate_image_breakthrough:518 | 🎯 [BREAKTHROUGH] Shape preservation mode activated
+2025-08-26 08:57:49 | INFO     | app.routers.generator:generate_image_breakthrough:531 | 📁 Loading image from file: product_1756173467.jpeg
+2025-08-26 08:57:49 | INFO     | app.routers.generator:load_image_from_filename:61 | ✅ Loaded image from file: product_1756173467.jpeg (959197 bytes)
+2025-08-26 08:57:49 | INFO     | app.routers.generator:generate_image_breakthrough:546 | 🔥 [BREAKTHROUGH] Processing with Edit API for shape preservation
+2025-08-26 08:57:49 | INFO     | app.services.multi_provider_image_generator:generate_with_breakthrough_edit:635 | 🔥 BREAKTHROUGH MODE: Using GPT Image-1 Edit API for shape preservation
+2025-08-26 08:57:50 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:30 | 🖼️ Starting product image analysis for file: C:\Users\Rekabit\AppData\Local\Temp\tmp7s6fzwxd.png
+2025-08-26 08:57:50 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:186 | 👁️ Starting image analysis with custom client base64 [ID: 2550]
+2025-08-26 08:57:59 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:237 | ✅ Custom client base64 analysis completed [ID: 2550]
+2025-08-26 08:57:59 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:51 | ✅ Image analysis completed successfully
+2025-08-26 08:57:59 | INFO     | app.services.brief_orchestrator:__init__:24 | BriefOrchestratorService initialized with self-healing architecture
+2025-08-26 08:57:59 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 2115042795728]
+2025-08-26 08:57:59 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 2115042795728]
+2025-08-26 08:57:59 | INFO     | app.services.ai_client:extract_wizard_data:47 | 🔍 Starting wizard data extraction [ID: 2026]
+2025-08-26 08:58:06 | WARNING  | app.services.ai_client:extract_wizard_data:197 | ⚠️ JSON parsing failed, attempting recovery [ID: 2026]
+2025-08-26 08:58:06 | INFO     | app.services.ai_client:extract_wizard_data:209 | ✅ Recovered JSON from malformed response [ID: 2026]
+2025-08-26 08:58:06 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 2115042795728]
+2025-08-26 08:58:06 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 2115042795728]
+2025-08-26 08:58:06 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 2115057048960]
+2025-08-26 08:58:06 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 2115057048960]
+2025-08-26 08:58:06 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 2115042795728]
+2025-08-26 08:58:06 | INFO     | app.services.brief_orchestrator:generate_final_brief:168 | 🎨 Starting final brief generation workflow [ID: 2115042788768]
+2025-08-26 08:58:06 | INFO     | app.services.brief_orchestrator:generate_final_brief:177 | 📝 Composing initial brief from wizard input [ID: 2115042788768]
+2025-08-26 08:58:06 | INFO     | app.services.prompt_composer:compose_initial_brief:76 | 📝 Starting initial brief composition [ID: 2115042788768]
+2025-08-26 08:58:06 | INFO     | app.services.prompt_composer:compose_initial_brief:127 | ✅ Initial brief composition completed [ID: 2115042788768]
+2025-08-26 08:58:06 | INFO     | app.services.brief_orchestrator:generate_final_brief:187 | ✅ Validating composed brief [ID: 2115042788768]
+2025-08-26 08:58:06 | INFO     | app.services.brief_orchestrator:generate_final_brief:199 | ✅ Brief validation passed [ID: 2115042788768]
+2025-08-26 08:58:06 | WARNING  | app.services.brief_orchestrator:generate_final_brief:203 | ⚠️ Validation warning: Consider using more natural color descriptions to ensure authenticity [ID: 2115042788768]
+2025-08-26 08:58:06 | INFO     | app.services.brief_orchestrator:generate_final_brief:206 | 🎯 MISSION CRITICAL: Sending structured data to Product Photographer [ID: 2115042788768]
+2025-08-26 08:58:06 | INFO     | app.services.brief_orchestrator:generate_final_brief:219 | 🚀 CRITICAL REFACTOR: Calling refactored Product Photographer with structured data [ID: 2115042788768]
+2025-08-26 08:58:06 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:351 | 🎭 ADVANCED: Product Photographer enhanced composition [ID: 4861]
+2025-08-26 08:58:06 | ERROR    | app.services.ai_client:enhance_brief_from_structured_data:607 | 💥 CRITICAL ERROR: Elite enhancement system failure [ID: 4861]
+2025-08-26 08:58:06 | ERROR    | app.services.brief_orchestrator:generate_final_brief:253 | 💥 Critical error in generate_final_brief [ID: 2115042788768]
+2025-08-26 08:58:06 | ERROR    | app.services.multi_provider_image_generator:generate_with_breakthrough_edit:798 | 💥 BREAKTHROUGH Edit API failed: Failed to generate final brief: ELITE ENHANCEMENT FAILURE - Product Photographer system unavailable: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************MhQA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-08-26 08:58:06 | ERROR    | app.routers.generator:generate_image_breakthrough:583 | 💥 Error in /generate-image-breakthrough endpoint: GPT Image-1 Edit API failed: Failed to generate final brief: ELITE ENHANCEMENT FAILURE - Product Photographer system unavailable: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************MhQA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-08-26 08:59:01 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-26 09:04:21 | INFO     | app.routers.generator:generate_image_breakthrough:517 | 🚀 [BREAKTHROUGH] GPT Image-1 Edit API - Session: cf62fb61-3043-4987-bbb7-b29d1eedd40f
+2025-08-26 09:04:21 | INFO     | app.routers.generator:generate_image_breakthrough:518 | 🎯 [BREAKTHROUGH] Shape preservation mode activated
+2025-08-26 09:04:21 | INFO     | app.routers.generator:generate_image_breakthrough:531 | 📁 Loading image from file: product_1756173859.jpeg
+2025-08-26 09:04:21 | INFO     | app.routers.generator:load_image_from_filename:61 | ✅ Loaded image from file: product_1756173859.jpeg (959197 bytes)
+2025-08-26 09:04:21 | INFO     | app.routers.generator:generate_image_breakthrough:546 | 🔥 [BREAKTHROUGH] Processing with Edit API for shape preservation
+2025-08-26 09:04:21 | INFO     | app.services.multi_provider_image_generator:generate_with_breakthrough_edit:635 | 🔥 BREAKTHROUGH MODE: Using GPT Image-1 Edit API for shape preservation
+2025-08-26 09:04:22 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:30 | 🖼️ Starting product image analysis for file: C:\Users\Rekabit\AppData\Local\Temp\tmp5vw6vy84.png
+2025-08-26 09:04:22 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:186 | 👁️ Starting image analysis with custom client base64 [ID: 5165]
+2025-08-26 09:04:31 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:237 | ✅ Custom client base64 analysis completed [ID: 5165]
+2025-08-26 09:04:31 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:51 | ✅ Image analysis completed successfully
+2025-08-26 09:04:31 | INFO     | app.services.brief_orchestrator:__init__:24 | BriefOrchestratorService initialized with self-healing architecture
+2025-08-26 09:04:31 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 1807341096064]
+2025-08-26 09:04:31 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 1807341096064]
+2025-08-26 09:04:31 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 4274]
+2025-08-26 09:04:39 | WARNING  | app.services.ai_client:extract_wizard_data:180 | ⚠️ JSON parsing failed, attempting recovery [ID: 4274]
+2025-08-26 09:04:39 | INFO     | app.services.ai_client:extract_wizard_data:192 | ✅ Recovered JSON from malformed response [ID: 4274]
+2025-08-26 09:04:39 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 1807341096064]
+2025-08-26 09:04:39 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 1807341096064]
+2025-08-26 09:04:39 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 1807378276736]
+2025-08-26 09:04:39 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 1807378276736]
+2025-08-26 09:04:39 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 1807341096064]
+2025-08-26 09:04:39 | INFO     | app.services.brief_orchestrator:generate_final_brief:168 | 🎨 Starting final brief generation workflow [ID: 1807343177632]
+2025-08-26 09:04:39 | INFO     | app.services.brief_orchestrator:generate_final_brief:177 | 📝 Composing initial brief from wizard input [ID: 1807343177632]
+2025-08-26 09:04:39 | INFO     | app.services.prompt_composer:compose_initial_brief:76 | 📝 Starting initial brief composition [ID: 1807343177632]
+2025-08-26 09:04:39 | INFO     | app.services.prompt_composer:compose_initial_brief:127 | ✅ Initial brief composition completed [ID: 1807343177632]
+2025-08-26 09:04:39 | INFO     | app.services.brief_orchestrator:generate_final_brief:187 | ✅ Validating composed brief [ID: 1807343177632]
+2025-08-26 09:04:39 | INFO     | app.services.brief_orchestrator:generate_final_brief:199 | ✅ Brief validation passed [ID: 1807343177632]
+2025-08-26 09:04:39 | WARNING  | app.services.brief_orchestrator:generate_final_brief:203 | ⚠️ Validation warning: Consider using more natural color descriptions to ensure authenticity [ID: 1807343177632]
+2025-08-26 09:04:39 | INFO     | app.services.brief_orchestrator:generate_final_brief:206 | 🎯 MISSION CRITICAL: Sending structured data to Product Photographer [ID: 1807343177632]
+2025-08-26 09:04:39 | INFO     | app.services.brief_orchestrator:generate_final_brief:219 | 🚀 CRITICAL REFACTOR: Calling refactored Product Photographer with structured data [ID: 1807343177632]
+2025-08-26 09:04:39 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:334 | 🎭 ADVANCED: Product Photographer enhanced composition [ID: 4712]
+2025-08-26 09:06:23 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:537 | ✅ ADVANCED: Elite enhancement completed [ID: 4712]
+2025-08-26 09:06:23 | INFO     | app.services.brief_orchestrator:generate_final_brief:225 | 📊 MISSION VALIDATION: Enhanced brief analysis [ID: 1807343177632]
+2025-08-26 09:06:23 | INFO     | app.services.brief_orchestrator:generate_final_brief:233 | 📝 ENHANCED BRIEF PREVIEW [ID: 1807343177632]: # **Food Photography Brief: Goat Tongseng Dish**
+
+---
+
+#### **1. Main Subject: Hero Shot of the Goat Tongseng Dish**
+- **Product Details**: The Goat Tongseng Dish is a quintessential Indonesian delicacy featuring succulent goat meat immersed in a rich, thick sauce. The dish is adorned with vibrant red chili peppers, crisp onions, and fresh tomatoes, creating a symphony of flavors and colors. The texture of the goat meat is tender and juicy, while the sauce is robust and aromatic, infused with traditional spices.
+- **Product State**: Presented in pristine condition, the dish is meticulously arranged to highlight its appetizing components. The goat meat appears freshly cooked, with a slight sheen from the sauce, emphasizing its quality and texture.
+- **Hero Features**: The key elements to em...
+2025-08-26 09:06:23 | INFO     | app.services.brief_orchestrator:generate_final_brief:242 | 🎉 Brief generation completed successfully [ID: 1807343177632]
+2025-08-26 09:06:23 | INFO     | app.services.multi_provider_image_generator:_build_edit_preservation_prompt:904 | 🚀 BREAKTHROUGH: Full prompt built - 16674 characters (Max 32,000 allowed)
+2025-08-26 09:06:24 | INFO     | app.services.multi_provider_image_generator:generate_with_breakthrough_edit:744 | 🎯 Edit API call with preservation prompt: CRITICAL VISUAL PRESERVATION PROTOCOL FOR GPT IMAGE-1 EDIT API:
+
+You are analyzing the EXACT original product image that I have uploaded. Your task is PROFESSIONAL PHOTOGRAPHY ENHANCEMENT ONLY while m...
+2025-08-26 09:08:06 | INFO     | app.services.multi_provider_image_generator:generate_with_breakthrough_edit:776 | ✅ BREAKTHROUGH SUCCESS: GPT Image-1 Edit API completed!
+2025-08-26 09:08:06 | INFO     | app.services.multi_provider_image_generator:_save_base64_to_file:332 | 💾 Saved image: static\images\img_9e13c213.png → http://0.0.0.0:8000/static/images/img_9e13c213.png
+2025-08-26 09:08:06 | INFO     | app.routers.generator:generate_image_breakthrough:577 | 🎉 [BREAKTHROUGH] Shape preservation successful: http://0.0.0.0:8000/static/images/img_9e13c213.png
+2025-08-26 09:11:14 | INFO     | app.routers.generator:generate_image_breakthrough:517 | 🚀 [BREAKTHROUGH] GPT Image-1 Edit API - Session: e9cd8eed-eec5-4ec8-a63f-30deeed59391
+2025-08-26 09:11:14 | INFO     | app.routers.generator:generate_image_breakthrough:518 | 🎯 [BREAKTHROUGH] Shape preservation mode activated
+2025-08-26 09:11:14 | INFO     | app.routers.generator:generate_image_breakthrough:531 | 📁 Loading image from file: product_1756174272.jpeg
+2025-08-26 09:11:14 | INFO     | app.routers.generator:load_image_from_filename:61 | ✅ Loaded image from file: product_1756174272.jpeg (959197 bytes)
+2025-08-26 09:11:14 | INFO     | app.routers.generator:generate_image_breakthrough:546 | 🔥 [BREAKTHROUGH] Processing with Edit API for shape preservation
+2025-08-26 09:11:14 | INFO     | app.services.multi_provider_image_generator:generate_with_breakthrough_edit:635 | 🔥 BREAKTHROUGH MODE: Using GPT Image-1 Edit API for shape preservation
+2025-08-26 09:11:15 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:30 | 🖼️ Starting product image analysis for file: C:\Users\Rekabit\AppData\Local\Temp\tmpdw0smcyv.png
+2025-08-26 09:11:15 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:186 | 👁️ Starting image analysis with custom client base64 [ID: 5165]
+2025-08-26 09:11:28 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:237 | ✅ Custom client base64 analysis completed [ID: 5165]
+2025-08-26 09:11:28 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:51 | ✅ Image analysis completed successfully
+2025-08-26 09:11:28 | INFO     | app.services.brief_orchestrator:__init__:24 | BriefOrchestratorService initialized with self-healing architecture
+2025-08-26 09:11:28 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 1807375309536]
+2025-08-26 09:11:28 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 1807375309536]
+2025-08-26 09:11:28 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 3634]
+2025-08-26 09:11:33 | WARNING  | app.services.ai_client:extract_wizard_data:180 | ⚠️ JSON parsing failed, attempting recovery [ID: 3634]
+2025-08-26 09:11:33 | INFO     | app.services.ai_client:extract_wizard_data:192 | ✅ Recovered JSON from malformed response [ID: 3634]
+2025-08-26 09:11:33 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 1807375309536]
+2025-08-26 09:11:33 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 1807375309536]
+2025-08-26 09:11:33 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 1807377703744]
+2025-08-26 09:11:33 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 1807377703744]
+2025-08-26 09:11:33 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 1807375309536]
+2025-08-26 09:11:33 | INFO     | app.services.brief_orchestrator:generate_final_brief:168 | 🎨 Starting final brief generation workflow [ID: 1807389181824]
+2025-08-26 09:11:33 | INFO     | app.services.brief_orchestrator:generate_final_brief:177 | 📝 Composing initial brief from wizard input [ID: 1807389181824]
+2025-08-26 09:11:33 | INFO     | app.services.prompt_composer:compose_initial_brief:76 | 📝 Starting initial brief composition [ID: 1807389181824]
+2025-08-26 09:11:33 | INFO     | app.services.prompt_composer:compose_initial_brief:127 | ✅ Initial brief composition completed [ID: 1807389181824]
+2025-08-26 09:11:33 | INFO     | app.services.brief_orchestrator:generate_final_brief:187 | ✅ Validating composed brief [ID: 1807389181824]
+2025-08-26 09:11:33 | INFO     | app.services.brief_orchestrator:generate_final_brief:199 | ✅ Brief validation passed [ID: 1807389181824]
+2025-08-26 09:11:33 | WARNING  | app.services.brief_orchestrator:generate_final_brief:203 | ⚠️ Validation warning: Consider using more natural color descriptions to ensure authenticity [ID: 1807389181824]
+2025-08-26 09:11:33 | INFO     | app.services.brief_orchestrator:generate_final_brief:206 | 🎯 MISSION CRITICAL: Sending structured data to Product Photographer [ID: 1807389181824]
+2025-08-26 09:11:33 | INFO     | app.services.brief_orchestrator:generate_final_brief:219 | 🚀 CRITICAL REFACTOR: Calling refactored Product Photographer with structured data [ID: 1807389181824]
+2025-08-26 09:11:33 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:334 | 🎭 ADVANCED: Product Photographer enhanced composition [ID: 3852]
+2025-08-26 09:12:16 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:537 | ✅ ADVANCED: Elite enhancement completed [ID: 3852]
+2025-08-26 09:12:16 | INFO     | app.services.brief_orchestrator:generate_final_brief:225 | 📊 MISSION VALIDATION: Enhanced brief analysis [ID: 1807389181824]
+2025-08-26 09:12:16 | INFO     | app.services.brief_orchestrator:generate_final_brief:233 | 📝 ENHANCED BRIEF PREVIEW [ID: 1807389181824]: # **Food Photography Brief: Tongseng Kambing**
+
+---
+
+#### **1. Main Subject: Hero Shot of the Tongseng Kambing**
+- **Product Details**: 
+  - Juicy, tender lamb pieces with a light oil sheen.
+  - Rich golden-brown broth that reflects the dish’s flavor and depth.
+  - Garnished with fresh chili slices, crispy fried shallots, and ripe tomato pieces.
+  - Textural contrast between the glossy meat and the rich broth.
+- **Product State**: 
+  - Pristine condition, ensuring the dish is presented at its peak freshness.
+  - Ingredients are carefully arranged for visual appeal and emphasis on quality.
+- **Hero Features**: 
+  - The succulent lamb pieces are the focal point, enhanced by their glossy sheen.
+  - The interplay of colors from the broth and garnishes creates a dynamic visual experience.
+- **B...
+2025-08-26 09:12:16 | INFO     | app.services.brief_orchestrator:generate_final_brief:242 | 🎉 Brief generation completed successfully [ID: 1807389181824]
+2025-08-26 09:12:16 | INFO     | app.services.multi_provider_image_generator:_build_edit_preservation_prompt:904 | 🚀 BREAKTHROUGH: Full prompt built - 15069 characters (Max 32,000 allowed)
+2025-08-26 09:12:17 | INFO     | app.services.multi_provider_image_generator:generate_with_breakthrough_edit:744 | 🎯 Edit API call with preservation prompt: CRITICAL VISUAL PRESERVATION PROTOCOL FOR GPT IMAGE-1 EDIT API:
+
+You are analyzing the EXACT original product image that I have uploaded. Your task is PROFESSIONAL PHOTOGRAPHY ENHANCEMENT ONLY while m...
+2025-08-26 09:13:58 | INFO     | app.services.multi_provider_image_generator:generate_with_breakthrough_edit:776 | ✅ BREAKTHROUGH SUCCESS: GPT Image-1 Edit API completed!
+2025-08-26 09:13:58 | INFO     | app.services.multi_provider_image_generator:_save_base64_to_file:332 | 💾 Saved image: static\images\img_5532c4a5.png → http://0.0.0.0:8000/static/images/img_5532c4a5.png
+2025-08-26 09:13:58 | INFO     | app.routers.generator:generate_image_breakthrough:577 | 🎉 [BREAKTHROUGH] Shape preservation successful: http://0.0.0.0:8000/static/images/img_5532c4a5.png
+2025-08-26 09:14:25 | INFO     | app.routers.generator:generate_image_breakthrough:517 | 🚀 [BREAKTHROUGH] GPT Image-1 Edit API - Session: 93d6bc4c-b16d-4d4d-b6d3-a1b7c66a0a59
+2025-08-26 09:14:25 | INFO     | app.routers.generator:generate_image_breakthrough:518 | 🎯 [BREAKTHROUGH] Shape preservation mode activated
+2025-08-26 09:14:25 | INFO     | app.routers.generator:generate_image_breakthrough:531 | 📁 Loading image from file: product_1756174463.jpeg
+2025-08-26 09:14:25 | INFO     | app.routers.generator:load_image_from_filename:61 | ✅ Loaded image from file: product_1756174463.jpeg (452091 bytes)
+2025-08-26 09:14:25 | INFO     | app.routers.generator:generate_image_breakthrough:546 | 🔥 [BREAKTHROUGH] Processing with Edit API for shape preservation
+2025-08-26 09:14:25 | INFO     | app.services.multi_provider_image_generator:generate_with_breakthrough_edit:635 | 🔥 BREAKTHROUGH MODE: Using GPT Image-1 Edit API for shape preservation
+2025-08-26 09:14:26 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:30 | 🖼️ Starting product image analysis for file: C:\Users\Rekabit\AppData\Local\Temp\tmp40tynwew.png
+2025-08-26 09:14:26 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:186 | 👁️ Starting image analysis with custom client base64 [ID: 8719]
+2025-08-26 09:14:37 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:237 | ✅ Custom client base64 analysis completed [ID: 8719]
+2025-08-26 09:14:37 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:51 | ✅ Image analysis completed successfully
+2025-08-26 09:14:37 | INFO     | app.services.brief_orchestrator:__init__:24 | BriefOrchestratorService initialized with self-healing architecture
+2025-08-26 09:14:37 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 1807389185664]
+2025-08-26 09:14:37 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 1807389185664]
+2025-08-26 09:14:37 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 2932]
+2025-08-26 09:14:43 | WARNING  | app.services.ai_client:extract_wizard_data:180 | ⚠️ JSON parsing failed, attempting recovery [ID: 2932]
+2025-08-26 09:14:43 | INFO     | app.services.ai_client:extract_wizard_data:192 | ✅ Recovered JSON from malformed response [ID: 2932]
+2025-08-26 09:14:43 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 1807389185664]
+2025-08-26 09:14:43 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 1807389185664]
+2025-08-26 09:14:43 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 1807389378688]
+2025-08-26 09:14:43 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 1807389378688]
+2025-08-26 09:14:43 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 1807389185664]
+2025-08-26 09:14:43 | INFO     | app.services.brief_orchestrator:generate_final_brief:168 | 🎨 Starting final brief generation workflow [ID: 1807389184544]
+2025-08-26 09:14:43 | INFO     | app.services.brief_orchestrator:generate_final_brief:177 | 📝 Composing initial brief from wizard input [ID: 1807389184544]
+2025-08-26 09:14:43 | INFO     | app.services.prompt_composer:compose_initial_brief:76 | 📝 Starting initial brief composition [ID: 1807389184544]
+2025-08-26 09:14:43 | INFO     | app.services.prompt_composer:compose_initial_brief:127 | ✅ Initial brief composition completed [ID: 1807389184544]
+2025-08-26 09:14:43 | INFO     | app.services.brief_orchestrator:generate_final_brief:187 | ✅ Validating composed brief [ID: 1807389184544]
+2025-08-26 09:14:43 | INFO     | app.services.brief_orchestrator:generate_final_brief:199 | ✅ Brief validation passed [ID: 1807389184544]
+2025-08-26 09:14:43 | WARNING  | app.services.brief_orchestrator:generate_final_brief:203 | ⚠️ Validation warning: Consider using more natural color descriptions to ensure authenticity [ID: 1807389184544]
+2025-08-26 09:14:43 | INFO     | app.services.brief_orchestrator:generate_final_brief:206 | 🎯 MISSION CRITICAL: Sending structured data to Product Photographer [ID: 1807389184544]
+2025-08-26 09:14:43 | INFO     | app.services.brief_orchestrator:generate_final_brief:219 | 🚀 CRITICAL REFACTOR: Calling refactored Product Photographer with structured data [ID: 1807389184544]
+2025-08-26 09:14:43 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:334 | 🎭 ADVANCED: Product Photographer enhanced composition [ID: 5218]
+2025-08-26 09:15:28 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:537 | ✅ ADVANCED: Elite enhancement completed [ID: 5218]
+2025-08-26 09:15:28 | INFO     | app.services.brief_orchestrator:generate_final_brief:225 | 📊 MISSION VALIDATION: Enhanced brief analysis [ID: 1807389184544]
+2025-08-26 09:15:28 | INFO     | app.services.brief_orchestrator:generate_final_brief:233 | 📝 ENHANCED BRIEF PREVIEW [ID: 1807389184544]: # **Product Photography Brief: BLADOE Kopi Gunung Kawi Bubuk Blend**
+
+---
+
+#### **1. Main Subject: Hero Shot of the BLADOE Kopi Gunung Kawi Bubuk Blend**
+- **Product Details**: 
+  - The product is a premium coffee packaged in a sleek black pouch.
+  - It features an elegant brown paper label that adds a rustic yet sophisticated touch.
+  - The label text includes the "BLADOE" logo and "Kopi Gunung Kawi Bubuk Blend", which must be crystal clear and legible.
+- **Product State**: 
+  - The pouch is in pristine condition, emphasizing its luxurious nature.
+  - The packaging should appear untouched and fresh as if just taken off the shelf.
+- **Hero Features**: 
+  - Highlight the black glossy finish of the pouch and the texture of the brown paper label.
+  - Ensure the logo and product name are the f...
+2025-08-26 09:15:28 | INFO     | app.services.brief_orchestrator:generate_final_brief:242 | 🎉 Brief generation completed successfully [ID: 1807389184544]
+2025-08-26 09:15:28 | INFO     | app.services.multi_provider_image_generator:_build_edit_preservation_prompt:904 | 🚀 BREAKTHROUGH: Full prompt built - 15122 characters (Max 32,000 allowed)
+2025-08-26 09:15:28 | INFO     | app.services.multi_provider_image_generator:generate_with_breakthrough_edit:744 | 🎯 Edit API call with preservation prompt: CRITICAL VISUAL PRESERVATION PROTOCOL FOR GPT IMAGE-1 EDIT API:
+
+You are analyzing the EXACT original product image that I have uploaded. Your task is PROFESSIONAL PHOTOGRAPHY ENHANCEMENT ONLY while m...
+2025-08-26 09:17:07 | INFO     | app.services.multi_provider_image_generator:generate_with_breakthrough_edit:776 | ✅ BREAKTHROUGH SUCCESS: GPT Image-1 Edit API completed!
+2025-08-26 09:17:07 | INFO     | app.services.multi_provider_image_generator:_save_base64_to_file:332 | 💾 Saved image: static\images\img_b15d1b80.png → http://0.0.0.0:8000/static/images/img_b15d1b80.png
+2025-08-26 09:17:07 | INFO     | app.routers.generator:generate_image_breakthrough:577 | 🎉 [BREAKTHROUGH] Shape preservation successful: http://0.0.0.0:8000/static/images/img_b15d1b80.png
+2025-08-26 09:19:20 | INFO     | app.routers.generator:generate_image_breakthrough:517 | 🚀 [BREAKTHROUGH] GPT Image-1 Edit API - Session: 368bef0a-f6bd-4d82-986b-31c8e567f47d
+2025-08-26 09:19:20 | INFO     | app.routers.generator:generate_image_breakthrough:518 | 🎯 [BREAKTHROUGH] Shape preservation mode activated
+2025-08-26 09:19:20 | INFO     | app.routers.generator:generate_image_breakthrough:531 | 📁 Loading image from file: product_1756174758.jpeg
+2025-08-26 09:19:20 | INFO     | app.routers.generator:load_image_from_filename:61 | ✅ Loaded image from file: product_1756174758.jpeg (452091 bytes)
+2025-08-26 09:19:20 | INFO     | app.routers.generator:generate_image_breakthrough:546 | 🔥 [BREAKTHROUGH] Processing with Edit API for shape preservation
+2025-08-26 09:19:20 | INFO     | app.services.multi_provider_image_generator:generate_with_breakthrough_edit:635 | 🔥 BREAKTHROUGH MODE: Using GPT Image-1 Edit API for shape preservation
+2025-08-26 09:19:20 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:30 | 🖼️ Starting product image analysis for file: C:\Users\Rekabit\AppData\Local\Temp\tmprkg5wohi.png
+2025-08-26 09:19:20 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:186 | 👁️ Starting image analysis with custom client base64 [ID: 8719]
+2025-08-26 09:19:33 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:237 | ✅ Custom client base64 analysis completed [ID: 8719]
+2025-08-26 09:19:33 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:51 | ✅ Image analysis completed successfully
+2025-08-26 09:19:34 | INFO     | app.services.brief_orchestrator:__init__:24 | BriefOrchestratorService initialized with self-healing architecture
+2025-08-26 09:19:34 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 1807389185424]
+2025-08-26 09:19:34 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 1807389185424]
+2025-08-26 09:19:34 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 1502]
+2025-08-26 09:19:40 | WARNING  | app.services.ai_client:extract_wizard_data:180 | ⚠️ JSON parsing failed, attempting recovery [ID: 1502]
+2025-08-26 09:19:40 | INFO     | app.services.ai_client:extract_wizard_data:192 | ✅ Recovered JSON from malformed response [ID: 1502]
+2025-08-26 09:19:40 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 1807389185424]
+2025-08-26 09:19:40 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 1807389185424]
+2025-08-26 09:19:40 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 1807389448320]
+2025-08-26 09:19:40 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 1807389448320]
+2025-08-26 09:19:40 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 1807389185424]
+2025-08-26 09:19:40 | INFO     | app.services.brief_orchestrator:generate_final_brief:168 | 🎨 Starting final brief generation workflow [ID: 1807389186544]
+2025-08-26 09:19:40 | INFO     | app.services.brief_orchestrator:generate_final_brief:177 | 📝 Composing initial brief from wizard input [ID: 1807389186544]
+2025-08-26 09:19:40 | INFO     | app.services.prompt_composer:compose_initial_brief:76 | 📝 Starting initial brief composition [ID: 1807389186544]
+2025-08-26 09:19:40 | INFO     | app.services.prompt_composer:compose_initial_brief:127 | ✅ Initial brief composition completed [ID: 1807389186544]
+2025-08-26 09:19:40 | INFO     | app.services.brief_orchestrator:generate_final_brief:187 | ✅ Validating composed brief [ID: 1807389186544]
+2025-08-26 09:19:40 | INFO     | app.services.brief_orchestrator:generate_final_brief:199 | ✅ Brief validation passed [ID: 1807389186544]
+2025-08-26 09:19:40 | WARNING  | app.services.brief_orchestrator:generate_final_brief:203 | ⚠️ Validation warning: Consider using more natural color descriptions to ensure authenticity [ID: 1807389186544]
+2025-08-26 09:19:40 | INFO     | app.services.brief_orchestrator:generate_final_brief:206 | 🎯 MISSION CRITICAL: Sending structured data to Product Photographer [ID: 1807389186544]
+2025-08-26 09:19:40 | INFO     | app.services.brief_orchestrator:generate_final_brief:219 | 🚀 CRITICAL REFACTOR: Calling refactored Product Photographer with structured data [ID: 1807389186544]
+2025-08-26 09:19:40 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:334 | 🎭 ADVANCED: Product Photographer enhanced composition [ID: 4848]
+2025-08-26 09:20:21 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:537 | ✅ ADVANCED: Elite enhancement completed [ID: 4848]
+2025-08-26 09:20:21 | INFO     | app.services.brief_orchestrator:generate_final_brief:225 | 📊 MISSION VALIDATION: Enhanced brief analysis [ID: 1807389186544]
+2025-08-26 09:20:21 | INFO     | app.services.brief_orchestrator:generate_final_brief:233 | 📝 ENHANCED BRIEF PREVIEW [ID: 1807389186544]: # **Product Photography Brief: BLADOE Kopi Gunung Kawi Bubuk Blend**
+
+---
+
+#### **1. Main Subject: Hero Shot of the BLADOE Kopi Gunung Kawi Bubuk Blend**
+- **Product Details**: 
+  - **Packaging**: The product is housed in a sleek black pouch, characterized by a vintage brown label that exudes a classic yet sophisticated appearance.
+  - **Label Features**: The label prominently features a red rectangle with "BLADOE" in white capital text. Below, "Kopi Gunung Kawi" is elegantly printed in black, followed by an orange box containing the words "BUBUK BLEND" in white capital letters.
+  - **Central Illustration**: The center of the label is adorned with an illustration depicting mountains, palm trees, and coffee sacks brimming with beans, symbolizing the origin and richness of the coffee.
+  - **...
+2025-08-26 09:20:21 | INFO     | app.services.brief_orchestrator:generate_final_brief:242 | 🎉 Brief generation completed successfully [ID: 1807389186544]
+2025-08-26 09:20:21 | INFO     | app.services.multi_provider_image_generator:_build_edit_preservation_prompt:904 | 🚀 BREAKTHROUGH: Full prompt built - 16460 characters (Max 32,000 allowed)
+2025-08-26 09:20:21 | INFO     | app.services.multi_provider_image_generator:generate_with_breakthrough_edit:744 | 🎯 Edit API call with preservation prompt: CRITICAL VISUAL PRESERVATION PROTOCOL FOR GPT IMAGE-1 EDIT API:
+
+You are analyzing the EXACT original product image that I have uploaded. Your task is PROFESSIONAL PHOTOGRAPHY ENHANCEMENT ONLY while m...
+2025-08-26 09:21:56 | INFO     | app.services.multi_provider_image_generator:generate_with_breakthrough_edit:776 | ✅ BREAKTHROUGH SUCCESS: GPT Image-1 Edit API completed!
+2025-08-26 09:21:56 | INFO     | app.services.multi_provider_image_generator:_save_base64_to_file:332 | 💾 Saved image: static\images\img_da33abd0.png → http://0.0.0.0:8000/static/images/img_da33abd0.png
+2025-08-26 09:21:56 | INFO     | app.routers.generator:generate_image_breakthrough:577 | 🎉 [BREAKTHROUGH] Shape preservation successful: http://0.0.0.0:8000/static/images/img_da33abd0.png
+2025-08-26 09:32:13 | INFO     | app.routers.generator:generate_image_breakthrough:517 | 🚀 [BREAKTHROUGH] GPT Image-1 Edit API - Session: 8639b805-b29f-41c2-b4c4-75c1dbc52b84
+2025-08-26 09:32:13 | INFO     | app.routers.generator:generate_image_breakthrough:518 | 🎯 [BREAKTHROUGH] Shape preservation mode activated
+2025-08-26 09:32:13 | INFO     | app.routers.generator:generate_image_breakthrough:531 | 📁 Loading image from file: product_1756175531.jpeg
+2025-08-26 09:32:13 | INFO     | app.routers.generator:load_image_from_filename:61 | ✅ Loaded image from file: product_1756175531.jpeg (158743 bytes)
+2025-08-26 09:32:13 | INFO     | app.routers.generator:generate_image_breakthrough:546 | 🔥 [BREAKTHROUGH] Processing with Edit API for shape preservation
+2025-08-26 09:32:13 | INFO     | app.services.multi_provider_image_generator:generate_with_breakthrough_edit:635 | 🔥 BREAKTHROUGH MODE: Using GPT Image-1 Edit API for shape preservation
+2025-08-26 09:32:14 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:30 | 🖼️ Starting product image analysis for file: C:\Users\Rekabit\AppData\Local\Temp\tmp3d2lsb9r.png
+2025-08-26 09:32:14 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:186 | 👁️ Starting image analysis with custom client base64 [ID: 4845]
+2025-08-26 09:32:20 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:237 | ✅ Custom client base64 analysis completed [ID: 4845]
+2025-08-26 09:32:20 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:51 | ✅ Image analysis completed successfully
+2025-08-26 09:32:20 | INFO     | app.services.brief_orchestrator:__init__:24 | BriefOrchestratorService initialized with self-healing architecture
+2025-08-26 09:32:20 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 1807389188384]
+2025-08-26 09:32:20 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 1807389188384]
+2025-08-26 09:32:20 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 9668]
+2025-08-26 09:32:29 | WARNING  | app.services.ai_client:extract_wizard_data:180 | ⚠️ JSON parsing failed, attempting recovery [ID: 9668]
+2025-08-26 09:32:29 | INFO     | app.services.ai_client:extract_wizard_data:192 | ✅ Recovered JSON from malformed response [ID: 9668]
+2025-08-26 09:32:29 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 1807389188384]
+2025-08-26 09:32:29 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 1807389188384]
+2025-08-26 09:32:29 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 1807377695424]
+2025-08-26 09:32:29 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 1807377695424]
+2025-08-26 09:32:29 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 1807389188384]
+2025-08-26 09:32:29 | INFO     | app.services.brief_orchestrator:generate_final_brief:168 | 🎨 Starting final brief generation workflow [ID: 1807377850416]
+2025-08-26 09:32:29 | INFO     | app.services.brief_orchestrator:generate_final_brief:177 | 📝 Composing initial brief from wizard input [ID: 1807377850416]
+2025-08-26 09:32:29 | INFO     | app.services.prompt_composer:compose_initial_brief:76 | 📝 Starting initial brief composition [ID: 1807377850416]
+2025-08-26 09:32:29 | INFO     | app.services.prompt_composer:compose_initial_brief:127 | ✅ Initial brief composition completed [ID: 1807377850416]
+2025-08-26 09:32:29 | INFO     | app.services.brief_orchestrator:generate_final_brief:187 | ✅ Validating composed brief [ID: 1807377850416]
+2025-08-26 09:32:29 | INFO     | app.services.brief_orchestrator:generate_final_brief:199 | ✅ Brief validation passed [ID: 1807377850416]
+2025-08-26 09:32:29 | WARNING  | app.services.brief_orchestrator:generate_final_brief:203 | ⚠️ Validation warning: Consider using more natural color descriptions to ensure authenticity [ID: 1807377850416]
+2025-08-26 09:32:29 | INFO     | app.services.brief_orchestrator:generate_final_brief:206 | 🎯 MISSION CRITICAL: Sending structured data to Product Photographer [ID: 1807377850416]
+2025-08-26 09:32:29 | INFO     | app.services.brief_orchestrator:generate_final_brief:219 | 🚀 CRITICAL REFACTOR: Calling refactored Product Photographer with structured data [ID: 1807377850416]
+2025-08-26 09:32:29 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:334 | 🎭 ADVANCED: Product Photographer enhanced composition [ID: 897]
+2025-08-26 09:33:09 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:537 | ✅ ADVANCED: Elite enhancement completed [ID: 897]
+2025-08-26 09:33:09 | INFO     | app.services.brief_orchestrator:generate_final_brief:225 | 📊 MISSION VALIDATION: Enhanced brief analysis [ID: 1807377850416]
+2025-08-26 09:33:09 | INFO     | app.services.brief_orchestrator:generate_final_brief:233 | 📝 ENHANCED BRIEF PREVIEW [ID: 1807377850416]: # **Food Product Photography Brief: Japanese-style Rice Bowl**
+
+---
+
+#### **1. Main Subject: Hero Shot of the Japanese-style Rice Bowl**
+- **Product Details**: 
+  - The product is a Japanese-style rice bowl filled with tender grilled chicken pieces, topped with a melted golden cheese sauce.
+  - The bowl is white with distinctive red and blue branding, offering a traditional yet modern aesthetic.
+  - The rice bowl features key toppings including scattered nori flakes, which are sharp and detailed, complementing the glossy and creamy texture of the cheese sauce.
+- **Product State**: 
+  - The rice bowl should be presented in pristine condition, ensuring the chicken appears tender and the cheese sauce retains its melted, glossy appeal.
+  - The overall presentation should be appetizing, emphasi...
+2025-08-26 09:33:09 | INFO     | app.services.brief_orchestrator:generate_final_brief:242 | 🎉 Brief generation completed successfully [ID: 1807377850416]
+2025-08-26 09:33:09 | INFO     | app.services.multi_provider_image_generator:_build_edit_preservation_prompt:904 | 🚀 BREAKTHROUGH: Full prompt built - 15921 characters (Max 32,000 allowed)
+2025-08-26 09:33:09 | INFO     | app.services.multi_provider_image_generator:generate_with_breakthrough_edit:744 | 🎯 Edit API call with preservation prompt: CRITICAL VISUAL PRESERVATION PROTOCOL FOR GPT IMAGE-1 EDIT API:
+
+You are analyzing the EXACT original product image that I have uploaded. Your task is PROFESSIONAL PHOTOGRAPHY ENHANCEMENT ONLY while m...
+2025-08-26 09:34:43 | INFO     | app.services.multi_provider_image_generator:generate_with_breakthrough_edit:776 | ✅ BREAKTHROUGH SUCCESS: GPT Image-1 Edit API completed!
+2025-08-26 09:34:43 | INFO     | app.services.multi_provider_image_generator:_save_base64_to_file:332 | 💾 Saved image: static\images\img_814df29d.png → http://0.0.0.0:8000/static/images/img_814df29d.png
+2025-08-26 09:34:43 | INFO     | app.routers.generator:generate_image_breakthrough:577 | 🎉 [BREAKTHROUGH] Shape preservation successful: http://0.0.0.0:8000/static/images/img_814df29d.png
+2025-08-26 09:39:26 | INFO     | app.routers.generator:generate_image_breakthrough:517 | 🚀 [BREAKTHROUGH] GPT Image-1 Edit API - Session: 7ff405b9-adda-4747-ad08-2391eb032c2b
+2025-08-26 09:39:26 | INFO     | app.routers.generator:generate_image_breakthrough:518 | 🎯 [BREAKTHROUGH] Shape preservation mode activated
+2025-08-26 09:39:26 | INFO     | app.routers.generator:generate_image_breakthrough:531 | 📁 Loading image from file: product_1756175964.jpeg
+2025-08-26 09:39:26 | INFO     | app.routers.generator:load_image_from_filename:61 | ✅ Loaded image from file: product_1756175964.jpeg (88731 bytes)
+2025-08-26 09:39:26 | INFO     | app.routers.generator:generate_image_breakthrough:546 | 🔥 [BREAKTHROUGH] Processing with Edit API for shape preservation
+2025-08-26 09:39:26 | INFO     | app.services.multi_provider_image_generator:generate_with_breakthrough_edit:635 | 🔥 BREAKTHROUGH MODE: Using GPT Image-1 Edit API for shape preservation
+2025-08-26 09:39:28 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:30 | 🖼️ Starting product image analysis for file: C:\Users\Rekabit\AppData\Local\Temp\tmpb_tg56vs.png
+2025-08-26 09:39:29 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:186 | 👁️ Starting image analysis with custom client base64 [ID: 7421]
+2025-08-26 09:39:35 | INFO     | app.services.image_analysis_service:_analyze_with_custom_client_base64:237 | ✅ Custom client base64 analysis completed [ID: 7421]
+2025-08-26 09:39:35 | INFO     | app.services.image_analysis_service:analyze_product_image_from_file:51 | ✅ Image analysis completed successfully
+2025-08-26 09:39:36 | INFO     | app.services.brief_orchestrator:__init__:24 | BriefOrchestratorService initialized with self-healing architecture
+2025-08-26 09:39:36 | INFO     | app.services.brief_orchestrator:extract_and_autofill:48 | 🎬 Starting extraction workflow [ID: 1807389060272]
+2025-08-26 09:39:36 | INFO     | app.services.brief_orchestrator:extract_and_autofill:60 | 🔍 Attempt 1/2: Initial extraction [ID: 1807389060272]
+2025-08-26 09:39:36 | INFO     | app.services.ai_client:extract_wizard_data:46 | 🔍 Starting wizard data extraction [ID: 5396]
+2025-08-26 09:39:42 | WARNING  | app.services.ai_client:extract_wizard_data:180 | ⚠️ JSON parsing failed, attempting recovery [ID: 5396]
+2025-08-26 09:39:42 | INFO     | app.services.ai_client:extract_wizard_data:192 | ✅ Recovered JSON from malformed response [ID: 5396]
+2025-08-26 09:39:42 | INFO     | app.services.brief_orchestrator:extract_and_autofill:92 | ✅ Extraction valid on attempt 1 [ID: 1807389060272]
+2025-08-26 09:39:42 | INFO     | app.services.brief_orchestrator:extract_and_autofill:135 | 🔧 Autofilling missing fields with defaults [ID: 1807389060272]
+2025-08-26 09:39:42 | INFO     | app.services.prompt_composer:autofill_wizard_input:36 | 🔧 Starting autofill process [ID: 1807389196800]
+2025-08-26 09:39:42 | INFO     | app.services.prompt_composer:autofill_wizard_input:52 | ✅ Autofill completed [ID: 1807389196800]
+2025-08-26 09:39:42 | INFO     | app.services.brief_orchestrator:extract_and_autofill:138 | 🎉 Extraction workflow completed successfully [ID: 1807389060272]
+2025-08-26 09:39:42 | INFO     | app.services.brief_orchestrator:generate_final_brief:168 | 🎨 Starting final brief generation workflow [ID: 1807389184704]
+2025-08-26 09:39:42 | INFO     | app.services.brief_orchestrator:generate_final_brief:177 | 📝 Composing initial brief from wizard input [ID: 1807389184704]
+2025-08-26 09:39:42 | INFO     | app.services.prompt_composer:compose_initial_brief:76 | 📝 Starting initial brief composition [ID: 1807389184704]
+2025-08-26 09:39:42 | INFO     | app.services.prompt_composer:compose_initial_brief:127 | ✅ Initial brief composition completed [ID: 1807389184704]
+2025-08-26 09:39:42 | INFO     | app.services.brief_orchestrator:generate_final_brief:187 | ✅ Validating composed brief [ID: 1807389184704]
+2025-08-26 09:39:42 | INFO     | app.services.brief_orchestrator:generate_final_brief:199 | ✅ Brief validation passed [ID: 1807389184704]
+2025-08-26 09:39:42 | WARNING  | app.services.brief_orchestrator:generate_final_brief:203 | ⚠️ Validation warning: Consider using more natural color descriptions to ensure authenticity [ID: 1807389184704]
+2025-08-26 09:39:42 | INFO     | app.services.brief_orchestrator:generate_final_brief:206 | 🎯 MISSION CRITICAL: Sending structured data to Product Photographer [ID: 1807389184704]
+2025-08-26 09:39:42 | INFO     | app.services.brief_orchestrator:generate_final_brief:219 | 🚀 CRITICAL REFACTOR: Calling refactored Product Photographer with structured data [ID: 1807389184704]
+2025-08-26 09:39:42 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:334 | 🎭 ADVANCED: Product Photographer enhanced composition [ID: 2968]
+2025-08-26 09:40:15 | INFO     | app.services.ai_client:enhance_brief_from_structured_data:537 | ✅ ADVANCED: Elite enhancement completed [ID: 2968]
+2025-08-26 09:40:15 | INFO     | app.services.brief_orchestrator:generate_final_brief:225 | 📊 MISSION VALIDATION: Enhanced brief analysis [ID: 1807389184704]
+2025-08-26 09:40:15 | INFO     | app.services.brief_orchestrator:generate_final_brief:233 | 📝 ENHANCED BRIEF PREVIEW [ID: 1807389184704]: # **Food Photography Brief: Jacko Donuts**
+
+---
+
+#### **1. Main Subject: Hero Shot of the Jacko Donuts**
+- **Product Details**: The Jacko Donuts are premium-quality pastries featuring a variety of toppings. One donut is adorned with rich chocolate sprinkles, another with fresh strawberry sprinkles, and others feature a glossy sugar glaze accented with colorful crumbles. The donuts are crafted with a soft, fluffy interior.
+- **Product State**: The donuts are to be presented in pristine condition, showcasing their freshness and appeal. One donut should be broken apart to reveal its tender and airy interior, emphasizing the quality and texture.
+- **Hero Features**: Key elements to emphasize include the rich toppings, the glossy glaze, and the soft, inviting interior of the donuts. The visual ...
+2025-08-26 09:40:15 | INFO     | app.services.brief_orchestrator:generate_final_brief:242 | 🎉 Brief generation completed successfully [ID: 1807389184704]
+2025-08-26 09:40:15 | INFO     | app.services.multi_provider_image_generator:_build_edit_preservation_prompt:904 | 🚀 BREAKTHROUGH: Full prompt built - 15582 characters (Max 32,000 allowed)
+2025-08-26 09:40:15 | INFO     | app.services.multi_provider_image_generator:generate_with_breakthrough_edit:744 | 🎯 Edit API call with preservation prompt: CRITICAL VISUAL PRESERVATION PROTOCOL FOR GPT IMAGE-1 EDIT API:
+
+You are analyzing the EXACT original product image that I have uploaded. Your task is PROFESSIONAL PHOTOGRAPHY ENHANCEMENT ONLY while m...
+2025-08-26 09:41:55 | INFO     | app.services.multi_provider_image_generator:generate_with_breakthrough_edit:776 | ✅ BREAKTHROUGH SUCCESS: GPT Image-1 Edit API completed!
+2025-08-26 09:41:55 | INFO     | app.services.multi_provider_image_generator:_save_base64_to_file:332 | 💾 Saved image: static\images\img_1ecf5368.png → http://0.0.0.0:8000/static/images/img_1ecf5368.png
+2025-08-26 09:41:55 | INFO     | app.routers.generator:generate_image_breakthrough:577 | 🎉 [BREAKTHROUGH] Shape preservation successful: http://0.0.0.0:8000/static/images/img_1ecf5368.png
+2025-08-26 10:06:12 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-26 10:11:47 | INFO     | app.routers.generator:generate_image:355 | 🌟 [FRONTEND REQUEST] Generate image - Session: 3d842c36-a8b2-4ca6-81a1-3f6508b48c78
+2025-08-26 10:11:47 | INFO     | app.routers.generator:generate_image:356 | 🌟 [FRONTEND REQUEST] Generate image - Prompt length: 10 chars
+2025-08-26 10:11:47 | INFO     | app.routers.generator:generate_image:357 | 🔑 [FRONTEND REQUEST] Provider: Auto-detect
+2025-08-26 10:11:47 | WARNING  | app.routers.generator:generate_image:369 | ❌ [FRONTEND REQUEST] Invalid API key format
+2025-08-26 10:11:47 | ERROR    | app.routers.generator:generate_image:496 | Error in /generate-image endpoint: 400: Invalid API key format. Please check your OpenAI API key.
+2025-08-26 10:43:02 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-26 10:44:50 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
+2025-08-26 11:07:48 | INFO     | app.main:<module>:37 | 🚀 MISSION 3: Structured logging system initialized
