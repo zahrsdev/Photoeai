@@ -195,7 +195,12 @@ class OpenAIImageService:
                     'golden hour warm directional light', 'daylight 5600K cool tone', 'tungsten 3200K warm glow',
                     'Kodak Portra 400 film grain', 'Kodak Ektar 100 saturated colors', 'medium format raw files',
                     'shallow depth of field', 'creamy bokeh background', 'rule of thirds composition', 'leading lines',
-                    'professional color grading', 'high dynamic range HDR tonal compression', 'clean white background'
+                    'professional color grading', 'high dynamic range HDR tonal compression', 'clean white background',
+                    '3500 DPI resolution', '3500 DPI', 'ultra-high resolution 3500 DPI', 'print-quality 3500 DPI',
+                    'realistic textures', 'natural surface details', 'micro-imperfections', 'sharp legible typography',
+                    'soft gradients', 'realistic shadow falloff', 'anatomically correct', 'physics-accurate shadows',
+                    'depth of field', 'realistic bokeh', 'chromatic aberration', 'natural lighting', 'metal reflects',
+                    'glass refracts', 'cloth absorbs light', 'realistic material interaction'
                 ]
                 
                 # PRIORITY: Keep visual elements
@@ -351,7 +356,19 @@ class OpenAIImageService:
             normalized_prompt = self._normalize_for_chatgpt_quality(brief_prompt)
             
             # FORCE TECHNICAL PRESERVATION constraints at prompt end
-            technical_constraints = " Technical photography specification: maintain exact product shape, color accuracy, and proportions as shown. Documentary photography mode with zero artistic modifications to the product itself. Natural product representation only."
+            technical_constraints = """ Technical photography specification: maintain exact product shape, color accuracy, and proportions as shown. Documentary photography mode with zero artistic modifications to the product itself. Natural product representation only. Render at 3500 DPI for print-quality output.
+            
+🔒 Mandatory Rules for Photography Realism:
+- Use realistic textures with natural surface details and micro-imperfections (no plastic-like surfaces)
+- Preserve original design of brand text and logos with sharp, legible typography
+- Add natural imperfections in lighting with soft gradients and realistic shadow falloff
+- Ensure all human elements are anatomically correct with realistic skin textures and proportions
+- Ground all objects properly with physics-accurate shadows and reflections
+- Apply realistic lens behaviors (depth of field, bokeh, subtle chromatic aberration)
+- Avoid AI-generated symmetry in textures, patterns, or materials
+- Use contextually appropriate backgrounds that match the subject logically
+- Follow established photography composition rules (rule of thirds, leading lines)
+- Respect physical light and material interactions (metal reflects, glass refracts, cloth absorbs)"""
             final_prompt = normalized_prompt + technical_constraints
             
             # 🎯 GPT IMAGE 1 API payload (uses images endpoint) with HIGH quality
@@ -367,7 +384,19 @@ class OpenAIImageService:
             normalized_prompt = self._normalize_for_chatgpt_quality(brief_prompt)
             
             # FORCE TECHNICAL PRESERVATION constraints at prompt end
-            technical_constraints = " Technical photography specification: maintain exact product shape, color accuracy, and proportions as shown. Documentary photography mode with zero artistic modifications to the product itself. Natural product representation only."
+            technical_constraints = """ Technical photography specification: maintain exact product shape, color accuracy, and proportions as shown. Documentary photography mode with zero artistic modifications to the product itself. Natural product representation only. Render at 3500 DPI for print-quality output.
+            
+🔒 Mandatory Rules for Photography Realism:
+- Use realistic textures with natural surface details and micro-imperfections (no plastic-like surfaces)
+- Preserve original design of brand text and logos with sharp, legible typography
+- Add natural imperfections in lighting with soft gradients and realistic shadow falloff
+- Ensure all human elements are anatomically correct with realistic skin textures and proportions
+- Ground all objects properly with physics-accurate shadows and reflections
+- Apply realistic lens behaviors (depth of field, bokeh, subtle chromatic aberration)
+- Avoid AI-generated symmetry in textures, patterns, or materials
+- Use contextually appropriate backgrounds that match the subject logically
+- Follow established photography composition rules (rule of thirds, leading lines)
+- Respect physical light and material interactions (metal reflects, glass refracts, cloth absorbs)"""
             final_prompt = normalized_prompt + technical_constraints
             
             return {
@@ -724,7 +753,8 @@ class OpenAIImageService:
             # Build edit request (multipart form data)
             import requests
             
-            endpoint = f"{self.api_base_url.rstrip('/')}/images/edits"
+            # FIX: Ensure no double v1 in endpoint URL
+            endpoint = "https://api.openai.com/v1/images/edits"
             
             headers = {
                 "Authorization": f"Bearer {user_api_key}",
@@ -759,12 +789,16 @@ class OpenAIImageService:
             
             image_base64 = api_response['data'][0]['b64_json']
             
-            # FIX: Save base64 to file like normal flow
+            # FIX: Save base64 to file like normal flow - ensure we use the correct method
             image_url = self._save_base64_to_file(image_base64)
             
+            # Generate unique IDs for tracking
+            generation_id = f"bt_{str(uuid.uuid4())[:8]}"
+            
+            # Ensure all required fields are included to prevent validation errors
             return ImageOutput(
                 image_url=image_url,
-                generation_id=str(uuid.uuid4()),
+                generation_id=generation_id,
                 seed=42,  # Default seed for Edit API
                 revised_prompt=enhanced_brief,
                 final_enhanced_prompt=enhanced_brief,

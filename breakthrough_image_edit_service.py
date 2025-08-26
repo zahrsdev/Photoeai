@@ -132,6 +132,19 @@ PHOTOGRAPHY ENHANCEMENT ONLY:
 - Use Hasselblad medium format camera aesthetic with Phase One digital back quality
 - Implement professional lighting patterns: Rembrandt or Loop lighting for dimensionality
 - Add subtle film grain and color grading for premium commercial photography look
+- Render at ultra-high resolution 3500 DPI for professional print-quality output
+
+🔒 MANDATORY RULES FOR PHOTOGRAPHY REALISM:
+- Use realistic textures with natural surface details and micro-imperfections (no plastic-like surfaces)
+- Preserve original design of brand text and logos with sharp, legible typography
+- Add natural imperfections in lighting with soft gradients and realistic shadow falloff
+- Ensure all human elements are anatomically correct with realistic skin textures and proportions
+- Ground all objects properly with physics-accurate shadows and reflections
+- Apply realistic lens behaviors (depth of field, bokeh, subtle chromatic aberration)
+- Avoid AI-generated symmetry in textures, patterns, or materials
+- Use contextually appropriate backgrounds that match the subject logically
+- Follow established photography composition rules (rule of thirds, leading lines)
+- Respect physical light and material interactions (metal reflects, glass refracts, cloth absorbs)
 
 PRODUCT CONTEXT: {product_keywords}
 
